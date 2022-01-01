@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/opt/homebrew/share/vim/vim82/keymap'
+let g:netrw_dirhist_5='/Users/kantaro_yamanaka/.vim'
+let g:netrw_dirhist_4='/Users/kantaro_yamanaka/.vim/plugin'
+let g:netrw_dirhist_3='/Users/kantaro_yamanaka/Desktop/Task/Computer2'
+let g:netrw_dirhist_2='/Users/kantaro_yamanaka/.vim/ftplugin'
+let g:netrw_dirhist_1='/Users/kantaro_yamanaka/Desktop/Task/Linear'
+let g:netrw_dirhist_0='/Users/kantaro_yamanaka/Desktop/Task'
+let g:netrw_dirhist_9='/Users/kantaro_yamanaka/Desktop'
+let g:netrw_dirhist_8='/Users/kantaro_yamanaka'
+let g:netrw_dirhist_7='/'
