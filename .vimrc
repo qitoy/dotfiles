@@ -132,8 +132,8 @@ cmap <C-j> <Plug>(skkeleton-toggle)
 
 call skkeleton#config({
 			\'eggLikeNewline':v:true,
-			\'globalJisyo': '~/.vim/skk/SKK-JiSYO.L',
-			\'registerConvertResult':v:true
+			\'globalJisyo': '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L',
+			\'userJisyo': '~/skk-jisyo.utf8',
 			\})
 
 call skkeleton#register_kanatable('rom', {
