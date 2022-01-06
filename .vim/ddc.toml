@@ -44,6 +44,11 @@ inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 '''
 
 [[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+on_source = 'ddc.vim'
+hook_add = 'let g:lsp_diagnostics_enabled = 0'
+
+[[plugins]]
 repo = 'shun/ddc-vim-lsp'
 depends = ['ddc.vim', 'vim-lsp']
 on_source = 'ddc.vim'
@@ -100,11 +105,6 @@ call skkeleton#register_kanatable('rom', {
 			\ '.': ['．', ''],
 			\ })
 '''
-
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-on_source = 'ddc.vim'
-hook_add = 'let g:lsp_diagnostics_enabled = 0'
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
