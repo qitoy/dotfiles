@@ -1,0 +1,121 @@
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+depends = ['denops.vim']
+on_event = 'InsertEnter'
+hook_source = '''
+call ddc#custom#patch_global('sources', [
+			\ 'neosnippet',
+			\ 'around',
+			\ 'vim-lsp', 
+			\ 'skkeleton'
+			\ ])
+
+call ddc#custom#patch_global('sourceOptions', {
+			\ 'vim-lsp': {
+				\ 'mark': 'LSP',
+				\ 'matchers': ['matcher_head'],
+				\ 'forceCompletionPattern': '\.|:|->|"\w+/*'
+			\ },
+			\ 'neosnippet': {'mark': 'snippet'},
+			\ 'around': {'mark': 'A'},
+			\ '_': {
+				\   'matchers': ['matcher_head'],
+				\   'sorters': ['sorter_rank']
+			\ },
+			\ 'skkeleton': {
+				\ 'mark': 'SKK',
+				\ 'matchers': ['skkeleton'],
+				\ 'sorters': []
+			\ },
+			\ })
+
+" Use ddc.
+call ddc#enable()
+'''
+hook_add = '''
+" <TAB>: completion.
+inoremap <silent><expr> <TAB>
+			\ ddc#map#pum_visible() ? '<C-n>' :
+			\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+			\ '<TAB>' : ddc#map#manual_complete()
+
+" <S-TAB>: completion back.
+inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+'''
+
+[[plugins]]
+repo = 'shun/ddc-vim-lsp'
+depends = ['ddc.vim', 'vim-lsp']
+on_source = 'ddc.vim'
+
+# Install your sources
+[[plugins]]
+repo = 'Shougo/ddc-around'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets']
+on_source = 'ddc.vim'
+hook_add = '''
+let g:neosnippet#snippets_directory = '~/.vim/my_snippets'
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-l>     <Plug>(neosnippet_expand_or_jump)
+smap <C-l>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-l>     <Plug>(neosnippet_expand_target)
+'''
+hook_source = '''
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <expr><TAB>
+			\ pumvisible() ? "\<C-n>" :
+			\ neosnippet#expandable_or_jumpable() ?
+			\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+			\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'vim-skk/skkeleton'
+on_source = 'ddc.vim'
+hook_add = '''
+imap <C-j> <Plug>(skkeleton-toggle)
+cmap <C-j> <Plug>(skkeleton-toggle)
+'''
+hook_source = '''
+call skkeleton#config({
+			\'eggLikeNewline':v:true,
+			\'globalJisyo': '~/Library/Application Support/AquaSKK/SKK-JISYO.L',
+			\'userJisyo': '~/Library/Application Support/AquaSKK/skk-jisyo.utf8',
+			\})
+
+call skkeleton#register_kanatable('rom', {
+			\ ',': ['，', ''],
+			\ '.': ['．', ''],
+			\ })
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+on_source = 'ddc.vim'
+hook_add = 'let g:lsp_diagnostics_enabled = 0'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+depends = 'vim-lsp'
+on_source = 'vim-lsp'
+
+# Install your filters
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+on_source = 'ddc.vim'

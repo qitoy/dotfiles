@@ -1,6 +1,7 @@
+# Let dein manage dein
+# Required:
 [[plugins]]
-repo = 'vim-jp/vimdoc-ja'
-hook-add = 'set helplang=ja'
+repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
