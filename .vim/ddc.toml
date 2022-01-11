@@ -13,14 +13,14 @@ call ddc#custom#patch_global('sources', [
 call ddc#custom#patch_global('sourceOptions', {
 			\ 'vim-lsp': {
 				\ 'mark': 'LSP',
-				\ 'matchers': ['matcher_head'],
 				\ 'forceCompletionPattern': '\.|:|->|"\w+/*'
 			\ },
 			\ 'neosnippet': {'mark': 'snippet'},
 			\ 'around': {'mark': 'A'},
 			\ '_': {
-				\   'matchers': ['matcher_head'],
-				\   'sorters': ['sorter_rank']
+				\   'matchers': ['matcher_fuzzy'],
+				\   'sorters': ['sorter_fuzzy'],
+				\	'converters': ['converter_fuzzy']
 			\ },
 			\ 'skkeleton': {
 				\ 'mark': 'SKK',
@@ -113,9 +113,13 @@ on_source = 'vim-lsp'
 
 # Install your filters
 [[plugins]]
-repo = 'Shougo/ddc-matcher_head'
+repo = 'tani/ddc-fuzzy'
 on_source = 'ddc.vim'
 
-[[plugins]]
-repo = 'Shougo/ddc-sorter_rank'
-on_source = 'ddc.vim'
+# [[plugins]]
+# repo = 'Shougo/ddc-matcher_head'
+# on_source = 'ddc.vim'
+# 
+# [[plugins]]
+# repo = 'Shougo/ddc-sorter_rank'
+# on_source = 'ddc.vim'
