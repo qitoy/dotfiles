@@ -40,7 +40,6 @@ aug LaTeX
 	au FileType tex inoremap <buffer> <Bslash>[ <Bslash>[<Bslash>]<Left><Left><CR><CR><Up><C-F>
 	au BufNewFile *.tex 0r $HOME/.vim/template/LaTeX.tex
 	au BufNewFile *.tex %s/Title_Here/\=expand("%:r")/
-	au BufNewFile *.tex %s/Document_Here
 	au InsertLeave *.tex w
 aug END
 
