@@ -14,6 +14,6 @@ function! OjSubmit(bang) abort
 	if a:bang == ""
 		:! make && oj t -N -c ./program && oj s main.cpp
 	else
-		:! make && oj s main.cpp
+		:! oj s main.cpp
 	end
 endfunction
