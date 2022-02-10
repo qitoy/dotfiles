@@ -49,7 +49,6 @@ augroup AtCoder
 	autocmd BufEnter ~/AtCoder/*.cpp,~/AtCoder/*.hpp runtime! init/AtCoder.vim
 augroup END
 
-
 " 行番号を表示
 set number
 

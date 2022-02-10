@@ -5,12 +5,18 @@ on_event = 'InsertEnter'
 hook_source = '''
 call ddc#custom#patch_global('sources', [
 			\ 'around',
+			\ 'file',
 			\ 'neosnippet',
 			\ 'vim-lsp', 
 			\ 'skkeleton'
 			\ ])
 
 call ddc#custom#patch_global('sourceOptions', {
+			\ 'file': {
+				\ 'mark': 'file',
+				\ 'isVolatile': v:true,
+				\ 'forceCompletionPattern': '\S/\S*',
+			\ },
 			\ 'vim-lsp': {
 				\ 'mark': 'LSP',
 				\ 'forceCompletionPattern': '\.|:|->|"\w+/*'
@@ -88,6 +94,10 @@ repo = 'Shougo/neosnippet-snippets'
 on_source = 'ddc.vim'
 
 [[plugins]]
+repo = 'LumaKernel/ddc-file'
+on_source = 'ddc.vim'
+
+[[plugins]]
 repo = 'vim-skk/skkeleton'
 on_source = 'ddc.vim'
 hook_add = '''
@@ -116,11 +126,3 @@ on_source = 'vim-lsp'
 [[plugins]]
 repo = 'tani/ddc-fuzzy'
 on_source = 'ddc.vim'
-
-# [[plugins]]
-# repo = 'Shougo/ddc-matcher_head'
-# on_source = 'ddc.vim'
-# 
-# [[plugins]]
-# repo = 'Shougo/ddc-sorter_rank'
-# on_source = 'ddc.vim'
