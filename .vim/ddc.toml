@@ -15,7 +15,7 @@ call ddc#custom#patch_global('sourceOptions', {
 			\ 'file': {
 				\ 'mark': 'file',
 				\ 'isVolatile': v:true,
-				\ 'forceCompletionPattern': '\S/\S*',
+				\ 'forceCompletionPattern': '[^\s()*;]/[^\s()*;]*',
 			\ },
 			\ 'vim-lsp': {
 				\ 'mark': 'LSP',
