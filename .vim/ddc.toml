@@ -3,14 +3,12 @@ repo = 'Shougo/ddc.vim'
 depends = ['denops.vim', 'pum.vim']
 on_event = ['InsertEnter', 'CursorHold']
 hook_source = '''
-call ddc#custom#patch_global('completionMenu', 'pum.vim')
-
 call ddc#custom#patch_global('sources', [
 	\ 'around',
 	\ 'file',
 	\ 'neosnippet',
-	\ 'vim-lsp', 
-	\ 'skkeleton'
+	\ 'vim-lsp',
+	\ 'skkeleton',
 	\ ])
 
 call ddc#custom#patch_global('sourceOptions', {
@@ -34,11 +32,14 @@ call ddc#custom#patch_global('sourceOptions', {
 	\ 'skkeleton': {
 		\ 'mark': 'SKK',
 		\ 'matchers': ['skkeleton'],
-		\ 'sorters': []
+		\ 'sorters': [],
+		\ 'minAutoCompleteLength': 2,
 	\ },
 	\ })
 
 " Use pum.vim
+call ddc#custom#patch_global('completionMenu', 'pum.vim')
+
 inoremap <silent><expr> <TAB>
 	\ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
 	\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
@@ -51,16 +52,6 @@ inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
 
 " Use ddc.
 call ddc#enable()
-'''
-hook_add = '''
-" <TAB>: completion.
-inoremap <silent><expr> <TAB>
-	\ ddc#map#pum_visible() ? '<C-n>' :
-	\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-	\ '<TAB>' : ddc#map#manual_complete()
-
-" <S-TAB>: completion back.
-inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 '''
 
 [[plugins]]
@@ -97,7 +88,7 @@ hook_source = '''
 " SuperTab like snippets behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <expr><TAB>
-	\ pumvisible() ? "\<C-n>" :
+	\ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
 	\ neosnippet#expandable_or_jumpable() ?
 	\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
