@@ -37,6 +37,12 @@ call ddc#custom#patch_global('sourceOptions', {
 	\ },
 	\ })
 
+call ddc#custom#patch_global('filterParams', {
+	\ 'converter_fuzzy': {
+		\ 'hlGroup': 'CursorLine'
+		\ }
+	\ })
+
 " Use pum.vim
 call ddc#custom#patch_global('completionMenu', 'pum.vim')
 
