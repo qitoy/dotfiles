@@ -14,7 +14,7 @@ call ddc#custom#patch_global('sourceOptions', {
 	\ 'file': {
 		\ 'mark': 'file',
 		\ 'isVolatile': v:true,
-		\ 'forceCompletionPattern': '[^\s()*;]/[^\s()*;]*',
+		\ 'forceCompletionPattern': '[^\s()*;"\u0027]/[^\s()*;"\u0027]*',
 	\ },
 	\ 'vim-lsp': {
 		\ 'mark': 'LSP',
@@ -64,15 +64,18 @@ repo = 'Shougo/pum.vim'
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
-on_source = 'ddc.vim'
 hook_add = 'let g:lsp_diagnostics_enabled = 0'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+depends = 'vim-lsp'
+on_source = 'vim-lsp'
 
 [[plugins]]
 repo = 'shun/ddc-vim-lsp'
 depends = ['ddc.vim', 'vim-lsp']
 on_source = 'ddc.vim'
 
-# Install your sources
 [[plugins]]
 repo = 'Shougo/ddc-around'
 on_source = 'ddc.vim'
@@ -111,7 +114,7 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'vim-skk/skkeleton'
-on_source = 'ddc.vim'
+on_map = {ic = '<Plug>(skkeleton-toggle)'}
 depends = 'ddc.vim'
 hook_add = '''
 imap <C-j> <Plug>(skkeleton-toggle)
@@ -141,11 +144,6 @@ function! s:skkeleton_post() abort
 	call ddc#custom#set_buffer(s:prev_buffer_config)
 endfunction
 '''
-
-[[plugins]]
-repo = 'mattn/vim-lsp-settings'
-depends = 'vim-lsp'
-on_source = 'vim-lsp'
 
 # Install your filters
 [[plugins]]
