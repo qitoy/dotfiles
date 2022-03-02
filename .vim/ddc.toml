@@ -64,6 +64,7 @@ repo = 'Shougo/pum.vim'
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
+on_ft = ['cpp', 'tex']
 hook_add = 'let g:lsp_diagnostics_enabled = 0'
 
 [[plugins]]
