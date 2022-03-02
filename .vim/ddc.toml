@@ -26,7 +26,6 @@ call ddc#custom#patch_global('sourceOptions', {
 		\ 'matchers': ['matcher_fuzzy'],
 		\ 'sorters': ['sorter_fuzzy'],
 		\ 'converters': ['converter_fuzzy'],
-		\ 'dup': v:true
 	\ },
 	\ 'skkeleton': {
 		\ 'mark': 'SKK',
