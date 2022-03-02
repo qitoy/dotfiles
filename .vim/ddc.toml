@@ -1,7 +1,7 @@
 [[plugins]]
 repo = 'Shougo/ddc.vim'
 depends = ['denops.vim']
-on_event = 'InsertEnter'
+on_event = ['InsertEnter', 'CursorHold']
 hook_source = '''
 call ddc#custom#patch_global('sources', [
 			\ 'around',
@@ -99,7 +99,8 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'vim-skk/skkeleton'
-on_source = 'ddc.vim'
+on_map = {ic = '<Plug>(skkeleton-toggle)'}
+depends = 'ddc.vim'
 hook_add = '''
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
