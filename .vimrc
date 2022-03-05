@@ -76,8 +76,8 @@ set scrolloff=10
 set foldmethod=marker
 aug folding
 	au!
-	au BufWinLeave ?* mkview
-	au BufWinEnter ?* silent loadview
+	autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
+	autocmd BufRead * if expand('%') != '' && &buftype !~ 'nofile' | silent loadview | endif
 aug END
 set viewoptions-=options
 
