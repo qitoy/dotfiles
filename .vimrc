@@ -32,6 +32,8 @@ endif
 
 " }}}1 End dein Scripts-------------------------
 
+runtime! /init/secret.vim
+
 " LaTeX
 let g:tex_flavor = "latex"
 let g:tex_conceal=''
