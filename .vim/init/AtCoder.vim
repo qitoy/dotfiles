@@ -17,3 +17,9 @@ function! OjSubmit(bang) abort
 		:! oj s main.cpp
 	end
 endfunction
+
+command! -buffer OjGenIn
+			\ :! oj g/i ./generate.py
+
+command! -buffer OjGenOut
+			\ :! oj g/o -c ./naive

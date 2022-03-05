@@ -48,7 +48,7 @@ aug END
 " AtCoder C++
 augroup AtCoder
 	autocmd!
-	autocmd BufEnter ~/AtCoder/*.cpp,~/AtCoder/*.hpp runtime! init/AtCoder.vim
+	autocmd BufEnter ~/AtCoder/* runtime! init/AtCoder.vim
 augroup END
 
 " 行番号を表示
