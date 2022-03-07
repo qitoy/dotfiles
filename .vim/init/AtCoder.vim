@@ -3,23 +3,25 @@ nnoremap <buffer> <LocalLeader>cl /end template<CR>jdGo<Esc>0C<CR><CR><CR>int ma
 nnoremap <buffer> <LocalLeader>ay ggVG"*y<C-o><C-o>
 
 command! -buffer -nargs=1 OjInit
-			\ :! rm -rf test/ && oj d <args>
+			\ : ter ++hidden ++open ++shell
+			\ rm -rf test/ && oj d <args>
 
 command! -buffer OjTest
-			\ :! make && oj t -N -c ./program
+			\ : w | ter ++hidden ++open ++shell
+			\ make && oj t -N -c ./program
 
 command! -buffer -bang OjSubmit
 			\ call OjSubmit(<q-bang>)
 function! OjSubmit(bang) abort
-	if a:bang == ""
-		:! make && oj t -N -c ./program && oj s main.cpp
+	if a:bang ==# ''
+		: w | ter ++shell make && oj t -N -c ./program && oj s main.cpp
 	else
-		:! oj s main.cpp
+		: ter ++close oj s main.cpp
 	end
 endfunction
 
 command! -buffer OjGenIn
-			\ :! oj g/i ./generate.py
+			\ ter ++hidden ++close oj g/i ./generate.py
 
 command! -buffer OjGenOut
-			\ :! oj g/o -c ./naive
+			\ ter ++hidden ++close oj g/o -c ./naive
