@@ -6,3 +6,6 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 
+# [[plugins]]
+# repo = 'Shougo/vimproc.vim'
+# hook_post_update = 'make'
