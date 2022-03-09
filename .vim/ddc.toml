@@ -4,10 +4,10 @@ depends = ['denops.vim', 'pum.vim']
 on_event = ['InsertEnter', 'CursorHold', 'CmdlineEnter']
 hook_source = '''
 call ddc#custom#patch_global('sources', [
+	\ 'vim-lsp',
 	\ 'around',
 	\ 'file',
 	\ 'neosnippet',
-	\ 'vim-lsp',
 	\ ])
 
 call ddc#custom#patch_global('sourceOptions', {
@@ -128,6 +128,8 @@ depends = ['neosnippet-snippets']
 on_source = 'ddc.vim'
 hook_add = '''
 let g:neosnippet#snippets_directory = '~/.vim/my_snippets'
+let g:neosnippet#enable_completed_snippet = 1
+let g:neosnippet#enable_complete_done = 1
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-l> <Plug>(neosnippet_expand_or_jump)
@@ -137,13 +139,13 @@ xmap <C-l> <Plug>(neosnippet_expand_target)
 hook_source = '''
 " SuperTab like snippets behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <expr><TAB>
-	\ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
-	\ neosnippet#expandable_or_jumpable() ?
-	\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-	\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" imap <expr><TAB>
+" 	\ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+" 	\ neosnippet#expandable_or_jumpable() ?
+" 	\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" 
+" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+" 	\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 '''
 
 [[plugins]]
