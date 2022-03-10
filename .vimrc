@@ -32,6 +32,10 @@ endif
 
 " }}}1 End dein Scripts-------------------------
 
+" test Denops
+set runtimepath^=~/GitHub/denops-make-bg
+" let g:denops#debug = 1
+
 runtime! /init/secret.vim
 
 " LaTeX
