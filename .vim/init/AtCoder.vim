@@ -1,27 +1,10 @@
 nnoremap <buffer> <silent> <LocalLeader>cm
-			\ <Cmd>call <SID>make_bg()<CR>
+			\ <Cmd>call denops_make_bg#make()<CR>
 nnoremap <buffer> <silent> <LocalLeader>cc
 			\ <Cmd>ter ++rows=10 make run<CR>
 nnoremap <buffer> <silent> <LocalLeader>cl
 			\ /end template<CR>jdGo<Esc>0C<CR><CR><CR>int main(){}<Left><CR><Esc><S-o><CR><Esc>O
 nnoremap <buffer> <LocalLeader>ay ggVG"*y<C-o><C-o>
-
-function! <SID>make_bg() abort
-	if &modified && &autowrite
-		write
-	end
-	let s:tmp_file = tempname()
-	let s:job = job_start('make', {
-					\ 'err_io': 'file',
-					\ 'err_name': s:tmp_file,
-					\ 'exit_cb': function('s:exit_handler'),
-					\ })
-endfunction
-
-function! s:exit_handler(buf, exit_status) abort
-	execute 'cf' s:tmp_file
-	unlet s:tmp_file s:job
-endfunction
 
 command! -buffer -nargs=1 OjInit
 			\ :ter ++hidden ++open ++shell
