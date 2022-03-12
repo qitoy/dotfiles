@@ -106,7 +106,7 @@ repo = 'Shougo/pum.vim'
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 on_event = ['BufEnter']
-hook_add = 'let g:lsp_diagnostics_enabled = 0'
+# hook_add = 'let g:lsp_diagnostics_enabled = 0'
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
