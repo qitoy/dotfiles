@@ -5,6 +5,10 @@ nnoremap <buffer> <silent> <LocalLeader>cc
 nnoremap <buffer> <silent> <LocalLeader>cl
 			\ /end template<CR>jdGo<Esc>0C<CR><CR><CR>int main(){}<Left><CR><Esc><S-o><CR><Esc>O
 nnoremap <buffer> <LocalLeader>ay ggVG"*y<C-o><C-o>
+nnoremap <buffer> <silent> <LocalLeader>ot
+			\ <Cmd>OjTest<CR>
+nnoremap <buffer> <silent> <LocalLeader>os
+			\ <Cmd>OjSubmit<CR>
 
 command! -buffer -nargs=1 OjInit
 			\ :ter ++rows=10 ++shell
