@@ -106,7 +106,10 @@ repo = 'Shougo/pum.vim'
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 on_event = ['BufEnter']
-# hook_add = 'let g:lsp_diagnostics_enabled = 0'
+hook_add = '''
+" let g:lsp_diagnostics_enabled = 0
+let g:lsp_diagnostics_echo_cursor = 1
+'''
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
@@ -129,7 +132,7 @@ on_source = 'ddc.vim'
 hook_add = '''
 let g:neosnippet#snippets_directory = '~/.vim/my_snippets'
 let g:neosnippet#enable_completed_snippet = 1
-let g:neosnippet#enable_complete_done = 1
+" let g:neosnippet#enable_complete_done = 1
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-l> <Plug>(neosnippet_expand_or_jump)
