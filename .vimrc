@@ -3,6 +3,7 @@
 let s:toml = '~/.vim/dein.toml'
 let s:toml_lazy = '~/.vim/dein_lazy.toml'
 let s:ddc_toml = '~/.vim/ddc.toml'
+let s:ddu_toml = '~/.vim/ddu.toml'
 
 if &compatible
   set nocompatible               " Be iMproved
@@ -17,6 +18,7 @@ call dein#begin('~/.cache/dein')
 call dein#load_toml(s:toml, {'lazy': 0})
 call dein#load_toml(s:toml_lazy, {'lazy': 1})
 call dein#load_toml(s:ddc_toml, {'lazy': 1})
+call dein#load_toml(s:ddu_toml, {'lazy': 1})
 
 " Required:
 call dein#end()
@@ -37,6 +39,9 @@ set runtimepath^=~/GitHub/denops-make-bg
 " let g:denops#debug = 1
 
 runtime! /init/secret.vim
+
+" フォント設定
+set guifont=SourceCodeProForPowerline-Regular:h11
 
 " LaTeX
 let g:tex_flavor = "latex"
