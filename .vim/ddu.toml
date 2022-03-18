@@ -61,6 +61,11 @@ depends = 'ddu-kind-file'
 on_source = 'ddu.vim'
 
 [[plugins]]
+repo = 'Shougo/ddu-source-file'
+depends = 'ddu-kind-file'
+on_source = 'ddu.vim'
+
+[[plugins]]
 repo = 'kuuote/ddu-source-mr'
 depends = 'mr.vim'
 on_source = 'ddu.vim'
