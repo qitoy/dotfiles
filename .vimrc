@@ -53,7 +53,7 @@ aug END
 " AtCoder C++
 augroup AtCoder
 	autocmd!
-	autocmd BufEnter ~/AtCoder/* runtime! init/AtCoder.vim
+	autocmd BufEnter ~/AtCoder/*.cpp,~/AtCoder/*.hpp runtime! init/AtCoder.vim
 augroup END
 
 " 行番号を表示
@@ -62,6 +62,7 @@ set number
 " tabの幅
 set tabstop=4
 set shiftwidth=4
+let g:vim_indent_cont = shiftwidth()
 
 " コマンド表示
 set showcmd
