@@ -35,11 +35,9 @@ call ddc#custom#patch_global('sourceOptions', {
 	\ },
 	\ 'cmdline': {
 		\ 'mark': 'cmd',
-		\ 'maxItems': 10,
 	\ },
 	\ 'cmdline-history': {
 		\ 'mark': 'history',
-		\ 'maxItems': 5,
 	\ },
 	\ })
 
@@ -185,6 +183,7 @@ call skkeleton#config({
 call skkeleton#register_kanatable('rom', {
 	\ ',': ['，', ''],
 	\ '.': ['．', ''],
+	\ "z\<Space>": ["\u3000", ''],
 	\ })
 
 autocmd User skkeleton-enable-pre call s:skkeleton_pre()
