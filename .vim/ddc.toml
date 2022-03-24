@@ -105,8 +105,17 @@ repo = 'Shougo/pum.vim'
 repo = 'prabirshrestha/vim-lsp'
 on_event = ['BufEnter']
 hook_add = '''
-" let g:lsp_diagnostics_enabled = 0
 let g:lsp_diagnostics_echo_cursor = 1
+function! s:on_lsp_buffer_enabled() abort
+	setlocal signcolumn=yes
+	nmap <buffer> <leader>rn <plug>(lsp-rename)
+	nmap <buffer> K <plug>(lsp-hover)
+endfunction
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 '''
 
 [[plugins]]

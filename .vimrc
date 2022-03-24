@@ -90,7 +90,8 @@ aug END
 set viewoptions-=options
 
 " map関連
-let maplocalleader=' '
+let mapleader = '_'
+let maplocalleader = ' '
 
 set autowrite
 set laststatus=2
