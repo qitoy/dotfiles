@@ -19,3 +19,10 @@ function AtCoder#oj#submit(bang) abort
 	return {-> a:bang ==# '' ? AtCoder#oj#test() : s:Promise.resolve()}()
 		\.then({-> execute("ter ++close ++shell ++rows=10 oj s main.cpp")})
 endfunction
+
+function AtCoder#oj#new_test() abort
+	let num = localtime()
+	execute("belowright 10 split test/" . num . ".in")
+	execute("belowright vsplit test/" . num . ".out")
+	execute "normal \<C-W>\<C-P>"
+endfunction
