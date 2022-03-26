@@ -187,6 +187,7 @@ call skkeleton#config({
 	\'eggLikeNewline':v:true,
 	\'globalJisyo': '~/Library/Application Support/AquaSKK/SKK-JISYO.L',
 	\'userJisyo': '~/Library/Application Support/AquaSKK/skk-jisyo.utf8',
+	\'completionRankFile': '~/.skkeleton/rank.json',
 	\})
 
 call skkeleton#register_kanatable('rom', {
