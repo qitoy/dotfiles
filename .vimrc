@@ -46,8 +46,8 @@ aug LaTeX
 	au!
 	au FileType tex inoremap <buffer> <Bslash>[ <Bslash>[<Bslash>]<Left><Left><CR><CR><Up><C-F>
 	au BufNewFile *.tex 0r $HOME/.vim/template/LaTeX.tex
-	au BufNewFile *.tex %s/Title_Here/\=expand("%:r")/
-	au InsertLeave *.tex w
+	au BufNewFile *.tex %s/Title_Here/\=expand("%:t:r")/
+	au InsertLeave,CursorHold *.tex update
 aug END
 
 " AtCoder C++
@@ -92,6 +92,11 @@ set viewoptions-=options
 " map関連
 let mapleader = '_'
 let maplocalleader = ' '
+
+" 横スクロール
+set nowrap
+set sidescroll=1
+set sidescrolloff=20
 
 set autowrite
 set laststatus=2
