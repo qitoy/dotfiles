@@ -14,11 +14,17 @@ endfunction
 
 function AtCoder#acc#cd(dir) abort
 	let dir = "/" . a:dir . "/"
+	if isdirectory(s:acc_path . dir) == v:false
+		echoerr "The directory is not exists!!"
+		return
+	endif
 	execute("edit " . s:acc_path . dir . "main.cpp")
 	execute("lcd " . s:acc_path . dir)
-	call term_start(["/bin/sh", "-c", "oj d `acc task -u`"], {
-		\ "term_finish": "close"
-		\ })
+	if isdirectory("test") == v:false
+		call term_start(["/bin/sh", "-c", "oj d `acc task -u`"], {
+			\ "term_finish": "close"
+			\ })
+	endif
 endfunction
 
 function AtCoder#acc#test() abort
