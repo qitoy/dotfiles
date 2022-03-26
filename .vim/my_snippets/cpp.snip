@@ -1,0 +1,10 @@
+snippet     all
+abbr        all macro
+options     word 
+    std::begin(${1:name}), std::end($1)${0}
+
+snippet     rall
+abbr        reverse all macro
+options     word 
+    std::rbegin(${1:name}), std::rend($1)${0}
+
