@@ -1,10 +1,28 @@
 snippet     all
 abbr        all macro
 options     word 
-    std::begin(${1:name}), std::end($1)${0}
+    begin(${1:name}), end($1)${0}
 
 snippet     rall
 abbr        reverse all macro
 options     word 
-    std::rbegin(${1:name}), std::rend($1)${0}
+    rbegin(${1:name}), rend($1)${0}
+
+snippet     coutLn
+abbr        cout \n
+    cout << ${1} << '\n';${0}
+
+snippet     cerrLn
+abbr        cerr \n
+    cerr << ${1} << '\n';${0}
+
+snippet     pair
+abbr        pair
+    pair<${1},${2}>${0}
+
+snippet     priority_queue_greater
+abbr        use greater
+options     head
+    priority_queue<${1}, vector<$1>, greater<$1>> ${0}
+
 
