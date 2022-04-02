@@ -3,7 +3,7 @@ nnoremap <buffer> <silent> <LocalLeader>cm
 nnoremap <buffer> <silent> <LocalLeader>cc
 	\ <Cmd>call AtCoder#make#make_then("ter ++rows=10 ./program")<CR>
 nnoremap <buffer> <silent> <LocalLeader>cl
-	\ /end template<CR>jdGo<Esc>0C<CR>int main(){}<Left><CR><Esc><S-o><CR><Esc>O
+	\ <Cmd>%d<CR><Cmd>0r ~/.vim/template/cpp.cpp<CR>
 nnoremap <buffer> <LocalLeader>ay ggVG"*y<C-o><C-o>
 nnoremap <buffer> <silent> <LocalLeader>ot
 	\ <Cmd>call AtCoder#oj#test()<CR>
