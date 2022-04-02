@@ -1,9 +1,4 @@
 let s:Promise = vital#vital#new().import('Async.Promise')
-" function AtCoder#oj#test() abort
-" 	return AtCoder#make#make_then(
-" 		\ "ter ++rows=10 oj t -N -c ./program"
-" 		\ )
-" endfunction
 
 function AtCoder#oj#test() abort
 	return AtCoder#make#make()
