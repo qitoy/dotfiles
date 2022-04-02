@@ -183,18 +183,24 @@ imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
 '''
 hook_source = '''
-call skkeleton#config({
-	\'eggLikeNewline':v:true,
-	\'globalJisyo': '~/Library/Application Support/AquaSKK/SKK-JISYO.L',
-	\'userJisyo': '~/Library/Application Support/AquaSKK/skk-jisyo.utf8',
-	\'completionRankFile': '~/.skkeleton/rank.json',
-	\})
+function! s:skkeleton_init() abort
+	call skkeleton#config({
+		\'eggLikeNewline':v:true,
+		\'globalJisyo': '~/Library/Application Support/AquaSKK/SKK-JISYO.L',
+		\'userJisyo': '~/Library/Application Support/AquaSKK/skk-jisyo.utf8',
+		\'completionRankFile': '~/.skkeleton/rank.json',
+		\})
 
-call skkeleton#register_kanatable('rom', {
-	\ ',': ['，', ''],
-	\ '.': ['．', ''],
-	\ "z\<Space>": ["\u3000", ''],
-	\ })
+	call skkeleton#register_kanatable('rom', {
+		\ ',': ['，', ''],
+		\ '.': ['．', ''],
+		\ "z\<Space>": ["\u3000", ''],
+		\ })
+	endfunction
+augroup skkeleton-initialize-pre
+	autocmd!
+	autocmd User skkeleton-initialize-pre call s:skkeleton_init()
+augroup END
 
 autocmd User skkeleton-enable-pre call s:skkeleton_pre()
 function! s:skkeleton_pre() abort
