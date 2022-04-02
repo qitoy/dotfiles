@@ -8,16 +8,17 @@ abbr        reverse all macro
 options     word 
     rbegin(${1:name}), rend($1)${0}
 
-snippet     coutLn
+snippet     coutn
 abbr        cout \n
     cout << ${1} << '\n';${0}
 
-snippet     cerrLn
+snippet     cerrn
 abbr        cerr \n
     cerr << ${1} << '\n';${0}
 
 snippet     pair
 abbr        pair
+options     word
     pair<${1},${2}>${0}
 
 snippet     priority_queue_greater
