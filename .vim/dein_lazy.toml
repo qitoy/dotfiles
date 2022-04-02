@@ -22,7 +22,10 @@ hook_add = 'set helplang=ja'
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 
-[[plugins]]
-repo = 'cohama/lexima.vim'
-on_event = ['InsertEnter']
+# [[plugins]]
+# repo = 'cohama/lexima.vim'
+# on_event = ['InsertEnter']
 
+# [[plugins]]
+# repo = 'vim-pandoc/vim-pandoc'
+# on_ft = ['markdown']

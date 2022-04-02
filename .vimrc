@@ -68,7 +68,7 @@ let g:vim_indent_cont = shiftwidth()
 set showcmd
 
 " 括弧補完
-" inoremap {<CR> {}<Left><CR><CR><Up><C-f>
+inoremap {<CR> {}<Left><CR><CR><Up><C-f>
 
 " レジスタ関連
 nnoremap x "_x
