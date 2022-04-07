@@ -195,6 +195,7 @@ function! s:skkeleton_init() abort
 		\ ',': ['，', ''],
 		\ '.': ['．', ''],
 		\ "z\<Space>": ["\u3000", ''],
+		\ '/': 'abbrev',
 		\ })
 	endfunction
 augroup skkeleton-initialize-pre
