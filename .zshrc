@@ -1,7 +1,10 @@
-export PS1="%~ $ "
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 export CPLUS_INCLUDE_PATH="$HOME/Library/include/"
-set -o vi
+
+# set bindkey
+bindkey -v
+bindkey -M viins "^N" down-history
+bindkey -M viins "^P" up-history
 
 export PATH="/opt/homebrew/opt/bc/bin:$PATH"
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
