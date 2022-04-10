@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " {{{1 dein Scripts-----------------------------
 
 let s:toml = '~/.vim/dein.toml'
@@ -50,10 +52,10 @@ aug LaTeX
 	au InsertLeave,CursorHold *.tex update
 aug END
 
-" AtCoder C++
+" AtCoder
 augroup AtCoder
 	autocmd!
-	autocmd BufEnter ~/AtCoder/*.cpp,~/AtCoder/*.hpp runtime! init/AtCoder.vim
+	autocmd BufEnter ~/AtCoder/* runtime! init/AtCoder.vim
 augroup END
 
 " 行番号を表示
@@ -90,8 +92,8 @@ aug END
 set viewoptions-=options
 
 " map関連
-let mapleader = '_'
-let maplocalleader = ' '
+let g:mapleader = ' '
+let g:maplocalleader = '_'
 
 " 横スクロール
 set nowrap
