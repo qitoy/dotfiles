@@ -24,6 +24,10 @@ options     word
 snippet     priority_queue_greater
 abbr        use greater
 options     head
-    priority_queue<${1}, vector<$1>, greater<$1>> ${0}
+    priority_queue<${1}, vector<$1>, greater<$1>> ${2};${0}
 
+snippet     unique
+abbr        unique and resize
+options     word
+    ${1}.erase(unique(begin($1), end($1)), end($1))${0}
 
