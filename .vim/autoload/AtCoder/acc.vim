@@ -33,6 +33,6 @@ function AtCoder#acc#test() abort
 endfunction
 
 function AtCoder#acc#submit(bang) abort
-	return {-> a:bang ==# '' ? AtCoder#oj#test() : s:Promise.resolve()}()
+	return {-> a:bang ==# '' ? AtCoder#acc#test() : s:Promise.resolve()}()
 		\.then({-> term_start("acc s", {"term_finish": "close"})})
 endfunction

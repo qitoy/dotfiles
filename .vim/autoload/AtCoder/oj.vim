@@ -1,7 +1,15 @@
 let s:Promise = vital#vital#new().import('Async.Promise')
 
+function AtCoder#oj#init(url) abort
+	lchdir %:h
+	let s:job = job_start(["/bin/sh", "-c", "rm -rf test/ && oj d " . a:url], {
+		\ "exit_cb": {ch, state ->
+		\ execute(state ? "echoerr 'Error!'" : "echomsg 'Done!'" , "")
+		\ }})
+endfunction
+
 function AtCoder#oj#test() abort
-	return AtCoder#make#make()
+	return AtCoder#make()
 		\.then({
 		\ -> s:Promise.new({resolve, reject
 		\ -> term_start("oj t -N -c ./program", {
@@ -13,11 +21,4 @@ endfunction
 function AtCoder#oj#submit(bang) abort
 	return {-> a:bang ==# '' ? AtCoder#oj#test() : s:Promise.resolve()}()
 		\.then({-> execute("ter ++close ++shell ++rows=10 oj s main.cpp")})
-endfunction
-
-function AtCoder#oj#new_test() abort
-	let num = localtime()
-	execute("belowright 10 split test/" . num . ".in")
-	execute("belowright vsplit test/" . num . ".out")
-	execute "normal \<C-W>\<C-P>"
 endfunction

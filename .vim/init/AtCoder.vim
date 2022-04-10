@@ -1,37 +1,20 @@
 nnoremap <buffer> <silent> <LocalLeader>cm
-	\ <Cmd>call AtCoder#make#make()<CR>
+	\ <Cmd>call AtCoder#make()<CR>
 nnoremap <buffer> <silent> <LocalLeader>cc
-	\ <Cmd>call AtCoder#make#make_then("ter ++rows=10 ./program")<CR>
+	\ <Cmd>call AtCoder#make_then("ter ++rows=10 ./program")<CR>
 nnoremap <buffer> <silent> <LocalLeader>cl
 	\ <Cmd>%d<CR><Cmd>0r ~/.vim/template/cpp.cpp<CR>
-nnoremap <buffer> <LocalLeader>ay ggVG"*y<C-o><C-o>
-nnoremap <buffer> <silent> <LocalLeader>ot
-	\ <Cmd>call AtCoder#oj#test()<CR>
-nnoremap <buffer> <silent> <LocalLeader>os
-	\ <Cmd>call AtCoder#oj#submit("")<CR>
-nnoremap <buffer> <silent> <LocalLeader>at
-	\ <Cmd>call AtCoder#acc#test()<CR>
-nnoremap <buffer> <silent> <LocalLeader>as
-	\ <Cmd>call AtCoder#acc#submit("")<CR>
+
+" command! -buffer Clean
 
 command! -buffer -nargs=1 OjInit
-	\ :ter ++rows=10 ++shell
-	\ rm -rf test/ && oj d <args>
+	\ call AtCoder#oj#init(<q-args>)
 
 command! -buffer OjTest
 	\ call AtCoder#oj#test()
 
 command! -buffer -bang OjSubmit
 	\ call AtCoder#oj#submit(<q-bang>)
-
-command! -buffer OjNewTest
-	\ call AtCoder#oj#new_test()
-
-command! -buffer OjGenIn
-	\ ter ++hidden ++close oj g/i ./generate.py
-
-command! -buffer OjGenOut
-	\ call AtCoder#make#make_then("ter ++hidden ++close oj g/o -c ./naive")
 
 command! -buffer -nargs=1 AccPrepare
 	\ call AtCoder#acc#prepare(<q-args>)
