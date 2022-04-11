@@ -174,48 +174,6 @@ on_source = 'ddc.vim'
 repo = 'Shougo/ddc-cmdline-history'
 on_source = 'ddc.vim'
 
-[[plugins]]
-repo = 'vim-skk/skkeleton'
-on_map = {ic = '<Plug>(skkeleton-toggle)'}
-depends = 'ddc.vim'
-hook_add = '''
-imap <C-j> <Plug>(skkeleton-toggle)
-cmap <C-j> <Plug>(skkeleton-toggle)
-'''
-hook_source = '''
-function! s:skkeleton_init() abort
-	call skkeleton#config({
-		\'eggLikeNewline':v:true,
-		\'globalJisyo': '~/Library/Application Support/AquaSKK/SKK-JISYO.L',
-		\'userJisyo': '~/Library/Application Support/AquaSKK/skk-jisyo.utf8',
-		\'completionRankFile': '~/.skkeleton/rank.json',
-		\})
-
-	call skkeleton#register_kanatable('rom', {
-		\ ',': ['，', ''],
-		\ '.': ['．', ''],
-		\ "z\<Space>": ["\u3000", ''],
-		\ '/': 'abbrev',
-		\ })
-	endfunction
-augroup skkeleton-initialize-pre
-	autocmd!
-	autocmd User skkeleton-initialize-pre call s:skkeleton_init()
-augroup END
-
-autocmd User skkeleton-enable-pre call s:skkeleton_pre()
-function! s:skkeleton_pre() abort
-	" Overwrite sources
-	let s:skk_prev_buffer_config = ddc#custom#get_buffer()
-	call ddc#custom#patch_buffer('sources', ['skkeleton'])
-endfunction
-autocmd User skkeleton-disable-pre call s:skkeleton_post()
-function! s:skkeleton_post() abort
-	" Restore sources
-	call ddc#custom#set_buffer(s:skk_prev_buffer_config)
-endfunction
-'''
-
 # Install your filters
 [[plugins]]
 repo = 'tani/ddc-fuzzy'

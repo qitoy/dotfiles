@@ -6,6 +6,7 @@ let s:toml = '~/.vim/dein.toml'
 let s:toml_lazy = '~/.vim/dein_lazy.toml'
 let s:ddc_toml = '~/.vim/ddc.toml'
 let s:ddu_toml = '~/.vim/ddu.toml'
+let s:skkeleton_toml = '~/.vim/skkeleton.toml'
 
 if &compatible
   set nocompatible               " Be iMproved
@@ -21,9 +22,11 @@ call dein#load_toml(s:toml, {'lazy': 0})
 call dein#load_toml(s:toml_lazy, {'lazy': 1})
 call dein#load_toml(s:ddc_toml, {'lazy': 1})
 call dein#load_toml(s:ddu_toml, {'lazy': 1})
+call dein#load_toml(s:skkeleton_toml, {'lazy': 1})
 
 " Required:
 call dein#end()
+call dein#save_state()
 
 " Required:
 filetype plugin indent on
