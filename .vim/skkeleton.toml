@@ -10,6 +10,7 @@ cmap <C-j> <Plug>(skkeleton-toggle)
 " {{{ azik_dict
 let s:azik_dict = {
 	\ '@': 'katakana',
+	\ '`': 'henkanPoint',
 	\ ';': ['っ'],
 	\ '+': ['っ'],
 	\ ':': ['ー'],
@@ -499,6 +500,7 @@ function! s:skkeleton_init() abort
 		\ 'z:': ['：'],
 		\ 'z;': ['；'],
 		\ 'z-': ['-'],
+		\ 'tt': ['っ', 't'],
 		\ })
 endfunction
 augroup skkeleton-initialize-pre
