@@ -1,10 +1,10 @@
 [[plugins]]
 repo = 'vim-skk/skkeleton'
-on_map = {ic = '<Plug>(skkeleton-toggle)'}
+on_map = {ic = '<Plug>(skkeleton-enable)'}
 depends = 'ddc.vim'
 hook_add = '''
-imap <C-j> <Plug>(skkeleton-toggle)
-cmap <C-j> <Plug>(skkeleton-toggle)
+imap <C-j> <Plug>(skkeleton-enable)
+cmap <C-j> <Plug>(skkeleton-enable)
 
 " from codefirst/aquaskk
 " {{{ azik_dict
