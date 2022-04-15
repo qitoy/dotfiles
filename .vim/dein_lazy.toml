@@ -22,6 +22,10 @@ hook_add = 'set helplang=ja'
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+on_cmd = 'QuickRun'
+
 # [[plugins]]
 # repo = 'cohama/lexima.vim'
 # on_event = ['InsertEnter']
