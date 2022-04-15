@@ -81,8 +81,8 @@ vnoremap x "_x
 set clipboard+=unnamed
 
 " 移動関連
-nnoremap j gj
-nnoremap k gk
+" nnoremap j gj
+" nnoremap k gk
 set scrolloff=10
 
 " 折りたたみ
