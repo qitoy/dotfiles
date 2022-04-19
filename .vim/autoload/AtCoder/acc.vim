@@ -34,5 +34,5 @@ endfunction
 
 function AtCoder#acc#submit(bang) abort
 	return {-> a:bang ==# '' ? AtCoder#acc#test() : s:Promise.resolve()}()
-		\.then({-> term_start("acc s", {"term_finish": "close"})})
+		\.then({-> term_start(["/bin/sh", "-c", "oj-bundle main.cpp | sed -e '/#line/d' > bundle.cpp && acc s"], {"term_finish": "close"})})
 endfunction

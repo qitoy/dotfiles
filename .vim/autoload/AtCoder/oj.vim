@@ -20,5 +20,5 @@ endfunction
 
 function AtCoder#oj#submit(bang) abort
 	return {-> a:bang ==# '' ? AtCoder#oj#test() : s:Promise.resolve()}()
-		\.then({-> execute("ter ++close ++shell ++rows=10 oj s main.cpp")})
+		\.then({-> term_start(["/bin/sh", "-c", "oj-bundle main.cpp | sed -e '/#line/d' > bundle.cpp && oj s bundle.cpp"], {"term_finish": "close"})})
 endfunction
