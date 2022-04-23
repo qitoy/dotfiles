@@ -25,6 +25,13 @@ repo = 'vim-denops/denops.vim'
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 on_cmd = 'QuickRun'
+hook_add = '''
+" let g:quickrun_config = {}
+'''
+
+[[plugins]]
+repo = 'skanehira/denops-translate.vim'
+on_cmd = 'Translate'
 
 # [[plugins]]
 # repo = 'cohama/lexima.vim'
