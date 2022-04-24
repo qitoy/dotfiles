@@ -1,5 +1,5 @@
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
-export CPLUS_INCLUDE_PATH="$HOME/Library/include/"
+export CPLUS_INCLUDE_PATH="$HOME/Library/include/:$HOME/AtCoder/C++/library/"
 
 # set bindkey
 bindkey -v
