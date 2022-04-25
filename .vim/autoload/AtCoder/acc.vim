@@ -2,12 +2,8 @@ let s:Promise = vital#vital#new().import('Async.Promise')
 
 function AtCoder#acc#prepare(id) abort
 	let s:acc_path = getcwd() . "/" . a:id
-	let s:job = job_start("acc n --no-tests " . a:id, {
-		\ "exit_cb": {
-			\ ch, state ->
-			\ execute(state ? "echoerr 'Error!'" : "echomsg 'Done!'", "")
-			\ }
-			\ })
+	call system("acc n --no-tests " . a:id)
+	execute v:shell_error ? "echoerr 'Error!'" : "echomsg 'Done!'"
 endfunction
 
 function AtCoder#acc#cd(dir) abort
