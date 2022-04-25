@@ -10,6 +10,12 @@ function AtCoder#make(...) abort
 		\ })})
 endfunction
 
-function! AtCoder#make_then(cmd) abort
+function AtCoder#make_then(cmd) abort
 	return AtCoder#make().then({-> execute(a:cmd)})
+endfunction
+
+function AtCoder#bundle() abort
+	return s:Promise.new({resolve, reject -> job_start(["/bin/sh", "-c", "oj-bundle -I ~/AtCoder/C++/library/ main.cpp | sed -e '/#line/d' > bundle.cpp"], {
+		\ "exit_cb": {ch, state -> state ? reject() : resolve()},
+		\ })})
 endfunction
