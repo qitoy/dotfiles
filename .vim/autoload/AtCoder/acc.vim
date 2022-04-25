@@ -7,13 +7,13 @@ function AtCoder#acc#prepare(id) abort
 endfunction
 
 function AtCoder#acc#cd(dir) abort
-	let dir = "/" . a:dir . "/"
-	if isdirectory(s:acc_path . dir) == v:false
+	let dir = s:acc_path . "/" . a:dir . "/"
+	if isdirectory(dir) == v:false
 		echoerr "The directory is not exists!!"
 		return
 	endif
-	execute("edit " . s:acc_path . dir . "main.cpp")
-	execute("lcd " . s:acc_path . dir)
+	execute("edit " . dir . "main.cpp")
+	execute("lcd " . dir)
 	if isdirectory("test") == v:false
 		let s:job = job_start(["/bin/sh", "-c", "oj d `acc task -u`"], {
 			\ "exit_cb": {
