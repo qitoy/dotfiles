@@ -15,3 +15,6 @@ hook_add = '''
 set background=dark
 colorscheme iceberg
 '''
+
+[[plugins]]
+repo = 'tpope/vim-surround'
