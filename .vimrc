@@ -55,12 +55,6 @@ aug LaTeX
 	au InsertLeave,CursorHold *.tex update
 aug END
 
-" AtCoder
-augroup AtCoder
-	autocmd!
-	autocmd BufEnter ~/AtCoder/* runtime! init/AtCoder.vim
-augroup END
-
 " 行番号を表示
 set number
 
