@@ -96,7 +96,7 @@ set viewoptions-=options
 
 " map関連
 let g:mapleader = ' '
-let g:maplocalleader = '_'
+let g:maplocalleader = '\'
 
 " 横スクロール
 set nowrap
