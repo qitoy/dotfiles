@@ -72,11 +72,13 @@ inoremap {<CR> {}<Left><CR><CR><Up><C-f>
 " レジスタ関連
 nnoremap x "_x
 vnoremap x "_x
+nnoremap s "_s
+vnoremap s "_s
 set clipboard+=unnamed
 
 " 移動関連
-" nnoremap j gj
-" nnoremap k gk
+nnoremap <silent> j gj
+nnoremap <silent> k gk
 set scrolloff=10
 
 " 折りたたみ
