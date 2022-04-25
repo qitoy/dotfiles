@@ -7,8 +7,8 @@ nnoremap <buffer> <silent> <LocalLeader>cl
 
 " command! -buffer Clean
 
-command! -buffer -nargs=1 OjInit
-	\ call AtCoder#oj#init(<q-args>)
+command! -buffer -nargs=1 OjDownload
+	\ call AtCoder#oj#download(<q-args>)
 
 command! -buffer OjTest
 	\ call AtCoder#oj#test()

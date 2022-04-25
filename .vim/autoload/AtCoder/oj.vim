@@ -1,6 +1,6 @@
 let s:Promise = vital#vital#new().import('Async.Promise')
 
-function AtCoder#oj#init(url) abort
+function AtCoder#oj#download(url) abort
 	lchdir %:h
 	let s:job = job_start(["/bin/sh", "-c", "rm -rf test/ && oj d " . a:url], {
 		\ "exit_cb": {ch, state ->
