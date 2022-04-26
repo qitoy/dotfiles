@@ -50,6 +50,7 @@ endfunction
 [[plugins]]
 repo = 'Shougo/ddu-commands.vim'
 on_source = 'ddu.vim'
+on_cmd = 'Ddu'
 
 # UI
 [[plugins]]
