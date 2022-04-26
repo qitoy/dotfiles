@@ -25,6 +25,7 @@ setopt magic_equal_subst
 # autoload
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
+autoload -Uz compinit && compinit
 
 # set bindkey
 bindkey -v
