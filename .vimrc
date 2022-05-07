@@ -6,6 +6,8 @@ let g:maplocalleader = '\'
 
 " {{{1 dein Scripts-----------------------------
 
+let g:dein#auto_recache = v:true
+
 let s:toml = '~/.vim/dein.toml'
 let s:toml_lazy = '~/.vim/dein_lazy.toml'
 let s:ddc_toml = '~/.vim/ddc.toml'
@@ -49,7 +51,7 @@ runtime! /init/secret.vim
 " set guifont=SourceCodeProForPowerline-Regular:h11
 
 " 便利コマンド
-command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
+command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
 	\ | diffthis | wincmd p | diffthis
 
 " LaTeX
