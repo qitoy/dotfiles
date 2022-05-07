@@ -1,5 +1,9 @@
 scriptencoding utf-8
 
+" leader関連
+let g:mapleader = ' '
+let g:maplocalleader = '\'
+
 " {{{1 dein Scripts-----------------------------
 
 let s:toml = '~/.vim/dein.toml'
@@ -44,6 +48,10 @@ runtime! /init/secret.vim
 " フォント設定
 " set guifont=SourceCodeProForPowerline-Regular:h11
 
+" 便利コマンド
+command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
+	\ | diffthis | wincmd p | diffthis
+
 " LaTeX
 let g:tex_flavor = "latex"
 let g:tex_conceal=''
@@ -74,7 +82,7 @@ nnoremap x "_x
 vnoremap x "_x
 nnoremap s "_s
 vnoremap s "_s
-set clipboard+=unnamed
+" set clipboard+=unnamed
 
 " 移動関連
 nnoremap <silent> j gj
@@ -91,8 +99,6 @@ aug END
 set viewoptions-=options
 
 " map関連
-let g:mapleader = ' '
-let g:maplocalleader = '\'
 
 " 横スクロール
 set nowrap
