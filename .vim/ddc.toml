@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-depends = ['denops.vim', 'pum.vim']
+depends = ['denops.vim', 'pum.vim', 'vim-precious']
 on_event = ['InsertEnter', 'CursorHold', 'CmdlineEnter']
 hook_source = '''
 call ddc#custom#patch_global('sources', [
@@ -9,6 +9,9 @@ call ddc#custom#patch_global('sources', [
 	\ 'file',
 	\ 'neosnippet',
 	\ ])
+
+call ddc#custom#patch_global('cmdlineSources',
+	\ ['cmdline', 'cmdline-history', 'around'])
 
 call ddc#custom#patch_global('sourceOptions', {
 	\ 'file': {
@@ -66,36 +69,50 @@ call ddc#custom#patch_global('autoCompleteEvents', [
 	\ 'CmdlineEnter', 'CmdlineChanged',
 	\ ])
 
+" Use ddc.
+call ddc#enable()
+'''
+hook_add = '''
 nnoremap : <Cmd>call CommandlinePre()<CR>:
 
 function! CommandlinePre() abort
 	" Note: It disables default command line completion!
+	set wildchar=<C-t>
+
 	cnoremap <expr> <Tab>
 	\ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
 	\ ddc#manual_complete()
 	cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
 	cnoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
 	cnoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
-	
+
 	" Overwrite sources
-	let s:cmdline_prev_buffer_config = ddc#custom#get_buffer()
-	call ddc#custom#patch_buffer('sources',
-	        \ ['cmdline', 'cmdline-history', 'around'])
-	
+	if !exists('s:cmdline_prev_buffer_config')
+		let s:cmdline_prev_buffer_config = ddc#custom#get_buffer()
+	endif
+
 	autocmd User DDCCmdlineLeave ++once call CommandlinePost()
-	
+	autocmd InsertEnter <buffer> ++once call CommandlinePost()
+
 	" Enable command line completion
 	call ddc#enable_cmdline_completion()
-	call ddc#enable()
 endfunction
 function! CommandlinePost() abort
-	" Restore sources
-	call ddc#custom#set_buffer(s:cmdline_prev_buffer_config)
-	cunmap <Tab>
-endfunction
+	silent! cunmap <Tab>
+	silent! cunmap <S-Tab>
+	silent! cunmap <C-y>
+	silent! cunmap <C-e>
 
-" Use ddc.
-call ddc#enable()
+	" Restore sources
+	if exists('s:cmdline_prev_buffer_config')
+	  call ddc#custom#set_buffer(s:cmdline_prev_buffer_config)
+	  unlet s:cmdline_prev_buffer_config
+	else
+	  call ddc#custom#set_buffer({})
+	endif
+
+	set wildchar=<Tab>
+endfunction
 '''
 
 [[plugins]]
