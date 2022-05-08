@@ -1,7 +1,7 @@
 [[plugins]]
 repo = 'Shougo/ddu.vim'
 depends = ['denops.vim']
-on_event = ['CursorHold']
+on_source = 'denops.vim'
 hook_add = '''
 nnoremap <SID>[ddu] <Nop>
 nmap <script> <leader>u <SID>[ddu]
@@ -9,16 +9,13 @@ nmap <script> <leader>u <SID>[ddu]
 nnoremap <silent> <SID>[ddu]m <Cmd>Ddu mr<CR>
 nnoremap <silent> <SID>[ddu]r <Cmd>Ddu register<CR>
 nnoremap <silent> <SID>[ddu]b <Cmd>Ddu buffer<CR>
+
+nnoremap / <Cmd>Ddu line -ui-param-startFilter<CR>
+nnoremap * <Cmd>Ddu line -input=`expand('<cword>')` -ui-param-startFilter=v:false<CR>
 '''
 hook_source = '''
 call ddu#custom#patch_global({
     \ 'ui': 'ff',
-    \ 'sources': [
-		\ {'name': 'buffer'},
-		\ {'name': 'mr'},
-		\ {'name': 'file_rec', 'params': {}},
-		\ {'name': 'register'},
-		\ ],
     \ 'sourceOptions': {
     	\ '_': {
     		\ 'matchers': ['matcher_fzf'],
@@ -92,6 +89,10 @@ on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'shun/ddu-source-buffer'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-line'
 on_source = 'ddu.vim'
 
 #filters
