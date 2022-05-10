@@ -10,8 +10,8 @@ nnoremap <silent> <SID>[ddu]m <Cmd>Ddu mr<CR>
 nnoremap <silent> <SID>[ddu]r <Cmd>Ddu register<CR>
 nnoremap <silent> <SID>[ddu]b <Cmd>Ddu buffer<CR>
 
-nnoremap / <Cmd>Ddu line -ui-param-startFilter<CR>
-nnoremap * <Cmd>Ddu line -input=`expand('<cword>')` -ui-param-startFilter=v:false<CR>
+nnoremap / <Cmd>Ddu -name=search line -ui-param-startFilter<CR>
+nnoremap * <Cmd>Ddu -name=search line -input=`expand('<cword>')` -ui-param-startFilter=v:false<CR>
 '''
 hook_source = '''
 call ddu#custom#patch_global({
@@ -28,7 +28,15 @@ call ddu#custom#patch_global({
 		\ 'word': {
 			\ 'defaultAction': 'append',
 			\ },
-    	\ }
+    	\ },
+    \ })
+
+call ddu#custom#patch_local('search', {
+    \ 'sourceOptions': {
+    	\ '_': {
+    		\ 'matchers': ['matcher_substring'],
+    		\ },
+    	\ },
     \ })
 '''
 
@@ -100,9 +108,9 @@ on_source = 'ddu.vim'
 repo = 'yuki-yano/ddu-filter-fzf'
 on_source = 'ddu.vim'
 
-# [[plugins]]
-# repo = 'Shougo/ddu-filter-matcher_substring'
-# on_source = 'ddu.vim'
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_substring'
+on_source = 'ddu.vim'
 
 #kinds
 [[plugins]]
