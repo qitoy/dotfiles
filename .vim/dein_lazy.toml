@@ -32,6 +32,7 @@ hook_add = '''
 [[plugins]]
 repo = 'skanehira/denops-translate.vim'
 on_cmd = 'Translate'
+# hook_add = 'let g:translate_popup_window = 0'
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
