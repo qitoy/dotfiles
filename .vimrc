@@ -65,6 +65,9 @@ aug LaTeX
 	au InsertLeave,CursorHold *.tex update
 aug END
 
+" <BS>の挙動変更
+set backspace=indent
+
 " 行番号を表示
 set number
 
