@@ -66,7 +66,7 @@ aug LaTeX
 aug END
 
 " <BS>の挙動変更
-set backspace=indent
+set backspace=indent,eol
 
 " 行番号を表示
 set number
