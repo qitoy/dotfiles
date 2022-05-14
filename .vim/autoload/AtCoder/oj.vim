@@ -13,6 +13,7 @@ function AtCoder#oj#test() abort
 		\.then({
 		\ -> s:Promise.new({resolve, reject
 		\ -> term_start("oj t -N -c ./program -t 4", {
+			\ "term_name": "oj-test",
 			\ "term_rows": 20,
 			\ "exit_cb": {ch, state -> state ? reject() : resolve()},
 			\ })})})
