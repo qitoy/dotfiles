@@ -9,7 +9,7 @@ nmap <script> <leader>u <SID>[ddu]
 nnoremap <silent> <SID>[ddu]m <Cmd>Ddu mr<CR>
 nnoremap <silent> <SID>[ddu]r <Cmd>Ddu register<CR>
 nnoremap <silent> <SID>[ddu]b <Cmd>Ddu buffer<CR>
-nnoremap <silent> <SID>[ddu]f <Cmd>Ddu file<CR>
+nnoremap <silent> <SID>[ddu]f <Cmd>Ddu -ui=filer file<CR>
 
 nnoremap / <Cmd>Ddu -name=search line -ui-param-startFilter<CR>
 nnoremap * <Cmd>Ddu -name=search line -input=`expand('<cword>')` -ui-param-startFilter=v:false<CR>
@@ -80,6 +80,34 @@ nnoremap <buffer><silent> <CR>
 	\ <Cmd>close<CR>
 nnoremap <buffer><silent> q
 	\ <Cmd>close<CR>
+'''
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-filer'
+on_source = 'ddu.vim'
+[plugins.ftplugin]
+ddu-filer = '''
+nnoremap <buffer><expr> <CR>
+	\ ddu#ui#filer#is_directory() ?
+	\ "<Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'narrow'})<CR>" :
+	\ "<Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open'})<CR>"
+nnoremap <buffer> <Space>
+	\ <Cmd>call ddu#ui#filer#do_action('toggleSelectItem')<CR>
+nnoremap <buffer> ~
+	\ <Cmd>call ddu#ui#filer#do_action('itemAction',
+	\ {'name': 'narrow', 'params': {'path': expand('~')}})<CR>
+nnoremap <buffer> h
+	\ <Cmd>call ddu#ui#filer#do_action('itemAction',
+	\ {'name': 'narrow', 'params': {'path': ".."}})<CR>
+nnoremap <buffer><expr> l
+	\ ddu#ui#filer#is_directory() ?
+	\ "<Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'narrow'})<CR>" : ""
+nnoremap <buffer> zo
+	\ <Cmd>call ddu#ui#filer#do_action('expandItem')<CR>
+nnoremap <buffer> zc
+	\ <Cmd>call ddu#ui#filer#do_action('collapseItem')<CR>
+nnoremap <buffer> q
+	\ <Cmd>call ddu#ui#filer#do_action('quit')<CR>
 '''
 
 # sources
