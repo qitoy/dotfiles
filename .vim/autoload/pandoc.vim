@@ -1,10 +1,9 @@
 function pandoc#makepdf() abort
-	let name = expand("%:r")
 	let s:job = job_start([
 		\ "pandoc",
-		\ name . ".md",
+		\ expand("%"),
 		\ "-o",
-		\ name . ".pdf",
+		\ expand("%:r") . ".pdf",
 		\ "--pdf-engine=lualatex",
 		\ "-Vdocumentclass=ltjsarticle",
 		\ "-Vluatexjapresetoptions=hiragino-pron"
