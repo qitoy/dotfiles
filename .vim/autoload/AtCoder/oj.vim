@@ -20,7 +20,15 @@ function AtCoder#oj#test() abort
 endfunction
 
 function AtCoder#oj#submit(bang) abort
-	return {-> a:bang ==# '' ? AtCoder#oj#test() : s:Promise.resolve()}()
+	let promise = a:bang ==# ''
+		\ ? AtCoder#oj#test()
+		\.then({-> input("Submit? [y/N]: ") == "y"
+			\ ? s:Promise.resolve()
+			\ : s:Promise.reject()})
+		\ : s:Promise.resolve()
+	return promise
 		\.then({-> AtCoder#bundle()})
-		\.then({-> term_start("oj s bundle.cpp", {"term_finish": "close"})})
+		\.then({-> job_start("oj s --wait=0 -y bundle.cpp", {
+			\ "exit_cb": {ch, state -> state ? s:Promise.reject() : s:Promise.resolve()},
+			\ })})
 endfunction
