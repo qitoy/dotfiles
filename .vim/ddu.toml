@@ -108,6 +108,12 @@ nnoremap <buffer> zc
 	\ <Cmd>call ddu#ui#filer#do_action('collapseItem')<CR>
 nnoremap <buffer> q
 	\ <Cmd>call ddu#ui#filer#do_action('quit')<CR>
+nnoremap <buffer> d
+	\ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'newDirectory'})<CR>
+nnoremap <buffer> N
+	\ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'newFile'})<CR>
+nnoremap <buffer> D
+	\ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'delete'})<CR>
 '''
 
 # sources
