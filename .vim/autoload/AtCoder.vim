@@ -15,7 +15,9 @@ function AtCoder#make_then(cmd) abort
 endfunction
 
 function AtCoder#bundle() abort
-	return s:Promise.new({resolve, reject -> job_start(["/bin/sh", "-c", "oj-bundle -I ~/AtCoder/C++/library/ main.cpp | sed -e '/#line/d' > bundle.cpp"], {
+	return s:Promise.new({resolve, reject -> term_start(["/bin/sh", "-c", "oj-bundle -I ~/AtCoder/C++/library/ main.cpp | sed -e '/#line/d' > bundle.cpp"], {
+		\ "hidden": v:true,
+		\ "term_finish": "close",
 		\ "exit_cb": {ch, state -> state ? reject() : resolve()},
 		\ })})
 endfunction
