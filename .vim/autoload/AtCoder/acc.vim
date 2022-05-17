@@ -31,7 +31,7 @@ endfunction
 function AtCoder#acc#submit(bang) abort
 	let promise = a:bang ==# ''
 		\ ? AtCoder#acc#test()
-		\.then({-> input("Submit? [y/N]: ") == "y"
+		\.then({-> confirm("Submit?", "&yes\n&No", 0) == 1
 			\ ? s:Promise.resolve()
 			\ : s:Promise.reject()})
 		\ : s:Promise.resolve()

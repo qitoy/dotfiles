@@ -22,7 +22,7 @@ endfunction
 function AtCoder#oj#submit(bang) abort
 	let promise = a:bang ==# ''
 		\ ? AtCoder#oj#test()
-		\.then({-> input("Submit? [y/N]: ") == "y"
+		\.then({-> confirm("Submit?", "&yes\n&No", 0) == 1
 			\ ? s:Promise.resolve()
 			\ : s:Promise.reject()})
 		\ : s:Promise.resolve()
