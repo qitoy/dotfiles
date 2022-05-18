@@ -106,9 +106,19 @@ set viewoptions-=options
 " map関連
 
 " 横スクロール
-set nowrap
-set sidescroll=1
-set sidescrolloff=20
+" set nowrap
+" set sidescroll=1
+" set sidescrolloff=20
+
+" 折り返し
+set wrap
+set breakindent
+set breakindentopt=shift:4,sbr
+let &showbreak='===>'
+set linebreak
+
+" 整形
+set formatoptions+=jM
 
 set autowrite
 set laststatus=2
