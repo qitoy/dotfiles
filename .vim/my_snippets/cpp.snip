@@ -29,7 +29,7 @@ options     head
 snippet     unique
 abbr        unique and resize
 options     word
-    ${1}.erase(unique(begin($1), end($1)), end($1))${0}
+    ${1}.erase(unique(begin($1), end($1)), end($1));${0}
 
 snippet     input
 alias       in cin
