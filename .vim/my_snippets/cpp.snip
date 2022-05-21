@@ -32,7 +32,21 @@ options     word
     ${1}.erase(unique(begin($1), end($1)), end($1));${0}
 
 snippet     input
-alias       in cin
+alias       in
 abbr        useful for input
     `substitute(substitute(getline('.'), '\s*\a* \(.*\);.*', 'cin >> \1;', ''), ', \?', ' >> ', 'g')`
+
+snippet     cin
+abbr        easy to write
+options     word
+    cin >> ${1}[cin]${0}
+
+snippet     [cin]
+options     word
+    `' '`>> ${1}[cin]${0}
+
+snippet     [cin];
+alias       [cin]l
+options     word
+    ;
 
