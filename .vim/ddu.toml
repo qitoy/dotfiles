@@ -9,6 +9,7 @@ nmap <script> <leader>u <SID>[ddu]
 nnoremap <silent> <SID>[ddu]m <Cmd>Ddu mr<CR>
 nnoremap <silent> <SID>[ddu]r <Cmd>Ddu register<CR>
 nnoremap <silent> <SID>[ddu]b <Cmd>Ddu buffer<CR>
+nnoremap <silent> <SID>[ddu]h <Cmd>Ddu help -ui-param-startFilter<CR>
 nnoremap <silent> <SID>[ddu]f <Cmd>Ddu -ui=filer file<CR>
 
 nnoremap / <Cmd>Ddu -name=search line -ui-param-startFilter<CR>
@@ -22,6 +23,11 @@ call ddu#custom#patch_global({
     		\ 'matchers': ['matcher_fzf'],
     		\ },
     	\ },
+	\ 'sourceParams': {
+		\ 'mr': {
+			\ 'kind': 'mrw',
+			\ },
+		\ },
     \ 'kindOptions': {
     	\ 'file': {
     		\ 'defaultAction': 'open',
@@ -31,6 +37,9 @@ call ddu#custom#patch_global({
 			\ },
 		\ 'action': {
 			\ 'defaultAction': 'do',
+			\ },
+		\ 'help': {
+			\ 'defaultAction': 'open',
 			\ },
     	\ },
 	\ 'actionOptions': {
@@ -150,6 +159,10 @@ on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'Shougo/ddu-source-action'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'matsui54/ddu-source-help'
 on_source = 'ddu.vim'
 
 #filters
