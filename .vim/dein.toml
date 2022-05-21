@@ -8,6 +8,7 @@ repo = 'itchyny/lightline.vim'
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
+merged = false
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
