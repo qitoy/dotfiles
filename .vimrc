@@ -49,6 +49,8 @@ augroup vimrc
 	autocmd!
 augroup END
 
+set runtimepath^=~/GitHub/vim-compete
+
 runtime! /init/secret.vim
 
 " フォント設定
@@ -124,7 +126,8 @@ set linebreak
 " 整形
 set formatoptions+=jM
 
-autocmd vimrc SourcePre * update
+" 危険なのでコメントアウト
+" autocmd vimrc SourcePre * update
 
 set autowrite
 set laststatus=2
