@@ -45,6 +45,10 @@ endif
 
 " }}}1 End dein Scripts-------------------------
 
+augroup vimrc
+	autocmd!
+augroup END
+
 runtime! /init/secret.vim
 
 " フォント設定
@@ -119,6 +123,8 @@ set linebreak
 
 " 整形
 set formatoptions+=jM
+
+autocmd vimrc SourcePre * update
 
 set autowrite
 set laststatus=2
