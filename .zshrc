@@ -22,10 +22,13 @@ export CPLUS_INCLUDE_PATH="$HOME/Library/include/:$HOME/AtCoder/C++/library/"
 setopt interactive_comments
 setopt magic_equal_subst
 
+# use gh completion
+gh completion -s zsh > /usr/local/share/zsh/site-functions/_gh
+
 # autoload
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -i
 
 # set bindkey
 bindkey -v
@@ -60,5 +63,3 @@ function install_powerline_precmd() {
 if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
-
-eval "$(gh completion --shell zsh)"
