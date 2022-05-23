@@ -10,10 +10,12 @@ nnoremap <silent> <SID>[ddu]m <Cmd>Ddu mr<CR>
 nnoremap <silent> <SID>[ddu]r <Cmd>Ddu register<CR>
 nnoremap <silent> <SID>[ddu]b <Cmd>Ddu buffer<CR>
 nnoremap <silent> <SID>[ddu]h <Cmd>Ddu help -ui-param-startFilter<CR>
-nnoremap <silent> <SID>[ddu]f <Cmd>Ddu -ui=filer file<CR>
+nnoremap <silent> <SID>[ddu]f
+	\ <Cmd>Ddu -ui=filer file -source-option-path=`expand('%:p:h')`<CR>
 
 nnoremap / <Cmd>Ddu -name=search line -ui-param-startFilter<CR>
-nnoremap * <Cmd>Ddu -name=search line -input=`expand('<cword>')` -ui-param-startFilter=v:false<CR>
+nnoremap * <Cmd>Ddu -name=search line
+	\ -input=`expand('<cword>')` -ui-param-startFilter=v:false<CR>
 '''
 hook_source = '''
 call ddu#custom#patch_global({
@@ -117,7 +119,7 @@ nnoremap <buffer> zc
 	\ <Cmd>call ddu#ui#filer#do_action('collapseItem')<CR>
 nnoremap <buffer> q
 	\ <Cmd>call ddu#ui#filer#do_action('quit')<CR>
-nnoremap <buffer> d
+nnoremap <buffer><nowait> d
 	\ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'newDirectory'})<CR>
 nnoremap <buffer> N
 	\ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'newFile'})<CR>
