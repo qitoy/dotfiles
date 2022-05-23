@@ -16,6 +16,7 @@ nnoremap <silent> <SID>[ddu]f
 nnoremap / <Cmd>Ddu -name=search line -ui-param-startFilter<CR>
 nnoremap * <Cmd>Ddu -name=search line
 	\ -input=`expand('<cword>')` -ui-param-startFilter=v:false<CR>
+nnoremap n <Cmd>Ddu -name=search -resume -ui-param-startFilter=v:false<CR>
 '''
 hook_source = '''
 call ddu#custom#patch_global({
