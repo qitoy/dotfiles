@@ -21,14 +21,14 @@ call ddc#custom#patch_global('sourceOptions', {
 	\ },
 	\ 'vim-lsp': {
 		\ 'mark': 'LSP',
-		\ 'forceCompletionPattern': '\.|:|->|"\w+/*'
+		\ 'forceCompletionPattern': '\.|:|->|"\w+/*',
 	\ },
 	\ 'neosnippet': {'mark': 'snippet'},
 	\ 'around': {'mark': 'A'},
 	\ '_': {
 		\ 'matchers': ['matcher_fuzzy'],
 		\ 'sorters': ['sorter_fuzzy'],
-		\ 'converters': ['converter_fuzzy'],
+		\ 'converters': ['converter_fuzzy', 'converter_truncate'],
 	\ },
 	\ 'skkeleton': {
 		\ 'mark': 'SKK',
@@ -47,7 +47,10 @@ call ddc#custom#patch_global('sourceOptions', {
 call ddc#custom#patch_global('filterParams', {
 	\ 'converter_fuzzy': {
 		\ 'hlGroup': 'CursorLine'
-		\ }
+		\ },
+	\ 'converter_truncate': {
+		\ 'maxAbbrWidth': 50,
+		\ },
 	\ })
 
 " Use pum.vim
@@ -117,6 +120,11 @@ endfunction
 
 [[plugins]]
 repo = 'Shougo/pum.vim'
+hook_source = '''
+call pum#set_option({
+	\ 'max_width': 80,
+	\ })
+'''
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
@@ -194,4 +202,9 @@ on_source = 'ddc.vim'
 # Install your filters
 [[plugins]]
 repo = 'tani/ddc-fuzzy'
+on_source = 'ddc.vim'
+
+# converters
+[[plugins]]
+repo = 'matsui54/ddc-converter_truncate'
 on_source = 'ddc.vim'

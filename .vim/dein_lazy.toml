@@ -41,6 +41,11 @@ depends = 'context_filetype.vim'
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
+[[plugins]]
+repo = 'lambdalisue/gin.vim'
+depends = 'denops.vim'
+on_cmd = ['Gin', 'GinBranch', 'GinChaperon', 'GinDiff', 'GinEdit', 'GinPatch', 'GinStatus']
+
 # [[plugins]]
 # repo = 'cohama/lexima.vim'
 # on_event = ['InsertEnter']
