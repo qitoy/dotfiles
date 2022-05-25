@@ -49,7 +49,7 @@ augroup vimrc
 	autocmd!
 augroup END
 
-set runtimepath^=~/GitHub/vim-compete
+set runtimepath^=~/GitHub/vim-compete_helper
 
 runtime! /init/secret.vim
 
