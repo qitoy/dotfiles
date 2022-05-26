@@ -1,4 +1,4 @@
-command! -nargs=1 OjDownload
+command! -bar -nargs=1 OjDownload
 	\ call AtCoder#oj#download(<q-args>)
 
 command! OjTest
