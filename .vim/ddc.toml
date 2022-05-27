@@ -3,10 +3,11 @@ repo = 'Shougo/ddc.vim'
 depends = ['denops.vim', 'pum.vim', 'vim-precious']
 on_event = ['InsertEnter', 'CursorHold', 'CmdlineEnter']
 hook_source = '''
+inoremap <silent><expr> <C-x><C-f> ddc#manual_complete('file')
+
 call ddc#custom#patch_global('sources', [
 	\ 'vim-lsp',
 	\ 'around',
-	\ 'file',
 	\ 'neosnippet',
 	\ ])
 
@@ -17,7 +18,7 @@ call ddc#custom#patch_global('sourceOptions', {
 	\ 'file': {
 		\ 'mark': 'file',
 		\ 'isVolatile': v:true,
-		\ 'forceCompletionPattern': '[^\s()*;"\u0027]/[^\s()*;"\u0027]*',
+		\ 'forceCompletionPattern': '\S/\S*',
 	\ },
 	\ 'vim-lsp': {
 		\ 'mark': 'LSP',
