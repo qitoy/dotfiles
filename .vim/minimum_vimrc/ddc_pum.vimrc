@@ -3,6 +3,7 @@ set runtimepath^=~/.cache/dein/repos/github.com/Shougo/ddc.vim
 set runtimepath^=~/.cache/dein/repos/github.com/Shougo/pum.vim
 set runtimepath^=~/.cache/dein/repos/github.com/Shougo/ddc-cmdline
 set runtimepath^=~/.cache/dein/repos/github.com/tani/ddc-fuzzy
+set runtimepath^=~/.cache/dein/repos/github.com/matsui54/ddc-converter_truncate
 
 nnoremap : <Cmd>call CommandlinePre()<CR>:
 function! CommandlinePre() abort
@@ -52,12 +53,15 @@ call ddc#custom#patch_global('sourceOptions', {
 	\ '_': {
 		\ 'matchers': ['matcher_fuzzy'],
 		\ 'sorters': ['sorter_fuzzy'],
-		\ 'converters': ['converter_fuzzy'],
+		\ 'converters': ['converter_fuzzy', 'converter_truncate'],
 	\ },
 	\ })
 call ddc#custom#patch_global('filterParams', {
 	\ 'converter_fuzzy': {
 		\ 'hlGroup': 'CursorLine'
+		\ },
+	\ 'converter_truncate': {
+		\ 'maxAbbrWidth': 50,
 		\ },
 	\ })
 call ddc#custom#patch_global('completionMenu', 'pum.vim')
