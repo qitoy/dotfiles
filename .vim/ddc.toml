@@ -27,6 +27,7 @@ call ddc#custom#patch_global('sourceOptions', {
 	\ 'neosnippet': {'mark': 'snippet'},
 	\ 'around': {'mark': 'A'},
 	\ '_': {
+		\ 'ignoreCase': v:true,
 		\ 'matchers': ['matcher_fuzzy'],
 		\ 'sorters': ['sorter_fuzzy'],
 		\ 'converters': ['converter_fuzzy', 'converter_truncate'],
@@ -38,7 +39,9 @@ call ddc#custom#patch_global('sourceOptions', {
 		\ 'minAutoCompleteLength': 2,
 	\ },
 	\ 'cmdline': {
+		\ 'ignoreCase': v:false,
 		\ 'mark': 'cmd',
+		\ 'forceCompletionPattern': '\S/\S*',
 	\ },
 	\ 'cmdline-history': {
 		\ 'mark': 'history',
