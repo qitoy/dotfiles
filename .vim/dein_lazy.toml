@@ -1,15 +1,25 @@
 [[plugins]]
 repo = 'lervag/vimtex'
 on_ft=['tex']
-hook_source='''
-let g:vimtex_view_general_viewer = 'displayline'
-let g:vimtex_view_general_options = '-r @line @pdf @tex'
+hook_add='''
+let g:tex_flavor = 'latex'
+let g:tex_conceal = ''
+let g:vimtex_view_method = 'skim'
+let g:vimtex_view_general_viewer='/Applications/Skim.app/Contents/SharedSupport/displayline'
+let g:vimtex_view_general_options = '@line @pdf @tex'
+augroup LaTeX
+	autocmd!
+	autocmd FileType tex inoremap <buffer> <Bslash>[ <Bslash>[<Bslash>]<Left><Left><CR><CR><Up><C-F>
+	autocmd BufNewFile *.tex 0r $HOME/.vim/template/LaTeX.tex
+	autocmd BufNewFile *.tex %s/Title_Here/\=expand("%:t:r")/
+	autocmd InsertLeave,CursorHold *.tex update
+augroup END
 '''
 
 [[plugins]]
 repo = 'skanehira/preview-markdown.vim'
 on_ft=['markdown']
-hook_source='''
+hook_add='''
 let g:preview_markdown_auto_update = 1
 let g:preview_markdown_parser = "glow"
 '''

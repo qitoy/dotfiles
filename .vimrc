@@ -60,17 +60,6 @@ runtime! /init/secret.vim
 command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
 	\ | diffthis | wincmd p | diffthis
 
-" LaTeX
-let g:tex_flavor = "latex"
-let g:tex_conceal=''
-aug LaTeX
-	au!
-	au FileType tex inoremap <buffer> <Bslash>[ <Bslash>[<Bslash>]<Left><Left><CR><CR><Up><C-F>
-	au BufNewFile *.tex 0r $HOME/.vim/template/LaTeX.tex
-	au BufNewFile *.tex %s/Title_Here/\=expand("%:t:r")/
-	au InsertLeave,CursorHold *.tex update
-aug END
-
 " <BS>の挙動変更
 set backspace=indent,eol
 
