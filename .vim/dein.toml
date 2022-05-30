@@ -19,3 +19,7 @@ colorscheme iceberg
 
 [[plugins]]
 repo = 'tpope/vim-surround'
+
+# my developing plugins
+[[plugins]]
+repo = '~/GitHub/vim-compete_helper'
