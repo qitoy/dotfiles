@@ -8,6 +8,9 @@ runtime! /init/secret.vim
 let g:mapleader = ' '
 let g:maplocalleader = '\'
 
+nmap <leader> [leader]
+nnoremap [leader] <Nop>
+
 " フォント設定
 " set guifont=SourceCodeProForPowerline-Regular:h11
 
@@ -54,6 +57,7 @@ aug END
 set viewoptions-=options
 
 " map関連
+set timeout timeoutlen=3000 ttimeoutlen=100
 
 " 横スクロール
 set nowrap
@@ -74,6 +78,8 @@ set formatoptions+=jM
 " autocmd vimrc SourcePre * update
 
 set virtualedit=block
+
+set updatetime=100
 
 set autowrite
 set laststatus=2

@@ -4,7 +4,7 @@ depends = ['denops.vim']
 on_source = 'denops.vim'
 hook_add = '''
 nnoremap <SID>[ddu] <Nop>
-nmap <script> <Space>u <SID>[ddu]
+nmap <script> [leader]u <SID>[ddu]
 
 nnoremap <silent> <SID>[ddu]m <Cmd>Ddu mr<CR>
 nnoremap <silent> <SID>[ddu]r <Cmd>Ddu register<CR>

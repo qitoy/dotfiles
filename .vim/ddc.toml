@@ -15,16 +15,16 @@ call ddc#custom#patch_global('cmdlineSources',
 
 call ddc#custom#patch_global('sourceOptions', {
 	\ 'file': {
-		\ 'mark': 'file',
+		\ 'mark': '| file',
 		\ 'isVolatile': v:true,
 		\ 'forceCompletionPattern': '\S/\S*',
 	\ },
 	\ 'vim-lsp': {
-		\ 'mark': 'LSP',
+		\ 'mark': '| LSP',
 		\ 'forceCompletionPattern': '\.|:|->|"\w+/*',
 	\ },
-	\ 'neosnippet': {'mark': 'snippet'},
-	\ 'around': {'mark': 'A'},
+	\ 'neosnippet': {'mark': '| snippet'},
+	\ 'around': {'mark': '| A'},
 	\ '_': {
 		\ 'ignoreCase': v:true,
 		\ 'matchers': ['matcher_fuzzy'],
@@ -32,18 +32,18 @@ call ddc#custom#patch_global('sourceOptions', {
 		\ 'converters': ['converter_fuzzy', 'converter_truncate'],
 	\ },
 	\ 'skkeleton': {
-		\ 'mark': 'SKK',
+		\ 'mark': '| SKK',
 		\ 'matchers': ['skkeleton'],
 		\ 'sorters': [],
 		\ 'minAutoCompleteLength': 2,
 	\ },
 	\ 'cmdline': {
 		\ 'ignoreCase': v:false,
-		\ 'mark': 'cmd',
+		\ 'mark': '| cmd',
 		\ 'forceCompletionPattern': '\S/\S*',
 	\ },
 	\ 'cmdline-history': {
-		\ 'mark': 'history',
+		\ 'mark': '| history',
 	\ },
 	\ })
 
@@ -136,7 +136,7 @@ hook_add = '''
 let g:lsp_diagnostics_echo_cursor = 1
 function! s:on_lsp_buffer_enabled() abort
 	setlocal signcolumn=yes
-	nmap <buffer> <leader>rn <plug>(lsp-rename)
+	nmap <buffer> [leader]rn <plug>(lsp-rename)
 	nmap <buffer> K <plug>(lsp-hover)
 endfunction
 augroup lsp_install
