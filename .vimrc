@@ -6,6 +6,10 @@ if &compatible
 endif
 
 let g:dein#auto_recache = v:true
+let g:dein#install_progress_type = 'floating'
+let g:dein#install_check_diff = v:true
+
+source ~/.vim/secret.vim
 
 let s:vim_dir = fnamemodify(expand('<sfile>'), ':h') . '/.vim/'
 
