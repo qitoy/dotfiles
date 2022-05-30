@@ -1,25 +1,24 @@
-scriptencoding utf-8
-
-" leader関連
-let g:mapleader = ' '
-let g:maplocalleader = '\'
-
 " {{{1 dein Scripts-----------------------------
-
-let g:dein#auto_recache = v:true
-
-let s:toml = '~/.vim/dein.toml'
-let s:toml_lazy = '~/.vim/dein_lazy.toml'
-let s:ddc_toml = '~/.vim/ddc.toml'
-let s:ddu_toml = '~/.vim/ddu.toml'
-let s:skkeleton_toml = '~/.vim/skkeleton.toml'
+scriptencoding utf-8
 
 if &compatible
   set nocompatible               " Be iMproved
 endif
 
+let g:dein#auto_recache = v:true
+
+let s:vim_dir = fnamemodify(expand('<sfile>'), ':h') . '/.vim/'
+
+let s:toml           = s:vim_dir . 'dein.toml'
+let s:toml_lazy      = s:vim_dir . 'dein_lazy.toml'
+let s:ddc_toml       = s:vim_dir . 'ddc.toml'
+let s:ddu_toml       = s:vim_dir . 'ddu.toml'
+let s:skkeleton_toml = s:vim_dir . 'skkeleton.toml'
+
 " Required:
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+
+let g:dein#inline_vimrcs = [s:vim_dir . 'settings.vim']
 
 " Required:
 call dein#begin('~/.cache/dein')
@@ -44,79 +43,3 @@ if dein#check_install()
 endif
 
 " }}}1 End dein Scripts-------------------------
-
-augroup vimrc
-	autocmd!
-augroup END
-
-set runtimepath^=~/GitHub/vim-compete_helper
-
-runtime! /init/secret.vim
-
-" フォント設定
-" set guifont=SourceCodeProForPowerline-Regular:h11
-
-" 便利コマンド
-command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
-	\ | diffthis | wincmd p | diffthis
-
-" <BS>の挙動変更
-set backspace=indent,eol
-
-" 行番号を表示
-set number
-
-" tabの幅
-set tabstop=4
-set shiftwidth=4
-let g:vim_indent_cont = shiftwidth()
-
-" コマンド表示
-set showcmd
-
-" 括弧補完
-inoremap {<CR> {}<Left><CR><CR><Up><C-f>
-
-" レジスタ関連
-nnoremap x "_x
-vnoremap x "_x
-nnoremap s "_s
-vnoremap s "_s
-" set clipboard+=unnamed
-
-" 移動関連
-nnoremap <silent> j gj
-nnoremap <silent> k gk
-set scrolloff=10
-
-" 折りたたみ
-set foldmethod=marker
-aug folding
-	au!
-	autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
-	autocmd BufRead * if expand('%') != '' && &buftype !~ 'nofile' | silent loadview | endif
-aug END
-set viewoptions-=options
-
-" map関連
-
-" 横スクロール
-" set nowrap
-" set sidescroll=1
-" set sidescrolloff=20
-
-" 折り返し
-set wrap
-set breakindent
-set breakindentopt=shift:4,sbr
-let &showbreak='===>'
-set linebreak
-
-" 整形
-set formatoptions+=jM
-
-" 危険なのでコメントアウト
-" autocmd vimrc SourcePre * update
-
-set autowrite
-set laststatus=2
