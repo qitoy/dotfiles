@@ -18,6 +18,7 @@ let s:toml_lazy      = s:vim_dir . 'dein_lazy.toml'
 let s:ddc_toml       = s:vim_dir . 'ddc.toml'
 let s:ddu_toml       = s:vim_dir . 'ddu.toml'
 let s:skkeleton_toml = s:vim_dir . 'skkeleton.toml'
+let s:filetype_toml  = s:vim_dir . 'filetype.toml'
 
 " Required:
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
@@ -32,6 +33,7 @@ call dein#load_toml(s:toml_lazy, {'lazy': 1})
 call dein#load_toml(s:ddc_toml, {'lazy': 1})
 call dein#load_toml(s:ddu_toml, {'lazy': 1})
 call dein#load_toml(s:skkeleton_toml, {'lazy': 1})
+call dein#load_toml(s:filetype_toml)
 
 " Required:
 call dein#end()
