@@ -20,6 +20,8 @@ help = '''
 setlocal iskeyword+=:
 setlocal iskeyword+=#
 setlocal iskeyword+=-
+setlocal iskeyword+=(
+setlocal iskeyword+=)
 '''
 
 tex_markdown = '''
