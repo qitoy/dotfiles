@@ -65,6 +65,10 @@ depends = 'denops.vim'
 # repo = 'vim-pandoc/vim-pandoc'
 # on_ft = ['markdown']
 
+[[plugins]]
+repo = 'qitoy/atcoder.vim'
+on_ft = 'cpp'
+
 ### jupyter
 [[plugins]]
 repo = 'goerz/jupytext.vim'
