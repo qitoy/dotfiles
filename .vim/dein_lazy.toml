@@ -21,10 +21,6 @@ on_ft='help'
 hook_add = 'set helplang=ja'
 
 [[plugins]]
-repo = 'vim-denops/denops.vim'
-on_event = 'CursorHold'
-
-[[plugins]]
 repo = 'thinca/vim-quickrun'
 on_cmd = 'QuickRun'
 hook_add = '''
@@ -51,11 +47,6 @@ on_cmd = ['Gin', 'GinBranch', 'GinChaperon', 'GinDiff', 'GinEdit', 'GinPatch', '
 [[plugins]]
 repo = 'thinca/vim-qfreplace'
 on_cmd = 'Qfreplace'
-
-[[plugins]]
-repo = 'lambdalisue/guise.vim'
-on_event = 'TerminalOpen'
-depends = 'denops.vim'
 
 # [[plugins]]
 # repo = 'cohama/lexima.vim'
