@@ -38,6 +38,17 @@ depends = 'context_filetype.vim'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+hook_add = '''
+let g:context_filetype#filetypes = {
+	\ 'help': [
+		\ {
+			\ 'start': '^\(\S*:\)\?\s*>$',
+			\ 'end': '^<$',
+			\ 'filetype': 'vim',
+			\ }
+			\ ],
+			\ }
+'''
 
 [[plugins]]
 repo = 'lambdalisue/gin.vim'
