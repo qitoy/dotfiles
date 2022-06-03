@@ -47,7 +47,8 @@ export CLANGD_FLAGS="--header-insertion=never"
 export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
 
 function powerline_precmd() {
-    PS1="$(powerline-shell --shell zsh $?)
+    PS1="
+$(powerline-shell --shell zsh $?)
 $ "
 }
 
