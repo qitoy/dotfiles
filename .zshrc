@@ -18,9 +18,13 @@ zinit light mollifier/anyframe
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 export CPLUS_INCLUDE_PATH="$HOME/Library/include/:$HOME/AtCoder/C++/library/"
 
+export HISTSIZE=10000
+export SAVEHIST=10000
+
 # set options
 setopt interactive_comments
 setopt magic_equal_subst
+setopt correct
 
 # use gh completion
 gh completion -s zsh > /usr/local/share/zsh/site-functions/_gh
@@ -35,6 +39,7 @@ bindkey -v
 bindkey -M viins "^N" down-history
 bindkey -M viins "^P" up-history
 bindkey -M viins "^R" anyframe-widget-put-history
+bindkey -M viins "^I" expand-or-complete-prefix
 
 # alias
 alias cdr="anyframe-widget-cdr"
