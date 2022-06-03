@@ -17,6 +17,10 @@ nnoremap / <Cmd>Ddu -name=search line -ui-param-startFilter<CR>
 nnoremap * <Cmd>Ddu -name=search line
 	\ -input=`expand('<cword>')` -ui-param-startFilter=v:false<CR>
 nnoremap n <Cmd>Ddu -name=search -resume -ui-param-startFilter=v:false<CR>
+
+cnoremap <expr><silent> <C-f>
+	\ "<C-u><ESC><cmd>Ddu command_history -ui-param-startFilter -input='" .
+	\ getcmdline() . "'<CR>"
 '''
 hook_source = '''
 call ddu#custom#patch_global({
@@ -43,6 +47,9 @@ call ddu#custom#patch_global({
 			\ },
 		\ 'help': {
 			\ 'defaultAction': 'open',
+			\ },
+		\ 'command_history': {
+			\ 'defaultAction': 'execute',
 			\ },
     	\ },
 	\ 'actionOptions': {
@@ -166,6 +173,10 @@ on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'matsui54/ddu-source-help'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'matsui54/ddu-source-command_history'
 on_source = 'ddu.vim'
 
 #filters
