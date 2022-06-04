@@ -9,7 +9,8 @@ nmap <script> [leader]u <SID>[ddu]
 nnoremap <silent> <SID>[ddu]m <Cmd>Ddu mr<CR>
 nnoremap <silent> <SID>[ddu]r <Cmd>Ddu register<CR>
 nnoremap <silent> <SID>[ddu]b <Cmd>Ddu buffer<CR>
-nnoremap <silent> <SID>[ddu]h <Cmd>Ddu help -ui-param-startFilter<CR>
+nnoremap <silent> <SID>[ddu]h
+    \ <Cmd>Ddu help -name=help -ui-param-startFilter<CR>
 nnoremap <silent> <SID>[ddu]f
 	\ <Cmd>Ddu -ui=filer file -source-option-path=`expand('%:p:h')`<CR>
 
@@ -91,6 +92,11 @@ nnoremap <buffer><silent> p
 	\ <Cmd>call ddu#ui#ff#do_action('preview')<CR>
 nnoremap <buffer><silent> q
 	\ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
+
+if b:ddu_ui_name ==# 'help'
+  nnoremap <buffer><silent> t
+    \ <Cmd>call ddu#ui#ff#do_action('itemAction', {'name': 'tabopen'})<CR>
+endif
 '''
 ddu-ff-filter = '''
 inoremap <buffer><silent> <CR>
