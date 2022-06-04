@@ -1,0 +1,31 @@
+extends c
+
+snippet all "begin end"
+begin(${1:c}), end($1)$0
+endsnippet
+
+snippet rall "rbegin rend"
+rbegin(${1:c}), rend($1)$0
+endsnippet
+
+snippet priority_queue_greater "use greater"
+priority_queue<${1}, vector<$1>, greater<$1>> ${2:Q};${0}
+endsnippet
+
+snippet unique "unique and resize"
+${1:c}.erase(unique(begin($1), end($1)), end($1));${0}
+endsnippet
+
+global !p
+import re
+def perse_variable(vs):
+	vlist = re.split(',\s?', vs)
+	ret = ''
+	for v in vlist:
+		ret += ' >> ' + v
+	return ret
+endglobal
+
+snippet in "useful for input"
+${1:type} ${2:var}; cin`!p snip.rv = perse_variable(t[2])`;
+endsnippet
