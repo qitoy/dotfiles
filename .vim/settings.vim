@@ -27,7 +27,6 @@ set number
 " tabの幅
 set tabstop=4
 set shiftwidth=4
-let g:vim_indent_cont = shiftwidth()
 
 " コマンド表示
 set showcmd

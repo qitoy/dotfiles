@@ -9,6 +9,9 @@ augroup LaTeX
 	autocmd BufNewFile *.tex %s/Title_Here/\=expand("%:t:r")/
 	autocmd InsertLeave,CursorHold *.tex update
 augroup END
+
+" Vim
+let g:vim_indent_cont = 2
 '''
 
 [ftplugin]
@@ -16,12 +19,14 @@ augroup END
 _ = '''
 '''
 
+vim = '''
+setlocal shiftwidth=2
+setlocal softtabstop=2
+setlocal expandtab
+'''
+
 help = '''
-setlocal iskeyword+=:
-setlocal iskeyword+=#
-setlocal iskeyword+=-
-setlocal iskeyword+=(
-setlocal iskeyword+=)
+setlocal iskeyword+=:,#,-,(,)
 '''
 
 tex_markdown = '''
