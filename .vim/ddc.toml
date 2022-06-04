@@ -84,6 +84,7 @@ nnoremap : <Cmd>call CommandlinePre()<CR>:
 function! CommandlinePre() abort
 	" Note: It disables default command line completion!
 	set wildchar=<C-t>
+	set wildcharm=<C-t>
 
 	cnoremap <expr> <Tab>
 	\ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
@@ -118,6 +119,7 @@ function! CommandlinePost() abort
 	endif
 
 	set wildchar=<Tab>
+	set wildcharm=<Tab>
 endfunction
 '''
 
