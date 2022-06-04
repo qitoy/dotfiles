@@ -42,7 +42,7 @@ hook_add = '''
 let g:context_filetype#filetypes = {
 	\ 'help': [
 		\ {
-			\ 'start': '^\(.*:\)\?\s*>$',
+			\ 'start': '>$',
 			\ 'end': '^\S',
 			\ 'filetype': 'vim',
 			\ }
