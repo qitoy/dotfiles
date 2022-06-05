@@ -40,14 +40,14 @@ depends = 'context_filetype.vim'
 repo = 'Shougo/context_filetype.vim'
 hook_add = '''
 let g:context_filetype#filetypes = {
-	\ 'help': [
-		\ {
-			\ 'start': '>$',
-			\ 'end': '^\S',
-			\ 'filetype': 'vim',
-			\ }
-			\ ],
-			\ }
+  \ 'help': [
+    \ {
+      \ 'start': '>$',
+      \ 'end': '^\S',
+      \ 'filetype': 'vim',
+      \ },
+  \ ],
+  \ }
 '''
 
 [[plugins]]
