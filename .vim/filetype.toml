@@ -23,6 +23,14 @@ help = '''
 setlocal iskeyword+=:,#,-,(,)
 '''
 
+make = '''
+setlocal noexpandtab
+'''
+
+markdown_tex = '''
+setlocal wrap
+'''
+
 snippets = '''
 " let b:context_filetype_filetypes = {
 "   \ 'snippets': [
@@ -31,16 +39,10 @@ snippets = '''
 "       \ 'end': '^endsnippet',
 "       \ 'filetype': expand('%:t:r'),
 "       \ }
-"       \ ],
-"       \ }
-'''
-
-tex_markdown = '''
-setlocal wrap
+"   \ ],
+"   \ }
 '''
 
 vim = '''
 setlocal shiftwidth=2
-setlocal softtabstop=2
-setlocal expandtab
 '''
