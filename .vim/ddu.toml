@@ -20,7 +20,7 @@ nnoremap * <Cmd>Ddu -name=search line
 nnoremap n <Cmd>Ddu -name=search -resume -ui-param-startFilter=v:false<CR>
 
 cnoremap <expr><silent> <C-f>
-	\ "<C-u><ESC><cmd>Ddu command_history -ui-param-startFilter -input='" .
+	\ "<C-u><ESC><cmd>Ddu -name=command command_history -ui-param-startFilter -input='" .
 	\ getcmdline() . "'<CR>"
 '''
 hook_source = '''
@@ -96,6 +96,17 @@ nnoremap <buffer><silent> q
 if b:ddu_ui_name ==# 'help'
   nnoremap <buffer><silent> t
     \ <Cmd>call ddu#ui#ff#do_action('itemAction', {'name': 'tabopen'})<CR>
+else
+  nnoremap <buffer><silent> t
+    \ <Cmd> call ddu#ui#ff#do_action('itemAction',
+    \ {'name': 'open', 'params': {'command': 'tabedit'}})<CR>
+endif
+
+if b:ddu_ui_name ==# 'command'
+  nnoremap <buffer><silent> e
+    \ <Cmd>call ddu#ui#ff#do_action('itemAction', {'name': 'edit'})<CR>
+  nnoremap <buffer><silent> dd
+    \ <Cmd>call ddu#ui#ff#do_action('itemAction', {'name': 'delete'})<CR>
 endif
 '''
 ddu-ff-filter = '''
