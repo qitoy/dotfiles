@@ -25,19 +25,21 @@ set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 let g:dein#inline_vimrcs = [s:vim_dir . 'settings.vim']
 
-" Required:
-call dein#begin('~/.cache/dein')
+if dein#load_state('~/.cache/dein')
+  " Required:
+  call dein#begin('~/.cache/dein')
 
-call dein#load_toml(s:toml, {'lazy': 0})
-call dein#load_toml(s:toml_lazy, {'lazy': 1})
-call dein#load_toml(s:ddc_toml, {'lazy': 1})
-call dein#load_toml(s:ddu_toml, {'lazy': 1})
-call dein#load_toml(s:skkeleton_toml, {'lazy': 1})
-call dein#load_toml(s:filetype_toml)
+  call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:toml_lazy, {'lazy': 1})
+  call dein#load_toml(s:ddc_toml, {'lazy': 1})
+  call dein#load_toml(s:ddu_toml, {'lazy': 1})
+  call dein#load_toml(s:skkeleton_toml, {'lazy': 1})
+  call dein#load_toml(s:filetype_toml)
 
-" Required:
-call dein#end()
-call dein#save_state()
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
 
 " Required:
 filetype plugin indent on
