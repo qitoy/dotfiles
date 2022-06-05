@@ -1,5 +1,10 @@
 extends c
 
+### Python
+
+
+### snippet
+
 snippet all "begin end"
 begin(${1:c}), end($1)$0
 endsnippet
@@ -16,16 +21,11 @@ snippet unique "unique and resize"
 ${1:c}.erase(unique(begin($1), end($1)), end($1));${0}
 endsnippet
 
-global !p
-import re
-def perse_variable(vs):
-	vlist = re.split(',\s?', vs)
-	ret = ''
-	for v in vlist:
-		ret += ' >> ' + v
-	return ret
-endglobal
-
 snippet in "useful for input"
-${1:type} ${2:var}; cin`!p snip.rv = perse_variable(t[2])`;
+${1:type} ${2:var}; cin`!p
+import re
+snip.rv=''
+for v in re.split(', ?', t[2]):
+	snip.rv += ' >> ' + v
+`;
 endsnippet
