@@ -2,8 +2,6 @@ augroup vimrc
 	autocmd!
 augroup END
 
-runtime! /init/secret.vim
-
 " leader関連
 let g:mapleader = ' '
 let g:maplocalleader = '\'
@@ -25,8 +23,12 @@ set backspace=indent,eol
 set number
 
 " tabの幅
+set expandtab
 set tabstop=4
 set shiftwidth=4
+set autoindent
+set smartindent
+set softtabstop=-1
 
 " コマンド表示
 set showcmd
