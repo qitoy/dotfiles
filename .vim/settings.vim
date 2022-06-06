@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 augroup vimrc
 	autocmd!
 augroup END

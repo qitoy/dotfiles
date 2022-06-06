@@ -1,6 +1,4 @@
 " {{{1 dein Scripts-----------------------------
-scriptencoding utf-8
-
 if &compatible
   set nocompatible               " Be iMproved
 endif
