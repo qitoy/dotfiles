@@ -12,6 +12,9 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
+# secret token
+source "$HOME/.secret"
+
 zinit light zsh-users/zsh-autosuggestions
 zinit light mollifier/anyframe
 
