@@ -26,6 +26,8 @@ repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'
+rev = 'support-global-server'
+hook_add = 'let g:denops_server_addr = "127.0.0.1:32123"'
 
 [[plugins]]
 repo = 'lambdalisue/guise.vim'
