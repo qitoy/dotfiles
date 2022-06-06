@@ -8,8 +8,7 @@ endif
 let g:dein#auto_recache = v:true
 let g:dein#install_progress_type = 'floating'
 let g:dein#install_check_diff = v:true
-
-source ~/.vim/secret.vim
+let g:dein#install_github_api_token = $DEIN_INSTALL_GITHUB_API_TOKEN
 
 let s:vim_dir = fnamemodify(expand('<sfile>'), ':h') . '/.vim/'
 
@@ -17,7 +16,6 @@ let s:toml           = s:vim_dir . 'dein.toml'
 let s:toml_lazy      = s:vim_dir . 'dein_lazy.toml'
 let s:ddc_toml       = s:vim_dir . 'ddc.toml'
 let s:ddu_toml       = s:vim_dir . 'ddu.toml'
-let s:skkeleton_toml = s:vim_dir . 'skkeleton.toml'
 let s:filetype_toml  = s:vim_dir . 'filetype.toml'
 
 " Required:
@@ -33,7 +31,6 @@ if dein#load_state('~/.cache/dein')
   call dein#load_toml(s:toml_lazy, {'lazy': 1})
   call dein#load_toml(s:ddc_toml, {'lazy': 1})
   call dein#load_toml(s:ddu_toml, {'lazy': 1})
-  call dein#load_toml(s:skkeleton_toml, {'lazy': 1})
   call dein#load_toml(s:filetype_toml)
 
   " Required:
