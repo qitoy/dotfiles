@@ -56,6 +56,11 @@ depends = 'denops.vim'
 on_cmd = ['Gin', 'GinBranch', 'GinChaperon', 'GinDiff', 'GinEdit', 'GinPatch', 'GinStatus']
 
 [[plugins]]
+repo = 'skanehira/denops-gh.vim'
+depends = 'denops.vim'
+on_path = ['https://github.com/*', 'gh://*']
+
+[[plugins]]
 repo = 'thinca/vim-qfreplace'
 on_cmd = 'Qfreplace'
 
