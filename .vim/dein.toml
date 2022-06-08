@@ -32,7 +32,3 @@ hook_add = 'let g:denops_server_addr = "127.0.0.1:32123"'
 [[plugins]]
 repo = 'lambdalisue/guise.vim'
 depends = 'denops.vim'
-
-# my developing plugins
-[[plugins]]
-repo = '~/GitHub/vim-compete_helper'
