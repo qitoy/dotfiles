@@ -4,8 +4,6 @@ augroup vimrc
 	autocmd!
 augroup END
 
-autocmd vimrc User DenopsReady ++once Ddu mr
-
 " leader関連
 let g:mapleader = ' '
 let g:maplocalleader = '\'
