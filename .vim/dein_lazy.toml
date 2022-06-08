@@ -64,6 +64,15 @@ on_path = ['https://github.com/*', 'gh://*']
 repo = 'thinca/vim-qfreplace'
 on_cmd = 'Qfreplace'
 
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_map = {nv = '<Plug>(openbrowser-'}
+hook_add = '''
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+'''
+
 # [[plugins]]
 # repo = 'cohama/lexima.vim'
 # on_event = ['InsertEnter']
@@ -73,7 +82,8 @@ on_cmd = 'Qfreplace'
 # on_ft = ['markdown']
 
 [[plugins]]
-repo = 'qitoy/atcoder.vim'
+# repo = 'qitoy/atcoder.vim'
+repo = '~/GitHub/atcoder.vim'
 on_ft = 'cpp'
 
 ### jupyter
