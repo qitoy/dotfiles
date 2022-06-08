@@ -13,6 +13,8 @@ nnoremap <silent> <SID>[ddu]h
     \ <Cmd>Ddu help -name=help -ui-param-startFilter<CR>
 nnoremap <silent> <SID>[ddu]f
 	\ <Cmd>Ddu -ui=filer file -source-option-path=`expand('%:p:h')`<CR>
+nnoremap <silent> <SID>[ddu]rg
+  \ <Cmd>Ddu -name=search rg -source-param-input=`input('PATTERN: ')`<CR>
 
 nnoremap / <Cmd>Ddu -name=search line -ui-param-startFilter<CR>
 nnoremap * <Cmd>Ddu -name=search line
@@ -35,6 +37,9 @@ call ddu#custom#patch_global({
 		\ 'mr': {
 			\ 'kind': 'mrw',
 			\ },
+    \ 'rg': {
+      \ 'args': ['--column', '--no-heading', '--color', 'never', '--json'],
+      \ },
 		\ },
     \ 'kindOptions': {
     	\ 'file': {
@@ -186,6 +191,10 @@ on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'Shougo/ddu-source-action'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'shun/ddu-source-rg'
 on_source = 'ddu.vim'
 
 [[plugins]]
