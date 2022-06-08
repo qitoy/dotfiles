@@ -5,20 +5,22 @@ extends c
 
 ### snippet
 
-snippet all "begin end"
+snippet all "begin end" i
 begin(${1:c}), end($1)$0
 endsnippet
 
-snippet rall "rbegin rend"
+snippet rall "rbegin rend" i
 rbegin(${1:c}), rend($1)$0
 endsnippet
 
 snippet priority_queue_greater "use greater"
-priority_queue<${1}, vector<$1>, greater<$1>> ${2:Q};${0}
+priority_queue<${1}, vector<$1>, greater<$1>> ${2:Q};
+$0
 endsnippet
 
 snippet unique "unique and resize"
-${1:c}.erase(unique(begin($1), end($1)), end($1));${0}
+${1:c}.erase(unique(begin($1), end($1)), end($1));
+$0
 endsnippet
 
 snippet in "useful for input"
@@ -28,4 +30,5 @@ snip.rv=''
 for v in re.split(', ?', t[2]):
 	snip.rv += ' >> ' + v
 `;
+$0
 endsnippet
