@@ -19,7 +19,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light mollifier/anyframe
 
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
-export CPLUS_INCLUDE_PATH="$HOME/Library/include/"
+export CPLUS_INCLUDE_PATH="$HOME/Library/cpp-library"
 
 export HISTSIZE=10000
 export SAVEHIST=10000
