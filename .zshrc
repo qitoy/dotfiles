@@ -27,7 +27,7 @@ export SAVEHIST=10000
 # set options
 setopt interactive_comments
 setopt magic_equal_subst
-setopt correct
+# setopt correct
 
 # use gh completion
 gh completion -s zsh > /usr/local/share/zsh/site-functions/_gh
