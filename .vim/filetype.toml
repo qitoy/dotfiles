@@ -21,6 +21,7 @@ _ = '''
 
 help = '''
 setlocal iskeyword+=:,#,-,(,)
+setlocal nofoldenable
 '''
 
 make = '''

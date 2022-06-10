@@ -19,7 +19,7 @@ command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
 	\ | diffthis | wincmd p | diffthis
 
 " <BS>の挙動変更
-set backspace=indent,eol
+set backspace=indent,eol,start
 
 " 行番号を表示
 set number
@@ -35,7 +35,7 @@ set softtabstop=-1
 set showcmd
 
 " 括弧補完
-inoremap {<CR> {}<Left><CR><CR><Up><C-f>
+" inoremap {<CR> {}<Left><CR><CR><Up><C-f>
 
 " レジスタ関連
 nnoremap x "_x
@@ -50,13 +50,8 @@ nnoremap <silent> k gk
 set scrolloff=10
 
 " 折りたたみ
+set foldenable
 set foldmethod=marker
-aug folding
-	au!
-	autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
-	autocmd BufRead * if expand('%') != '' && &buftype !~ 'nofile' | silent loadview | endif
-aug END
-set viewoptions-=options
 
 " map関連
 set timeout timeoutlen=3000 ttimeoutlen=100
