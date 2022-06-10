@@ -139,6 +139,7 @@ let g:lsp_diagnostics_echo_cursor = 1
 function! s:on_lsp_buffer_enabled() abort
 	setlocal signcolumn=yes
 	nmap <buffer> [leader]rn <plug>(lsp-rename)
+  nmap <buffer> [leader]ca <plug>(lsp-code-action)
 	nmap <buffer> K <plug>(lsp-hover)
 endfunction
 augroup lsp_install
