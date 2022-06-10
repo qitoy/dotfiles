@@ -67,22 +67,26 @@ on_cmd = 'Qfreplace'
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 on_map = {nv = '<Plug>(openbrowser-'}
+on_func = 'openbrowser#load'
 hook_add = '''
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 '''
 
-# [[plugins]]
-# repo = 'cohama/lexima.vim'
-# on_event = ['InsertEnter']
+[[plugins]]
+repo = 'gamoutatsumi/dps-ghosttext.vim'
+on_cmd = 'GhostStart'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_event = ['InsertEnter']
 
 # [[plugins]]
 # repo = 'vim-pandoc/vim-pandoc'
 # on_ft = ['markdown']
 
 [[plugins]]
-# repo = 'qitoy/atcoder.vim'
 repo = '~/GitHub/atcoder.vim'
 on_ft = 'cpp'
 
