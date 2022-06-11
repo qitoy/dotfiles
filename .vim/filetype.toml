@@ -19,6 +19,15 @@ let g:vim_indent_cont = 0
 _ = '''
 '''
 
+cpp = '''
+nnoremap <buffer> <silent> <LocalLeader>cm
+\ <Cmd>call procon#utils#make()<CR>
+nnoremap <buffer> <silent> <LocalLeader>cc
+\ <Cmd>call procon#utils#make_then("ter ++rows=10 ./program")<CR>
+nnoremap <buffer> <silent> <LocalLeader>cl
+\ <Cmd>%d<CR><Cmd>0r ~/.vim/template/cpp.cpp<CR>
+'''
+
 help = '''
 setlocal iskeyword+=:,#,-,(,)
 setlocal nofoldenable

@@ -87,7 +87,7 @@ on_event = ['InsertEnter']
 # on_ft = ['markdown']
 
 [[plugins]]
-repo = '~/GitHub/atcoder.vim'
+repo = '~/GitHub/procon.vim'
 on_ft = 'cpp'
 
 ### jupyter
