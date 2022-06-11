@@ -7,11 +7,11 @@ augroup LaTeX
 	autocmd FileType tex inoremap <buffer> <Bslash>[ <Bslash>[<Bslash>]<Left><Left><CR><CR><Up><C-F>
 	autocmd BufNewFile *.tex 0r $HOME/.vim/template/LaTeX.tex
 	autocmd BufNewFile *.tex %s/Title_Here/\=expand("%:t:r")/
-	autocmd InsertLeave,CursorHold *.tex update
+	" autocmd InsertLeave,CursorHold *.tex update
 augroup END
 
 " Vim
-let g:vim_indent_cont = 2
+let g:vim_indent_cont = 0
 '''
 
 [ftplugin]

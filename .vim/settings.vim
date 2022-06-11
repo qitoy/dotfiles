@@ -71,12 +71,16 @@ set sidescrolloff=20
 " 整形
 set formatoptions+=jM
 
-" 危険なのでコメントアウト
-" autocmd vimrc SourcePre * update
-
 set virtualedit=block
 
 set updatetime=100
 
+" 保存
 set autowrite
+nnoremap <C-S> <Cmd>update<CR>
+inoremap <C-S> <Cmd>update<CR>
+" 危険なのでコメントアウト
+" autocmd vimrc SourcePre * update
+
+" 表示
 set laststatus=2
