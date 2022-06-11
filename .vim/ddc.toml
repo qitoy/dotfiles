@@ -4,65 +4,65 @@ depends = ['denops.vim', 'pum.vim', 'vim-precious']
 on_event = ['InsertEnter', 'CursorHold', 'CmdlineEnter']
 hook_source = '''
 call ddc#custom#patch_global('sources', [
-	\ 'vim-lsp',
-	\ 'around',
-	\ 'file',
-	\ 'ultisnips',
-	\ ])
+\  'vim-lsp',
+\  'around',
+\  'file',
+\  'ultisnips',
+\])
 
 call ddc#custom#patch_global('cmdlineSources',
-	\ ['cmdline', 'cmdline-history', 'around'])
+\  ['cmdline', 'cmdline-history', 'around'])
 
 call ddc#custom#patch_global('sourceOptions', {
-	\ 'file': {
-		\ 'mark': '| file',
-		\ 'isVolatile': v:true,
-		\ 'forceCompletionPattern': '\S/\S*',
-	\ },
-	\ 'vim-lsp': {
-		\ 'mark': '| LSP',
-		\ 'forceCompletionPattern': '\.|:|->|"\w+/*',
-	\ },
-    \ 'ultisnips': {'mark': '| US'},
-	\ 'around': {'mark': '| A'},
-	\ '_': {
-		\ 'ignoreCase': v:true,
-		\ 'matchers': ['matcher_fuzzy'],
-		\ 'sorters': ['sorter_fuzzy'],
-		\ 'converters': ['converter_fuzzy', 'converter_truncate'],
-	\ },
-	\ 'skkeleton': {
-		\ 'mark': '| SKK',
-		\ 'matchers': ['skkeleton'],
-		\ 'sorters': [],
-		\ 'minAutoCompleteLength': 2,
-	\ },
-	\ 'cmdline': {
-		\ 'ignoreCase': v:false,
-		\ 'mark': '| cmd',
-		\ 'forceCompletionPattern': '\S/\S*',
-	\ },
-	\ 'cmdline-history': {
-		\ 'mark': '| history',
-	\ },
-	\ })
+\  'file': {
+\    'mark': '| file',
+\    'isVolatile': v:true,
+\    'forceCompletionPattern': '\S/\S*',
+\  },
+\  'vim-lsp': {
+\    'mark': '| LSP',
+\    'forceCompletionPattern': '\.|:|->|"\w+/*',
+\  },
+\  'ultisnips': {'mark': '| US'},
+\  'around': {'mark': '| A'},
+\  '_': {
+\    'ignoreCase': v:true,
+\    'matchers': ['matcher_fuzzy'],
+\    'sorters': ['sorter_fuzzy'],
+\    'converters': ['converter_fuzzy', 'converter_truncate'],
+\  },
+\  'skkeleton': {
+\    'mark': '| SKK',
+\    'matchers': ['skkeleton'],
+\    'sorters': [],
+\    'minAutoCompleteLength': 2,
+\  },
+\  'cmdline': {
+\    'ignoreCase': v:false,
+\    'mark': '| cmd',
+\    'forceCompletionPattern': '\S/\S*',
+\  },
+\  'cmdline-history': {
+\    'mark': '| history',
+\  },
+\})
 
 call ddc#custom#patch_global('filterParams', {
-	\ 'converter_fuzzy': {
-		\ 'hlGroup': 'CursorLine'
-		\ },
-	\ 'converter_truncate': {
-		\ 'maxAbbrWidth': 50,
-		\ },
-	\ })
+\  'converter_fuzzy': {
+\    'hlGroup': 'CursorLine'
+\  },
+\  'converter_truncate': {
+\    'maxAbbrWidth': 50,
+\  },
+\})
 
 " Use pum.vim
 call ddc#custom#patch_global('completionMenu', 'pum.vim')
 
 inoremap <silent><expr> <TAB>
-	\ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
-	\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-	\ '<TAB>' : ddc#manual_complete()
+\ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+\ '<TAB>' : ddc#manual_complete()
 inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
 inoremap <C-n>   <Cmd>call pum#map#select_relative(+1)<CR>
 inoremap <C-p>   <Cmd>call pum#map#select_relative(-1)<CR>
@@ -71,9 +71,9 @@ inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
 
 " Use cmdline ddc
 call ddc#custom#patch_global('autoCompleteEvents', [
-	\ 'InsertEnter', 'TextChangedI', 'TextChangedP',
-	\ 'CmdlineEnter', 'CmdlineChanged',
-	\ ])
+\  'InsertEnter', 'TextChangedI', 'TextChangedP',
+\  'CmdlineEnter', 'CmdlineChanged',
+\])
 
 " Use ddc.
 call ddc#enable()
@@ -82,44 +82,44 @@ hook_add = '''
 nnoremap : <Cmd>call CommandlinePre()<CR>:
 
 function! CommandlinePre() abort
-	" Note: It disables default command line completion!
-	set wildchar=<C-t>
-	set wildcharm=<C-t>
+  " Note: It disables default command line completion!
+  set wildchar=<C-t>
+  set wildcharm=<C-t>
 
-	cnoremap <expr> <Tab>
-	\ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
-	\ ddc#manual_complete()
-	cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
-	cnoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
-	cnoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
+  cnoremap <expr> <Tab>
+  \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+  \ ddc#manual_complete()
+  cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+  cnoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
+  cnoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
 
-	" Overwrite sources
-	if !exists('s:cmdline_prev_buffer_config')
-		let s:cmdline_prev_buffer_config = ddc#custom#get_buffer()
-	endif
+  " Overwrite sources
+  if !exists('s:cmdline_prev_buffer_config')
+    let s:cmdline_prev_buffer_config = ddc#custom#get_buffer()
+  endif
 
-	autocmd User DDCCmdlineLeave ++once call CommandlinePost()
-	autocmd InsertEnter <buffer> ++once call CommandlinePost()
+  autocmd User DDCCmdlineLeave ++once call CommandlinePost()
+  autocmd InsertEnter <buffer> ++once call CommandlinePost()
 
-	" Enable command line completion
-	call ddc#enable_cmdline_completion()
+  " Enable command line completion
+  call ddc#enable_cmdline_completion()
 endfunction
 function! CommandlinePost() abort
-	silent! cunmap <Tab>
-	silent! cunmap <S-Tab>
-	silent! cunmap <C-y>
-	silent! cunmap <C-e>
+  silent! cunmap <Tab>
+  silent! cunmap <S-Tab>
+  silent! cunmap <C-y>
+  silent! cunmap <C-e>
 
-	" Restore sources
-	if exists('s:cmdline_prev_buffer_config')
-	  call ddc#custom#set_buffer(s:cmdline_prev_buffer_config)
-	  unlet s:cmdline_prev_buffer_config
-	else
-	  call ddc#custom#set_buffer({})
-	endif
+  " Restore sources
+  if exists('s:cmdline_prev_buffer_config')
+    call ddc#custom#set_buffer(s:cmdline_prev_buffer_config)
+    unlet s:cmdline_prev_buffer_config
+  else
+    call ddc#custom#set_buffer({})
+  endif
 
-	set wildchar=<Tab>
-	set wildcharm=<Tab>
+  set wildchar=<Tab>
+  set wildcharm=<Tab>
 endfunction
 '''
 
@@ -127,8 +127,8 @@ endfunction
 repo = 'Shougo/pum.vim'
 hook_source = '''
 call pum#set_option({
-	\ 'max_width': 80,
-	\ })
+\  'max_width': 80,
+\})
 '''
 
 [[plugins]]
@@ -137,15 +137,15 @@ on_event = ['BufEnter']
 hook_add = '''
 let g:lsp_diagnostics_echo_cursor = 1
 function! s:on_lsp_buffer_enabled() abort
-	setlocal signcolumn=yes
-	nmap <buffer> [leader]rn <plug>(lsp-rename)
+  setlocal signcolumn=yes
+  nmap <buffer> [leader]rn <plug>(lsp-rename)
   nmap <buffer> [leader]ca <plug>(lsp-code-action)
-	nmap <buffer> K <plug>(lsp-hover)
+  nmap <buffer> K <plug>(lsp-hover)
 endfunction
 augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+  au!
+  " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 '''
 
@@ -196,45 +196,46 @@ cmap <C-j> <Plug>(skkeleton-enable)
 '''
 hook_source = '''
 function! s:skkeleton_init() abort
-	call skkeleton#config({
-		\'eggLikeNewline':v:true,
-		\'globalJisyo': '~/Library/Application Support/AquaSKK/SKK-JISYO.L',
-		\'userJisyo': '~/Library/Application Support/AquaSKK/skk-jisyo.utf8',
-		\'completionRankFile': '~/.skkeleton/rank.json',
-		\})
+  call skkeleton#config({
+  \  'eggLikeNewline':v:true,
+  \  'globalJisyo': '~/Library/Application Support/AquaSKK/SKK-JISYO.L',
+  \  'userJisyo': '~/Library/Application Support/AquaSKK/skk-jisyo.utf8',
+  \  'completionRankFile': '~/.skkeleton/rank.json',
+  \  'registerConvertResult': v:true,
+  \})
 
-	call skkeleton#register_kanatable('rom', g:azikeleton_dict)
-	call skkeleton#register_kanatable('rom', {
-		\ "z\<Space>": ["\u3000"],
-		\ '<': ['＜'],
-		\ '>': ['＞'],
-        \ '~': ['〜'],
-		\ 'vh': ['←'],
-		\ 'vj': ['↓'],
-		\ 'vk': ['↑'],
-		\ 'vl': ['→'],
-		\ 'z.': ['…'],
-		\ 'z:': ['：'],
-		\ 'z;': ['；'],
-		\ 'z-': ['-'],
-		\ 'tt': ['っ', 't'],
-		\ })
+  call skkeleton#register_kanatable('rom', g:azikeleton_dict)
+  call skkeleton#register_kanatable('rom', {
+  \  "z\<Space>": ["\u3000"],
+  \  '<': ['＜'],
+  \  '>': ['＞'],
+  \  '~': ['〜'],
+  \  'vh': ['←'],
+  \  'vj': ['↓'],
+  \  'vk': ['↑'],
+  \  'vl': ['→'],
+  \  'z.': ['…'],
+  \  'z:': ['：'],
+  \  'z;': ['；'],
+  \  'z-': ['-'],
+  \  'tt': ['っ', 't'],
+  \})
 endfunction
 augroup skkeleton-initialize-pre
-	autocmd!
-	autocmd User skkeleton-initialize-pre call s:skkeleton_init()
+  autocmd!
+  autocmd User skkeleton-initialize-pre call s:skkeleton_init()
 augroup END
 
 autocmd User skkeleton-enable-pre call s:skkeleton_pre()
 function! s:skkeleton_pre() abort
-	" Overwrite sources
-	let s:skk_prev_buffer_config = ddc#custom#get_buffer()
-	call ddc#custom#patch_buffer('sources', ['skkeleton'])
+  " Overwrite sources
+  let s:skk_prev_buffer_config = ddc#custom#get_buffer()
+  call ddc#custom#patch_buffer('sources', ['skkeleton'])
 endfunction
 autocmd User skkeleton-disable-pre call s:skkeleton_post()
 function! s:skkeleton_post() abort
-	" Restore sources
-	call ddc#custom#set_buffer(s:skk_prev_buffer_config)
+  " Restore sources
+  call ddc#custom#set_buffer(s:skk_prev_buffer_config)
 endfunction
 '''
 
