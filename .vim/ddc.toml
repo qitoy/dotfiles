@@ -173,9 +173,9 @@ let g:UltiSnipsJumpForwardTrigger = '<C-l>'
 let g:UltiSnipsJumpBackwardTrigger = '<C-p>'
 '''
 
-[[plugins]]
-repo = 'honza/vim-snippets'
-on_source = 'ultisnips'
+# [[plugins]]
+# repo = 'honza/vim-snippets'
+# on_source = 'ultisnips'
 
 [[plugins]]
 repo = 'matsui54/ddc-ultisnips'
