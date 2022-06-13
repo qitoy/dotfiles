@@ -11,6 +11,9 @@ let g:maplocalleader = '\'
 nmap <leader> [leader]
 nnoremap [leader] <Nop>
 
+" [leader]使うやつ
+nnoremap [leader]tt <Cmd>tab ter<CR>
+
 " フォント設定
 " set guifont=SourceCodeProForPowerline-Regular:h11
 
