@@ -65,16 +65,6 @@ repo = 'thinca/vim-qfreplace'
 on_cmd = 'Qfreplace'
 
 [[plugins]]
-repo = 'tyru/open-browser.vim'
-on_map = {nv = '<Plug>(openbrowser-'}
-on_func = 'openbrowser#load'
-hook_add = '''
-let g:netrw_nogx = 1 " disable netrw's gx mapping.
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-search)
-'''
-
-[[plugins]]
 repo = 'gamoutatsumi/dps-ghosttext.vim'
 on_cmd = 'GhostStart'
 
