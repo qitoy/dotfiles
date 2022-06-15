@@ -8,11 +8,11 @@ let g:vimtex_view_general_options = '@line @pdf @tex'
 '''
 
 [[plugins]]
-repo = 'skanehira/preview-markdown.vim'
-on_ft=['markdown']
-hook_add='''
-let g:preview_markdown_auto_update = 1
-let g:preview_markdown_parser = "glow"
+repo = 'previm/previm'
+on_ft = ['markdown']
+on_cmd = 'PrevimOpen'
+hook_add = '''
+let g:previm_enable_realtime = 1
 '''
 
 [[plugins]]
