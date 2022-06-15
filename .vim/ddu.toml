@@ -157,6 +157,9 @@ nnoremap <buffer> N
 \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'newFile'})<CR>
 nnoremap <buffer> D
 \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'delete'})<CR>
+nnoremap <buffer> t
+\ <Cmd>call ddu#ui#filer#do_action('itemAction',
+\ {'name': 'open', 'params': {'command': 'tab drop'}})<CR>
 '''
 
 # sources
