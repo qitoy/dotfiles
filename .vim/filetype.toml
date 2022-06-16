@@ -2,13 +2,6 @@ hook_add = '''
 " LaTeX
 let g:tex_flavor = 'latex'
 let g:tex_conceal = ''
-augroup LaTeX
-	autocmd!
-	autocmd FileType tex inoremap <buffer> <Bslash>[ <Bslash>[<Bslash>]<Left><Left><CR><CR><Up><C-F>
-	autocmd BufNewFile *.tex 0r $HOME/.vim/template/LaTeX.tex
-	autocmd BufNewFile *.tex %s/Title_Here/\=expand("%:t:r")/
-	" autocmd InsertLeave,CursorHold *.tex update
-augroup END
 
 " Vim
 let g:vim_indent_cont = 0
