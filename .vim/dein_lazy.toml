@@ -71,6 +71,15 @@ on_cmd = 'GhostStart'
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = ['InsertEnter']
+hook_source = '''
+call lexima#add_rule({
+\ 'char': '<CR>',
+\ 'input': '<CR>',
+\ 'input_after': '<CR>endsnippet',
+\ 'at': 'snippet\>.*\%#$',
+\ 'filetype': 'snippets',
+\})
+'''
 
 # [[plugins]]
 # repo = 'vim-pandoc/vim-pandoc'
