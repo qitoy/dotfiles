@@ -23,7 +23,9 @@ let g:dein#inline_vimrcs = [s:vim_dir . 'settings.vim']
 
 if dein#load_state('~/.cache/dein')
   " Required:
-  call dein#begin('~/.cache/dein')
+  call dein#begin('~/.cache/dein', [
+  \ expand('<sfile>'), s:toml, s:toml_lazy, s:ddc_toml, s:ddu_toml, s:filetype_toml
+  \])
 
   call dein#load_toml(s:toml, {'lazy': 0})
   call dein#load_toml(s:toml_lazy, {'lazy': 1})
