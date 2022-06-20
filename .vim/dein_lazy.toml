@@ -80,6 +80,16 @@ call lexima#add_rule({
 \ 'filetype': 'snippets',
 \})
 
+let s:lexima_cpp_rules = [
+\ {'char': 'l', 'at': '\(\w\+\)@al\%#', 'input': '\V<BS><BS><BS><BS>.begin(), \1.end()', 'with_submatch': 1},
+\ {'char': 'l', 'at': '\(\w\+\)@ral\%#', 'input': '\V<BS><BS><BS><BS><BS>.rbegin(), \1.rend()', 'with_submatch': 1},
+\]
+
+for rule in s:lexima_cpp_rules
+  let rule.filetype = 'cpp'
+  call lexima#add_rule(rule)
+endfor
+
 let s:lexima_tex_rules = [
 \ {'char': '[', 'at': '\\\%#', 'input': '[<CR>', 'input_after': '<CR>\]'},
 \
