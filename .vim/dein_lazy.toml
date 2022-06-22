@@ -12,7 +12,7 @@ repo = 'previm/previm'
 on_ft = ['markdown']
 on_cmd = 'PrevimOpen'
 hook_add = '''
-" let g:previm_enable_realtime = 1
+let g:previm_enable_realtime = 1
 '''
 
 [[plugins]]
