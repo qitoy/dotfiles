@@ -10,7 +10,7 @@ snippet template "init"
 \usepackage[version=4]{mhchem}
 \usepackage[top=15truemm, bottom=20truemm, left=15truemm, right=15truemm]{geometry}
 \renewcommand{\labelenumi}{(\arabic{enumi})}
-\title{${1:`!v expand('%:r')`}}
+\title{${1:`!v expand('%:t:r')`}}
 \author{$2}
 \date{$3}
 
