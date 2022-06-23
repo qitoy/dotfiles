@@ -31,9 +31,6 @@ let g:loaded_zipPlugin         = v:true
 [ftplugin]
 
 _ = '''
-call skkeleton#config({
-\ 'keepState': v:false,
-\})
 '''
 
 cpp = '''
@@ -56,12 +53,6 @@ setlocal noexpandtab
 
 markdown_tex = '''
 setlocal wrap
-augroup vimrc
-  autocmd! * <buffer>
-  autocmd InsertEnter <buffer> call skkeleton#config({
-  \ 'keepState': v:true,
-  \})
-augroup END
 '''
 
 snippets = '''
