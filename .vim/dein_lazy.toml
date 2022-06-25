@@ -98,7 +98,7 @@ let g:context_filetype#filetypes = {
 \   {
 \     'start': '>$',
 \     'end': '^\S',
-\     'filetype': 'vim',
+\     'filetype': 'vim.help',
 \   },
 \ ],
 \}

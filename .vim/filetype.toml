@@ -45,6 +45,7 @@ nnoremap <buffer> <silent> <LocalLeader>cl
 help = '''
 setlocal iskeyword+=:,#,-,(,)
 setlocal nofoldenable
+setlocal tabstop=8
 '''
 
 make = '''
