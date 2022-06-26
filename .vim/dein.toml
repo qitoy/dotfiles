@@ -5,6 +5,12 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+depends = 'iceberg.vim'
+hook_add = '''
+let g:lightline = {
+\ 'colorscheme': 'iceberg',
+\}
+'''
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
