@@ -35,11 +35,7 @@ _ = '''
 
 cpp = '''
 nnoremap <buffer> <silent> <LocalLeader>cc
-\ <Cmd>call term_start(['make', 'run'], {
-\ 'term_name': 'make-run',
-\ 'term_rows': 10,
-\ 'cwd': expand('%:p:h'),
-\})<CR>
+\ <Cmd>call vimrc#make('run')<CR>
 nnoremap <buffer> <silent> <LocalLeader>cl
 \ <Cmd>%d<CR><Cmd>0r ~/.procon/cpp/main.cpp<CR>
 '''

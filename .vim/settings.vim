@@ -21,6 +21,9 @@ nnoremap [leader]tt <Cmd>tab ter<CR>
 command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
 	\ | diffthis | wincmd p | diffthis
 
+command! -nargs=* Make
+\ call vimrc#make(<f-args>)
+
 " <BS>の挙動変更
 set backspace=indent,eol,start
 
