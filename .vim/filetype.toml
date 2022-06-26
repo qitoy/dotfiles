@@ -34,10 +34,12 @@ _ = '''
 '''
 
 cpp = '''
-nnoremap <buffer> <silent> <LocalLeader>cm
-\ <Cmd>call procon#utils#make()<CR>
 nnoremap <buffer> <silent> <LocalLeader>cc
-\ <Cmd>call procon#utils#make_then("ter ++rows=10 ./program")<CR>
+\ <Cmd>call term_start(['make', 'run'], {
+\ 'term_name': 'make-run',
+\ 'term_rows': 10,
+\ 'cwd': expand('%:p:h'),
+\})<CR>
 nnoremap <buffer> <silent> <LocalLeader>cl
 \ <Cmd>%d<CR><Cmd>0r ~/.procon/cpp/main.cpp<CR>
 '''
