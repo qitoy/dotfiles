@@ -12,17 +12,10 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-# secret token
-source "$HOME/.secret"
-
 zinit light zsh-users/zsh-autosuggestions
 zinit light mollifier/anyframe
 
-export PATH="$HOME/Library/Python/3.9/bin:$PATH"
-export CPLUS_INCLUDE_PATH="$HOME/Library/cpp-library"
-
-export CLANGD_FLAGS="--header-insertion=never"
-
+# history
 export HISTSIZE=10000
 export SAVEHIST=10000
 
@@ -50,10 +43,7 @@ bindkey -M viins "^I" expand-or-complete-prefix
 # alias
 alias cdr="anyframe-widget-cdr"
 
-export PATH="/opt/homebrew/opt/bc/bin:$PATH"
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
-
-export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
 
 function powerline_precmd() {
     PS1="
