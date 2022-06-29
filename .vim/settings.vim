@@ -12,9 +12,6 @@ nmap <leader> [leader]
 nnoremap [leader] <Nop>
 
 " [leader]使うやつ
-
-" フォント設定
-" set guifont=SourceCodeProForPowerline-Regular:h11
 nmap <script> [leader]t <SID>[tab]
 nnoremap <silent> <SID>[tab]t <Cmd>tab ter<CR>
 nnoremap <silent> <SID>[tab]c <Cmd>tabc<CR>
@@ -92,3 +89,19 @@ inoremap <C-S> <Cmd>update<CR>
 
 " 表示
 set laststatus=2
+
+" -------------------------------------
+" GUI関連
+" -------------------------------------
+" フォント設定
+set guifont=SourceCodeProForPowerline-Regular:h11
+set guifontwide=HiraMinProN-W3:h11
+
+" ウィンドウサイズ
+set columns=100 lines=48
+
+" マウス
+set mouse=
+
+set guioptions+=c
+set guioptions-=r
