@@ -12,10 +12,12 @@ nmap <leader> [leader]
 nnoremap [leader] <Nop>
 
 " [leader]使うやつ
-nnoremap [leader]tt <Cmd>tab ter<CR>
 
 " フォント設定
 " set guifont=SourceCodeProForPowerline-Regular:h11
+nmap <script> [leader]t <SID>[tab]
+nnoremap <silent> <SID>[tab]t <Cmd>tab ter<CR>
+nnoremap <silent> <SID>[tab]c <Cmd>tabc<CR>
 
 " 便利コマンド
 command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
