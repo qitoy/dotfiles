@@ -8,8 +8,17 @@ repo = 'itchyny/lightline.vim'
 depends = 'iceberg.vim'
 hook_add = '''
 let g:lightline = {
-\ 'colorscheme': 'iceberg',
-\}
+\   'colorscheme': 'iceberg',
+\   'active': {
+\     'left': [
+\       ['mode', 'paste', 'skk_mode'],
+\       ['readonly', 'filename', 'modified']
+\     ]
+\   },
+\   'component_function': {
+\     'skk_mode': 'g:lightline_skk#mode',
+\   },
+\ }
 '''
 
 [[plugins]]
