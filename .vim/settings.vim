@@ -96,12 +96,18 @@ set laststatus=2
 " フォント設定
 set guifont=SourceCodeProForPowerline-Regular:h11
 set guifontwide=HiraMinProN-W3:h11
+set antialias
 
 " ウィンドウサイズ
 set columns=100 lines=48
 
+" タブページ
+set showtabline=2
+
 " マウス
 set mouse=
 
-set guioptions+=c
+set guioptions+=ciM
 set guioptions-=r
+set guioptions-=T
+set guioptions-=m
