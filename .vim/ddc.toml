@@ -65,10 +65,6 @@ inoremap <silent><expr> <TAB>
 \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
 \ '<TAB>' : ddc#manual_complete()
 inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
-inoremap <C-n>   <Cmd>call pum#map#select_relative(+1)<CR>
-inoremap <C-p>   <Cmd>call pum#map#select_relative(-1)<CR>
-inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
-inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
 
 " Use cmdline ddc
 call ddc#custom#patch_global('autoCompleteEvents', [
@@ -91,8 +87,6 @@ function! CommandlinePre() abort
   \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
   \ ddc#manual_complete()
   cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
-  cnoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
-  cnoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
 
   " Overwrite sources
   if !exists('s:cmdline_prev_buffer_config')
@@ -108,8 +102,6 @@ endfunction
 function! CommandlinePost() abort
   silent! cunmap <Tab>
   silent! cunmap <S-Tab>
-  silent! cunmap <C-y>
-  silent! cunmap <C-e>
 
   " Restore sources
   if exists('s:cmdline_prev_buffer_config')
