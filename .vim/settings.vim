@@ -13,8 +13,8 @@ nnoremap [leader] <Nop>
 
 " [leader]使うやつ
 nmap <script> [leader]t <SID>[tab]
-nnoremap <silent> <SID>[tab]t <Cmd>tab ter<CR>
-nnoremap <silent> <SID>[tab]c <Cmd>tabc<CR>
+nnoremap <silent> <SID>[tab]t <Cmd>tab terminal<CR>
+nnoremap <silent> <SID>[tab]c <Cmd>tabclose<CR>
 
 " 便利コマンド
 command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
@@ -38,6 +38,15 @@ set softtabstop=-1
 
 " コマンド表示
 set showcmd
+
+" コマンドラインでの動き
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+cnoremap <Esc> <Nop>
+cnoremap <Esc>f <S-Right>
+cnoremap <Esc>b <S-Left>
 
 " 括弧補完
 " inoremap {<CR> {}<Left><CR><CR><Up><C-f>
