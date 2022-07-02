@@ -5,14 +5,6 @@ extends c
 
 ### snippet
 
-snippet all "begin end" w
-begin(${1:c}), end($1)
-endsnippet
-
-snippet rall "rbegin rend" i
-rbegin(${1:c}), rend($1)
-endsnippet
-
 snippet priority_queue_greater "use greater"
 priority_queue<${1}, vector<$1>, greater<$1>> ${2:Q};
 endsnippet
@@ -22,8 +14,5 @@ ${1:c}.erase(unique(begin($1), end($1)), end($1));
 endsnippet
 
 snippet "(\w+ ((\w+, ?)*\w+); )in(put)?" "useful for input" r
-`!p
-import re
-snip.rv = match.group(1) + 'cin >> ' + re.sub(', ?', ' >> ', match.group(2))
-`;
+`!p snip.rv = match.group(1) + 'cin >> ' + re.sub(', ?', ' >> ', match.group(2))`;
 endsnippet
