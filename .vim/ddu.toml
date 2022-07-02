@@ -22,7 +22,7 @@ nnoremap * <Cmd>Ddu -name=search line
 \ -input=`expand('<cword>')` -ui-param-startFilter=v:false<CR>
 nnoremap n <Cmd>Ddu -name=search -resume -ui-param-startFilter=v:false<CR>
 
-cnoremap <expr><silent> <C-f>
+cnoremap <expr><silent> <Esc><C-f>
 \ "<C-u><ESC><cmd>Ddu -name=command command_history -ui-param-startFilter -input='" .
 \ getcmdline() . "'<CR>"
 '''

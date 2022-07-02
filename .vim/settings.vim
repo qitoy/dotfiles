@@ -116,7 +116,5 @@ set showtabline=2
 " マウス
 set mouse=
 
-set guioptions+=ciM
+set guioptions+=ci!
 set guioptions-=r
-set guioptions-=T
-set guioptions-=m
