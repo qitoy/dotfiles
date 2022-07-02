@@ -94,14 +94,21 @@ depends = 'context_filetype.vim'
 repo = 'Shougo/context_filetype.vim'
 hook_add = '''
 let g:context_filetype#filetypes = {
-\ 'help': [
-\   {
-\     'start': '>$',
-\     'end': '^\S',
-\     'filetype': 'vim.help',
-\   },
-\ ],
-\}
+\   'help': [
+\     {
+\       'start': '>$',
+\       'end': '^\S',
+\       'filetype': 'vim.help',
+\     },
+\   ],
+\   'pandoc': [
+\     {
+\       'start': '^\s*\\begin{\(\h\w*\*\?\)}',
+\       'end': '^\s*\\end{\1}',
+\       'filetype': 'tex',
+\     },
+\   ],
+\ }
 '''
 
 [[plugins]]
@@ -181,13 +188,22 @@ call lightline_skk#option('display', {
 \ })
 '''
 
-# [[plugins]]
-# repo = 'vim-pandoc/vim-pandoc'
-# on_ft = ['markdown']
-
 [[plugins]]
 repo = '~/GitHub/procon.vim'
 on_cmd = 'Procon'
+
+### pandoc
+[[plugins]]
+repo = 'vim-pandoc/vim-pandoc'
+on_ft = ['markdown']
+hook_add = '''
+let g:pandoc#command#autoexec_on_writes = 1
+let g:pandoc#command#autoexec_command = 'Pandoc! pdf --pdf-engine=lualatex -Vdocumentclass=ltjsarticle -Vluatexjapresetoptions=hiragino-pron'
+'''
+
+[[plugins]]
+repo = 'vim-pandoc/vim-pandoc-syntax'
+on_source = ['vim-pandoc']
 
 ### jupyter
 [[plugins]]
