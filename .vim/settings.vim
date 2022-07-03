@@ -102,6 +102,9 @@ set laststatus=2
 " -------------------------------------
 " GUI関連
 " -------------------------------------
+if !has('gui_running')
+  finish
+endif
 " フォント設定
 set guifont=SourceCodeProForPowerline-Regular:h11
 set guifontwide=HiraMinProN-W3:h11
