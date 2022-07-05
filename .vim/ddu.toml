@@ -1,7 +1,6 @@
 [[plugins]]
 repo = 'Shougo/ddu.vim'
 depends = ['denops.vim']
-on_source = 'denops.vim'
 hook_add = '''
 nnoremap <SID>[ddu] <Nop>
 nmap <script> [leader]u <SID>[ddu]
@@ -77,7 +76,7 @@ call ddu#custom#patch_local('search', {
 
 [[plugins]]
 repo = 'Shougo/ddu-commands.vim'
-on_source = 'ddu.vim'
+depends = 'ddu.vim'
 on_cmd = 'Ddu'
 
 # UI
