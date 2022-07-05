@@ -32,6 +32,9 @@ call ddu#custom#patch_global({
 \   '_': {
 \     'matchers': ['matcher_fzf'],
 \   },
+\   'file': {
+\     'columns': ['filename'],
+\   },
 \ },
 \ 'sourceParams': {
 \   'mr': {
@@ -228,4 +231,9 @@ on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'Shougo/ddu-kind-word'
+on_source = 'ddu.vim'
+
+#columns
+[[plugins]]
+repo = 'Shougo/ddu-column-filename'
 on_source = 'ddu.vim'
