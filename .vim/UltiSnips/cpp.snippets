@@ -2,7 +2,6 @@ extends c
 
 ### Python
 
-
 ### snippet
 
 snippet priority_queue_greater "use greater"
@@ -13,6 +12,12 @@ snippet unique "unique and resize"
 ${1:c}.erase(unique(begin($1), end($1)), end($1));
 endsnippet
 
-snippet "(\w+ ((\w+, ?)*\w+); )in(put)?" "useful for input" r
-`!p snip.rv = match.group(1) + 'cin >> ' + re.sub(', ?', ' >> ', match.group(2))`;
+snippet in "useful for input"
+`!p
+line = vim.eval('getline(".")')
+m = re.search('((?:\w+, ?)*\w+)[]:;]', line)
+snip.rv = ''
+if m:
+	snip.rv = 'cin >> ' + re.sub(', ?', ' >> ', m.group(1)) + ';'
+`
 endsnippet
