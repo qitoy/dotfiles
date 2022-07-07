@@ -129,12 +129,14 @@ repo = 'prabirshrestha/vim-lsp'
 on_event = ['BufEnter']
 hook_add = '''
 let g:lsp_diagnostics_echo_cursor = 1
+
 function! s:on_lsp_buffer_enabled() abort
   setlocal signcolumn=yes
   nmap <buffer> [leader]rn <plug>(lsp-rename)
   nmap <buffer> [leader]ca <plug>(lsp-code-action)
   nmap <buffer> K <plug>(lsp-hover)
 endfunction
+
 augroup lsp_install
   au!
   " call s:on_lsp_buffer_enabled only for languages that has the server registered.
@@ -151,7 +153,6 @@ on_source = 'vim-lsp'
 repo = 'shun/ddc-vim-lsp'
 depends = ['ddc.vim', 'vim-lsp']
 on_source = 'ddc.vim'
-rev = '7d4b11eb0cab042527729fcc2398a826ff01b386'
 
 [[plugins]]
 repo = 'Shougo/ddc-around'
