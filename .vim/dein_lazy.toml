@@ -197,8 +197,12 @@ on_cmd = 'Procon'
 repo = 'vim-pandoc/vim-pandoc'
 on_ft = ['markdown']
 hook_add = '''
-let g:pandoc#command#autoexec_on_writes = 1
-let g:pandoc#command#autoexec_command = 'Pandoc! pdf --pdf-engine=lualatex -Vdocumentclass=ltjsarticle -Vluatexjapresetoptions=hiragino-pron'
+let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+let g:pandoc#filetypes#pandoc_markdown = 0
+let g:pandoc#command#autoexec_on_writes = 0
+command! PandocEnableAutoExec let g:pandoc#command#autoexec_on_writes = 1
+command! PandocDisableAutoExec let g:pandoc#command#autoexec_on_writes = 0
+let g:pandoc#command#autoexec_command = 'Pandoc! pdf --pdf-engine=lualatex -Vdocumentclass=ltjsarticle -Vluatexjapresetoptions=hiragino-pron -Vindent=true'
 '''
 
 [[plugins]]
