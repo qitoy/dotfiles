@@ -21,7 +21,7 @@ call ddc#custom#patch_global('sourceOptions', {
 \  },
 \  'vim-lsp': {
 \    'mark': '| LSP',
-\    'forceCompletionPattern': '\.|:|->|"\w+/*',
+\    'forceCompletionPattern': '(\.|:|->|"\w+/*).?',
 \  },
 \  'ultisnips': {'mark': '| US'},
 \  'around': {'mark': '| A'},
