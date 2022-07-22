@@ -36,7 +36,7 @@ call ddu#custom#patch_global({
 \     'columns': ['filename'],
 \   },
 \   'mr': {
-\     'columns': ['relative'],
+\     'columns': ['conceal_home'],
 \   },
 \ },
 \ 'sourceParams': {
@@ -242,5 +242,5 @@ repo = 'Shougo/ddu-column-filename'
 on_source = 'ddu.vim'
 
 [[plugins]]
-repo = 'qitoy/ddu-column-relative'
+repo = '~/GitHub/ddu-column-conceal_home'
 on_source = 'ddu.vim'
