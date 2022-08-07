@@ -23,6 +23,8 @@ command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
 command! -nargs=* Make
 \ call vimrc#make(<f-args>)
 
+nnoremap Q gq
+
 " <BS>の挙動変更
 set backspace=indent,eol,start
 
@@ -98,6 +100,10 @@ inoremap <C-S> <Cmd>update<CR>
 
 " 表示
 set laststatus=2
+
+" undo永続化
+set undofile
+let &undodir = expand('~/.vim/undo/')
 
 " -------------------------------------
 " GUI関連
