@@ -46,7 +46,7 @@ setlocal nofoldenable
 setlocal tabstop=8
 '''
 
-make = '''
+make_conf = '''
 setlocal noexpandtab
 '''
 
@@ -73,5 +73,4 @@ iunmap <buffer>]]
 vim = '''
 setlocal tabstop=2
 setlocal shiftwidth=2
-setlocal expandtab
 '''

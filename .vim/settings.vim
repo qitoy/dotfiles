@@ -37,6 +37,7 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set softtabstop=-1
+set expandtab
 
 " コマンド表示
 set showcmd
