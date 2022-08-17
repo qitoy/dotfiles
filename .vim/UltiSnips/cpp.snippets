@@ -8,8 +8,16 @@ snippet priority_queue_greater "use greater"
 priority_queue<${1}, vector<$1>, greater<$1>> ${2:Q};
 endsnippet
 
+snippet all "begin end" w
+${1}.begin(), $1.end()
+endsnippet
+
+snippet rall "rbegin rend" i
+${1}.rbegin(), $1.rend()
+endsnippet
+
 snippet unique "unique and resize"
-${1:c}.erase(unique(begin($1), end($1)), end($1));
+${1:c}.erase(unique($1.begin(), $1.end()), $1.end());
 endsnippet
 
 snippet in "useful for input"
@@ -20,4 +28,9 @@ snip.rv = ''
 if m:
 	snip.rv = 'cin >> ' + re.sub(', ?', ' >> ', m.group(1)) + ';'
 `
+endsnippet
+
+snippet modint
+#include <atcoder/modint>
+using mint=atcoder::modint${1:998244353};
 endsnippet
