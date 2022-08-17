@@ -63,3 +63,5 @@ function install_powerline_precmd() {
 if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
