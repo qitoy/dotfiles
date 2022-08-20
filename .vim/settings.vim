@@ -49,7 +49,6 @@ cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 cnoremap <Esc>f <S-Right>
 cnoremap <Esc>b <S-Left>
-cnoremap <Esc><Esc> <Esc>
 
 " 括弧補完
 " inoremap {<CR> {}<Left><CR><CR><Up><C-f>
