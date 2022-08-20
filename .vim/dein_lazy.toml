@@ -190,7 +190,7 @@ call lightline_skk#option('display', {
 
 [[plugins]]
 repo = '~/GitHub/procon.vim'
-on_cmd = 'Procon'
+on_cmd = ['ProconDownload', 'ProconPrepare']
 
 ### pandoc
 [[plugins]]
@@ -199,6 +199,7 @@ on_ft = ['markdown']
 hook_add = '''
 let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
 let g:pandoc#filetypes#pandoc_markdown = 0
+let g:pandoc#spell#enabled = 0
 let g:pandoc#command#autoexec_on_writes = 0
 command! PandocEnableAutoExec let g:pandoc#command#autoexec_on_writes = 1
 command! PandocDisableAutoExec let g:pandoc#command#autoexec_on_writes = 0
