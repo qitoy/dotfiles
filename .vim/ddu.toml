@@ -7,13 +7,12 @@ nmap <script> [leader]u <SID>[ddu]
 nmap <silent> <script> <F1> <SID>[ddu]h
 
 nnoremap <silent> <SID>[ddu]m <Cmd>Ddu mr<CR>
-nnoremap <silent> <SID>[ddu]r <Cmd>Ddu register<CR>
 nnoremap <silent> <SID>[ddu]b <Cmd>Ddu buffer<CR>
 nnoremap <silent> <SID>[ddu]h
 \ <Cmd>Ddu help -name=help -ui-param-startFilter<CR>
 nnoremap <silent> <SID>[ddu]f
 \ <Cmd>Ddu -ui=filer file -source-option-path=`expand('%:p:h')`<CR>
-nnoremap <silent> [leader]rg
+nnoremap <silent> <SID>[ddu]r
 \ <Cmd>Ddu -name=search rg -source-param-input=`input('PATTERN: ')`<CR>
 
 nnoremap / <Cmd>Ddu -name=search line -ui-param-startFilter<CR>
@@ -172,11 +171,6 @@ nnoremap <buffer> t
 
 # sources
 [[plugins]]
-repo = 'Shougo/ddu-source-file_rec'
-depends = 'ddu-kind-file'
-on_source = 'ddu.vim'
-
-[[plugins]]
 repo = 'Shougo/ddu-source-file'
 depends = 'ddu-kind-file'
 on_source = 'ddu.vim'
@@ -184,10 +178,6 @@ on_source = 'ddu.vim'
 [[plugins]]
 repo = 'kuuote/ddu-source-mr'
 depends = 'mr.vim'
-on_source = 'ddu.vim'
-
-[[plugins]]
-repo = 'Shougo/ddu-source-register'
 on_source = 'ddu.vim'
 
 [[plugins]]

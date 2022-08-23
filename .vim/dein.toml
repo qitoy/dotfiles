@@ -26,10 +26,6 @@ repo = 'vim-jp/vital.vim'
 merged = false
 
 [[plugins]]
-repo = 'lambdalisue/vital-Whisky'
-merged = false
-
-[[plugins]]
 repo = 'cocopon/iceberg.vim'
 hook_add = '''
 set background=dark
