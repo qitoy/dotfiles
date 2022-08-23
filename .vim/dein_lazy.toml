@@ -82,6 +82,13 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'yuki-yano/fuzzy-motion.vim'
+on_cmd = 'FuzzyMotion'
+hook_add = '''
+nnoremap [leader]<space> <cmd>FuzzyMotion<cr>
+'''
+
+[[plugins]]
 repo = 'skanehira/denops-translate.vim'
 on_cmd = 'Translate'
 # hook_add = 'let g:translate_popup_window = 0'
