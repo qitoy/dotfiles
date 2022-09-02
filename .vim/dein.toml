@@ -46,13 +46,22 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 hook_add = '''
+let g:denops_server_addr = '127.0.0.1:32123'
 if $DENOPS_DEBUG
   let g:denops#debug = 1
-else
-  let g:denops_server_addr = '127.0.0.1:32123'
 endif
 '''
 
 [[plugins]]
+repo = 'vim-denops/denops-shared-server.vim'
+depends = 'denops.vim'
+
+[[plugins]]
 repo = 'lambdalisue/guise.vim'
+depends = 'denops.vim'
+
+###
+
+[[plugins]]
+repo = '~/GitHub/dpc.vim'
 depends = 'denops.vim'
