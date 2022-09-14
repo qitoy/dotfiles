@@ -8,8 +8,7 @@ augroup END
 let g:mapleader = ' '
 let g:maplocalleader = '\'
 
-nmap <leader> [leader]
-nnoremap [leader] <Nop>
+nmap <leader> <Plug>(leader)
 
 " 便利コマンド
 command! -nargs=* Make

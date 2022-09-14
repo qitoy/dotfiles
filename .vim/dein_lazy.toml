@@ -23,7 +23,7 @@ hook_add = '''
 repo = 'yuki-yano/fuzzy-motion.vim'
 on_cmd = 'FuzzyMotion'
 hook_add = '''
-nnoremap [leader]<space> <cmd>FuzzyMotion<cr>
+nnoremap <Plug>(leader)<space> <cmd>FuzzyMotion<cr>
 '''
 
 [[plugins]]

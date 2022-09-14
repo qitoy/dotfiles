@@ -2,17 +2,16 @@
 repo = 'Shougo/ddu.vim'
 depends = ['denops.vim']
 hook_add = '''
-nnoremap <SID>[ddu] <Nop>
-nmap <script> [leader]u <SID>[ddu]
-nmap <silent> <script> <F1> <SID>[ddu]h
+nmap <Plug>(leader)u <Plug>(ddu)
+nmap <F1> <Plug>(ddu)h
 
-nnoremap <silent> <SID>[ddu]m <Cmd>Ddu mr<CR>
-nnoremap <silent> <SID>[ddu]b <Cmd>Ddu buffer<CR>
-nnoremap <silent> <SID>[ddu]h
+nnoremap <silent> <Plug>(ddu)m <Cmd>Ddu mr<CR>
+nnoremap <silent> <Plug>(ddu)b <Cmd>Ddu buffer<CR>
+nnoremap <silent> <Plug>(ddu)h
 \ <Cmd>Ddu help -name=help -ui-param-startFilter<CR>
-nnoremap <silent> <SID>[ddu]f
+nnoremap <silent> <Plug>(ddu)f
 \ <Cmd>Ddu -ui=filer file -source-option-path=`expand('%:p:h')`<CR>
-nnoremap <silent> <SID>[ddu]r
+nnoremap <silent> <Plug>(ddu)r
 \ <Cmd>Ddu -name=search rg -source-param-input=`input('PATTERN: ')`<CR>
 
 nnoremap / <Cmd>Ddu -name=search line -ui-param-startFilter<CR>
