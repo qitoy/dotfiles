@@ -11,19 +11,14 @@ let g:maplocalleader = '\'
 nmap <leader> [leader]
 nnoremap [leader] <Nop>
 
-" [leader]使うやつ
-nmap <script> [leader]t <SID>[tab]
-nnoremap <silent> <SID>[tab]t <Cmd>tab terminal<CR>
-nnoremap <silent> <SID>[tab]c <Cmd>tabclose<CR>
-
 " 便利コマンド
-command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
-	\ | diffthis | wincmd p | diffthis
-
 command! -nargs=* Make
 \ call vimrc#make(<f-args>)
 
-nnoremap Q gq
+" 後でなんかするかも
+nnoremap Q <Nop>
+nnoremap q <Nop>
+nnoremap m <Nop>
 
 " <BS>の挙動変更
 set backspace=indent,eol,start
