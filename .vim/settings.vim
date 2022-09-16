@@ -99,6 +99,12 @@ set laststatus=2
 set undofile
 let &undodir = expand('~/.vim/undo/')
 
+" IME制御
+inoremap <C-j> <Cmd>call vimrc#change_kana()<CR>
+cnoremap <C-j> <Cmd>call vimrc#change_kana()<CR>
+
+autocmd vimrc InsertLeave,CmdlineLeave * call vimrc#change_eisuu()
+
 " -------------------------------------
 " GUI関連
 " -------------------------------------
