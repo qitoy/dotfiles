@@ -6,7 +6,6 @@ hook_source = '''
 call ddc#custom#patch_global('sources', [
 \  'vim-lsp',
 \  'around',
-\  'file',
 \  'ultisnips',
 \])
 
@@ -14,11 +13,6 @@ call ddc#custom#patch_global('cmdlineSources',
 \  ['cmdline', 'cmdline-history', 'around'])
 
 call ddc#custom#patch_global('sourceOptions', {
-\  'file': {
-\    'mark': '| file',
-\    'isVolatile': v:true,
-\    'forceCompletionPattern': '\S/\S*',
-\  },
 \  'vim-lsp': {
 \    'mark': '| LSP',
 \    'forceCompletionPattern': '(\.|:|->|"\w+/*).?',
@@ -30,12 +24,6 @@ call ddc#custom#patch_global('sourceOptions', {
 \    'matchers': ['matcher_fuzzy'],
 \    'sorters': ['sorter_fuzzy'],
 \    'converters': ['converter_fuzzy', 'converter_truncate'],
-\  },
-\  'skkeleton': {
-\    'mark': '| SKK',
-\    'matchers': ['skkeleton'],
-\    'sorters': [],
-\    'minAutoCompleteLength': 2,
 \  },
 \  'cmdline': {
 \    'ignoreCase': v:false,
@@ -129,6 +117,7 @@ repo = 'prabirshrestha/vim-lsp'
 on_event = ['BufEnter']
 hook_add = '''
 let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_inlay_hints_enabled = 1
 
 function! s:on_lsp_buffer_enabled() abort
   setlocal signcolumn=yes
@@ -168,18 +157,10 @@ let g:UltiSnipsJumpForwardTrigger = '<C-l>'
 let g:UltiSnipsJumpBackwardTrigger = '<C-p>'
 '''
 
-# [[plugins]]
-# repo = 'honza/vim-snippets'
-# on_source = 'ultisnips'
-
 [[plugins]]
 repo = 'matsui54/ddc-ultisnips'
 on_source = 'ddc.vim'
 depends = ['ddc.vim', 'ultisnips']
-
-[[plugins]]
-repo = 'LumaKernel/ddc-file'
-on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-cmdline'
