@@ -44,15 +44,11 @@ cnoremap <C-E> <End>
 cnoremap <Esc>f <S-Right>
 cnoremap <Esc>b <S-Left>
 
-" 括弧補完
-" inoremap {<CR> {}<Left><CR><CR><Up><C-f>
-
 " レジスタ関連
 nnoremap x "_x
 vnoremap x "_x
 nnoremap s "_s
 vnoremap s "_s
-" set clipboard+=unnamed
 
 " 移動関連
 nnoremap <silent> j gj
@@ -71,13 +67,6 @@ set nowrap
 set sidescroll=1
 set sidescrolloff=20
 
-" 折り返し
-" set wrap
-" set breakindent
-" set breakindentopt=shift:4,sbr
-" let &showbreak='===>'
-" set linebreak
-
 " 整形
 set formatoptions+=jM
 
@@ -89,8 +78,6 @@ set updatetime=100
 set autowrite
 nnoremap <C-S> <Cmd>update<CR>
 inoremap <C-S> <Cmd>update<CR>
-" 危険なのでコメントアウト
-" autocmd vimrc SourcePre * update
 
 " 表示
 set laststatus=2
@@ -98,12 +85,6 @@ set laststatus=2
 " undo永続化
 set undofile
 let &undodir = expand('~/.vim/undo/')
-
-" IME制御
-inoremap <C-j> <Cmd>call vimrc#change_kana()<CR>
-cnoremap <C-j> <Cmd>call vimrc#change_kana()<CR>
-
-autocmd vimrc InsertLeave,CmdlineLeave * call vimrc#change_eisuu()
 
 " -------------------------------------
 " GUI関連
