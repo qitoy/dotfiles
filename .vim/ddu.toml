@@ -6,22 +6,11 @@ nmap <Plug>(leader)u <Plug>(ddu)
 nmap <F1> <Plug>(ddu)h
 
 nnoremap <silent> <Plug>(ddu)m <Cmd>Ddu mr<CR>
-nnoremap <silent> <Plug>(ddu)b <Cmd>Ddu buffer<CR>
 nnoremap <silent> <Plug>(ddu)h
 \ <Cmd>Ddu help -name=help -ui-param-startFilter<CR>
 nnoremap <silent> <Plug>(ddu)f
 \ <Cmd>Ddu -ui=filer file -source-option-path=`expand('%:p:h')`<CR>
-nnoremap <silent> <Plug>(ddu)r
-\ <Cmd>Ddu -name=search rg -source-param-input=`input('PATTERN: ')`<CR>
 
-nnoremap / <Cmd>Ddu -name=search line -ui-param-startFilter<CR>
-nnoremap * <Cmd>Ddu -name=search line
-\ -input=`expand('<cword>')` -ui-param-startFilter=v:false<CR>
-nnoremap n <Cmd>Ddu -name=search -resume -ui-param-startFilter=v:false<CR>
-
-cnoremap <expr><silent> <Esc><C-f>
-\ "<C-u><ESC><cmd>Ddu -name=command command_history -ui-param-startFilter -input='" .
-\ getcmdline() . "'<CR>"
 '''
 hook_source = '''
 call ddu#custom#patch_global({
@@ -41,38 +30,18 @@ call ddu#custom#patch_global({
 \   'mr': {
 \     'kind': 'mrw',
 \   },
-\   'rg': {
-\     'args': ['--column', '--no-heading', '--color', 'never', '--json'],
-\   },
 \ },
 \ 'kindOptions': {
 \   'file': {
 \     'defaultAction': 'open',
 \   },
-\   'word': {
-\     'defaultAction': 'append',
-\   },
-\   'action': {
-\     'defaultAction': 'do',
-\   },
 \   'help': {
 \     'defaultAction': 'open',
-\   },
-\   'command_history': {
-\     'defaultAction': 'execute',
 \   },
 \ },
 \ 'actionOptions': {
 \   'narrow': {
 \     'quit': v:false,
-\   },
-\ },
-\})
-
-call ddu#custom#patch_local('search', {
-\ 'sourceOptions': {
-\   '_': {
-\     'matchers': ['matcher_substring'],
 \   },
 \ },
 \})
@@ -91,16 +60,8 @@ on_source = 'ddu.vim'
 ddu-ff = '''
 nnoremap <buffer><silent> <CR>
 \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
-nnoremap <buffer><silent> <Space>
-\ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
-nnoremap <buffer><silent> <C-a>
-\ <Cmd>call ddu#ui#ff#do_action('toggleAllItems')<CR>
-nnoremap <buffer><silent> a
-\ <Cmd>call ddu#ui#ff#do_action('chooseAction')<CR>
 nnoremap <buffer><silent> i
 \ <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
-nnoremap <buffer><silent> p
-\ <Cmd>call ddu#ui#ff#do_action('preview')<CR>
 nnoremap <buffer><silent> q
 \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
 
@@ -111,13 +72,6 @@ else
   nnoremap <buffer><silent> t
   \ <Cmd> call ddu#ui#ff#do_action('itemAction',
   \ {'name': 'open', 'params': {'command': 'tab drop'}})<CR>
-endif
-
-if b:ddu_ui_name ==# 'command'
-  nnoremap <buffer><silent> e
-  \ <Cmd>call ddu#ui#ff#do_action('itemAction', {'name': 'edit'})<CR>
-  nnoremap <buffer><silent> dd
-  \ <Cmd>call ddu#ui#ff#do_action('itemAction', {'name': 'delete'})<CR>
 endif
 '''
 ddu-ff-filter = '''
@@ -140,23 +94,14 @@ nnoremap <buffer><expr> <CR>
 \ "<Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open'})<CR>"
 nnoremap <buffer> <Space>
 \ <Cmd>call ddu#ui#filer#do_action('toggleSelectItem')<CR>
-nnoremap <buffer> ~
-\ <Cmd>call ddu#ui#filer#do_action('itemAction',
-\ {'name': 'narrow', 'params': {'path': expand('~')}})<CR>
 nnoremap <buffer> h
 \ <Cmd>call ddu#ui#filer#do_action('itemAction',
 \ {'name': 'narrow', 'params': {'path': ".."}})<CR>
 nnoremap <buffer><expr> l
 \ ddu#ui#filer#is_directory() ?
 \ "<Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'narrow'})<CR>" : ""
-nnoremap <buffer> zo
-\ <Cmd>call ddu#ui#filer#do_action('expandItem')<CR>
-nnoremap <buffer> zc
-\ <Cmd>call ddu#ui#filer#do_action('collapseItem')<CR>
 nnoremap <buffer> q
 \ <Cmd>call ddu#ui#filer#do_action('quit')<CR>
-nnoremap <buffer> a
-\ <Cmd>call ddu#ui#filer#do_action('chooseAction')<CR>
 nnoremap <buffer><nowait> d
 \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'newDirectory'})<CR>
 nnoremap <buffer> N
@@ -184,27 +129,7 @@ repo = 'lambdalisue/mr.vim'
 on_source = 'ddu.vim'
 
 [[plugins]]
-repo = 'shun/ddu-source-buffer'
-on_source = 'ddu.vim'
-
-[[plugins]]
-repo = 'Shougo/ddu-source-line'
-on_source = 'ddu.vim'
-
-[[plugins]]
-repo = 'Shougo/ddu-source-action'
-on_source = 'ddu.vim'
-
-[[plugins]]
-repo = 'shun/ddu-source-rg'
-on_source = 'ddu.vim'
-
-[[plugins]]
 repo = 'matsui54/ddu-source-help'
-on_source = 'ddu.vim'
-
-[[plugins]]
-repo = 'matsui54/ddu-source-command_history'
 on_source = 'ddu.vim'
 
 #filters
@@ -219,10 +144,6 @@ on_source = 'ddu.vim'
 #kinds
 [[plugins]]
 repo = 'Shougo/ddu-kind-file'
-on_source = 'ddu.vim'
-
-[[plugins]]
-repo = 'Shougo/ddu-kind-word'
 on_source = 'ddu.vim'
 
 #columns
