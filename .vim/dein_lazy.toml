@@ -117,10 +117,6 @@ for rule in s:lexima_tex_rules
 endfor
 '''
 
-[[plugins]]
-repo = '~/GitHub/procon.vim'
-on_cmd = ['ProconDownload', 'ProconPrepare', 'ProconSubmit']
-
 ### pandoc
 [[plugins]]
 repo = 'vim-pandoc/vim-pandoc'

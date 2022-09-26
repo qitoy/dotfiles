@@ -59,9 +59,3 @@ depends = 'denops.vim'
 [[plugins]]
 repo = 'lambdalisue/guise.vim'
 depends = 'denops.vim'
-
-###
-
-[[plugins]]
-repo = '~/GitHub/dpc.vim'
-depends = 'denops.vim'
