@@ -16,8 +16,63 @@ hook_add = 'set helplang=ja'
 repo = 'thinca/vim-quickrun'
 on_cmd = 'QuickRun'
 hook_add = '''
-" let g:quickrun_config = {}
+let g:quickrun_config = {
+\ '_': {
+\   'runner': has('nvim') ? 'neovim_job' : 'job',
+\ },
+\ 'test': {
+\ 'exec': ['echo "%s, %s:p:r"'],
+\ 'tempfile': '%{tempname()}.txt',
+\ },
+\ 'procon/download': {
+\   'exec': [
+\     'cd %{expand("%:p:h")}',
+\     'rm -rf test/',
+\     'oj d %a',
+\     'sh -c "echo %a > .contest_url"',
+\   ],
+\   'outputter': 'null',
+\ },
+\ 'procon/browse': {
+\   'exec': ['open \$(cat %{expand("%:p:h")}/.contest_url)'],
+\   'outputter': 'null',
+\ },
+\ 'procon/test': {
+\   'exec': [
+\     'cd %{expand("%:p:h")}',
+\     'g++ -std=gnu++17 -Wall -Wextra -DLOCAL -O2 %s -o %s:p:r',
+\     'oj test -N -c %s:p:r --tle 4'
+\   ],
+\   'tempfile': '%{tempname()}.cpp',
+\   'hook/sweep/files': ['%S:p:r'],
+\   'outputter/buffer/bufname': 'procon://test',
+\   'outputter/buffer/filetype': 'procontest',
+\ },
+\ 'procon/submit': {
+\   'exec': [
+\     'cd %{expand("%:p:h")}',
+\     'sh -c "oj-bundle -I ~/Library/cpp-library %s > %s:p:r"',
+\     'oj submit -y --wait=0 -l 4003 %s:p:r',
+\   ],
+\   'tempfile': '%{expand("%:p:h")}/submit.cpp',
+\   'hook/sweep/files': ['%S', '%S:p:r'],
+\   'outputter': 'null',
+\ },
+\ 'procon/hack': {
+\   'exec': [
+\     'cd %{expand("%:p:h")}',
+\     'g++ -std=gnu++17 -Wall -Wextra -DLOCAL -O2 main.cpp -o program',
+\     'g++ -std=gnu++17 -Wall -Wextra -DLOCAL -O2 tle.cpp -o tle',
+\     'timeout 10 oj g/i -c ./tle --hack ./program ./generate.py',
+\   ],
+\ },
+\}
 '''
+
+[[plugins]]
+repo = 'lambdalisue/vim-quickrun-neovim-job'
+on_source = 'vim-quickrun'
+if = 'has("nvim")'
 
 [[plugins]]
 repo = 'yuki-yano/fuzzy-motion.vim'
