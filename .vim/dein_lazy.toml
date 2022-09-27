@@ -84,7 +84,13 @@ nnoremap <Plug>(leader)<space> <cmd>FuzzyMotion<cr>
 [[plugins]]
 repo = 'skanehira/denops-translate.vim'
 on_cmd = 'Translate'
-# hook_add = 'let g:translate_popup_window = 0'
+
+[[plugins]]
+repo = 'skanehira/denops-silicon.vim'
+on_cmd = 'Silicon'
+hook_add = '''
+let g:silicon_options = { 'font': 'Source Code Pro for Powerline', }
+'''
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
@@ -176,14 +182,12 @@ endfor
 [[plugins]]
 repo = 'vim-pandoc/vim-pandoc'
 on_ft = ['markdown']
+on_cmd = 'Pandoc'
 hook_add = '''
 let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
 let g:pandoc#filetypes#pandoc_markdown = 0
 let g:pandoc#spell#enabled = 0
 let g:pandoc#command#autoexec_on_writes = 0
-command! PandocEnableAutoExec let g:pandoc#command#autoexec_on_writes = 1
-command! PandocDisableAutoExec let g:pandoc#command#autoexec_on_writes = 0
-let g:pandoc#command#autoexec_command = 'Pandoc! pdf --pdf-engine=lualatex -Vdocumentclass=ltjsarticle -Vluatexjapresetoptions=hiragino-pron -Vindent=true'
 '''
 
 [[plugins]]
