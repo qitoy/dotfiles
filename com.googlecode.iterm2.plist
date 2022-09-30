@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AdaptiveFrameRateThroughputThreshold</key>
+	<integer>1000</integer>
 	<key>AllowClipboardAccess</key>
 	<true/>
 	<key>AlternateMouseScroll</key>
@@ -491,6 +493,8 @@
 	<integer>4</integer>
 	<key>LeftCommand</key>
 	<integer>7</integer>
+	<key>MetalSlowFrameRate</key>
+	<real>15</real>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1347,7 +1351,7 @@
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.40064889259708736</real>
+	<real>0.39931318264563104</real>
 	<key>StatusBarPosition</key>
 	<integer>0</integer>
 	<key>SwitchPaneModifier</key>
@@ -1357,6 +1361,10 @@
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>4</integer>
 	<key>TabViewType</key>
+	<integer>0</integer>
+	<key>TerminalMargin</key>
+	<integer>2</integer>
+	<key>TerminalVMargin</key>
 	<integer>0</integer>
 	<key>UseBorder</key>
 	<false/>
