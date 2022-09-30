@@ -39,11 +39,11 @@ add-zsh-hook chpwd chpwd_recent_dirs
 zstyle 'chpwd:*' recent-dirs-max 5000
 
 # set bindkey
-bindkey -v
-bindkey -M viins "^N" down-history
-bindkey -M viins "^P" up-history
-bindkey -M viins "^R" anyframe-widget-put-history
-bindkey -M viins "^I" expand-or-complete-prefix
+bindkey -d
+bindkey -e
+bindkey "^R" anyframe-widget-put-history
+bindkey "^U" backward-kill-line
+bindkey "^I" expand-or-complete-prefix
 
 # alias
 alias cdr="anyframe-widget-cdr"
