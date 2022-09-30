@@ -84,7 +84,11 @@ set laststatus=2
 
 " undo永続化
 set undofile
-let &undodir = expand('~/.vim/undo/')
+if has('nvim')
+  let &undodir = expand('~/.vim/nundo/')
+else
+  let &undodir = expand('~/.vim/undo/')
+endif
 
 " -------------------------------------
 " GUI関連
