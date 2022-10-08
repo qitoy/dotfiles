@@ -16,10 +16,19 @@ hook_add = 'set helplang=ja'
 repo = 'lambdalisue/vim-quickrun-neovim-job'
 
 [[plugins]]
+repo = 'statiolake/vim-quickrun-runner-nvimterm'
+
+[[plugins]]
 repo = 'thinca/vim-quickrun'
 on_cmd = 'QuickRun'
-depends = 'vim-quickrun-neovim-job'
+depends = ['vim-quickrun-neovim-job', 'vim-quickrun-runner-nvimterm']
 hook_add = '''
+let s:done = quickrun#outputter#null#new()
+
+function s:done.finish(session) abort
+  echo 'url saved.'
+endfunction
+
 let s:submit = quickrun#outputter#null#new()
 
 function s:submit.finish(session) abort
@@ -42,11 +51,23 @@ let g:quickrun_config = {
 \     'rm -rf %{expand("%:p:h:S")}/test/',
 \     'oj d -d %{expand("%:p:h:S")}/test/ %a',
 \   ],
-\   'outputter': 'null',
+\   'outputter': s:done,
 \ },
 \ 'procon/browse': {
 \   'exec': ['sh -c "open \$(cat %{expand("%:p:h:S")}/.contest_url)"'],
 \   'outputter': 'null',
+\ },
+\ 'procon/exec': {
+\   'exec': [
+\     'g++ -std=gnu++17 -Wall -Wextra -DLOCAL -O2 %s -o %s:p:r',
+\     '%s:p:r %a',
+\   ],
+\   'runner': has('nvim') ? 'nvimterm' : 'terminal',
+\   'runner/nvimterm/opener': 'new',
+\   'runner/nvimterm/into': 1,
+\   'runner/terminal/into': 1,
+\   'tempfile': '%{tempname()}.cpp',
+\   'hook/sweep/files': ['%S:p:r'],
 \ },
 \ 'procon/test': {
 \   'exec': [
@@ -83,6 +104,13 @@ let g:quickrun_config = {
 \   'hook/sweep/files': ['%{expand("%:p:h:S")}/program', '%{expand("%:p:h:S")}/tle']
 \ },
 \}
+
+command! -nargs=1 ProconDownload QuickRun procon/download -args <args>
+command! ProconBrowse QuickRun procon/browse
+command! ProconExec QuickRun procon/exec
+command! ProconTest QuickRun procon/test
+command! -bang ProconSubmit QuickRun procon/submit<bang>
+command! ProconHack QuickRun procon/hack
 '''
 
 [[plugins]]
