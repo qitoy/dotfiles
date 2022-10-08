@@ -173,7 +173,7 @@ on_cmd = 'Qfreplace'
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = ['InsertEnter']
-rev = 'feature/feedkeys'
+# rev = 'feature/feedkeys'
 hook_source = '''
 call lexima#add_rule({
 \ 'char': '<CR>',
