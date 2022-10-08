@@ -35,9 +35,9 @@ _ = '''
 
 cpp = '''
 nnoremap <buffer> <silent> <LocalLeader>cc
-\ <Cmd>call vimrc#make('run')<CR>
+\ <Cmd>QuickRun procon/exec<CR>
 nnoremap <buffer> <silent> <LocalLeader>cl
-\ <Cmd>%d<CR><Cmd>0r ~/.procon/cpp/main.cpp<CR>
+\ <Plug>(procon-init)
 '''
 
 help = '''
