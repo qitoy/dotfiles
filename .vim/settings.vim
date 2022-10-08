@@ -90,6 +90,9 @@ else
   let &undodir = expand('~/.vim/undo/')
 endif
 
+" マウス
+set mouse=
+
 " -------------------------------------
 " GUI関連
 " -------------------------------------
@@ -106,9 +109,6 @@ set columns=100 lines=48
 
 " タブページ
 set showtabline=2
-
-" マウス
-set mouse=
 
 set guioptions+=ci!
 set guioptions-=r
