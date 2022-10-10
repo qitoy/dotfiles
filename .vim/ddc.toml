@@ -13,18 +13,19 @@ call ddc#custom#patch_global('cmdlineSources',
 \  ['cmdline', 'cmdline-history', 'around'])
 
 call ddc#custom#patch_global('sourceOptions', {
-\  'vim-lsp': {
-\    'mark': '| LSP',
-\    'forceCompletionPattern': '(\.|:|->|"\w+/*).?',
-\  },
-\  'ultisnips': {'mark': '| US'},
-\  'around': {'mark': '| A'},
 \  '_': {
 \    'ignoreCase': v:true,
 \    'matchers': ['matcher_fuzzy'],
 \    'sorters': ['sorter_fuzzy'],
 \    'converters': ['converter_fuzzy', 'converter_truncate'],
 \  },
+\  'vim-lsp': {
+\    'mark': '| LSP',
+\    'forceCompletionPattern': '(\.|:|->|"\w+/*).?',
+\  },
+\  'ultisnips': {'mark': '| US'},
+\  'around': {'mark': '| A'},
+\  'necovim': {'mark': '| vim'},
 \  'cmdline': {
 \    'ignoreCase': v:false,
 \    'mark': '| cmd',
@@ -44,6 +45,13 @@ call ddc#custom#patch_global('filterParams', {
 \    'maxAbbrWidth': 50,
 \  },
 \})
+
+call ddc#custom#patch_filetype(
+\ ['vim', 'toml'], 'sources', [
+\  'necovim',
+\  'around',
+\  'ultisnips',
+\ ])
 
 " Use pum.vim
 call ddc#custom#patch_global('completionMenu', 'pum.vim')
@@ -142,6 +150,10 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-around'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
 on_source = 'ddc.vim'
 
 [[plugins]]

@@ -12,6 +12,8 @@ repo = 'vim-jp/vimdoc-ja'
 on_ft='help'
 hook_add = 'set helplang=ja'
 
+# {{{ vim-quickrun
+
 [[plugins]]
 repo = 'lambdalisue/vim-quickrun-neovim-job'
 
@@ -113,6 +115,8 @@ command! -bang ProconSubmit QuickRun procon/submit<bang>
 command! ProconHack QuickRun procon/hack
 '''
 
+# }}}
+
 [[plugins]]
 repo = 'yuki-yano/fuzzy-motion.vim'
 on_cmd = 'FuzzyMotion'
@@ -134,6 +138,11 @@ let g:silicon_options = { 'font': 'Source Code Pro for Powerline', }
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = 'context_filetype.vim'
+hook_add = '''
+let g:precious_enable_switchers = {
+\ 'toml': { 'setfiletype': 0 },
+\}
+'''
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
@@ -144,13 +153,6 @@ let g:context_filetype#filetypes = {
 \       'start': '>$',
 \       'end': '^\S',
 \       'filetype': 'vim.help',
-\     },
-\   ],
-\   'pandoc': [
-\     {
-\       'start': '^\s*\\begin{\(\h\w*\*\?\)}',
-\       'end': '^\s*\\end{\1}',
-\       'filetype': 'tex',
 \     },
 \   ],
 \ }
