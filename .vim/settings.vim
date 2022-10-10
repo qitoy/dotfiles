@@ -1,9 +1,5 @@
 scriptencoding utf-8
 
-augroup vimrc
-	autocmd!
-augroup END
-
 " leader関連
 let g:mapleader = ' '
 let g:maplocalleader = '\'

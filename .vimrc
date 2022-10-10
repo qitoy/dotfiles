@@ -1,4 +1,7 @@
-" {{{1 dein Scripts-----------------------------
+augroup vimrc
+	autocmd!
+augroup END
+
 if &compatible
   set nocompatible               " Be iMproved
 endif
@@ -46,5 +49,3 @@ syntax enable
 if dein#check_install()
 	call dein#install()
 endif
-
-" }}}1 End dein Scripts-------------------------
