@@ -26,6 +26,11 @@ call ddc#custom#patch_global('sourceOptions', {
 \  'ultisnips': {'mark': '| US'},
 \  'around': {'mark': '| A'},
 \  'necovim': {'mark': '| vim'},
+\  'mocword': {
+\    'mark': '| mocword',
+\    'minAutoCompleteLength': 3,
+\    'isVolatile': v:true,
+\  },
 \  'cmdline': {
 \    'ignoreCase': v:false,
 \    'mark': '| cmd',
@@ -51,6 +56,12 @@ call ddc#custom#patch_filetype(
 \  'necovim',
 \  'around',
 \  'ultisnips',
+\ ])
+
+call ddc#custom#patch_filetype(
+\ ['markdown'], 'sources', [
+\ 'mocword',
+\ 'around',
 \ ])
 
 " Use pum.vim
@@ -146,6 +157,10 @@ on_source = 'vim-lsp'
 [[plugins]]
 repo = 'shun/ddc-vim-lsp'
 depends = ['ddc.vim', 'vim-lsp']
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-mocword'
 on_source = 'ddc.vim'
 
 [[plugins]]
