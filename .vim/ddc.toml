@@ -93,8 +93,8 @@ function! CommandlinePre() abort
   cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
 
   " Overwrite sources
-  if !exists('s:cmdline_prev_buffer_config')
-    let s:cmdline_prev_buffer_config = ddc#custom#get_buffer()
+  if !exists('b:prev_buffer_config')
+    let b:prev_buffer_config = ddc#custom#get_buffer()
   endif
 
   autocmd User DDCCmdlineLeave ++once call CommandlinePost()
@@ -108,15 +108,12 @@ function! CommandlinePost() abort
   silent! cunmap <S-Tab>
 
   " Restore sources
-  if exists('s:cmdline_prev_buffer_config')
-    call ddc#custom#set_buffer(s:cmdline_prev_buffer_config)
-    unlet s:cmdline_prev_buffer_config
+  if exists('b:prev_buffer_config')
+    call ddc#custom#set_buffer(b:prev_buffer_config)
+    unlet b:prev_buffer_config
   else
     call ddc#custom#set_buffer({})
   endif
-
-  set wildchar=<Tab>
-  set wildcharm=<Tab>
 endfunction
 '''
 
@@ -134,6 +131,7 @@ on_event = ['BufEnter']
 hook_add = '''
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_inlay_hints_enabled = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
 
 function! s:on_lsp_buffer_enabled() abort
   setlocal signcolumn=yes
