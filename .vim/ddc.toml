@@ -1,8 +1,11 @@
 [[plugins]]
 repo = 'Shougo/ddc.vim'
+rev = 'split-ui'
 depends = ['denops.vim', 'pum.vim', 'vim-precious']
 on_event = ['InsertEnter', 'CursorHold', 'CmdlineEnter']
 hook_source = '''
+call ddc#custom#patch_global('ui', 'pum')
+
 call ddc#custom#patch_global('sources', [
 \  'vim-lsp',
 \  'around',
@@ -17,7 +20,7 @@ call ddc#custom#patch_global('sourceOptions', {
 \    'ignoreCase': v:true,
 \    'matchers': ['matcher_fuzzy'],
 \    'sorters': ['sorter_fuzzy'],
-\    'converters': ['converter_fuzzy', 'converter_truncate'],
+\    'converters': ['converter_fuzzy'],
 \  },
 \  'vim-lsp': {
 \    'mark': '| LSP',
@@ -46,9 +49,6 @@ call ddc#custom#patch_global('filterParams', {
 \  'converter_fuzzy': {
 \    'hlGroup': 'CursorLine'
 \  },
-\  'converter_truncate': {
-\    'maxAbbrWidth': 50,
-\  },
 \})
 
 call ddc#custom#patch_filetype(
@@ -75,8 +75,7 @@ inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
 
 " Use cmdline ddc
 call ddc#custom#patch_global('autoCompleteEvents', [
-\  'InsertEnter', 'TextChangedI', 'TextChangedP',
-\  'CmdlineEnter', 'CmdlineChanged',
+\  'InsertEnter', 'TextChangedI', 'TextChangedP', 'CmdlineChanged',
 \])
 
 " Use ddc.
@@ -120,10 +119,12 @@ endfunction
 [[plugins]]
 repo = 'Shougo/pum.vim'
 hook_source = '''
-call pum#set_option({
-\  'max_width': 80,
-\})
 '''
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-pum'
+depends = 'pum.vim'
+on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
@@ -195,9 +196,4 @@ on_source = 'ddc.vim'
 # Install your filters
 [[plugins]]
 repo = 'tani/ddc-fuzzy'
-on_source = 'ddc.vim'
-
-# converters
-[[plugins]]
-repo = 'matsui54/ddc-converter_truncate'
 on_source = 'ddc.vim'

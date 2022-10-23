@@ -137,10 +137,6 @@ on_source = 'ddu.vim'
 repo = 'yuki-yano/ddu-filter-fzf'
 on_source = 'ddu.vim'
 
-[[plugins]]
-repo = 'Shougo/ddu-filter-matcher_substring'
-on_source = 'ddu.vim'
-
 #kinds
 [[plugins]]
 repo = 'Shougo/ddu-kind-file'
