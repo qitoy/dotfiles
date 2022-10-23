@@ -357,7 +357,7 @@
 		</dict>
 	</dict>
 	<key>Default Bookmark Guid</key>
-	<string>89A5918A-15EA-48C0-8F2D-521417A81E86</string>
+	<string>4DCC6722-5E82-416D-A128-6A0BB93AD019</string>
 	<key>DisableFullscreenTransparency</key>
 	<false/>
 	<key>DoubleClickPerformsSmartSelection</key>
@@ -745,7 +745,7 @@
 				<real>1</real>
 			</dict>
 			<key>Blend</key>
-			<real>0.49972259963768112</real>
+			<real>0.5</real>
 			<key>Blink Allowed</key>
 			<false/>
 			<key>Blinking Cursor</key>
@@ -753,7 +753,7 @@
 			<key>Blur</key>
 			<true/>
 			<key>Blur Radius</key>
-			<real>0.10000000000000001</real>
+			<real>2</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -848,15 +848,15 @@
 				<real>0.7764706015586853</real>
 			</dict>
 			<key>Guid</key>
-			<string>89A5918A-15EA-48C0-8F2D-521417A81E86</string>
+			<string>4DCC6722-5E82-416D-A128-6A0BB93AD019</string>
 			<key>Has Hotkey</key>
-			<false/>
+			<true/>
 			<key>Hide After Opening</key>
 			<false/>
 			<key>Horizontal Spacing</key>
 			<real>1</real>
 			<key>HotKey Activated By Modifier</key>
-			<false/>
+			<true/>
 			<key>HotKey Alternate Shortcuts</key>
 			<array/>
 			<key>HotKey Characters</key>
@@ -866,7 +866,7 @@
 			<key>HotKey Key Code</key>
 			<integer>0</integer>
 			<key>HotKey Modifier Activation</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>HotKey Modifier Flags</key>
 			<integer>0</integer>
 			<key>HotKey Window Animates</key>
@@ -951,6 +951,17 @@
 					<integer>11</integer>
 					<key>Text</key>
 					<string>0x7f</string>
+				</dict>
+				<key>0x74-0x100000-0x0</key>
+				<dict>
+					<key>Action</key>
+					<integer>27</integer>
+					<key>Label</key>
+					<string></string>
+					<key>Text</key>
+					<string>4DCC6722-5E82-416D-A128-6A0BB93AD019</string>
+					<key>Version</key>
+					<integer>1</integer>
 				</dict>
 				<key>0xf700-0x220000</key>
 				<dict>
@@ -1193,7 +1204,7 @@
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
-			<string>New Profile</string>
+			<string>Hotkey Window</string>
 			<key>Non Ascii Font</key>
 			<string>HiraMaruProN-W4 11</string>
 			<key>Non-ASCII Anti Aliased</key>
@@ -1203,7 +1214,7 @@
 			<key>Normal Font</key>
 			<string>SourceCodeProForPowerline-Semibold 11</string>
 			<key>Only The Default BG Color Uses Transparency</key>
-			<false/>
+			<true/>
 			<key>Open Toolbelt</key>
 			<false/>
 			<key>Option Key Sends</key>
@@ -1215,7 +1226,7 @@
 			<key>Right Option Key Sends</key>
 			<integer>0</integer>
 			<key>Rows</key>
-			<integer>48</integer>
+			<integer>60</integer>
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
@@ -1262,7 +1273,7 @@
 			<key>Silence Bell</key>
 			<true/>
 			<key>Space</key>
-			<integer>-1</integer>
+			<integer>0</integer>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
@@ -1274,7 +1285,7 @@
 			<key>Title Components</key>
 			<integer>512</integer>
 			<key>Transparency</key>
-			<real>0.0</real>
+			<real>0.096891622340425532</real>
 			<key>Unicode Normalization</key>
 			<integer>0</integer>
 			<key>Unicode Version</key>
@@ -1296,7 +1307,7 @@
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>12</integer>
+			<integer>1</integer>
 			<key>Working Directory</key>
 			<string>/</string>
 		</dict>
@@ -1306,7 +1317,7 @@
 	<key>OpenBookmark</key>
 	<false/>
 	<key>OpenNoWindowsAtStartup</key>
-	<false/>
+	<true/>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>

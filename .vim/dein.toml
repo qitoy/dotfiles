@@ -29,8 +29,19 @@ merged = false
 repo = 'cocopon/iceberg.vim'
 hook_add = '''
 set background=dark
+augroup vimrc
+  autocmd ColorScheme * highlight Normal ctermbg=none
+  autocmd ColorScheme * highlight NonText ctermbg=none
+  autocmd ColorScheme * highlight LineNr ctermbg=none
+  autocmd ColorScheme * highlight Folded ctermbg=none
+  autocmd ColorScheme * highlight SignColumn ctermbg=none
+  autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
+augroup END
 colorscheme iceberg
 '''
+
+[[plugins]]
+repo = 'vim-jp/syntax-vim-ex'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
