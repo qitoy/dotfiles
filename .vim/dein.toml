@@ -52,7 +52,10 @@ vmap gx <Plug>(openbrowser-smart-search)
 '''
 
 [[plugins]]
-repo = 'tpope/vim-surround'
+repo = 'machakann/vim-sandwich'
+hook_add = '''
+runtime macros/sandwich/keymap/surround.vim
+'''
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'
