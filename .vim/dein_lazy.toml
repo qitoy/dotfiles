@@ -96,6 +96,15 @@ let g:quickrun_config = {
 \   'outputter': 'null',
 \   'hook/sweep/files': ['%S:p:r'],
 \ },
+\ 'procon/generate': {
+\   'exec': [
+\     'cd %{expand("%:p:h:S")}',
+\     'g++ -std=gnu++17 -Wall -Wextra -DLOCAL -O2 tle.cpp -o tle',
+\     'oj g/i ./generate.py',
+\     'oj g/o -c ./tle',
+\   ],
+\   'hook/sweep/files': ['%{expand("%:p:h:S")}/tle']
+\ },
 \ 'procon/hack': {
 \   'exec': [
 \     'cd %{expand("%:p:h:S")}',
@@ -112,6 +121,7 @@ command! ProconBrowse QuickRun procon/browse
 command! ProconExec QuickRun procon/exec
 command! ProconTest QuickRun procon/test
 command! -bang ProconSubmit QuickRun procon/submit<bang>
+command! ProconGenerate QuickRun procon/generate
 command! ProconHack QuickRun procon/hack
 '''
 

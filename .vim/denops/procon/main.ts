@@ -47,10 +47,16 @@ type Contest = {
 
 async function prepareDir(contest: Contest): Promise<void> {
     Deno.mkdirSync(contest.name);
-    await Promise.all(contest.problems.map(async (problem: Problem) => {
+    await Promise.all(contest.problems.flatMap(async (problem: Problem) => {
         const problemDir = `${contest.name}/${problem.context.alphabet}`;
         await Deno.mkdir(problemDir);
-        return Deno.writeTextFile(`${problemDir}/main.cpp`, templateCpp);
+        return [
+            Deno.writeTextFile(`${problemDir}/main.cpp`, templateCpp),
+            Deno.writeTextFile(`${problemDir}/tle.cpp`, templateCpp),
+            Deno.writeTextFile(`${problemDir}/generate.py`, "#!/usr/bin/env python3\nimport random\n").then(
+                () => Deno.chmod(`${problemDir}/generate.py`, 0o777)
+            ),
+        ];
     }));
 }
 
