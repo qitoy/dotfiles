@@ -65,8 +65,6 @@ set sidescroll=1
 set sidescrolloff=20
 
 " 整形
-set formatoptions+=jM
-
 set virtualedit=block
 
 set updatetime=100
