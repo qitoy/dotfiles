@@ -1,6 +1,5 @@
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-rev = 'split-ui'
 depends = ['denops.vim', 'pum.vim', 'vim-precious']
 on_event = ['InsertEnter', 'CursorHold', 'CmdlineEnter']
 hook_source = '''
@@ -70,7 +69,7 @@ call ddc#custom#patch_global('completionMenu', 'pum.vim')
 inoremap <silent><expr> <TAB>
 \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
 \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-\ '<TAB>' : ddc#manual_complete()
+\ '<TAB>' : ddc#map#manual_complete()
 inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
 
 " Use cmdline ddc
@@ -88,7 +87,7 @@ function! CommandlinePre() abort
   " Note: It disables default command line completion!
   cnoremap <expr> <Tab>
   \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
-  \ ddc#manual_complete()
+  \ ddc#map#manual_complete()
   cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
 
   " Overwrite sources
@@ -118,8 +117,6 @@ endfunction
 
 [[plugins]]
 repo = 'Shougo/pum.vim'
-hook_source = '''
-'''
 
 [[plugins]]
 repo = 'Shougo/ddc-ui-pum'
@@ -128,7 +125,6 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
-on_event = ['BufEnter']
 hook_add = '''
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_inlay_hints_enabled = 1
@@ -147,6 +143,7 @@ augroup lsp_install
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 '''
+hook_post_source = 'call lsp#enable()'
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
