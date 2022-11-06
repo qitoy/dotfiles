@@ -89,7 +89,7 @@ on_source = 'ddu.vim'
 [plugins.ftplugin]
 ddu-filer = '''
 nnoremap <buffer><expr> <CR>
-\ ddu#ui#filer#is_directory() ?
+\ ddu#ui#filer#is_tree() ?
 \ "<Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'narrow'})<CR>" :
 \ "<Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open'})<CR>"
 nnoremap <buffer> <Space>
@@ -98,7 +98,7 @@ nnoremap <buffer> h
 \ <Cmd>call ddu#ui#filer#do_action('itemAction',
 \ {'name': 'narrow', 'params': {'path': ".."}})<CR>
 nnoremap <buffer><expr> l
-\ ddu#ui#filer#is_directory() ?
+\ ddu#ui#filer#is_tree() ?
 \ "<Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'narrow'})<CR>" : ""
 nnoremap <buffer> q
 \ <Cmd>call ddu#ui#filer#do_action('quit')<CR>

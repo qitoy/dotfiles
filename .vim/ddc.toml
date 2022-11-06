@@ -156,11 +156,11 @@ depends = ['ddc.vim', 'vim-lsp']
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-mocword'
+repo = 'Shougo/ddc-source-mocword'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-around'
+repo = 'Shougo/ddc-source-around'
 on_source = 'ddc.vim'
 
 [[plugins]]
@@ -183,11 +183,11 @@ on_source = 'ddc.vim'
 depends = ['ddc.vim', 'ultisnips']
 
 [[plugins]]
-repo = 'Shougo/ddc-cmdline'
+repo = 'Shougo/ddc-source-cmdline'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-cmdline-history'
+repo = 'Shougo/ddc-source-cmdline-history'
 on_source = 'ddc.vim'
 
 # Install your filters
