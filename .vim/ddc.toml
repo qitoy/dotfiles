@@ -40,7 +40,6 @@ call ddc#custom#patch_global('sourceOptions', {
 \  },
 \  'cmdline-history': {
 \    'mark': '| history',
-\    'converters': ['converter_fuzzy'],
 \  },
 \})
 

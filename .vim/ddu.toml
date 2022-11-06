@@ -44,6 +44,12 @@ call ddu#custom#patch_global({
 \     'quit': v:false,
 \   },
 \ },
+\ 'uiParams': {
+\   'filer': {
+\     'sort': 'filename',
+\     'sortTreesFirst': v:true,
+\   },
+\ },
 \})
 '''
 
