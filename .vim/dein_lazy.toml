@@ -177,6 +177,13 @@ let g:context_filetype#filetypes = {
 \       'filetype': 'vim.help',
 \     },
 \   ],
+\   'tex': [
+\     {
+\       'start': '\\begin{luacode\*}',
+\       'end': '\\end{luacode\*}',
+\       'filetype': 'lua',
+\     },
+\   ],
 \ }
 '''
 
@@ -241,6 +248,20 @@ for rule in s:lexima_tex_rules
   let rule.filetype = 'tex'
   call lexima#add_rule(rule)
 endfor
+'''
+
+[[plugins]]
+repo = 'microsoft/vscode'
+if = 0
+merged = 0
+type__depth = 1
+
+[[plugins]]
+repo = 'uga-rosa/scorpeon.vim'
+depends = 'denops.vim'
+on_cmd = ['ScorpeonHighlightEnable', 'ScorpeonHighlightDisable']
+hook_add = '''
+let g:scorpeon_extensions_path  = dein#get('vscode').path . '/extensions'
 '''
 
 ### pandoc
