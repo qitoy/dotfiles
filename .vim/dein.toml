@@ -9,15 +9,6 @@ depends = 'iceberg.vim'
 hook_add = '''
 let g:lightline = {
 \   'colorscheme': 'iceberg',
-\   'active': {
-\     'left': [
-\       ['mode', 'paste', 'skk_mode'],
-\       ['readonly', 'filename', 'modified']
-\     ]
-\   },
-\   'component_function': {
-\     'skk_mode': 'g:lightline_skk#mode',
-\   },
 \ }
 '''
 
@@ -55,12 +46,4 @@ vmap gx <Plug>(openbrowser-smart-search)
 repo = 'machakann/vim-sandwich'
 hook_add = '''
 runtime macros/sandwich/keymap/surround.vim
-'''
-
-[[plugins]]
-repo = 'vim-denops/denops.vim'
-hook_add = '''
-if $DENOPS_DEBUG
-  let g:denops#debug = 1
-endif
 '''

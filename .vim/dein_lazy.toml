@@ -1,4 +1,16 @@
 [[plugins]]
+repo = 'vim-denops/denops.vim'
+hook_add = '''
+if $DENOPS_DEBUG
+let g:denops#debug = 1
+endif
+'''
+
+[[plugins]]
+repo = 'tyru/capture.vim'
+on_cmd = 'Capture'
+
+[[plugins]]
 repo = 'lervag/vimtex'
 on_ft=['tex']
 hook_add='''
