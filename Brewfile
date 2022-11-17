@@ -1,6 +1,7 @@
 tap "domq/gdb"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "jmhobbs/parrot"
@@ -42,11 +43,14 @@ brew "qt@5"
 brew "gnuplot"
 brew "librsvg"
 brew "graphviz"
+brew "imagemagick"
 brew "jq"
 brew "libsixel"
+brew "libvterm"
 brew "llvm"
 brew "luarocks"
 brew "make"
+brew "mas"
 brew "multitime"
 brew "neovim"
 brew "nkf"
@@ -65,12 +69,26 @@ brew "vim", args: ["HEAD"]
 brew "zsh"
 brew "zsh-completions"
 brew "jmhobbs/parrot/terminal-parrot"
-brew "koekeishiya/formulae/skhd"
-brew "koekeishiya/formulae/yabai"
 brew "unkontributors/unko/super_unko"
+cask "discord"
 cask "docker"
+cask "font-udev-gothic"
+cask "google-chrome"
 cask "hammerspoon"
 cask "iterm2"
 cask "mactex-no-gui"
+cask "slack"
+cask "steam"
 cask "ukelele"
 cask "wezterm-nightly"
+cask "wolfram-engine"
+cask "zoom"
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Kindle", id: 405399194
+mas "LINE", id: 539883307
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "RunCat", id: 1429033973
+mas "Xcode", id: 497799835
