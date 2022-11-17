@@ -1,6 +1,11 @@
-#!/bin/sh
-ln -sf ~/dotfiles/.vimrc ~/.vimrc
-ln -sf ~/dotfiles/.vim ~/
-ln -sf ~/dotfiles/.latexmkrc ~/.latexmkrc
-ln -sf ~/dotfiles/.zshrc ~/.zshrc
-ln -sf ~/dotfiles/.zprofile ~/.zprofile
+#!/usr/bin/env bash
+
+# dotfiles
+dotfiles=("vimrc" "vim" "latexmkrc" "zshrc" "zprofile")
+for dotfile in "${dotfiles[@]}"; do
+    ln -vnsf ~/dotfiles/.${dotfile} ~/.${dotfile}
+done
+
+# configs
+ln -vnsf ~/dotfiles/wezterm ~/.config/wezterm
+ln -vnsf ~/dotfiles/.vim ~/.config/nvim
