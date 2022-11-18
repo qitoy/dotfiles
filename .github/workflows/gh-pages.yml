@@ -6,8 +6,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses:  actions/checkout@v3
+      - uses: actions/checkout@v3
+      - name: make vim/plugins
+        run: |
+          echo "# 使用Vimプラグイン一覧" > ./public/vim/plugins
+          grep -E "repo = '[^/]+/[^/]+'" .vim/*.toml | sed -e "s_.* '\(.*\)'_- [\1](https://github.com/\1)_" >> ./public/vim/plugins
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+          enable_jekyll: true
