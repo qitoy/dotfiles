@@ -9,6 +9,6 @@ jobs:
       - name: install
         run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/qitoy/dotfiles/main/install.sh)" 
       - name: homebrew
-        run: brew bundle
+        run: cd ~/dotfiles && brew bundle
       - name: vim
         run: vim +q
