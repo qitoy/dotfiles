@@ -6,6 +6,18 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
+" dein install
+let s:cache = expand('~/.cache')
+if !isdirectory(s:cache)
+  call mkdir(s:cache, 'p')
+endif
+
+let s:dein = s:cache . '/dein/repos/github.com/Shougo/dein.vim'
+if !isdirectory(s:dein)
+  execute '!git clone https://github.com/Shougo/dein.vim' s:dein
+endif
+execute 'set runtimepath^=' . s:dein
+
 let g:dein#auto_recache = v:true
 let g:dein#install_progress_type = 'floating'
 let g:dein#install_check_diff = v:true
@@ -18,9 +30,6 @@ let s:toml_lazy      = s:vim_dir . 'dein_lazy.toml'
 let s:ddc_toml       = s:vim_dir . 'ddc.toml'
 let s:ddu_toml       = s:vim_dir . 'ddu.toml'
 let s:filetype_toml  = s:vim_dir . 'filetype.toml'
-
-" Required:
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 let g:dein#inline_vimrcs = [s:vim_dir . 'settings.vim']
 
