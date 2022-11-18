@@ -10,7 +10,7 @@ jobs:
       - name: make vim/plugins
         run: |
           echo "# 使用Vimプラグイン一覧" > ./public/vim/plugins.md
-          grep -E "repo = '[^/]+/[^/]+'" .vim/*.toml | sed -e "s_.* '\(.*\)'_- [\1](https://github.com/\1)_" >> ./public/vim/plugins.md
+          grep -E "repo = '[^/]+/[^/]+'" ./.vim/*.toml | sed -e "s_.* '\(.*\)'_- [\1](https://github.com/\1)_" | sort >> ./public/vim/plugins.md
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
