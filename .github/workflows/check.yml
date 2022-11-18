@@ -8,5 +8,7 @@ jobs:
     steps:
       - name: install
         run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/qitoy/dotfiles/main/install.sh)" 
+      - name: homebrew
+        run: brew bundle
       - name: vim
-        run: vim
+        run: vim +q
