@@ -258,7 +258,7 @@ type__depth = 1
 
 [[plugins]]
 repo = 'uga-rosa/scorpeon.vim'
-depends = 'denops.vim'
+depends = ['dein.vim', 'denops.vim']
 on_cmd = ['ScorpeonHighlightEnable', 'ScorpeonHighlightDisable']
 hook_add = '''
 let g:scorpeon_extensions_path  = dein#get('vscode').path . '/extensions'

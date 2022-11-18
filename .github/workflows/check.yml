@@ -8,5 +8,7 @@ jobs:
     steps:
       - name: install
         run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/qitoy/dotfiles/main/install.sh)" 
+      - name: install depends
+        run: brew install deno python3
       - name: vim
         run: vim +q
