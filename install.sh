@@ -8,12 +8,18 @@ if [ ! -d $HOME/dotfiles ]; then
     git clone https://github.com/qitoy/dotfiles $HOME/dotfiles
 fi
 
+# vim undodir
+mkdir -p $HOME/dotfiles/.vim/undo
+
 # dotfiles
 dotfiles=("vimrc" "vim" "latexmkrc" "zshrc" "zprofile")
 for dotfile in "${dotfiles[@]}"; do
-    ln -vnsf ~/dotfiles/.${dotfile} ~/.${dotfile}
+    ln -vnsf $HOME/dotfiles/.${dotfile} $HOME/.${dotfile}
 done
 
 # configs
-ln -vnsf ~/dotfiles/wezterm ~/.config/wezterm
-ln -vnsf ~/dotfiles/.vim ~/.config/nvim
+if [ ! -d $HOME/.config ]; then
+    mkdir $HOME/.config
+fi
+ln -vnsf $HOME/dotfiles/wezterm $HOME/.config/wezterm
+ln -vnsf $HOME/dotfiles/.vim $HOME/.config/nvim
