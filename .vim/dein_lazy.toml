@@ -140,13 +140,6 @@ command! ProconHack QuickRun procon/hack
 # }}}
 
 [[plugins]]
-repo = 'yuki-yano/fuzzy-motion.vim'
-on_cmd = 'FuzzyMotion'
-hook_add = '''
-nnoremap <Plug>(leader)<space> <cmd>FuzzyMotion<cr>
-'''
-
-[[plugins]]
 repo = 'skanehira/denops-translate.vim'
 on_cmd = 'Translate'
 
@@ -279,29 +272,3 @@ let g:pandoc#command#autoexec_on_writes = 0
 [[plugins]]
 repo = 'vim-pandoc/vim-pandoc-syntax'
 on_source = ['vim-pandoc']
-
-### jupyter
-[[plugins]]
-repo = 'goerz/jupytext.vim'
-on_path = '.*\.ipynb'
-hook_add = '''
-let g:jupytext_fmt = 'py:percent'
-let g:jupytext_filetype_map = {'py': 'python'}
-'''
-
-[[plugins]]
-repo = 'jpalardy/vim-slime'
-on_source = 'jupytext.vim'
-hook_add = '''
-let g:slime_target = 'vimterminal'
-let g:slime_vimterminal_cmd = 'ipython3'
-let g:slime_vimterminal_config = {'term_finish': 'close'}
-
-let g:slime_python_ipython = 1
-let g:slime_cell_delimiter = "# %%"
-let g:slime_dont_ask_default = 1
-'''
-
-[[plugins]]
-repo = 'hanschen/vim-ipython-cell'
-on_source = 'jupytext.vim'
