@@ -8,3 +8,10 @@ jobs:
     steps:
       - name: install
         run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/qitoy/dotfiles/main/install.sh)"
+      - uses: rhysd/action-setup-vim@v1
+        id: vim
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - name: check vim start
+        run: ${{ steps.vim.outputs.executable }} --cmd quit
