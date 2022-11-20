@@ -5,7 +5,7 @@ which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homeb
 
 # clone dotfiles
 if [ ! -d $HOME/dotfiles ]; then
-    git clone https://github.com/qitoy/dotfiles $HOME/dotfiles
+    git clone https://github.com/qitoy/dotfiles.git $HOME/dotfiles
 fi
 
 # vim undodir
@@ -23,3 +23,8 @@ if [ ! -d $HOME/.config ]; then
 fi
 ln -vnsf $HOME/dotfiles/wezterm $HOME/.config/wezterm
 ln -vnsf $HOME/dotfiles/.vim $HOME/.config/nvim
+
+# cpp-library
+if [ ! -d $HOME/Library/cpp-library/ ]; then
+        git clone https://github.com/qitoy/cpp-library.git $HOME/Library/cpp-library
+fi
