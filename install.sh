@@ -14,11 +14,14 @@ mkdir -p $HOME/dotfiles/.vim/undo
 # dotfiles
 dotfiles=("vimrc" "vim" "latexmkrc" "zshrc" "zprofile")
 for dotfile in "${dotfiles[@]}"; do
-    ln -vnsf $HOME/dotfiles/.${dotfile} $HOME/.${dotfile}
+    ln -vnsf "$HOME/dotfiles/.${dotfile}" "$HOME/.${dotfile}"
 done
 
 # configs
-ln -vnsf $HOME/dotfiles/.config $HOME/.config
+mkdir -p $HOME/.config
+for dir in $(ls $HOME/dotfiles/.config); do
+    ln -vnsf "$HOME/dotfiles/.config/${dir}" "$HOME/.config/${dir}"
+done
 
 # cpp-library
 if [ ! -d $HOME/Library/cpp-library/ ]; then
