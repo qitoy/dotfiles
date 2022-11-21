@@ -18,11 +18,7 @@ for dotfile in "${dotfiles[@]}"; do
 done
 
 # configs
-if [ ! -d $HOME/.config ]; then
-    mkdir $HOME/.config
-fi
-ln -vnsf $HOME/dotfiles/wezterm $HOME/.config/wezterm
-ln -vnsf $HOME/dotfiles/.vim $HOME/.config/nvim
+ln -vnsf $HOME/dotfiles/.config $HOME/.config
 
 # cpp-library
 if [ ! -d $HOME/Library/cpp-library/ ]; then

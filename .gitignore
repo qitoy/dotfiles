@@ -1,2 +1,4 @@
-.vim/undo/
-.vim/nundo/
+/.vim/undo/
+/.vim/nundo/
+/.config/karabiner/automatic_backups/
+/.config/gh/hosts.yml
