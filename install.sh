@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # install homebrew
-which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+which brew > /dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # clone dotfiles
 if [ ! -d $HOME/dotfiles ]; then
@@ -22,8 +22,9 @@ mkdir -p $HOME/.config
 for dir in $(ls $HOME/dotfiles/.config); do
     ln -vnsf "$HOME/dotfiles/.config/${dir}" "$HOME/.config/${dir}"
 done
+ln -vnsf "$HOME/dotfiles/.vim" "$HOME/.config/nvim"
 
 # cpp-library
-if [ ! -d $HOME/Library/cpp-library/ ]; then
+if [ ! -d $HOME/Library/cpp-library ]; then
         git clone https://github.com/qitoy/cpp-library.git $HOME/Library/cpp-library
 fi
