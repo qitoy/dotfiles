@@ -21,14 +21,6 @@ nnoremap m <Nop>
 " <BS>の挙動変更
 set backspace=indent,eol,start
 
-" tabの幅
-set tabstop=4
-set shiftwidth=4
-set autoindent
-set smartindent
-set softtabstop=-1
-set expandtab
-
 " コマンド表示
 set showcmd
 
