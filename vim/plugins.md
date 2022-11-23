@@ -32,6 +32,7 @@
 - [microsoft/vscode](https://github.com/microsoft/vscode)
 - [osyo-manga/vim-precious](https://github.com/osyo-manga/vim-precious)
 - [prabirshrestha/vim-lsp](https://github.com/prabirshrestha/vim-lsp)
+- [qitoy/sssv](https://github.com/qitoy/sssv)
 - [shun/ddc-vim-lsp](https://github.com/shun/ddc-vim-lsp)
 - [skanehira/denops-gh.vim](https://github.com/skanehira/denops-gh.vim)
 - [skanehira/denops-silicon.vim](https://github.com/skanehira/denops-silicon.vim)
