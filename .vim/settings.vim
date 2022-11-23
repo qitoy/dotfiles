@@ -21,9 +21,6 @@ nnoremap m <Nop>
 " <BS>の挙動変更
 set backspace=indent,eol,start
 
-" 行番号を表示
-set number
-
 " tabの幅
 set tabstop=4
 set shiftwidth=4
