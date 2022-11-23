@@ -257,6 +257,10 @@ hook_add = '''
 let g:scorpeon_extensions_path  = dein#get('vscode').path . '/extensions'
 '''
 
+[[plugins]]
+repo = 'qitoy/sssv'
+on_cmd = 'SSSV'
+
 ### pandoc
 [[plugins]]
 repo = 'vim-pandoc/vim-pandoc'
