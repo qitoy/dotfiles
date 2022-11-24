@@ -33,9 +33,9 @@ let s:filetype_toml  = s:vim_dir . 'filetype.toml'
 
 let g:dein#inline_vimrcs = [s:vim_dir . 'settings.vim']
 
-if dein#load_state('~/.cache/dein')
+if dein#load_state(s:cache . '/dein')
   " Required:
-  call dein#begin('~/.cache/dein', [
+  call dein#begin(s:cache . '/dein', [
   \ expand('<sfile>'), s:toml, s:toml_lazy, s:ddc_toml, s:ddu_toml, s:filetype_toml
   \])
 
