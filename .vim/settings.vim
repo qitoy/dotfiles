@@ -15,7 +15,7 @@ command! -nargs=* Make
 
 " 後でなんかするかも
 nnoremap Q <Nop>
-nnoremap q <Nop>
+" nnoremap q <Nop> マクロ大事
 nnoremap m <Nop>
 
 " <BS>の挙動変更
