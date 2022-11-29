@@ -4,6 +4,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 export CPLUS_INCLUDE_PATH="$HOME/Library/cpp-library"
 export CLANGD_FLAGS="--header-insertion=never"
 export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
+export EDITOR="vim"
 
 # PATH
 export PATH="/opt/homebrew/Cellar/icu4c/70.1/bin:$PATH"
