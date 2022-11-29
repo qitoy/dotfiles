@@ -47,6 +47,7 @@ bindkey "^I" expand-or-complete-prefix
 
 # alias
 alias cdr="anyframe-widget-cdr"
+alias kuin="kuin -s /opt/homebrew/opt/kuin/sys/"
 
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
