@@ -45,5 +45,6 @@ vmap gx <Plug>(openbrowser-smart-search)
 [[plugins]]
 repo = 'machakann/vim-sandwich'
 hook_add = '''
-runtime macros/sandwich/keymap/surround.vim
+nnoremap s <Nop>
+xnoremap s <Nop>
 '''
