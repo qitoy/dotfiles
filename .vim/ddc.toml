@@ -129,6 +129,16 @@ let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_inlay_hints_enabled = 1
 let g:lsp_log_file = expand('~/vim-lsp.log')
 
+if executable('wolframscript')
+  autocmd User lsp_setup call lsp#register_server(#{
+  \ name: 'lsp-wl',
+  \ tcp: {server_info -> '127.0.0.1:6536'},
+  \ allowlist: ['wolframscript'],
+  \})
+endif
+
+autocmd vimrc BufEnter *.wls set filetype=wolframscript
+
 function! s:on_lsp_buffer_enabled() abort
   setlocal signcolumn=yes
   nmap <buffer> <Plug>(leader)rn <plug>(lsp-rename)
