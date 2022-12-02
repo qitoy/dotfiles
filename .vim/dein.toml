@@ -44,7 +44,3 @@ vmap gx <Plug>(openbrowser-smart-search)
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
-hook_add = '''
-nnoremap s <Nop>
-xnoremap s <Nop>
-'''

@@ -35,8 +35,8 @@ cnoremap <Esc>b <S-Left>
 " レジスタ関連
 nnoremap x "_x
 vnoremap x "_x
-nnoremap s "_s
-vnoremap s "_s
+nnoremap s <Nop>
+xnoremap s <Nop>
 nnoremap Y y$
 
 " 移動関連
