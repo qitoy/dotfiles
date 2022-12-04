@@ -1,5 +1,11 @@
+# Let dein manage dein
+# Required:
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
 [[plugins]]
 repo = 'vim-denops/denops.vim'
+on_event = 'CursorHold'
 hook_add = '''
 if $DENOPS_DEBUG
 let g:denops#debug = 1
