@@ -1,7 +1,3 @@
-augroup vimrc
-	autocmd!
-augroup END
-
 if &compatible
   set nocompatible               " Be iMproved
 endif

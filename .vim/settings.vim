@@ -1,5 +1,9 @@
 scriptencoding utf-8
 
+augroup vimrc
+	autocmd!
+augroup END
+
 " leader関連
 let g:mapleader = ' '
 let g:maplocalleader = '\'
@@ -12,6 +16,8 @@ execute 'set path+=' . expand('~/Library/cpp-library')
 " 便利コマンド
 command! -nargs=* Make
 \ call vimrc#make(<f-args>)
+command! SourceVimrc
+\ source ~/.vimrc
 
 " 後でなんかするかも
 nnoremap Q <Nop>
@@ -29,6 +35,8 @@ cnoremap <C-F> <Right>
 cnoremap <C-B> <Left>
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
+cnoremap <Esc> <Nop>
+cnoremap <Esc><Esc> <C-F>
 cnoremap <Esc>f <S-Right>
 cnoremap <Esc>b <S-Left>
 
@@ -64,7 +72,6 @@ set updatetime=100
 " 保存
 set autowrite
 nnoremap <C-S> <Cmd>update<CR>
-inoremap <C-S> <Cmd>update<CR>
 
 " 表示
 set laststatus=2
