@@ -45,6 +45,9 @@ bindkey "^R" anyframe-widget-put-history
 bindkey "^U" backward-kill-line
 bindkey "^I" expand-or-complete-prefix
 
+autoload -U select-word-style
+select-word-style bash
+
 # alias
 alias cdr="anyframe-widget-cdr"
 alias kuin="kuin -s /opt/homebrew/opt/kuin/sys/"
