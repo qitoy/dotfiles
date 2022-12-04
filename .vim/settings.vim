@@ -68,6 +68,14 @@ set scrolloff=10
 set foldenable
 set foldmethod=marker
 
+" tab
+set tabstop=4
+set shiftwidth=4
+set autoindent
+set smartindent
+set softtabstop=-1
+set expandtab
+
 " map関連
 set timeout timeoutlen=3000 ttimeoutlen=100
 
@@ -78,6 +86,7 @@ set sidescrolloff=20
 
 " 整形
 set virtualedit=block
+set formatoptions+=jM
 
 set updatetime=100
 
