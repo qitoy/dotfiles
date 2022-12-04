@@ -250,6 +250,14 @@ inoremap <expr> <C-l> UltiSnips#CanExpandSnippet() <Bar><Bar> UltiSnips#CanJumpF
 repo = 'qitoy/sssv'
 on_cmd = 'SSSV'
 
+[[plugins]]
+repo = 'yuki-yano/fuzzy-motion.vim'
+depends = 'denops.vim'
+on_cmd = 'FuzzyMotion'
+hook_add = '''
+nnoremap <Plug>(leader)/ <Cmd>FuzzyMotion<CR>
+'''
+
 ### pandoc
 [[plugins]]
 repo = 'vim-pandoc/vim-pandoc'
