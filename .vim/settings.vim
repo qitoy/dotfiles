@@ -79,23 +79,3 @@ endif
 
 " マウス
 set mouse=
-
-" -------------------------------------
-" GUI関連
-" -------------------------------------
-if !has('gui_running')
-  finish
-endif
-" フォント設定
-set guifont=SourceCodeProForPowerline-Regular:h11
-set guifontwide=HiraMinProN-W3:h11
-set antialias
-
-" ウィンドウサイズ
-set columns=100 lines=48
-
-" タブページ
-set showtabline=2
-
-set guioptions+=ci!
-set guioptions-=r
