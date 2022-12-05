@@ -62,8 +62,8 @@ let g:quickrun_config = {
 \   'runner': has('nvim') ? 'neovim_job' : 'job',
 \ },
 \ 'test': {
-\ 'exec': ['cat %s', 'cat %S'],
-\ 'tempfile': '%{tempname()}.txt',
+\   'exec': ['cat %s', 'cat %S'],
+\   'tempfile': '%{tempname()}.txt',
 \ },
 \ 'procon/download': {
 \   'exec': [
@@ -153,37 +153,37 @@ on_cmd = 'Translate'
 repo = 'skanehira/denops-silicon.vim'
 on_cmd = 'Silicon'
 hook_add = '''
-let g:silicon_options = { 'font': 'Source Code Pro for Powerline', }
+let g:silicon_options = #{ font: 'Source Code Pro for Powerline', }
 '''
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = 'context_filetype.vim'
 hook_add = '''
-let g:precious_enable_switchers = {
-\ 'toml': { 'setfiletype': 0 },
+let g:precious_enable_switchers = #{
+\ toml: #{ setfiletype: 0 },
 \}
 '''
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
 hook_add = '''
-let g:context_filetype#filetypes = {
-\   'help': [
-\     {
-\       'start': '>$',
-\       'end': '^\S',
-\       'filetype': 'vim.help',
-\     },
-\   ],
-\   'tex': [
-\     {
-\       'start': '\\begin{luacode\*}',
-\       'end': '\\end{luacode\*}',
-\       'filetype': 'lua',
-\     },
-\   ],
-\ }
+let g:context_filetype#filetypes = #{
+\ help: [
+\   #{
+\     start: '>$',
+\     end: '^\S',
+\     filetype: 'vim.help',
+\   },
+\ ],
+\ tex: [
+\   #{
+\     start: '\\begin#{luacode\*}',
+\     end: '\\end#{luacode\*}',
+\     filetype: 'lua',
+\   },
+\ ],
+\}
 '''
 
 [[plugins]]
@@ -224,17 +224,17 @@ repo = 'cohama/lexima.vim'
 on_event = ['InsertEnter']
 # rev = 'feature/feedkeys'
 hook_source = '''
-call lexima#add_rule({
-\ 'char': '<CR>',
-\ 'input': '<CR>',
-\ 'input_after': '<CR>endsnippet',
-\ 'at': 'snippet\>.*\%#$',
-\ 'filetype': 'snippets',
+call lexima#add_rule(#{
+\ char: '<CR>',
+\ input: '<CR>',
+\ input_after: '<CR>endsnippet',
+\ at: 'snippet\>.*\%#$',
+\ filetype: 'snippets',
 \})
 
 let s:lexima_cpp_rules = [
-\ {'char': '<C-l>', 'at': 'all \(\w\+\)\%#', 'input': '\<C-W>\<C-W>\1.begin(), \1.end()', 'with_submatch': 1},
-\ {'char': '<C-l>', 'at': 'rall \(\w\+\)\%#', 'input': '\<C-W>\<C-W>\1.rbegin(), \1.rend()', 'with_submatch': 1},
+\ #{ char: '<C-l>', at: 'all \(\w\+\)\%#',  input: '\<C-W>\<C-W>\1.begin(), \1.end()',   with_submatch: 1 },
+\ #{ char: '<C-l>', at: 'rall \(\w\+\)\%#', input: '\<C-W>\<C-W>\1.rbegin(), \1.rend()', with_submatch: 1 },
 \ ]
 
 for rule in s:lexima_cpp_rules
@@ -243,23 +243,23 @@ for rule in s:lexima_cpp_rules
 endfor
 
 let s:lexima_tex_rules = [
-\ {'char': '[', 'at': '\\\%#', 'input': '[<CR>', 'input_after': '<CR>\]'},
+\ #{ char: '[',    at: '\\\%#',                    input: '[<CR>',        input_after: '<CR>\]'                        },
 \
-\ {'char': '{', 'at': '\\\%#', 'input_after': '\}'},
-\ {'char': '<BS>', 'at': '\\{\%#\\}', 'input': '<BS><BS>', 'delete': 2},
+\ #{ char: '{',    at: '\\\%#',                                           input_after: '\}'                            },
+\ #{ char: '<BS>', at: '\\{\%#\\}',                input: '<BS><BS>',                              delete: 2           },
 \
-\ {'char': '(', 'at': '\\left\%#', 'input_after': '\right)'},
-\ {'char': ')', 'at': '\%#\\right)', 'leave': 7},
-\ {'char': '[', 'at': '\\left\%#', 'input_after': '\right]'},
-\ {'char': ']', 'at': '\%#\\right]', 'leave': 7},
-\ {'char': '{', 'at': '\\left\\\%#', 'input_after': '\right\}'},
-\ {'char': '}', 'at': '\\\%#\\right\\}', 'input': '<BS>\right\}', 'delete': 8},
+\ #{ char: '(',    at: '\\left\%#',                                       input_after: '\right)'                       },
+\ #{ char: ')',    at: '\%#\\right)',                                                                         leave: 7 },
+\ #{ char: '[',    at: '\\left\%#',                                       input_after: '\right]'                       },
+\ #{ char: ']',    at: '\%#\\right]',                                                                         leave: 7 },
+\ #{ char: '{',    at: '\\left\\\%#',                                     input_after: '\right\}'                      },
+\ #{ char: '}',    at: '\\\%#\\right\\}',          input: '<BS>\right\}',                          delete: 8           },
 \
-\ {'char': '$', 'input_after': '$'},
-\ {'char': '$', 'at': '\\\%#'},
-\ {'char': '$', 'at': '\%#\$', 'leave': 1},
-\ {'char': '<BS>', 'at': '\$\%#\$', 'delete': 1},
-\ {'char': '<CR>', 'at': '\$\%#\$', 'input_after': '<CR>'},
+\ #{ char: '$',                                                           input_after: '$'                             },
+\ #{ char: '$',    at: '\\\%#'},
+\ #{ char: '$',    at: '\%#\$',                                                                               leave: 1 },
+\ #{ char: '<BS>', at: '\$\%#\$',                                                                  delete: 1           },
+\ #{ char: '<CR>', at: '\$\%#\$',                                         input_after: '<CR>'                          },
 \]
 
 for rule in s:lexima_tex_rules

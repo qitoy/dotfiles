@@ -57,18 +57,6 @@ markdown_tex = '''
 setlocal wrap
 '''
 
-snippets = '''
-" let b:context_filetype_filetypes = {
-"   \ 'snippets': [
-"     \ {
-"       \ 'start': '^snippet .*$',
-"       \ 'end': '^endsnippet',
-"       \ 'filetype': expand('%:t:r'),
-"       \ }
-"   \ ],
-"   \ }
-'''
-
 tex = '''
 iunmap <buffer>]]
 '''

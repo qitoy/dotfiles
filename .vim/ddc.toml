@@ -14,38 +14,38 @@ call ddc#custom#patch_global('sources', [
 call ddc#custom#patch_global('cmdlineSources',
 \  ['cmdline', 'cmdline-history', 'around'])
 
-call ddc#custom#patch_global('sourceOptions', {
-\  '_': {
-\    'ignoreCase': v:true,
-\    'matchers': ['matcher_fuzzy'],
-\    'sorters': ['sorter_fuzzy'],
-\    'converters': ['converter_fuzzy'],
+call ddc#custom#patch_global('sourceOptions', #{
+\  _: #{
+\    ignoreCase: v:true,
+\    matchers: ['matcher_fuzzy'],
+\    sorters: ['sorter_fuzzy'],
+\    converters: ['converter_fuzzy'],
 \  },
-\  'vim-lsp': {
-\    'mark': '| LSP',
-\    'forceCompletionPattern': '(\.|:|->|"\w+/*).?',
+\  vim-lsp: #{
+\    mark: '| LSP',
+\    forceCompletionPattern: '(\.|:|->|"\w+/*).?',
 \  },
-\  'ultisnips': {'mark': '| US'},
-\  'around': {'mark': '| A'},
-\  'necovim': {'mark': '| vim'},
-\  'mocword': {
-\    'mark': '| mocword',
-\    'minAutoCompleteLength': 3,
-\    'isVolatile': v:true,
+\  ultisnips: #{ mark: '| US' },
+\  around: #{ mark: '| A' },
+\  necovim: #{ mark: '| vim' },
+\  mocword: #{
+\    mark: '| mocword',
+\    minAutoCompleteLength: 3,
+\    isVolatile: v:true,
 \  },
-\  'cmdline': {
-\    'ignoreCase': v:false,
-\    'mark': '| cmd',
-\    'forceCompletionPattern': '\S/\S*',
+\  cmdline: #{
+\    ignoreCase: v:false,
+\    mark: '| cmd',
+\    forceCompletionPattern: '\S/\S*',
 \  },
-\  'cmdline-history': {
-\    'mark': '| history',
+\  cmdline-history: #{
+\    mark: '| history',
 \  },
 \})
 
-call ddc#custom#patch_global('filterParams', {
-\  'converter_fuzzy': {
-\    'hlGroup': 'CursorLine'
+call ddc#custom#patch_global('filterParams', #{
+\  converter_fuzzy: #{
+\    hlGroup: 'CursorLine'
 \  },
 \})
 

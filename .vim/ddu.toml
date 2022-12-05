@@ -13,41 +13,41 @@ nnoremap <silent> <Plug>(ddu)f
 
 '''
 hook_source = '''
-call ddu#custom#patch_global({
-\ 'ui': 'ff',
-\ 'sourceOptions': {
-\   '_': {
-\     'matchers': ['matcher_fzf'],
+call ddu#custom#patch_global(#{
+\ ui: 'ff',
+\ sourceOptions: #{
+\   _: #{
+\     matchers: ['matcher_fzf'],
 \   },
-\   'file': {
-\     'columns': ['filename'],
+\   file: #{
+\     columns: ['filename'],
 \   },
-\   'mr': {
-\     'columns': ['conceal_home'],
-\   },
-\ },
-\ 'sourceParams': {
-\   'mr': {
-\     'kind': 'mru',
+\   mr: #{
+\     columns: ['conceal_home'],
 \   },
 \ },
-\ 'kindOptions': {
-\   'file': {
-\     'defaultAction': 'open',
-\   },
-\   'help': {
-\     'defaultAction': 'open',
+\ sourceParams: #{
+\   mr: #{
+\     kind: 'mru',
 \   },
 \ },
-\ 'actionOptions': {
-\   'narrow': {
-\     'quit': v:false,
+\ kindOptions: #{
+\   file: #{
+\     defaultAction: 'open',
+\   },
+\   help: #{
+\     defaultAction: 'open',
 \   },
 \ },
-\ 'uiParams': {
-\   'filer': {
-\     'sort': 'filename',
-\     'sortTreesFirst': v:true,
+\ actionOptions: #{
+\   narrow: #{
+\     quit: v:false,
+\   },
+\ },
+\ uiParams: #{
+\   filer: #{
+\     sort: 'filename',
+\     sortTreesFirst: v:true,
 \   },
 \ },
 \})
@@ -104,33 +104,33 @@ on_source = 'ddu.vim'
 ddu-filer = '''
 nnoremap <buffer><expr> <CR>
 \ ddu#ui#filer#is_tree() ?
-\ "<Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'narrow'})<CR>" :
-\ "<Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open'})<CR>"
+\ "<Cmd>call ddu#ui#filer#do_action('itemAction', #{ name: 'narrow' })<CR>" :
+\ "<Cmd>call ddu#ui#filer#do_action('itemAction', #{ name: 'open' })<CR>"
 nnoremap <buffer> <Space>
 \ <Cmd>call ddu#ui#filer#do_action('toggleSelectItem')<CR>
 nnoremap <buffer> h
 \ <Cmd>call ddu#ui#filer#do_action('itemAction',
-\ {'name': 'narrow', 'params': {'path': ".."}})<CR>
+\ #{ name: 'narrow', params: #{ path: ".." } })<CR>
 nnoremap <buffer><expr> l
 \ ddu#ui#filer#is_tree() ?
-\ "<Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'narrow'})<CR>" : ""
+\ "<Cmd>call ddu#ui#filer#do_action('itemAction', #{name: 'narrow'})<CR>" : ""
 nnoremap <buffer> q
 \ <Cmd>call ddu#ui#filer#do_action('quit')<CR>
 nnoremap <buffer><nowait> d
-\ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'newDirectory'})<CR>
+\ <Cmd>call ddu#ui#filer#do_action('itemAction', #{ name: 'newDirectory' })<CR>
 nnoremap <buffer> N
-\ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'newFile'})<CR>
+\ <Cmd>call ddu#ui#filer#do_action('itemAction', #{ name: 'newFile' })<CR>
 nnoremap <buffer> D
-\ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'delete'})<CR>
+\ <Cmd>call ddu#ui#filer#do_action('itemAction', #{ name: 'delete' })<CR>
 nnoremap <buffer> t
 \ <Cmd>call ddu#ui#filer#do_action('itemAction',
-\ {'name': 'open', 'params': {'command': 'tab drop'}})<CR>
+\ #{ name: 'open', params: #{ command: 'tab drop' } })<CR>
 nnoremap <buffer> v
 \ <Cmd>call ddu#ui#filer#do_action('itemAction',
-\ {'name': 'open', 'params': {'command': 'rightbelow vsplit'}})<CR>
+\ #{ name: 'open', params: #{ command: 'rightbelow vsplit' } })<CR>
 nnoremap <buffer><nowait> s
 \ <Cmd>call ddu#ui#filer#do_action('itemAction',
-\ {'name': 'open', 'params': {'command': 'split'}})<CR>
+\ #{ name: 'open', params: #{ command: 'split' } })<CR>
 '''
 
 # sources

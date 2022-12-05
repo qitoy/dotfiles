@@ -2,9 +2,9 @@
 repo = 'itchyny/lightline.vim'
 depends = 'iceberg.vim'
 hook_add = '''
-let g:lightline = {
-\   'colorscheme': 'iceberg',
-\ }
+let g:lightline = #{
+\ colorscheme: 'iceberg',
+\}
 '''
 
 [[plugins]]
