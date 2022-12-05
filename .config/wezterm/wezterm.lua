@@ -22,6 +22,8 @@ return {
     },
     default_cursor_style = 'BlinkingBlock',
     keys = {
+        { key = '+', mods = 'SUPER', action = wezterm.action.DisableDefaultAssignment, },
+        { key = '+', mods = 'CTRL', action = wezterm.action.DisableDefaultAssignment, },
         { key = '-', mods = 'SUPER', action = wezterm.action.DisableDefaultAssignment, },
         { key = '-', mods = 'CTRL', action = wezterm.action.DisableDefaultAssignment, },
         { key = '=', mods = 'SUPER', action = wezterm.action.DisableDefaultAssignment, },
