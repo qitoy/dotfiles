@@ -283,6 +283,10 @@ hook_add = '''
 nnoremap <Plug>(leader)/ <Cmd>FuzzyMotion<CR>
 '''
 
+[[plugins]]
+repo = 'itchyny/vim-qfedit'
+on_event = 'QuickFixCmdPre'
+
 ### pandoc
 [[plugins]]
 repo = 'vim-pandoc/vim-pandoc'
