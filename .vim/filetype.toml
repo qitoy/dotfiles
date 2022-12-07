@@ -53,12 +53,15 @@ make_conf = '''
 setlocal noexpandtab
 '''
 
-markdown_tex = '''
+markdown = '''
 setlocal wrap
+nnoremap <buffer> K
+\ <cmd>QuickRun -exec '/usr/bin/env ejdict %{expand("<cword>")}' -outputter popup<CR>
 '''
 
 tex = '''
 iunmap <buffer>]]
+setlocal wrap
 '''
 
 vim = '''
