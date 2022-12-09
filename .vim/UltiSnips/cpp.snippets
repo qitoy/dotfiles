@@ -5,7 +5,7 @@ extends c
 ### snippet
 
 snippet priority_queue_greater "use greater"
-priority_queue<${1}, vector<$1>, greater<$1>> ${2:Q};
+priority_queue ${2:Q}(greater<>{}, vector<${1}>{});
 endsnippet
 
 snippet unique "unique and resize"
