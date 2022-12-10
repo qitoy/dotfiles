@@ -13,8 +13,8 @@ augroup vimrc
   autocmd ColorScheme * highlight Folded ctermbg=none
   autocmd ColorScheme * highlight SignColumn ctermbg=none
   autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
-  autocmd VimEnter * ++nested colorscheme iceberg
 augroup END
+colorscheme iceberg
 
 " leader関連
 let g:mapleader = ' '
