@@ -48,9 +48,10 @@ cnoremap <C-B> <Left>
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 cnoremap <Esc> <Nop>
-cnoremap <Esc><Esc> <C-F>
 cnoremap <Esc>f <S-Right>
 cnoremap <Esc>b <S-Left>
+cmap <Esc><Esc> <Plug>(cedit)
+cnoremap <expr> <Plug>(cedit) &cedit
 
 " レジスタ関連
 nnoremap x "_x

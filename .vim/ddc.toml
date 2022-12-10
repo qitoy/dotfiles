@@ -86,6 +86,8 @@ function! CommandlinePre() abort
   \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
   \ ddc#map#manual_complete()
   cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+  cnoremap <expr> <Plug>(cedit)
+  \ "<C-C><cmd>call vimrc#cmdwin(" . (getcmdline() ==# '') . ")<CR>"
 
   " Overwrite sources
   if !exists('b:prev_buffer_config')
@@ -101,6 +103,7 @@ endfunction
 function! CommandlinePost() abort
   silent! cunmap <Tab>
   silent! cunmap <S-Tab>
+  cnoremap <expr> <Plug>(cedit) &cedit
 
   " Restore sources
   if exists('b:prev_buffer_config')
