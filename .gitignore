@@ -2,3 +2,5 @@
 /.vim/nundo/
 /.config/karabiner/automatic_backups/
 /.config/gh/hosts.yml
+/.w3m/*
+!/.w3m/keymap
