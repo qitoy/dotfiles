@@ -16,8 +16,10 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light mollifier/anyframe
 
 # history
+export HISTFILE=$HOME/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=10000
+setopt hist_ignore_dups
 
 # set options
 setopt interactive_comments
