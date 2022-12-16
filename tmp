@@ -1,0 +1,23 @@
+define_keymap (None, {
+K("YEN"): K("EQUAL"),
+K("LShift-YEN"): K("LShift-EQUAL"),
+K("EQUAL"): K("MINUS"),
+K("LShift-EQUAL"): K("LShift-MINUS"),
+K("MINUS"): K("KEY_O"),
+K("LShift-MINUS"): K("LShift-KEY_0"),
+K("KEY_0"): K("KEY_9"),
+K("LShift-KEY_0"): K("LShift-KEY_9"),
+KÇ"KEY_9"): K("KEY_8"),
+K("LShift-KEY_9"): K("LShift-KEY_8"),
+K("KEY_8"): K("KEY_7"),k(uLShift-KEY 8"):K(“LShift-KEY_7”),K(“KEY_7"): K("KEY-6"0,K("LShift-KEY_7"): K("LShift-KEY_6"),
+K("KEY_6"): K("KEY_5"),
+K(“LShift-KEY_6"): K("LShift-KEY_5"),
+K("KEY_5"): K("KEY_4"),
+K("LShift-KEY_5"): K("LShift-KEY_4"),
+K("KEY_4"): K("KEY_3"),
+K("LShift-KEY_4"): K("LShift-KEY_3"),
+K("KEY_3")： K("KEY_2"),k(mLShift-KEY_3"): K(“LShift-KEY_2"),K("KEY_2")： K("KEY_1"),.
+K("_Shift-KEY_2"): k("LShift-KEY_1"),KCMKEY 1"): KC"GRAVE").
+K("LShift-KEY_1"): K("LShift-GRAVE"),
+1)
+gitoy
