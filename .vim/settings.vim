@@ -50,8 +50,8 @@ cnoremap <C-E> <End>
 cnoremap <Esc> <Nop>
 cnoremap <Esc>f <S-Right>
 cnoremap <Esc>b <S-Left>
-cmap <Esc><Esc> <Plug>(cedit)
-cnoremap <expr> <Plug>(cedit) &cedit
+cnoremap <expr> <Esc><Esc>
+\ printf("<C-C><cmd>call vimrc#cmdwin('%s',%s)<CR>", getcmdtype(), getcmdline() ==# '')
 
 " レジスタ関連
 nnoremap x "_x

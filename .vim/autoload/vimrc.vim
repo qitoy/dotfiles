@@ -6,26 +6,22 @@ function! vimrc#make(...) abort
   \})
 endfunction
 
-let s:manager = vital#vital#new().import('Vim.BufferManager').new()
-
-function! vimrc#cmdwin(new) abort
-  let info = s:manager.open('cmdwin', #{ opener: 'belowright 10new' })
-  if info.newbuf
-    call setbufvar(info.bufnr, '&buftype', 'nofile')
-    call setbufvar(info.bufnr, '&bufhidden', 'hide')
-    call setbufvar(info.bufnr, '&swapfile', 0)
-    call ddc#custom#patch_buffer('sources', ['cmdline', 'around'])
-    inoremap <buffer> <CR>
-    \ <Esc><Cmd>call <SID>execCmdWin()<CR>
-    nnoremap <buffer> <CR>
-    \ <Cmd>call <SID>execCmdWin()<CR>
-  endif
-  call deletebufline(info.bufnr, 1, '$')
-  let histnr = histnr(':')
+function! vimrc#cmdwin(mode, new) abort
+  execute 'silent belowright 10new cmdwin://' . a:mode
+  setlocal buftype=nofile
+  setlocal bufhidden=hide
+  setlocal noswapfile
+  call ddc#custom#patch_buffer('sources', ['cmdline', 'around'])
+  inoremap <buffer> <CR>
+  \ <Esc><Cmd>call <SID>execCmdWin()<CR>
+  nnoremap <buffer> <CR>
+  \ <Cmd>call <SID>execCmdWin()<CR>
+  call deletebufline('%', 1, '$')
+  let histnr = histnr(a:mode)
   for i in range(1, histnr)
-    let hist = histget(':', i)
+    let hist = histget(a:mode, i)
     if hist !=# ''
-      call setbufline(info.bufnr, line('$')+1, hist)
+      call setbufline('%', line('$')+1, hist)
     endif
   endfor
   if a:new
@@ -36,8 +32,9 @@ function! vimrc#cmdwin(new) abort
 endfunction
 
 function! s:execCmdWin() abort
+  let mode = expand('%')[-1:]
   let line = getline('.')
-  call histadd(':', line)
-  call s:manager.close()
-  execute line
+  call histadd(mode, line)
+  quit
+  call feedkeys(mode . line . "\<CR>")
 endfunction
