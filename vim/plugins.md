@@ -30,6 +30,8 @@
 - [machakann/vim-sandwich](https://github.com/machakann/vim-sandwich)
 - [matsui54/ddc-ultisnips](https://github.com/matsui54/ddc-ultisnips)
 - [matsui54/ddu-source-help](https://github.com/matsui54/ddu-source-help)
+- [matsui54/denops-popup-preview.vim](https://github.com/matsui54/denops-popup-preview.vim)
+- [matsui54/denops-signature_help](https://github.com/matsui54/denops-signature_help)
 - [mattn/vim-lsp-settings](https://github.com/mattn/vim-lsp-settings)
 - [osyo-manga/vim-precious](https://github.com/osyo-manga/vim-precious)
 - [prabirshrestha/vim-lsp](https://github.com/prabirshrestha/vim-lsp)
