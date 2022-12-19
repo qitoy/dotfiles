@@ -22,9 +22,6 @@ call ddu#custom#patch_global(#{
 \   file: #{
 \     columns: ['filename'],
 \   },
-\   mr: #{
-\     columns: ['conceal_home'],
-\   },
 \ },
 \ sourceParams: #{
 \   mr: #{
@@ -182,8 +179,4 @@ on_source = 'ddu.vim'
 #columns
 [[plugins]]
 repo = 'Shougo/ddu-column-filename'
-on_source = 'ddu.vim'
-
-[[plugins]]
-repo = '~/GitHub/ddu-column-conceal_home'
 on_source = 'ddu.vim'

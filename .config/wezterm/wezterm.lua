@@ -1,13 +1,18 @@
 local wezterm = require "wezterm"
 local act = wezterm.action
 
-wezterm.on("gui-startup", function()
-    local tab, pane, window = wezterm.mux.spawn_window{}
-    window:gui_window():toggle_fullscreen()
-end)
+-- wezterm.on("gui-startup", function()
+--     local tab, pane, window = wezterm.mux.spawn_window{}
+--     window:gui_window():toggle_fullscreen()
+-- end)
 
 return {
     font = wezterm.font("UDEV Gothic 35LG"),
+    -- Linux
+    initial_cols = 100,
+    initial_rows = 48,
+    front_end = "Software",
+    --
     use_ime = true,
     font_size = 11.0,
     color_scheme = "iceberg-dark",

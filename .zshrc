@@ -26,9 +26,6 @@ setopt interactive_comments
 setopt magic_equal_subst
 # setopt correct
 
-# use gh completion
-gh completion -s zsh > /usr/local/share/zsh/site-functions/_gh
-
 # autoload
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
@@ -52,25 +49,10 @@ select-word-style bash
 
 # alias
 alias cdr="anyframe-widget-cdr"
-alias kuin="kuin -s /opt/homebrew/opt/kuin/sys/"
 
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
-function powerline_precmd() {
-    PS1=$(echo -e "\n$(powerline-shell --shell zsh $?)\n$ ")
-}
-
-function install_powerline_precmd() {
-    for s in "${precmd_functions[@]}"; do
-        if [ "$s" = "powerline_precmd" ]; then
-            return
-        fi
-    done
-    precmd_functions+=(powerline_precmd)
-}
-
-if [ "$TERM" != "linux" ]; then
-    install_powerline_precmd
-fi
+# powerline
+. /usr/lib/python3.10/site-packages/powerline/bindings/zsh/powerline.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
