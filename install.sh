@@ -12,7 +12,13 @@ fi
 mkdir -p $HOME/dotfiles/.vim/undo
 
 # dotfiles
-dotfiles=("vimrc" "vim" "latexmkrc" "zshrc" "zprofile" "hammerspoon" "w3m")
+dotfiles=("vimrc" "vim" "latexmkrc" "zshrc" "zprofile" "w3m")
+case ${OSTYPE} in
+    darwin*)
+        dotfiles+=("hammerspoon") ;;
+    linux*)
+        dotfiles+=("xprofile") ;;
+esac
 for dotfile in "${dotfiles[@]}"; do
     ln -vnsf "$HOME/dotfiles/.${dotfile}" "$HOME/.${dotfile}"
 done

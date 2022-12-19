@@ -3,8 +3,13 @@ name: check
 on: [push]
 
 jobs:
-  macos:
-    runs-on: macos-latest
+  install:
+    strategy:
+      matrix:
+        runner:
+          - macos-latest
+          - ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     steps:
       - name: install
-        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/qitoy/dotfiles/main/install-mac.sh)"
+        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/qitoy/dotfiles/linux/install.sh)"

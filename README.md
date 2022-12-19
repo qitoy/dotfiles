@@ -5,6 +5,6 @@
 ## install
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/qitoy/dotfiles/main/install-{OS_name}.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/qitoy/dotfiles/main/install.sh)"
 ```
 
