@@ -4,15 +4,18 @@
 which brew > /dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # clone dotfiles
-if [ ! -d $HOME/dotfiles ]; then
-    git clone https://github.com/qitoy/dotfiles.git $HOME/dotfiles
+dotfiles_dir="$HOME/dotfiles"
+if [ ! -d $dotfiles_dir ]; then
+    git clone https://github.com/qitoy/dotfiles.git $dotfiles_dir
 fi
 
+touch $HOME/.secret
+
 # vim undodir
-mkdir -p $HOME/dotfiles/.vim/undo
+mkdir -p $dotfiles_dir/.vim/undo $dotfiles_dir/.vim/nundo
 
 # dotfiles
-dotfiles=("vimrc" "vim" "latexmkrc" "zshrc" "zprofile" "w3m")
+dotfiles=("vimrc" "vim" "latexmkrc" "zshrc" "w3m")
 case ${OSTYPE} in
     darwin*)
         dotfiles+=("hammerspoon") ;;
@@ -20,15 +23,15 @@ case ${OSTYPE} in
         dotfiles+=("xprofile") ;;
 esac
 for dotfile in "${dotfiles[@]}"; do
-    ln -vnsf "$HOME/dotfiles/.${dotfile}" "$HOME/.${dotfile}"
+    ln -vnsf "$dotfiles_dir/.${dotfile}" "$HOME/.${dotfile}"
 done
 
 # configs
 mkdir -p $HOME/.config
-for dir in $(ls $HOME/dotfiles/.config); do
-    ln -vnsf "$HOME/dotfiles/.config/${dir}" "$HOME/.config/${dir}"
+for dir in $(ls $dotfiles_dir/.config); do
+    ln -vnsf "$dotfiles_dir/.config/${dir}" "$HOME/.config/${dir}"
 done
-ln -vnsf "$HOME/dotfiles/.vim" "$HOME/.config/nvim"
+ln -vnsf "$dotfiles_dir/.vim" "$HOME/.config/nvim"
 
 # cpp-library
 if [ ! -d $HOME/Library/cpp-library ]; then
