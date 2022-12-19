@@ -28,3 +28,11 @@ let g:openbrowser_browser_commands = [#{ name: 'w3m', args: ['wezterm', 'cli', '
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+hook_add = '''
+if $DENOPS_DEBUG
+let g:denops#debug = 1
+endif
+'''
