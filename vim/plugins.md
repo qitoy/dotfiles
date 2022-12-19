@@ -53,5 +53,6 @@
 - [vim-jp/vital.vim](https://github.com/vim-jp/vital.vim)
 - [vim-pandoc/vim-pandoc-syntax](https://github.com/vim-pandoc/vim-pandoc-syntax)
 - [vim-pandoc/vim-pandoc](https://github.com/vim-pandoc/vim-pandoc)
+- [vim-skk/skkeleton](https://github.com/vim-skk/skkeleton)
 - [yuki-yano/ddu-filter-fzf](https://github.com/yuki-yano/ddu-filter-fzf)
 - [yuki-yano/fuzzy-motion.vim](https://github.com/yuki-yano/fuzzy-motion.vim)
