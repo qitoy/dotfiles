@@ -1,5 +1,7 @@
-/.vim/undo/
-/.vim/nundo/
+/.vim/undo/*
+!/.vim/undo/.gitkeep
+/.vim/nundo/*
+!/.vim/nundo/.gitkeep
 /.config/karabiner/automatic_backups/
 /.config/gh/hosts.yml
 /.w3m/*
