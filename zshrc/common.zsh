@@ -24,7 +24,6 @@ autoload -Uz _zinit
 ### End of Zinit's installer chunk
 
 zinit light zsh-users/zsh-autosuggestions
-zinit light mollifier/anyframe
 
 # history
 export HISTFILE=$HOME/.zsh_history
@@ -45,15 +44,33 @@ zstyle 'chpwd:*' recent-dirs-max 5000
 # set bindkey
 bindkey -d
 bindkey -e
-bindkey "^R" anyframe-widget-put-history
 bindkey "^U" backward-kill-line
 bindkey "^I" expand-or-complete-prefix
 
 autoload -U select-word-style
 select-word-style bash
 
-# alias
-alias cdr="anyframe-widget-cdr"
-
 # powerline
 . /usr/lib/python3.10/site-packages/powerline/bindings/zsh/powerline.zsh
+
+# fzf
+export FZF_DEFAULT_OPTS="--no-sort --cycle --multi --ansi"
+
+function fzf-cdr() {
+    local selected_dir=$(\cdr -l | awk '{print $2}' | fzf)
+    selected_dir=${selected_dir/\~/$HOME}
+    if [ -n "$selected_dir" ]; then
+        cd "$selected_dir"
+    fi
+}
+alias cdr="fzf-cdr"
+
+function fzf-history() {
+    local selected_command=$(history -n -r 1 | awk '!a[$0]++' | fzf --query "$LBUFFER")
+    if [ -n "$selected_command" ]; then
+        BUFFER=$selected_command
+        CURSOR=$#BUFFER
+    fi
+}
+zle -N fzf-history
+bindkey "^R" fzf-history
