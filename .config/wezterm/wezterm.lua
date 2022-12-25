@@ -8,12 +8,9 @@ local act = wezterm.action
 
 return {
     font = wezterm.font("UDEV Gothic 35LG"),
-    -- Linux
     initial_cols = 100,
     initial_rows = 48,
-    front_end = "Software",
-    --
-    use_ime = true,
+    use_ime = false,
     font_size = 11.0,
     color_scheme = "iceberg-dark",
     window_background_opacity = 0.85,
