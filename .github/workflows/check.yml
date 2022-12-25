@@ -12,4 +12,4 @@ jobs:
     runs-on: ${{ matrix.runner }}
     steps:
       - name: install
-        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/qitoy/dotfiles/linux/install.sh)"
+        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/qitoy/dotfiles/main/install.sh)"
