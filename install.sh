@@ -15,7 +15,7 @@ touch $HOME/.secret
 mkdir -p $dotfiles_dir/.vim/undo $dotfiles_dir/.vim/nundo
 
 # dotfiles
-dotfiles=("vimrc" "vim" "latexmkrc" "zshrc" "w3m")
+dotfiles=("vimrc" "vim" "latexmkrc" "zshrc" "zprofile" "w3m")
 case ${OSTYPE} in
     darwin*)
         dotfiles+=("hammerspoon") ;;

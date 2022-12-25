@@ -1,8 +1,8 @@
-zshrc_dir="$HOME/dotfiles/zshrc"
-source "$zshrc_dir/common.zsh"
+local zsh_dir="$HOME/dotfiles/zsh"
+source "$zsh_dir/common.zshrc"
 case ${OSTYPE} in
     darwin*)
-        source "$zshrc_dir/mac.zsh" ;;
+        source "$zsh_dir/mac.zshrc" ;;
     linux*)
-        source "$zshrc_dir/linux.zsh" ;;
+        source "$zsh_dir/linux.zshrc" ;;
 esac

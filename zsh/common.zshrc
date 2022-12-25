@@ -2,11 +2,8 @@
 export CPLUS_INCLUDE_PATH="$HOME/Library/cpp-library"
 export CLANGD_FLAGS="--header-insertion=never"
 export EDITOR="vim"
-export DENO_INSTALL="/home/qitoy/.deno"
 
 # PATH
-export PATH="$DENO_INSTALL/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
 export MOCWORD_DATA=$HOME/.mocword/mocword.sqlite
 
 # secret token
@@ -50,8 +47,23 @@ bindkey "^I" expand-or-complete-prefix
 autoload -U select-word-style
 select-word-style bash
 
-# powerline
-. /usr/lib/python3.10/site-packages/powerline/bindings/zsh/powerline.zsh
+# powerline-shell
+function powerline_precmd() {
+    PS1=$(echo -e "\n$(powerline-shell --shell zsh $?)\n$ ")
+}
+
+function install_powerline_precmd() {
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
+}
+
+if [ "$TERM" != "linux" -a -x "$(command -v powerline-shell)" ]; then
+    install_powerline_precmd
+fi
 
 # fzf
 export FZF_DEFAULT_OPTS="--no-sort --cycle --multi --ansi"
@@ -74,3 +86,5 @@ function fzf-history() {
 }
 zle -N fzf-history
 bindkey "^R" fzf-history
+
+# vim:ft=zsh
