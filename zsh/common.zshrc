@@ -1,5 +1,6 @@
 # export
-export CPLUS_INCLUDE_PATH="$HOME/Library/cpp-library"
+export CPLUS_INCLUDE_PATH="$HOME/Library/cpp-library:$CPLUS_INCLUDE_PATH"
+export LIBRARY_PATH="$HOME/Library/cpp-library/boost/lib:$LIBRARY_PATH"
 export CLANGD_FLAGS="--header-insertion=never"
 export EDITOR="vim"
 
