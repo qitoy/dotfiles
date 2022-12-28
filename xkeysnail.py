@@ -41,4 +41,8 @@ define_keymap(None, {
     K("LShift-KEY_2"): K("LShift-KEY_1"),
     K("KEY_1"): K("GRAVE"),
     K("LShift-KEY_1"): K("LShift-GRAVE"),
+
+    # Emacs-like keybind
+    K("LC-Y"): K("RIGHT"),
+    K("LC-N"): K("LEFT"),
 })
