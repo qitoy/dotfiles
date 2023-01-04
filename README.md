@@ -4,7 +4,10 @@
 
 ## install
 
+depends deno
+
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/qitoy/dotfiles/main/install.sh)"
+git clone https://github.com/qitoy/dotfiles.git ~/dotfiles
+~/dotfiles/dfm.ts sync
 ```
 
