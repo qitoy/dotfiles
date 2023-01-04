@@ -21,6 +21,7 @@ const links: [string, string][] = [
     ["vimrc", "~/.vimrc"],
     ["zprofile", "~/.zprofile"],
     ["zshrc", "~/.zshrc"],
+    ["gitmessage", "~/.gitmessage"],
 
     ["config/wezterm", "~/.config/wezterm"],
     ["config/powerline-shell", "~/.config/powerline-shell"],
