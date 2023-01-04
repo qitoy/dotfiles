@@ -124,7 +124,10 @@ on_source = 'ddc.vim'
 repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
 let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_inlay_hints_enabled = 1
+let g:lsp_inlay_hints_enabled = has('nvim')
+let g:lsp_inlay_hints_mode = {
+\ 'normal': ['curline'],
+\}
 let g:lsp_log_file = expand('~/vim-lsp.log')
 
 if executable('wolframscript')
