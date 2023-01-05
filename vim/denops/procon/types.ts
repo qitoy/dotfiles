@@ -1,12 +1,12 @@
-export interface Problem {
+export interface Problem extends Record<string, unknown> {
     url: string;
     name: string;
     context: {
-        contest: {
+        contest?: {
             url: string;
             name: string;
         };
-        alphabet: string;
+        alphabet?: string;
     };
     memoryLimit?: number;
     timeLimit?: number;
@@ -16,6 +16,7 @@ export interface Problem {
 export type Test = {
     input: string;
     output: string;
+    name?: string;
 }
 
 export interface Contest {

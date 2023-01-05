@@ -125,13 +125,10 @@ let g:quickrun_config = {
 \ },
 \}
 
-command! -nargs=1 ProconDownload QuickRun procon/download -args <args>
 command! ProconBrowse QuickRun procon/browse
 command! ProconExec QuickRun procon/exec
-command! ProconTest QuickRun procon/test
-command! -bang ProconSubmit QuickRun procon/submit<bang>
-command! ProconGenerate QuickRun procon/generate
-command! ProconHack QuickRun procon/hack
+" command! ProconGenerate QuickRun procon/generate
+" command! ProconHack QuickRun procon/hack
 '''
 
 # }}}
