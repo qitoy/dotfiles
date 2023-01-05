@@ -1,14 +1,16 @@
 import { Denops } from "https://deno.land/x/denops_std@v3.8.2/mod.ts";
 import { map } from "https://deno.land/x/denops_std@v3.8.2/mapping/mod.ts";
 import { deletebufline, setbufline } from "https://deno.land/x/denops_std@v3.8.2/function/mod.ts";
-import { assertString, ensureObject } from "https://deno.land/x/unknownutil@v2.0.0/mod.ts";
+import { assertString } from "https://deno.land/x/unknownutil@v2.0.0/mod.ts";
 import { templateCpp } from "./cpp.ts";
+import { Contest, Problem } from "./types.ts";
+import { perseResponse } from "./utils.ts";
 
 export async function main(denops: Denops): Promise<void> {
     denops.dispatcher = {
         async proconPrepare(url: unknown): Promise<void> {
             assertString(url);
-            const contest = await getContest(url);
+            const contest = await perseResponse<Contest>("get-contest", url);
             await prepareDir(contest);
             denops.cmd("echo 'dir prepared'");
             await downloadTest(contest);
@@ -32,18 +34,6 @@ export async function main(denops: Denops): Promise<void> {
         },
     );
 }
-
-type Problem = {
-    url: string;
-    context: {
-        alphabet: string;
-    }
-};
-
-type Contest = {
-    name: string;
-    problems: Problem[];
-};
 
 async function prepareDir(contest: Contest): Promise<void> {
     Deno.mkdirSync(contest.name);
@@ -72,18 +62,4 @@ async function downloadTest(contest: Contest): Promise<void> {
         await Deno.writeTextFile(`${problemDir}/.contest_url`, problem.url);
         await p.status();
     }
-}
-
-async function getContest(url: string): Promise<Contest> {
-    const p = Deno.run({
-        cmd: ["oj-api", "get-contest", url],
-        stdin: "null",
-        stdout: "piped",
-        stderr: "null",
-    });
-    const result = ensureObject(JSON.parse(new TextDecoder().decode(await p.output())));
-    if(result.status as string !== "ok") {
-        throw new Error(result.messages as string);
-    }
-    return result.result as Contest;
 }
