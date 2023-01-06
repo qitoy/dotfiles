@@ -5,13 +5,13 @@ import * as fn from "https://deno.land/x/denops_std@v3.8.2/function/mod.ts";
 import { assertString } from "https://deno.land/x/unknownutil@v2.0.0/mod.ts";
 import { templateCpp } from "./cpp.ts";
 import { Contest, Problem } from "./types.ts";
-import { perseResponse } from "./utils.ts";
+import { parseResponse } from "./utils.ts";
 
 export async function main(denops: Denops): Promise<void> {
     denops.dispatcher = {
         async proconPrepare(url: unknown): Promise<void> {
             assertString(url);
-            const contest = await perseResponse<Contest>("get-contest", url);
+            const contest = await parseResponse<Contest>("get-contest", url);
             prepareDir(contest);
             await denops.cmd("echo 'prepared'");
         },
@@ -21,7 +21,7 @@ export async function main(denops: Denops): Promise<void> {
         },
         async proconDownload(url: unknown): Promise<void> {
             assertString(url);
-            const problem = await perseResponse<Problem>("get-problem", url);
+            const problem = await parseResponse<Problem>("get-problem", url);
             Deno.writeTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`, yaml.stringify(problem));
             await denops.cmd("echo 'success.'");
         },
@@ -82,6 +82,6 @@ function prepareDir(contest: Contest): void {
         const problemDir = `${contest.name}/${problem.context.alphabet ?? index+1}`;
         Deno.mkdirSync(problemDir);
         Deno.writeTextFileSync(`${problemDir}/main.cpp`, templateCpp);
-        Deno.writeTextFileSync(`${problemDir}/probleminfo.yaml`, yaml.stringify(await perseResponse<Problem>("get-problem", problem.url)));
+        Deno.writeTextFileSync(`${problemDir}/probleminfo.yaml`, yaml.stringify(await parseResponse<Problem>("get-problem", problem.url)));
     });
 }

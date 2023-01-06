@@ -1,4 +1,4 @@
-export async function perseResponse<T>(...query: string[]): Promise<T> {
+export async function parseResponse<T>(...query: string[]): Promise<T> {
     const p = Deno.run({
         cmd: ["oj-api", ...query],
         stdin: "null",
