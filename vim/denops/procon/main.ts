@@ -12,10 +12,8 @@ export async function main(denops: Denops): Promise<void> {
         async proconPrepare(url: unknown): Promise<void> {
             assertString(url);
             const contest = await perseResponse<Contest>("get-contest", url);
-            await prepareDir(contest);
-            await denops.cmd("echo 'dir prepared'");
-            await downloadTest(contest);
-            await denops.cmd("echo 'test downloaded'");
+            prepareDir(contest);
+            await denops.cmd("echo 'prepared'");
         },
         async proconInit(): Promise<void> {
             await fn.deletebufline(denops, "", 1, "$");
@@ -30,7 +28,9 @@ export async function main(denops: Denops): Promise<void> {
         async proconTest(): Promise<void> {
             const currentDir = await fn.expand(denops, "%:p:h");
             const problem = yaml.parse(Deno.readTextFileSync(`${currentDir}/probleminfo.yaml`)) as Problem;
-            Deno.removeSync(`${currentDir}/test`, { recursive: true });
+            try {
+                Deno.removeSync(`${currentDir}/test`, { recursive: true });
+            } catch { /* do noting */ }
             Deno.mkdirSync(`${currentDir}/test`);
             // TODO
             (problem.tests ?? []).forEach((test, index) => {
@@ -45,6 +45,18 @@ export async function main(denops: Denops): Promise<void> {
             const currentDir = await fn.expand(denops, "%:p:h");
             const problem = yaml.parse(Deno.readTextFileSync(`${currentDir}/probleminfo.yaml`)) as Problem;
             // TODO
+            if(bang !== "!") {
+                try {
+                    Deno.removeSync(`${currentDir}/test`, { recursive: true });
+                } catch { /* do noting */ }
+                Deno.mkdirSync(`${currentDir}/test`);
+                // TODO
+                (problem.tests ?? []).forEach((test, index) => {
+                    const name = test.name ?? `sample-${index+1}`;
+                    Deno.writeTextFileSync(`${currentDir}/test/${name}.in`, test.input);
+                    Deno.writeTextFileSync(`${currentDir}/test/${name}.out`, test.output);
+                });
+            }
             Deno.writeTextFileSync(`${currentDir}/.contest_url`, problem.url);
             await denops.cmd(`QuickRun procon/submit${bang}`);
         },
@@ -64,31 +76,12 @@ export async function main(denops: Denops): Promise<void> {
     );
 }
 
-async function prepareDir(contest: Contest): Promise<void> {
+function prepareDir(contest: Contest): void {
     Deno.mkdirSync(contest.name);
-    await Promise.all(contest.problems.flatMap(async (problem: Problem) => {
-        const problemDir = `${contest.name}/${problem.context.alphabet}`;
-        await Deno.mkdir(problemDir);
-        return [
-            Deno.writeTextFile(`${problemDir}/main.cpp`, templateCpp),
-            Deno.writeTextFile(`${problemDir}/tle.cpp`, templateCpp),
-            Deno.writeTextFile(`${problemDir}/generate.py`, "#!/usr/bin/env python3\nimport random\n").then(
-                () => Deno.chmod(`${problemDir}/generate.py`, 0o777)
-            ),
-        ];
-    }));
-}
-
-async function downloadTest(contest: Contest): Promise<void> {
-    for(const problem of contest.problems) {
-        const problemDir = `${contest.name}/${problem.context.alphabet}`;
-        const p = Deno.run({
-            cmd: ["oj", "download", "-d", `${contest.name}/${problem.context.alphabet}/test/`, problem.url],
-            stdin: "null",
-            stdout: "null",
-            stderr: "null",
-        });
-        await Deno.writeTextFile(`${problemDir}/.contest_url`, problem.url);
-        await p.status();
-    }
+    contest.problems.forEach(async (problem, index) => {
+        const problemDir = `${contest.name}/${problem.context.alphabet ?? index+1}`;
+        Deno.mkdirSync(problemDir);
+        Deno.writeTextFileSync(`${problemDir}/main.cpp`, templateCpp);
+        Deno.writeTextFileSync(`${problemDir}/probleminfo.yaml`, yaml.stringify(await perseResponse<Problem>("get-problem", problem.url)));
+    });
 }
