@@ -21,8 +21,6 @@ repo = 'vim-jp/vimdoc-ja'
 on_ft='help'
 hook_add = 'set helplang=ja'
 
-# {{{ vim-quickrun
-
 [[plugins]]
 repo = 'lambdalisue/vim-quickrun-neovim-job'
 
@@ -34,39 +32,9 @@ repo = 'thinca/vim-quickrun'
 on_cmd = 'QuickRun'
 depends = ['vim-quickrun-neovim-job', 'vim-quickrun-runner-nvimterm']
 hook_add = '''
-let s:done = quickrun#outputter#null#new()
-
-function s:done.finish(session) abort
-  echo 'url saved.'
-endfunction
-
-let s:submit = quickrun#outputter#null#new()
-
-function s:submit.finish(session) abort
-  if confirm('All Test Passed. Are You Submit?', "&Yes\n&No", 2) == 1
-    QuickRun procon/submit!
-  endif
-endfunction
-
 let g:quickrun_config = {
 \ '_': {
 \   'runner': has('nvim') ? 'neovim_job' : 'job',
-\ },
-\ 'test': {
-\   'exec': ['cat %s', 'cat %S'],
-\   'tempfile': '%{tempname()}.txt',
-\ },
-\ 'procon/download': {
-\   'exec': [
-\     'sh -c "echo %a > %{expand("%:p:h:S")}/.contest_url"',
-\     'rm -rf %{expand("%:p:h:S")}/test/',
-\     'oj d -d %{expand("%:p:h:S")}/test/ %a',
-\   ],
-\   'outputter': s:done,
-\ },
-\ 'procon/browse': {
-\   'exec': ['sh -c "open \$(cat %{expand("%:p:h:S")}/.contest_url)"'],
-\   'outputter': 'null',
 \ },
 \ 'procon/exec': {
 \   'exec': [
@@ -80,58 +48,8 @@ let g:quickrun_config = {
 \   'tempfile': '%{tempname()}.cpp',
 \   'hook/sweep/files': ['%S:p:r'],
 \ },
-\ 'procon/test': {
-\   'exec': [
-\     'g++ -std=gnu++17 -Wall -Wextra -DLOCAL -O2 %s -o %s:p:r',
-\     'oj test -N -c %s:p:r --tle 4 -d %{expand("%:p:h:S")}/test/'
-\   ],
-\   'tempfile': '%{tempname()}.cpp',
-\   'hook/sweep/files': ['%S:p:r'],
-\   'outputter/buffer/bufname': 'procon://test',
-\   'outputter/buffer/filetype': 'procon',
-\ },
-\ 'procon/submit': {
-\   'type': 'procon/test',
-\   'outputter': 'error',
-\   'outputter/success': s:submit,
-\   'outputter/error': 'buffer',
-\ },
-\ 'procon/submit!': {
-\   'exec': [
-\     'sh -c "oj-bundle -I ~/Library/cpp-library %s | sed -e ''/#line/d'' > %s:p:r"',
-\     'sh -c "oj submit -y --wait=0 -l 4003 \$(cat %{expand("%:p:h:S")}/.contest_url) %s:p:r"',
-\   ],
-\   'tempfile': '%{tempname()}.cpp',
-\   'outputter': 'null',
-\   'hook/sweep/files': ['%S:p:r'],
-\ },
-\ 'procon/generate': {
-\   'exec': [
-\     'cd %{expand("%:p:h:S")}',
-\     'g++ -std=gnu++17 -Wall -Wextra -DLOCAL -O2 tle.cpp -o tle',
-\     'oj g/i ./generate.py',
-\     'oj g/o -c ./tle',
-\   ],
-\   'hook/sweep/files': ['%{expand("%:p:h:S")}/tle']
-\ },
-\ 'procon/hack': {
-\   'exec': [
-\     'cd %{expand("%:p:h:S")}',
-\     'g++ -std=gnu++17 -Wall -Wextra -DLOCAL -O2 main.cpp -o program',
-\     'g++ -std=gnu++17 -Wall -Wextra -DLOCAL -O2 tle.cpp -o tle',
-\     'timeout 10 oj g/i -c ./tle --hack ./program ./generate.py',
-\   ],
-\   'hook/sweep/files': ['%{expand("%:p:h:S")}/program', '%{expand("%:p:h:S")}/tle']
-\ },
 \}
-
-command! ProconBrowse QuickRun procon/browse
-command! ProconExec QuickRun procon/exec
-" command! ProconGenerate QuickRun procon/generate
-" command! ProconHack QuickRun procon/hack
 '''
-
-# }}}
 
 [[plugins]]
 repo = 'skanehira/denops-translate.vim'

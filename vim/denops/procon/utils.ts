@@ -27,7 +27,7 @@ export async function ojTest(problem: Problem, exec: string[]): Promise<{ succes
         Deno.writeTextFileSync(`${tmpDir}/${name}.out`, test.output);
     });
     const p = Deno.run({
-        cmd: ["sh", "-c", `oj test -N -c '${exec.join(' ')}' --tle ${problem.timeLimit ?? 2} -d ${tmpDir}`],
+        cmd: ["oj", "test", "-N", "-c", exec.join(' '), "--tle", `${problem.timeLimit ?? 2}`, "-d", tmpDir],
         stderr: "piped",
         stdin: "null",
         stdout: "piped",

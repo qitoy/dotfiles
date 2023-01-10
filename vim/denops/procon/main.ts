@@ -26,39 +26,26 @@ export async function main(denops: Denops): Promise<void> {
             await denops.cmd("echo 'success.'");
         },
         async proconTest(): Promise<void> {
-            const currentDir = await fn.expand(denops, "%:p:h");
-            const problem = yaml.parse(Deno.readTextFileSync(`${currentDir}/probleminfo.yaml`)) as Problem;
-            try {
-                Deno.removeSync(`${currentDir}/test`, { recursive: true });
-            } catch { /* do noting */ }
-            Deno.mkdirSync(`${currentDir}/test`);
-            // TODO
-            (problem.tests ?? []).forEach((test, index) => {
-                const name = test.name ?? `sample-${index+1}`;
-                Deno.writeTextFileSync(`${currentDir}/test/${name}.in`, test.input);
-                Deno.writeTextFileSync(`${currentDir}/test/${name}.out`, test.output);
-            });
-            await denops.cmd("QuickRun procon/test");
+            const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
+            const { output } = await cppTest(problem, (await fn.getbufline(denops, "%", 1, "$")).join("\n"));
+            await denops.call("procon#buffer", "test", output);
         },
         async proconSubmit(bang: unknown): Promise<void> {
             assertString(bang);
-            const currentDir = await fn.expand(denops, "%:p:h");
-            const problem = yaml.parse(Deno.readTextFileSync(`${currentDir}/probleminfo.yaml`)) as Problem;
-            // TODO
+            const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
+            const source = (await fn.getbufline(denops, "%", 1, "$")).join("\n");
             if(bang !== "!") {
-                try {
-                    Deno.removeSync(`${currentDir}/test`, { recursive: true });
-                } catch { /* do noting */ }
-                Deno.mkdirSync(`${currentDir}/test`);
-                // TODO
-                (problem.tests ?? []).forEach((test, index) => {
-                    const name = test.name ?? `sample-${index+1}`;
-                    Deno.writeTextFileSync(`${currentDir}/test/${name}.in`, test.input);
-                    Deno.writeTextFileSync(`${currentDir}/test/${name}.out`, test.output);
-                });
+                const { success, output } = await cppTest(problem, source);
+                if(!success) {
+                    await denops.call("procon#buffer", "test", output);
+                    return;
+                }
+                if(await fn.confirm(denops, "Submit?", "&Yes\n&No", 0, "Question") !== 1) {
+                    denops.cmd(`echo "canceled"`);
+                    return;
+                }
             }
-            Deno.writeTextFileSync(`${currentDir}/.contest_url`, problem.url);
-            await denops.cmd(`QuickRun procon/submit${bang}`);
+            await cppSubmit(problem, source);
         },
     };
     await denops.cmd(`command! -nargs=1 ProconPrepare call denops#notify("${denops.name}", "proconPrepare", [<f-args>])`);
@@ -74,6 +61,44 @@ export async function main(denops: Denops): Promise<void> {
             noremap: true,
         },
     );
+}
+
+async function cppTest(problem: Problem, source: string) {
+    const tmpFile = Deno.makeTempFileSync({ suffix: ".cpp" });
+    Deno.writeTextFileSync(tmpFile, source);
+    const p = Deno.run({
+        cmd: ["g++", "-std=gnu++17", "-Wall", "-Wextra", "-DLOCAL", "-O2", tmpFile, "-o", tmpFile.slice(0,-4)],
+        stderr: "null",
+        stdin: "null",
+        stdout: "null",
+    });
+    await p.status();
+    const result = await ojTest(problem, [tmpFile.slice(0,-4)]);
+    Deno.removeSync(tmpFile);
+    Deno.removeSync(tmpFile.slice(0,-4));
+    return result;
+}
+
+async function cppSubmit(problem: Problem, source: string): Promise<void> {
+    const tmpFile = Deno.makeTempFileSync({ suffix: ".cpp" });
+    const submitFile = tmpFile.slice(0,-4);
+    Deno.writeTextFileSync(tmpFile, source);
+    const p1 = Deno.run({
+        cmd: ["oj-bundle", "-I", "/home/qitoy/Library/cpp-library", tmpFile],
+        stdin: "null",
+        stdout: "piped",
+        stderr: "null",
+    });
+    Deno.writeFileSync(submitFile, await p1.output());
+    const p2 = Deno.run({
+        cmd: ["oj", "submit", "-y", "--wait=0", "-l", "4003", problem.url, submitFile],
+        stdin: "null",
+        stdout: "null",
+        stderr: "null",
+    });
+    await p2.status();
+    Deno.removeSync(tmpFile);
+    Deno.removeSync(submitFile);
 }
 
 function prepareDir(contest: Contest): void {
