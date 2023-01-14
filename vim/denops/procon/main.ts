@@ -5,7 +5,13 @@ import * as fn from "https://deno.land/x/denops_std@v3.8.2/function/mod.ts";
 import { assertString } from "https://deno.land/x/unknownutil@v2.0.0/mod.ts";
 import { templateCpp } from "./cpp.ts";
 import { Contest, Problem } from "./types.ts";
-import { parseResponse, ojTest } from "./utils.ts";
+import {
+    parseResponse,
+    ojTest,
+    ojSubmit,
+    cppCompile,
+    cppBundle,
+} from "./utils.ts";
 
 export async function main(denops: Denops): Promise<void> {
     denops.dispatcher = {
@@ -22,22 +28,38 @@ export async function main(denops: Denops): Promise<void> {
         async proconDownload(url: unknown): Promise<void> {
             assertString(url);
             const problem = await parseResponse<Problem>("get-problem", url);
+            (problem.tests ?? []).forEach((test, index, tests) => {
+                if(test.name === undefined) {
+                    tests[index].name = `sample-${index+1}`;
+                }
+            });
             Deno.writeTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`, yaml.stringify(problem));
             await denops.cmd("echo 'success.'");
         },
         async proconTest(): Promise<void> {
             const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
-            const { output } = await cppTest(problem, (await fn.getbufline(denops, "%", 1, "$")).join("\n"));
-            await denops.call("procon#buffer", "test", output);
+            const { execFile } = await cppCompile((await fn.getbufline(denops, "%", 1, "$")).join("\n"));
+            await denops.call("procon#buffer#open", "test");
+            await ojTest(problem, [execFile], async (line) => {
+                await denops.call("procon#buffer#append", "test", line);
+            });
         },
         async proconSubmit(bang: unknown): Promise<void> {
             assertString(bang);
             const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
             const source = (await fn.getbufline(denops, "%", 1, "$")).join("\n");
             if(bang !== "!") {
-                const { success, output } = await cppTest(problem, source);
+                const { execFile } = await cppCompile(source);
+                const output: string[] = [];
+                const success = await ojTest(problem, [execFile], (line) => {
+                    output.push(line);
+                    return Promise.resolve();
+                });
                 if(!success) {
-                    await denops.call("procon#buffer", "test", output);
+                    await denops.batch(
+                        ["procon#buffer#open", "test"],
+                        ["procon#buffer#append", "test", output],
+                    );
                     return;
                 }
                 if(await fn.confirm(denops, "Submit?", "&Yes\n&No", 0, "Question") !== 1) {
@@ -45,7 +67,8 @@ export async function main(denops: Denops): Promise<void> {
                     return;
                 }
             }
-            await cppSubmit(problem, source);
+            const submitFile = await cppBundle(source);
+            await ojSubmit(problem, submitFile);
         },
     };
     await denops.cmd(`command! -nargs=1 ProconPrepare call denops#notify("${denops.name}", "proconPrepare", [<f-args>])`);
@@ -63,50 +86,18 @@ export async function main(denops: Denops): Promise<void> {
     );
 }
 
-async function cppTest(problem: Problem, source: string) {
-    const tmpFile = Deno.makeTempFileSync({ suffix: ".cpp" });
-    Deno.writeTextFileSync(tmpFile, source);
-    const p = Deno.run({
-        cmd: ["g++", "-std=gnu++17", "-Wall", "-Wextra", "-DLOCAL", "-O2", tmpFile, "-o", tmpFile.slice(0,-4)],
-        stderr: "null",
-        stdin: "null",
-        stdout: "null",
-    });
-    await p.status();
-    const result = await ojTest(problem, [tmpFile.slice(0,-4)]);
-    Deno.removeSync(tmpFile);
-    Deno.removeSync(tmpFile.slice(0,-4));
-    return result;
-}
-
-async function cppSubmit(problem: Problem, source: string): Promise<void> {
-    const tmpFile = Deno.makeTempFileSync({ suffix: ".cpp" });
-    const submitFile = tmpFile.slice(0,-4);
-    Deno.writeTextFileSync(tmpFile, source);
-    const p1 = Deno.run({
-        cmd: ["oj-bundle", "-I", "/home/qitoy/Library/cpp-library", tmpFile],
-        stdin: "null",
-        stdout: "piped",
-        stderr: "null",
-    });
-    Deno.writeFileSync(submitFile, await p1.output());
-    const p2 = Deno.run({
-        cmd: ["oj", "submit", "-y", "--wait=0", "-l", "4003", problem.url, submitFile],
-        stdin: "null",
-        stdout: "null",
-        stderr: "null",
-    });
-    await p2.status();
-    Deno.removeSync(tmpFile);
-    Deno.removeSync(submitFile);
-}
-
 function prepareDir(contest: Contest): void {
     Deno.mkdirSync(contest.name);
     contest.problems.forEach(async (problem, index) => {
         const problemDir = `${contest.name}/${problem.context.alphabet ?? index+1}`;
         Deno.mkdirSync(problemDir);
         Deno.writeTextFileSync(`${problemDir}/main.cpp`, templateCpp);
-        Deno.writeTextFileSync(`${problemDir}/probleminfo.yaml`, yaml.stringify(await parseResponse<Problem>("get-problem", problem.url)));
+        problem = await parseResponse<Problem>("get-problem", problem.url);
+        (problem.tests ?? []).forEach((test, index, tests) => {
+            if(test.name === undefined) {
+                tests[index].name = `sample-${index+1}`;
+            }
+        });
+        Deno.writeTextFileSync(`${problemDir}/probleminfo.yaml`, yaml.stringify(problem));
     });
 }

@@ -19,10 +19,41 @@ export async function parseResponse<T>(...query: string[]): Promise<T> {
     return response.result as T;
 }
 
-export async function ojTest(problem: Problem, exec: string[]): Promise<{ success: boolean; output: string[]; }> {
-    const tmpDir = Deno.makeTempDirSync();
-    (problem.tests ?? []).forEach((test, index) => {
-        const name = test.name ?? `sample-${index+1}`;
+export async function cppCompile(source: string): Promise<{ success: boolean, execFile: string }> {
+    const sourceFile = Deno.makeTempFileSync({ prefix: "procon_", suffix: ".cpp" });
+    const execFile = sourceFile.slice(0,-4);
+    Deno.writeTextFileSync(sourceFile, source);
+    const p = Deno.run({
+        cmd: ["g++", "-std=gnu++17", "-Wall", "-Wextra", "-DLOCAL", "-O2", sourceFile, "-o", execFile],
+        stderr: "null",
+        stdin: "null",
+        stdout: "null",
+    });
+    const success = (await p.status()).success;
+    Deno.removeSync(sourceFile);
+    return { success, execFile };
+}
+
+export async function cppBundle(source: string): Promise<string> {
+    const submitFile = Deno.makeTempFileSync({ prefix: "procon_", suffix: ".cpp" });
+    const tmpFile = Deno.makeTempFileSync({ prefix: "procon_", suffix: ".cpp" });
+    Deno.writeTextFileSync(tmpFile, source);
+    const p = Deno.run({
+        cmd: ["oj-bundle", tmpFile],
+        cwd: "/home/qitoy/Library/cpp-library",
+        stdin: "null",
+        stdout: "piped",
+        stderr: "null",
+    });
+    Deno.writeFileSync(submitFile, await p.output());
+    Deno.removeSync(tmpFile);
+    return submitFile;
+}
+
+export async function ojTest(problem: Problem, exec: string[], buffer: (line: string) => Promise<void>): Promise<boolean> {
+    const tmpDir = Deno.makeTempDirSync({ prefix: "procon_" });
+    (problem.tests ?? []).forEach((test) => {
+        const name = test.name!;
         Deno.writeTextFileSync(`${tmpDir}/${name}.in`, test.input);
         Deno.writeTextFileSync(`${tmpDir}/${name}.out`, test.output);
     });
@@ -37,10 +68,20 @@ export async function ojTest(problem: Problem, exec: string[]): Promise<{ succes
         readableStreamFromReader(p.stderr)
     ).pipeThrough(new TextDecoderStream())
     .pipeThrough(new TextLineStream());
-    const output = [];
     for await (const line of stream) {
-        output.push(line);
+        await buffer(line);
     }
-    const success = (await p.status()).success
-    return { success, output, };
+    const success = (await p.status()).success;
+    Deno.removeSync(tmpDir, { recursive: true });
+    return success;
+}
+
+export async function ojSubmit(problem: Problem, file: string): Promise<void> {
+    const p = Deno.run({
+        cmd: ["oj", "submit", "-y", "--wait=0", problem.url, file],
+        stdin: "null",
+        stdout: "null",
+        stderr: "null",
+    });
+    await p.status();
 }
