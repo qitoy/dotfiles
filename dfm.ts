@@ -44,6 +44,7 @@ if(os() == "darwin") {
 } else if(os() == "linux") {
     links.push(
         ["xprofile", "~/.xprofile"],
+        ["config/systemd", "~/.config/systemd"],
     )
 	path.push(
         "~/.deno/bin",
