@@ -21,6 +21,17 @@ repo = 'vim-jp/vimdoc-ja'
 on_ft='help'
 hook_add = 'set helplang=ja'
 
+# {{{ quickfix
+[[plugins]]
+repo = 'thinca/vim-qfreplace'
+on_cmd = 'Qfreplace'
+
+[[plugins]]
+repo = 'itchyny/vim-qfedit'
+on_event = 'QuickFixCmdPre'
+# }}}
+
+# {{{ QuickRun
 [[plugins]]
 repo = 'lambdalisue/vim-quickrun-neovim-job'
 
@@ -50,18 +61,9 @@ let g:quickrun_config = {
 \ },
 \}
 '''
+# }}}
 
-[[plugins]]
-repo = 'skanehira/denops-translate.vim'
-on_cmd = 'Translate'
-
-[[plugins]]
-repo = 'skanehira/denops-silicon.vim'
-on_cmd = 'Silicon'
-hook_add = '''
-let g:silicon_options = #{ font: 'Source Code Pro for Powerline', }
-'''
-
+# {{{ context_filetype
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = 'context_filetype.vim'
@@ -110,6 +112,19 @@ function! s:operator_partedit() abort
 endfunction
 nnoremap <Plug>(leader)p <Cmd>call <SID>operator_partedit()<CR>
 '''
+# }}}
+
+# {{{ denops
+[[plugins]]
+repo = 'skanehira/denops-translate.vim'
+on_cmd = 'Translate'
+
+[[plugins]]
+repo = 'skanehira/denops-silicon.vim'
+on_cmd = 'Silicon'
+hook_add = '''
+let g:silicon_options = #{ font: 'Source Code Pro for Powerline', }
+'''
 
 [[plugins]]
 repo = 'lambdalisue/gin.vim'
@@ -122,9 +137,15 @@ depends = 'denops.vim'
 on_path = ['https://github.com/*', 'gh://*']
 
 [[plugins]]
-repo = 'thinca/vim-qfreplace'
-on_cmd = 'Qfreplace'
+repo = 'yuki-yano/fuzzy-motion.vim'
+depends = 'denops.vim'
+on_cmd = 'FuzzyMotion'
+hook_add = '''
+nnoremap <Plug>(leader)/ <Cmd>FuzzyMotion<CR>
+'''
+# }}}
 
+# {{{ lexima
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = ['InsertEnter']
@@ -176,24 +197,9 @@ endfor
 inoremap <expr> <C-l> UltiSnips#CanExpandSnippet() <Bar><Bar> UltiSnips#CanJumpForwards() ?
 \ '<Cmd>call UltiSnips#ExpandSnippetOrJump()<CR>' : lexima#expand('<LT>C-L>', 'i')
 '''
+# }}}
 
-[[plugins]]
-repo = 'qitoy/sssv'
-on_cmd = 'SSSV'
-
-[[plugins]]
-repo = 'yuki-yano/fuzzy-motion.vim'
-depends = 'denops.vim'
-on_cmd = 'FuzzyMotion'
-hook_add = '''
-nnoremap <Plug>(leader)/ <Cmd>FuzzyMotion<CR>
-'''
-
-[[plugins]]
-repo = 'itchyny/vim-qfedit'
-on_event = 'QuickFixCmdPre'
-
-### pandoc
+# {{{ pandoc
 [[plugins]]
 repo = 'vim-pandoc/vim-pandoc'
 on_ft = ['markdown']
@@ -208,3 +214,8 @@ let g:pandoc#command#autoexec_on_writes = 0
 [[plugins]]
 repo = 'vim-pandoc/vim-pandoc-syntax'
 on_source = ['vim-pandoc']
+# }}}
+
+[[plugins]]
+repo = 'qitoy/sssv'
+on_cmd = 'SSSV'
