@@ -26,6 +26,29 @@ vmap gx <Plug>(openbrowser-smart-search)
 let g:openbrowser_browser_commands = [#{ name: 'w3m', args: ['wezterm', 'cli', 'spawn', '--', '{browser}', '{uri}'] }]
 '''
 
+# {{{ textobj and operator
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'kana/vim-textobj-entire'
+depends = 'vim-textobj-user'
+on_map = '<Plug>(textobj-entire-'
+
+[[plugins]]
+repo = 'kana/vim-textobj-line'
+depends = 'vim-textobj-user'
+on_map = '<Plug>(textobj-line-'
+
+[[plugins]]
+repo = 'machakann/vim-textobj-functioncall'
+depends = 'vim-textobj-user'
+on_map = '<Plug>(textobj-functioncall-'
+
+[[plugins]]
+repo = 'kana/vim-operator-user'
+# }}}
+
 [[plugins]]
 repo = 'machakann/vim-sandwich'
 
