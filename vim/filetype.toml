@@ -7,7 +7,7 @@ let g:tex_conceal = ''
 let g:vim_indent_cont = 0
 
 " dein toml syntax
-autocmd vimrc CursorHold */.vim/*.toml call dein#toml#syntax()
+autocmd vimrc CursorHold */vim/*.toml call dein#toml#syntax()
 
 " Disable default plugins
 let g:loaded_2html_plugin      = v:true
