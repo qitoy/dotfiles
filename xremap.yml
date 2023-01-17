@@ -4,32 +4,3 @@ modmap:
       Space:
         held: Shift_L
         alone: Space
-
-keymap:
-  - remap:
-      Yen: Equal
-      Shift-Yen: Shift-Equal
-      Equal: Minus
-      Shift-Equal: Shift-Minus
-      Minus: Key_0
-      Shift-Minus: Shift-Key_0
-      Key_0: Key_9
-      Shift-Key_0: Shift-Key_9
-      Key_9: Key_8
-      Shift-Key_9: Shift-Key_8
-      Key_8: Key_7
-      Shift-Key_8: Shift-Key_7
-      Key_7: Key_6
-      Shift-Key_7: Shift-Key_6
-      Key_6: Key_5
-      Shift-Key_6: Shift-Key_5
-      Key_5: Key_4
-      Shift-Key_5: Shift-Key_4
-      Key_4: Key_3
-      Shift-Key_4: Shift-Key_3
-      Key_3: Key_2
-      Shift-Key_3: Shift-Key_2
-      Key_2: Key_1
-      Shift-Key_2: Shift-Key_1
-      Key_1: Grave
-      Shift-Key_1: Shift-Grave
