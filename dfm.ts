@@ -43,7 +43,6 @@ if(os() == "darwin") {
 	path.push();
 } else if(os() == "linux") {
     links.push(
-        ["xprofile", "~/.xprofile"],
         ["config/systemd", "~/.config/systemd"],
     )
 	path.push(
