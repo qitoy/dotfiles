@@ -2,7 +2,7 @@ import {
     readableStreamFromReader,
     mergeReadableStreams,
     TextLineStream,
-} from "https://deno.land/std@0.171.0/streams/mod.ts";
+} from "./deps.ts";
 import { Problem } from "./types.ts";
 
 export async function parseResponse<T>(...query: string[]): Promise<T> {
