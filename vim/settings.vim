@@ -14,7 +14,7 @@ augroup vimrc
   autocmd ColorScheme * highlight SignColumn ctermbg=none
   autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
 augroup END
-colorscheme iceberg
+colorscheme carbonfox
 
 " leader関連
 let g:mapleader = ' '

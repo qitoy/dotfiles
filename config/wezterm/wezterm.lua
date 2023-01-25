@@ -12,7 +12,7 @@ return {
     initial_rows = 48,
     use_ime = false,
     font_size = 11.0,
-    color_scheme = "iceberg-dark",
+    color_scheme = "carbonfox",
     window_background_opacity = 0.85,
     hide_tab_bar_if_only_one_tab = true,
     window_decorations = "RESIZE",
