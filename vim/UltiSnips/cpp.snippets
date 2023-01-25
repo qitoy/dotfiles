@@ -8,6 +8,14 @@ snippet priority_queue_greater "use greater"
 priority_queue ${2:Q}(greater<>{}, vector<${1}>{});
 endsnippet
 
+snippet all "begin end" w
+${1}.begin(), $1.end()
+endsnippet
+
+snippet rall "rbegin rend" i
+${1}.rbegin(), $1.rend()
+endsnippet
+
 snippet unique "unique and resize"
 ${1:c}.erase(unique($1.begin(), $1.end()), $1.end());
 endsnippet

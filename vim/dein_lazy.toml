@@ -160,8 +160,6 @@ call lexima#add_rule(#{
 \})
 
 let s:lexima_cpp_rules = [
-\ #{ char: '<C-l>', at: 'all \(\w\+\)\%#',  input: '\<C-W>\<C-W>\1.begin(), \1.end()',   with_submatch: 1 },
-\ #{ char: '<C-l>', at: 'rall \(\w\+\)\%#', input: '\<C-W>\<C-W>\1.rbegin(), \1.rend()', with_submatch: 1 },
 \ ]
 
 for rule in s:lexima_cpp_rules
