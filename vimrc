@@ -19,7 +19,7 @@ let g:dein#install_progress_type = 'floating'
 let g:dein#install_check_diff = v:true
 let g:dein#install_github_api_token = $DEIN_INSTALL_GITHUB_API_TOKEN
 
-let s:vim_dir = fnamemodify(expand('<sfile>'), ':h') . '/.vim/'
+let s:vim_dir = expand('~/.vim/')
 
 let s:toml           = s:vim_dir . 'dein.toml'
 let s:toml_lazy      = s:vim_dir . 'dein_lazy.toml'

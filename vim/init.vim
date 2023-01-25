@@ -1,1 +1,1 @@
-execute 'source' expand('<sfile>:h:h') . '/.vimrc'
+execute 'source' expand('<sfile>:h:h') . '/vimrc'
