@@ -1,6 +1,5 @@
 modmap:
   - remap:
-      CapsLock: Esc
       Space:
         held: Shift_L
         alone: Space
