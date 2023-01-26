@@ -4,7 +4,7 @@ depends = ['denops.vim', 'pum.vim', 'vim-precious']
 on_event = ['InsertEnter', 'CursorHold', 'CmdlineEnter']
 hook_source = '''
 call ddc#custom#patch_global('sources', [
-\  'vim-lsp',
+\  has('nvim') ? 'nvim-lsp' : 'vim-lsp',
 \  'around',
 \  'ultisnips',
 \])
@@ -20,6 +20,10 @@ call ddc#custom#patch_global('sourceOptions', #{
 \    converters: ['converter_fuzzy'],
 \  },
 \  vim-lsp: #{
+\    mark: '| LSP',
+\    forceCompletionPattern: '(\.|:|->|"\w+/*).?',
+\  },
+\  nvim-lsp: #{
 \    mark: '| LSP',
 \    forceCompletionPattern: '(\.|:|->|"\w+/*).?',
 \  },
@@ -121,54 +125,9 @@ depends = 'pum.vim'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-hook_add = '''
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_inlay_hints_enabled = has('nvim')
-let g:lsp_inlay_hints_mode = {
-\ 'normal': ['curline'],
-\}
-let g:lsp_log_file = expand('~/vim-lsp.log')
-
-if executable('wolframscript')
-  autocmd User lsp_setup call lsp#register_server(#{
-  \ name: 'lsp-wl',
-  \ tcp: {server_info -> '127.0.0.1:6536'},
-  \ allowlist: ['wolframscript'],
-  \})
-endif
-
-autocmd vimrc BufEnter *.wls set filetype=wolframscript
-
-function! s:on_lsp_buffer_enabled() abort
-  setlocal signcolumn=yes
-  nmap <buffer> <Plug>(leader)rn <plug>(lsp-rename)
-  nmap <buffer> <Plug>(leader)ca <plug>(lsp-code-action)
-  nmap <buffer> K <plug>(lsp-hover)
-endfunction
-
-augroup lsp_install
-  au!
-  " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
-'''
-hook_post_source = 'call lsp#enable()'
-
-[[plugins]]
-repo = 'mattn/vim-lsp-settings'
-depends = 'vim-lsp'
-on_source = 'vim-lsp'
-
-[[plugins]]
-repo = 'shun/ddc-vim-lsp'
-depends = ['ddc.vim', 'vim-lsp']
-on_source = 'ddc.vim'
-
-[[plugins]]
 repo = 'matsui54/denops-signature_help'
 depends = 'denops.vim'
-on_source = 'vim-lsp'
+on_source = 'ddc.vim'
 hook_source = '''
 call signature_help#enable()
 let g:lsp_signature_help_enabled = 0
@@ -177,7 +136,7 @@ let g:lsp_signature_help_enabled = 0
 [[plugins]]
 repo = 'matsui54/denops-popup-preview.vim'
 depends = 'denops.vim'
-on_source = 'vim-lsp'
+on_source = 'ddc.vim'
 hook_source = '''
 call popup_preview#enable()
 '''
@@ -229,6 +188,7 @@ function s:skkeleton_init() abort
   call skkeleton#config(#{
   \ eggLikeNewline: v:true,
   \ globalDictionaries: [['/usr/share/skk/SKK-JISYO.L', 'euc-jp']],
+  \ userJisyo: "~/.skkeleton",
   \ selectCandidateKeys: 'aoeuhtn',
   \ kanaTable: 'gact10',
   \})
