@@ -45,7 +45,11 @@ call ddu#custom#patch_global(#{
 \   },
 \ },
 \ uiParams: #{
+\   ff: #{
+\     split: has('nvim') ? "floating" : "horizontal",
+\   },
 \   filer: #{
+\     split: has('nvim') ? "floating" : "horizontal",
 \     sort: 'filename',
 \     sortTreesFirst: v:true,
 \   },
