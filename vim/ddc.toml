@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-depends = ['denops.vim', 'pum.vim', 'vim-precious']
+depends = ['denops.vim', 'pum.vim', 'context_filetype.vim']
 on_event = ['InsertEnter', 'CursorHold', 'CmdlineEnter']
 hook_source = '''
 call ddc#custom#patch_global('sources', [
@@ -30,6 +30,7 @@ call ddc#custom#patch_global('sourceOptions', #{
 \  ultisnips: #{ mark: '| US' },
 \  around: #{ mark: '| A' },
 \  necovim: #{ mark: '| vim' },
+\  nvim-lua: #{ mark: '| lua' },
 \  mocword: #{
 \    mark: '| mocword',
 \    minAutoCompleteLength: 3,
@@ -52,8 +53,15 @@ call ddc#custom#patch_global('filterParams', #{
 \})
 
 call ddc#custom#patch_filetype(
-\ ['vim', 'toml'], 'sources', [
+\ ['vim'], 'sources', [
 \  'necovim',
+\  'around',
+\  'ultisnips',
+\ ])
+
+call ddc#custom#patch_filetype(
+\ ['lua'], 'sources', [
+\  'nvim-lua',
 \  'around',
 \  'ultisnips',
 \ ])
@@ -151,6 +159,10 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-nvim-lua'
 on_source = 'ddc.vim'
 
 [[plugins]]
