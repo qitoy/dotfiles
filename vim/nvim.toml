@@ -18,32 +18,15 @@ on_cmd = ['TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor']
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-
-[[plugins]]
-repo = 'williamboman/mason.nvim'
-on_cmd = 'Mason'
-lua_source = '''
-require'mason'.setup{}
-'''
-
-[[plugins]]
-repo = 'williamboman/mason-lspconfig.nvim'
-on_source = 'ddc-source-nvim-lsp'
-depends = ['mason.nvim', 'nvim-lspconfig']
 lua_source = '''
 vim.cmd [[set signcolumn=yes]]
 local nvim_lsp = require'lspconfig'
 nvim_lsp.clangd.setup{}
 nvim_lsp.denols.setup{}
--- nvim_lsp.deno.setup{}
-require'mason-lspconfig'.setup_handlers {
-    function(server_name)
-        nvim_lsp[server_name].setup{}
-    end
-}
+nvim_lsp.texlab.setup{}
 '''
 
 [[plugins]]
 repo = 'Shougo/ddc-source-nvim-lsp'
-depends = 'mason-lspconfig.nvim'
+depends = 'nvim-lspconfig'
 on_source = 'ddc.vim'
