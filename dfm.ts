@@ -14,6 +14,7 @@ const dfm = new Dfm({
 });
 
 const links: [string, string][] = [
+    ["latexmkrc", "~/.latexmkrc"],
     ["w3m", "~/.w3m"],
     ["vim", "~/.vim"],
     ["vim", "~/.config/nvim"],
@@ -35,7 +36,6 @@ const path: string[] = [];
 
 if(os() == "darwin") {
     links.push(
-        ["mac_latexmkrc", "~/.latexmkrc"],
         ["hammerspoon", "~/.hammerspoon"],
 
         ["config/karabiner", "~/.config/karabiner"],
@@ -43,7 +43,6 @@ if(os() == "darwin") {
 	path.push();
 } else if(os() == "linux") {
     links.push(
-        ["linux_latexmkrc", "~/.latexmkrc"],
         ["config/systemd", "~/.config/systemd"],
     )
 	path.push(
