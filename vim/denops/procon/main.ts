@@ -72,11 +72,16 @@ export async function main(denops: Denops): Promise<void> {
             const submitFile = await cppBundle(source);
             await ojSubmit(problem, submitFile);
         },
+        async proconBrowse(): Promise<void> {
+            const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
+            denops.call("openbrowser#open", problem.url);
+        },
     };
     await denops.cmd(`command! -nargs=1 ProconPrepare call denops#notify("${denops.name}", "proconPrepare", [<f-args>])`);
     await denops.cmd(`command! -nargs=1 ProconDownload call denops#notify("${denops.name}", "proconDownload", [<f-args>])`);
     await denops.cmd(`command! ProconTest call denops#notify("${denops.name}", "proconTest", [])`);
     await denops.cmd(`command! -bang ProconSubmit call denops#notify("${denops.name}", "proconSubmit", [<q-bang>])`);
+    await denops.cmd(`command! ProconBrowse call denops#notify("${denops.name}", "proconBrowse", [])`);
     await map(
         denops,
         "<Plug>(procon-init)",
