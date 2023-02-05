@@ -96,7 +96,7 @@ set autowrite
 nnoremap <C-S> <Cmd>update<CR>
 
 " 表示
-set laststatus=2
+let &laststatus = has('nvim') ? 3 : 2
 
 " undo永続化
 set undofile

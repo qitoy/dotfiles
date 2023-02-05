@@ -2,7 +2,8 @@
 export CPLUS_INCLUDE_PATH="$HOME/Library/cpp-library:$CPLUS_INCLUDE_PATH"
 export LIBRARY_PATH="$HOME/Library/cpp-library/boost/lib:$LIBRARY_PATH"
 export CLANGD_FLAGS="--header-insertion=never"
-export EDITOR="vim"
+export EDITOR="nvim"
+export TERMINAL="wezterm"
 
 # PATH
 export MOCWORD_DATA=$HOME/.mocword/mocword.sqlite
