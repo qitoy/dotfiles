@@ -22,7 +22,6 @@ const links: [string, string][] = [
     ["zprofile", "~/.zprofile"],
     ["zshrc", "~/.zshrc"],
     ["gitmessage", "~/.gitmessage"],
-
     ["config/wezterm", "~/.config/wezterm"],
     ["config/powerline-shell", "~/.config/powerline-shell"],
     ["config/git", "~/.config/git"],
@@ -37,13 +36,13 @@ const path: string[] = [];
 if(os() == "darwin") {
     links.push(
         ["hammerspoon", "~/.hammerspoon"],
-
         ["config/karabiner", "~/.config/karabiner"],
     );
 	path.push();
 } else if(os() == "linux") {
     links.push(
         ["config/systemd", "~/.config/systemd"],
+        ["config/i3", "~/.config/i3"],
     )
 	path.push(
         "~/.deno/bin",
