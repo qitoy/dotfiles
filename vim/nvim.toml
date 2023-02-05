@@ -19,11 +19,23 @@ on_cmd = ['TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor']
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
 lua_source = '''
-vim.cmd [[set signcolumn=yes]]
 local nvim_lsp = require'lspconfig'
-nvim_lsp.clangd.setup{}
-nvim_lsp.denols.setup{}
-nvim_lsp.texlab.setup{}
+local on_attach = function(client, bufnr)
+    vim.fn.setbufvar(bufnr, "&signcolumn", "yes")
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+    vim.keymap.set("n", "<Plug>(leader)rn", vim.lsp.buf.rename, bufopts)
+    vim.keymap.set("n", "<Plug>(leader)ca", vim.lsp.buf.code_action, bufopts)
+end
+nvim_lsp.clangd.setup {
+    on_attach = on_attach,
+}
+nvim_lsp.denols.setup {
+    on_attach = on_attach,
+}
+nvim_lsp.texlab.setup {
+    on_attach = on_attach,
+}
 '''
 
 [[plugins]]
