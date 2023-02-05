@@ -40,7 +40,7 @@ export async function main(denops: Denops): Promise<void> {
         },
         async proconTest(): Promise<void> {
             const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
-            const { execFile } = await cppCompile((await fn.getbufline(denops, "%", 1, "$")).join("\n"));
+            const execFile = await cppCompile((await fn.getbufline(denops, "%", 1, "$")).join("\n"));
             await denops.call("procon#buffer#open", "test");
             await ojTest(problem, [execFile], async (line) => {
                 await denops.call("procon#buffer#append", "test", line);
@@ -51,7 +51,7 @@ export async function main(denops: Denops): Promise<void> {
             const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
             const source = (await fn.getbufline(denops, "%", 1, "$")).join("\n");
             if(bang !== "!") {
-                const { execFile } = await cppCompile(source);
+                const execFile = await cppCompile(source);
                 const output: string[] = [];
                 const success = await ojTest(problem, [execFile], (line) => {
                     output.push(line);
