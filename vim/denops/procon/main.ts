@@ -1,22 +1,31 @@
 import {
     yaml,
     Denops,
-    map,
-    fn,
-    assertString,
+    map, fn,
+    assertString, assertObject,
 } from "./deps.ts";
 import { templateCpp } from "./cpp.ts";
 import { Contest, Problem } from "./types.ts";
 import {
     parseResponse,
-    ojTest,
-    ojSubmit,
-    cppCompile,
-    cppBundle,
+    ojTest, ojSubmit,
+    cppCompile, cppBundle,
 } from "./utils.ts";
+import { config, setConfig } from "./config.ts";
 
 export async function main(denops: Denops): Promise<void> {
     denops.dispatcher = {
+        setConfig(newConfig: unknown): Promise<void> {
+            assertObject(newConfig);
+            setConfig(newConfig);
+            return Promise.resolve();
+        },
+
+        getConfig(key: unknown): Promise<unknown> {
+            assertString(key);
+            return Promise.resolve(config[key]);
+        },
+
         async proconPrepare(url: unknown): Promise<void> {
             assertString(url);
             const contest = await parseResponse<Contest>("get-contest", url);
