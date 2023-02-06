@@ -1,11 +1,10 @@
 import {
     yaml,
-    Denops,
-    map, fn,
+    toFileUrl,
+    Denops, map, fn, op,
     assertString, assertObject,
 } from "./deps.ts";
-import { templateCpp } from "./cpp.ts";
-import { Contest, Problem } from "./types.ts";
+import { Contest, Problem, ModuleType } from "./types.ts";
 import {
     parseResponse,
     ojTest, ojSubmit,
@@ -29,13 +28,16 @@ export async function main(denops: Denops): Promise<void> {
         async proconPrepare(url: unknown): Promise<void> {
             assertString(url);
             const contest = await parseResponse<Contest>("get-contest", url);
-            prepareDir(contest);
+            await prepareDir(denops, contest);
             await denops.cmd("echo 'prepared'");
         },
+
         async proconInit(): Promise<void> {
+            const templates = (await getModule(denops)).templates;
             await fn.deletebufline(denops, "", 1, "$");
-            await fn.setbufline(denops, "", 1, templateCpp.split("\n"));
+            await fn.setbufline(denops, "", 1, templates[await fn.expand(denops, "%:t") as string].split("\n"));
         },
+
         async proconDownload(url: unknown): Promise<void> {
             assertString(url);
             const problem = await parseResponse<Problem>("get-problem", url);
@@ -47,6 +49,7 @@ export async function main(denops: Denops): Promise<void> {
             Deno.writeTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`, yaml.stringify(problem));
             await denops.cmd("echo 'success.'");
         },
+
         async proconTest(): Promise<void> {
             const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
             const execFile = await cppCompile((await fn.getbufline(denops, "%", 1, "$")).join("\n"));
@@ -55,6 +58,7 @@ export async function main(denops: Denops): Promise<void> {
                 await denops.call("procon#buffer#append", "test", line);
             });
         },
+
         async proconSubmit(bang: unknown): Promise<void> {
             assertString(bang);
             const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
@@ -81,6 +85,7 @@ export async function main(denops: Denops): Promise<void> {
             const submitFile = await cppBundle(source);
             await ojSubmit(problem, submitFile);
         },
+
         async proconBrowse(): Promise<void> {
             const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
             denops.call("openbrowser#open", problem.url);
@@ -102,12 +107,15 @@ export async function main(denops: Denops): Promise<void> {
     );
 }
 
-function prepareDir(contest: Contest): void {
+async function prepareDir(denops: Denops, contest: Contest): Promise<void> {
     Deno.mkdirSync(contest.name);
+    const templates = (await getModule(denops)).templates;
     contest.problems.forEach(async (problem, index) => {
         const problemDir = `${contest.name}/${problem.context.alphabet ?? index+1}`;
         Deno.mkdirSync(problemDir);
-        Deno.writeTextFileSync(`${problemDir}/main.cpp`, templateCpp);
+        for(const file in templates) {
+            Deno.writeTextFileSync(`${problemDir}/${file}`, templates[file]);
+        }
         problem = await parseResponse<Problem>("get-problem", problem.url);
         (problem.tests ?? []).forEach((test, index, tests) => {
             if(test.name === undefined) {
@@ -116,4 +124,20 @@ function prepareDir(contest: Contest): void {
         });
         Deno.writeTextFileSync(`${problemDir}/probleminfo.yaml`, yaml.stringify(problem));
     });
+}
+
+const cacheModules: Record<string, ModuleType> = {};
+
+async function getModule(denops: Denops): Promise<ModuleType> {
+    const lang = config.lang as string;
+    if(!(lang in cacheModules)) {
+        const path = await fn.globpath(
+            denops,
+            await op.runtimepath.getGlobal(denops),
+            `denops/@procon-${lang}/mod.ts`,
+            1,
+        ) as string;
+        cacheModules[lang] = (await import(toFileUrl(path).href)).Module;
+    }
+    return cacheModules[lang];
 }

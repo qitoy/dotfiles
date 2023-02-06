@@ -1,6 +1,5 @@
 import {
-    mergeReadableStreams,
-    TextLineStream,
+    mergeReadableStreams, TextLineStream,
     $,
     ensureDir,
 } from "./deps.ts";

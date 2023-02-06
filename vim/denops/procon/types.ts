@@ -24,3 +24,9 @@ export interface Contest {
     name: string;
     problems: Problem[];
 }
+
+export type ModuleType = {
+    templates: Record<string, string>;
+    compilePre: (sourcePath: string) => Promise<string>;
+    submitPre: (sourcePath: string) => Promise<string>;
+}

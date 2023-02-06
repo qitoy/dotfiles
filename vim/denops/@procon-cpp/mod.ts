@@ -1,4 +1,7 @@
-export const templateCpp = `/*{{{ begin template */
+import { ModuleType } from "../procon/types.ts";
+
+export const Module: ModuleType = {
+    templates: {"main.cpp": String.raw`/*{{{ begin template */
 #include <bits/stdc++.h>
 using namespace std; using ll = long long;
 template <class T> inline bool chmin(T &a, T b) { if (a > b) { a = b; return true; } return false; }
@@ -11,4 +14,8 @@ void Main() {
 
 
 
-}`
+}`},
+    compilePre: (sourcePath: string) => Promise.resolve(""),
+    submitPre: (sourcePath: string) => Promise.resolve(""),
+
+};
