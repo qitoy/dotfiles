@@ -38,7 +38,7 @@ export async function cppBundle(source: string): Promise<string> {
 }
 
 export async function ojTest(problem: Problem, exec: string[], buffer: (line: string) => Promise<void>): Promise<boolean> {
-    ensureDir("/tmp/procon");
+    await ensureDir("/tmp/procon");
     const tmpDir = Deno.makeTempDirSync({ dir: "/tmp/procon" });
     (problem.tests ?? []).forEach((test) => {
         const name = test.name!;
@@ -46,7 +46,7 @@ export async function ojTest(problem: Problem, exec: string[], buffer: (line: st
         Deno.writeTextFileSync(`${tmpDir}/${name}.out`, test.output);
     });
     const child = $`oj test -N -c ${exec.join(' ')} --tle ${problem.timeLimit ?? 2} -d ${tmpDir}`
-        .stdout("piped").stderr("piped").spawn();
+        .stdout("piped").stderr("piped").noThrow().spawn();
     const stream = mergeReadableStreams(child.stdout(), child.stderr())
     .pipeThrough(new TextDecoderStream())
     .pipeThrough(new TextLineStream());
