@@ -27,6 +27,6 @@ export interface Contest {
 
 export type ModuleType = {
     templates: Record<string, string>;
-    compilePre: (sourcePath: string) => Promise<string>;
+    testPre: (sourcePath: string) => Promise<string[]>;
     submitPre: (sourcePath: string) => Promise<string>;
 }

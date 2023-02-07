@@ -13,30 +13,6 @@ export async function parseResponse<T>(...query: string[]): Promise<T> {
     return response.result as T;
 }
 
-export async function cppCompile(source: string): Promise<string> {
-    ensureDir("/tmp/procon");
-    const sourceFile = Deno.makeTempFileSync({ dir: "/tmp/procon", suffix: ".cpp" });
-    const execFile = sourceFile.slice(0,-4);
-    Deno.writeTextFileSync(sourceFile, source);
-    const result = await $`g++ -std=gnu++17 -Wall -Wextra -DLOCAL -O2 ${sourceFile} -o ${execFile}`.quiet();
-    Deno.removeSync(sourceFile);
-    if(result.code !== 0) {
-        throw Error("Conpile Fault");
-    }
-    return execFile;
-}
-
-export async function cppBundle(source: string): Promise<string> {
-    ensureDir("/tmp/procon");
-    const submitFile = Deno.makeTempFileSync({ dir: "/tmp/procon", suffix: ".cpp" });
-    const tmpFile = Deno.makeTempFileSync({ dir: "/tmp/procon", suffix: ".cpp" });
-    Deno.writeTextFileSync(tmpFile, source);
-    const bundled = await $`oj-bundle ${tmpFile}`.cwd("/home/qitoy/Library/cpp-library").quiet("stderr").bytes();
-    Deno.writeFileSync(submitFile, bundled);
-    Deno.removeSync(tmpFile);
-    return submitFile;
-}
-
 export async function ojTest(problem: Problem, exec: string[], buffer: (line: string) => Promise<void>): Promise<boolean> {
     await ensureDir("/tmp/procon");
     const tmpDir = Deno.makeTempDirSync({ dir: "/tmp/procon" });

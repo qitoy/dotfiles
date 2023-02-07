@@ -1,4 +1,6 @@
 import { ModuleType } from "../procon/types.ts";
+import { ensureDir } from "https://deno.land/std@0.171.0/fs/mod.ts";
+import $ from "https://deno.land/x/dax@0.24.1/mod.ts";
 
 export const Module: ModuleType = {
     templates: {"main.cpp": String.raw`/*{{{ begin template */
@@ -15,7 +17,20 @@ void Main() {
 
 
 }`},
-    compilePre: (sourcePath: string) => Promise.resolve(""),
-    submitPre: (sourcePath: string) => Promise.resolve(""),
+    testPre: async (sourcePath: string) => {
+        const execPath = sourcePath.slice(0, -4);
+        const result = await $`g++ -std=gnu++17 -Wall -Wextra -DLOCAL -O2 ${sourcePath} -o ${execPath}`.quiet();
+        if(result.code !== 0) {
+            throw Error("Conpile Fault");
+        }
+        return [execPath];
+    },
+    submitPre: async (sourcePath: string) => {
+        await ensureDir("/tmp/procon");
+        const submitFile = Deno.makeTempFileSync({ dir: "/tmp/procon", suffix: ".cpp" });
+        const bundled = await $`oj-bundle ${sourcePath}`.cwd("/home/qitoy/Library/cpp-library").quiet("stderr").bytes();
+        Deno.writeFileSync(submitFile, bundled);
+        return submitFile;
+    },
 
 };

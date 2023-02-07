@@ -3,12 +3,12 @@ import {
     toFileUrl,
     Denops, map, fn, op,
     assertString, assertObject,
+    ensureDir,
 } from "./deps.ts";
 import { Contest, Problem, ModuleType } from "./types.ts";
 import {
     parseResponse,
     ojTest, ojSubmit,
-    cppCompile, cppBundle,
 } from "./utils.ts";
 import { config, setConfig } from "./config.ts";
 
@@ -52,21 +52,26 @@ export async function main(denops: Denops): Promise<void> {
 
         async proconTest(): Promise<void> {
             const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
-            const execFile = await cppCompile((await fn.getbufline(denops, "%", 1, "$")).join("\n"));
+            await ensureDir("/tmp/procon");
+            const sourcePath = Deno.makeTempFileSync({ dir: "/tmp/procon", suffix: (config.lang2ext as Record<string,string>)[config.lang as string] });
+            Deno.writeTextFileSync(sourcePath, (await fn.getbufline(denops, "%", 1, "$")).join("\n"));
+            const exec = await (await getModule(denops)).testPre(sourcePath);
             await denops.call("procon#buffer#open", "test");
-            await ojTest(problem, [execFile], async (line) => {
+            await ojTest(problem, exec, async (line) => {
                 await denops.call("procon#buffer#append", "test", line);
             });
+            Deno.removeSync(sourcePath);
         },
 
         async proconSubmit(bang: unknown): Promise<void> {
             assertString(bang);
             const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
-            const source = (await fn.getbufline(denops, "%", 1, "$")).join("\n");
+            const sourcePath = Deno.makeTempFileSync({ dir: "/tmp/procon", suffix: (config.lang2ext as Record<string,string>)[config.lang as string] });
+            Deno.writeTextFileSync(sourcePath, (await fn.getbufline(denops, "%", 1, "$")).join("\n"));
             if(bang !== "!") {
-                const execFile = await cppCompile(source);
+                const exec = await (await getModule(denops)).testPre(sourcePath);
                 const output: string[] = [];
-                const success = await ojTest(problem, [execFile], (line) => {
+                const success = await ojTest(problem, exec, (line) => {
                     output.push(line);
                     return Promise.resolve();
                 });
@@ -82,7 +87,7 @@ export async function main(denops: Denops): Promise<void> {
                     return;
                 }
             }
-            const submitFile = await cppBundle(source);
+            const submitFile = await (await getModule(denops)).submitPre(sourcePath);
             await ojSubmit(problem, submitFile);
         },
 
