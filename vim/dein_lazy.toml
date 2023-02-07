@@ -137,6 +137,9 @@ let g:silicon_options = #{ font: 'Source Code Pro for Powerline', }
 repo = 'lambdalisue/gin.vim'
 depends = 'denops.vim'
 on_cmd = ['Gin', 'GinBranch', 'GinChaperon', 'GinDiff', 'GinEdit', 'GinPatch', 'GinStatus']
+hook_add = '''
+nnoremap gs <Cmd>GinStatus<CR>
+'''
 
 [[plugins]]
 repo = 'skanehira/denops-gh.vim'
