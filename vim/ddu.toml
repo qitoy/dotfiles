@@ -139,6 +139,8 @@ nnoremap <buffer> v
 nnoremap <buffer><nowait> s
 \ <Cmd>call ddu#ui#filer#do_action('itemAction',
 \ #{ name: 'open', params: #{ command: 'split' } })<CR>
+nnoremap <buffer><nowait> z
+\ <Cmd>call ddu#ui#filer#do_action('expandItem', #{ mode: "toggle" })<CR>
 '''
 
 # sources

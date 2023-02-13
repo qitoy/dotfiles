@@ -24,6 +24,7 @@ local on_attach = function(client, bufnr)
     vim.fn.setbufvar(bufnr, "&signcolumn", "yes")
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+    vim.keymap.set("n", "<Plug>(leader)ge", vim.diagnostic.open_float, bufopts)
     vim.keymap.set("n", "<Plug>(leader)rn", vim.lsp.buf.rename, bufopts)
     vim.keymap.set("n", "<Plug>(leader)ca", vim.lsp.buf.code_action, bufopts)
 end
@@ -34,6 +35,9 @@ nvim_lsp.denols.setup {
     on_attach = on_attach,
 }
 nvim_lsp.texlab.setup {
+    on_attach = on_attach,
+}
+nvim_lsp.rust_analyzer.setup {
     on_attach = on_attach,
 }
 '''
