@@ -95,6 +95,7 @@ export async function main(denops: Denops): Promise<void> {
     await denops.cmd(`command! ProconTest call denops#notify("${denops.name}", "proconTest", [])`);
     await denops.cmd(`command! -bang ProconSubmit call denops#notify("${denops.name}", "proconSubmit", [<q-bang>])`);
     await denops.cmd(`command! ProconBrowse call denops#notify("${denops.name}", "proconBrowse", [])`);
+    await denops.cmd(`command! -nargs=1 ProconConfig call procon#config(<args>)`);
     await map(
         denops,
         "<Plug>(procon-init)",
@@ -107,6 +108,7 @@ export async function main(denops: Denops): Promise<void> {
 }
 
 async function prepareDir(denops: Denops, contest: Contest): Promise<void> {
+    await (await getModule(denops)).preparePre(contest);
     Deno.mkdirSync(contest.name);
     const templates = (await getModule(denops)).templates;
     contest.problems.forEach(async (problem, index) => {
