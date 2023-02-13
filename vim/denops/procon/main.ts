@@ -3,7 +3,6 @@ import {
     toFileUrl,
     Denops, map, fn, op,
     assertString, assertObject,
-    ensureDir,
 } from "./deps.ts";
 import { Contest, Problem, ModuleType } from "./types.ts";
 import {
@@ -52,22 +51,17 @@ export async function main(denops: Denops): Promise<void> {
 
         async proconTest(): Promise<void> {
             const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
-            await ensureDir("/tmp/procon");
-            const sourcePath = Deno.makeTempFileSync({ dir: "/tmp/procon", suffix: (config.lang2ext as Record<string,string>)[config.lang as string] });
-            Deno.writeTextFileSync(sourcePath, (await fn.getbufline(denops, "%", 1, "$")).join("\n"));
-            const exec = await (await getModule(denops)).testPre(sourcePath);
+            const exec = await (await getModule(denops)).testPre(await fn.expand(denops, "%:p") as string);
             await denops.call("procon#buffer#open", "test");
             await ojTest(problem, exec, async (line) => {
                 await denops.call("procon#buffer#append", "test", line);
             });
-            Deno.removeSync(sourcePath);
         },
 
         async proconSubmit(bang: unknown): Promise<void> {
             assertString(bang);
             const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
-            const sourcePath = Deno.makeTempFileSync({ dir: "/tmp/procon", suffix: (config.lang2ext as Record<string,string>)[config.lang as string] });
-            Deno.writeTextFileSync(sourcePath, (await fn.getbufline(denops, "%", 1, "$")).join("\n"));
+            const sourcePath = await fn.expand(denops, "%:p") as string;
             if(bang !== "!") {
                 const exec = await (await getModule(denops)).testPre(sourcePath);
                 const output: string[] = [];

@@ -18,7 +18,8 @@ void Main() {
 
 }`},
     testPre: async (sourcePath: string) => {
-        const execPath = sourcePath.slice(0, -4);
+        await ensureDir("/tmp/procon");
+        const execPath = await Deno.makeTempFile({ dir: "/tmp/procon" });
         const result = await $`g++ -std=gnu++17 -Wall -Wextra -DLOCAL -O2 ${sourcePath} -o ${execPath}`.quiet();
         if(result.code !== 0) {
             throw Error("Conpile Fault");
@@ -27,9 +28,11 @@ void Main() {
     },
     submitPre: async (sourcePath: string) => {
         await ensureDir("/tmp/procon");
+        const tmpPath = await Deno.makeTempFile({ dir: "/tmp/procon", suffix: ".cpp" });
+        await Deno.copyFile(sourcePath, tmpPath);
         const submitFile = Deno.makeTempFileSync({ dir: "/tmp/procon", suffix: ".cpp" });
-        const bundled = await $`oj-bundle ${sourcePath}`.cwd("/home/qitoy/Library/cpp-library").quiet("stderr").bytes();
-        Deno.writeFileSync(submitFile, bundled);
+        const bundled = await $`oj-bundle ${tmpPath}`.cwd("/home/qitoy/Library/cpp-library").quiet("stderr").bytes();
+        await Deno.writeFile(submitFile, bundled);
         return submitFile;
     },
 

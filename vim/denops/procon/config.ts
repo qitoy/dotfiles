@@ -1,10 +1,5 @@
 export const config: Record<string, unknown> = {
     lang: "cpp",
-    lang2ext: {
-        cpp: ".cpp",
-        python: ".py",
-        rust: ".rs",
-    },
 };
 
 export function setConfig(newConfig: Record<string, unknown>) {
