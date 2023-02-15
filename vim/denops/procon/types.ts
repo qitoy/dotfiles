@@ -29,5 +29,5 @@ export type ModuleType = {
     templates: Record<string, string>;
     testPre: (sourcePath: string) => Promise<string[]>;
     submitPre: (sourcePath: string) => Promise<string>;
-    preparePre: (contest: Contest) => Promise<void>;
+    preparePost: (contestDir: string, problemDirs: string[]) => Promise<void>;
 }

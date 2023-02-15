@@ -35,6 +35,6 @@ void Main() {
         await Deno.writeFile(submitFile, bundled);
         return submitFile;
     },
-    preparePre: () => Promise.resolve(),
+    preparePost: () => Promise.resolve(),
 
 };
