@@ -3,7 +3,9 @@ import { ensureDir } from "https://deno.land/std@0.171.0/fs/mod.ts";
 import $ from "https://deno.land/x/dax@0.24.1/mod.ts";
 
 export const Module: ModuleType = {
-    templates: {"main.cpp": String.raw`/*{{{ begin template */
+    main: {
+        name: "main.cpp",
+        source: String.raw`/*{{{ begin template */
 #include <bits/stdc++.h>
 using namespace std; using ll = long long;
 template <class T> inline bool chmin(T &a, T b) { if (a > b) { a = b; return true; } return false; }
@@ -16,7 +18,8 @@ void Main() {
 
 
 
-}`},
+}`,
+    },
     testPre: async (sourcePath: string) => {
         await ensureDir("/tmp/procon");
         const execPath = await Deno.makeTempFile({ dir: "/tmp/procon" });

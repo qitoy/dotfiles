@@ -110,15 +110,13 @@ export async function main(denops: Denops): Promise<void> {
 async function prepareDir(denops: Denops, contest: Contest): Promise<void> {
     const contestDir = contest.url.replace(/^https:\/\/(\w+)\..+\/(\w+)$/, "$1/$2");
     Deno.mkdirSync(contestDir, { recursive: true });
-    const templates = (await getModule(denops)).templates;
+    const main = (await getModule(denops)).main;
     const problemDirs: string[] = [];
     contest.problems.forEach(async (problem, index) => {
         problemDirs.push(`${problem.context.alphabet ?? index+1}`);
         const problemDir = `${contestDir}/${problem.context.alphabet ?? index+1}`;
         Deno.mkdirSync(problemDir);
-        for(const file in templates) {
-            Deno.writeTextFileSync(`${problemDir}/${file}`, templates[file]);
-        }
+        Deno.writeTextFileSync(`${problemDir}/${main.name}`, main.source);
         problem = await parseResponse<Problem>("get-problem", problem.url);
         (problem.tests ?? []).forEach((test, index, tests) => {
             if(test.name === undefined) {

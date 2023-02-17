@@ -5,20 +5,17 @@ import { join, dirname } from "https://deno.land/std@0.171.0/path/mod.ts";
 const rootDir = "/home/qitoy/procon/Rust";
 
 export const Module: ModuleType = {
-    templates: {"main.rs": String.raw`use proconio::input;
+    main: {
+        name: "main.rs",
+        source: String.raw`use proconio::input;
 
 fn main() {
     todo!();
-}`},
+}`
+    },
+
     testPre: async (sourcePath: string) => {
-        const bin = (() => {
-            if(dirname(sourcePath) === rootDir) {
-                return "main";
-            } else {
-                const path = sourcePath.split("/");
-                return `${path.at(-4)}-${path.at(-3)}-${path.at(-2)?.toLowerCase()}`;
-            }
-        })();
+        const bin = makeBinname(sourcePath);
         const result = await $`cargo build --bin ${bin}`
             .cwd(dirname(sourcePath)).quiet();
         if(result.code !== 0) {
@@ -26,7 +23,18 @@ fn main() {
         }
         return [join(rootDir, "target", "debug", bin)];
     },
-    submitPre: (sourcePath: string) => Promise.resolve(sourcePath),
+
+    // deno-lint-ignore require-await
+    submitPre: async (sourcePath: string) => {
+        // const bin = makeBinname(sourcePath);
+        // await ensureDir("/tmp/procon");
+        // const submitPath = await Deno.makeTempFile({ dir: "/tmp/procon", suffix: ".rs" });
+        // await $`cargo executable-payload --bin ${bin} -o ${submitPath}`
+        //     .cwd(dirname(sourcePath)).quiet();
+        // return submitPath;
+        return sourcePath;
+    },
+
     preparePost: async (contestDir: string, problemDirs: string[]) => {
         await Deno.writeTextFile(
             join(contestDir, "Cargo.toml"),
@@ -86,5 +94,13 @@ smallvec = "=1.2.0"
             );
         }
     },
-
 };
+
+function makeBinname(sourcePath: string): string {
+    if(dirname(sourcePath) === rootDir) {
+        return "main";
+    } else {
+        const path = sourcePath.split("/");
+        return `${path.at(-4)}-${path.at(-3)}-${path.at(-2)?.toLowerCase()}`;
+    }
+}
