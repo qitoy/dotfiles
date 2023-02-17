@@ -2,25 +2,43 @@ import {
     mergeReadableStreams, TextLineStream,
     $,
     ensureDir,
+    z,
 } from "./deps.ts";
-import { Problem } from "./types.ts";
+import {
+    Problem, problemSchema,
+    Contest, contestSchema,
+} from "./types.ts";
 
-export async function parseResponse<T>(...query: string[]): Promise<T> {
-    const response = await $`oj-api ${query}`.stderr("null").json();
-    if(response.status as string !== "ok") {
-        throw Error((response.messages as string[]).join('\n'));
+const responseSchema = z.object({
+    status: z.string(),
+    messages: z.array(z.string()),
+    result: z.unknown().nullable(),
+});
+
+async function parseResponse(...query: string[]) {
+    const response = responseSchema.parse(await $`oj-api ${query}`.stderr("null").json());
+    if(response.status !== "ok") {
+        throw Error((response.messages).join('\n'));
     }
-    return response.result as T;
+    return response!.result;
+}
+
+export async function getProblem(url: string): Promise<Problem> {
+    return problemSchema.parse(await parseResponse("get-problem", url));
+}
+
+export async function getContest(url: string): Promise<Contest> {
+    return contestSchema.parse(await parseResponse("get-contest", url));
 }
 
 export async function ojTest(problem: Problem, exec: string[], buffer: (line: string) => Promise<void>): Promise<boolean> {
     await ensureDir("/tmp/procon");
     const tmpDir = Deno.makeTempDirSync({ dir: "/tmp/procon" });
-    (problem.tests ?? []).forEach((test) => {
+    for(const test of problem.tests) {
         const name = test.name!;
-        Deno.writeTextFileSync(`${tmpDir}/${name}.in`, test.input);
-        Deno.writeTextFileSync(`${tmpDir}/${name}.out`, test.output);
-    });
+        await Deno.writeTextFile(`${tmpDir}/${name}.in`, test.input);
+        await Deno.writeTextFile(`${tmpDir}/${name}.out`, test.output);
+    }
     const child = $`oj test -N -c ${exec.join(' ')} --tle ${problem.timeLimit ?? 2} -d ${tmpDir}`
         .stdout("piped").stderr("piped").noThrow().spawn();
     const stream = mergeReadableStreams(child.stdout(), child.stderr())

@@ -4,9 +4,13 @@ import {
     Denops, map, fn, op,
     assertString, assertObject,
 } from "./deps.ts";
-import { Contest, Problem, ModuleType } from "./types.ts";
 import {
-    parseResponse,
+    Contest,
+    Problem, problemSchema,
+    ModuleType,
+} from "./types.ts";
+import {
+    getContest, getProblem,
     ojTest, ojSubmit,
 } from "./utils.ts";
 import { config, setConfig } from "./config.ts";
@@ -26,20 +30,19 @@ export async function main(denops: Denops): Promise<void> {
 
         async proconPrepare(url: unknown): Promise<void> {
             assertString(url);
-            const contest = await parseResponse<Contest>("get-contest", url);
+            const contest = await getContest(url);
             await prepareDir(denops, contest);
-            await denops.cmd("echo 'prepared'");
         },
 
         async proconInit(): Promise<void> {
-            const templates = (await getModule(denops)).templates;
+            const main = (await getModule(denops)).main;
             await fn.deletebufline(denops, "", 1, "$");
-            await fn.setbufline(denops, "", 1, templates[await fn.expand(denops, "%:t") as string].split("\n"));
+            await fn.setbufline(denops, "", 1, main.source.split("\n"));
         },
 
         async proconDownload(url: unknown): Promise<void> {
             assertString(url);
-            const problem = await parseResponse<Problem>("get-problem", url);
+            const problem = await getProblem(url);
             (problem.tests ?? []).forEach((test, index, tests) => {
                 if(test.name === undefined) {
                     tests[index].name = `sample-${index+1}`;
@@ -50,7 +53,7 @@ export async function main(denops: Denops): Promise<void> {
         },
 
         async proconTest(): Promise<void> {
-            const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
+            const problem = await readProblem(denops);
             const exec = await (await getModule(denops)).testPre(await fn.expand(denops, "%:p") as string);
             await denops.call("procon#buffer#open", "test");
             await ojTest(problem, exec, async (line) => {
@@ -60,7 +63,7 @@ export async function main(denops: Denops): Promise<void> {
 
         async proconSubmit(bang: unknown): Promise<void> {
             assertString(bang);
-            const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
+            const problem = await readProblem(denops);
             const sourcePath = await fn.expand(denops, "%:p") as string;
             if(bang !== "!") {
                 const exec = await (await getModule(denops)).testPre(sourcePath);
@@ -86,7 +89,7 @@ export async function main(denops: Denops): Promise<void> {
         },
 
         async proconBrowse(): Promise<void> {
-            const problem = yaml.parse(Deno.readTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)) as Problem;
+            const problem = await readProblem(denops);
             denops.call("openbrowser#open", problem.url);
         },
     };
@@ -107,25 +110,35 @@ export async function main(denops: Denops): Promise<void> {
     );
 }
 
+async function readProblem(denops: Denops): Promise<Problem> {
+    return problemSchema.parse(yaml.parse(await Deno.readTextFile(
+        `${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`)));
+}
+
 async function prepareDir(denops: Denops, contest: Contest): Promise<void> {
-    const contestDir = contest.url.replace(/^https:\/\/(\w+)\..+\/(\w+)$/, "$1/$2");
+    const contestDir = contest.url.replace(/^https:\/\/(\w+)\..+\/([^/]+)$/, "$1/$2");
     Deno.mkdirSync(contestDir, { recursive: true });
     const main = (await getModule(denops)).main;
     const problemDirs: string[] = [];
-    contest.problems.forEach(async (problem, index) => {
-        problemDirs.push(`${problem.context.alphabet ?? index+1}`);
-        const problemDir = `${contestDir}/${problem.context.alphabet ?? index+1}`;
+    for(const problem of contest.problems) {
+        problemDirs.push(`${problem.context.alphabet}`);
+        const problemDir = `${contestDir}/${problem.context.alphabet}`;
         Deno.mkdirSync(problemDir);
         Deno.writeTextFileSync(`${problemDir}/${main.name}`, main.source);
-        problem = await parseResponse<Problem>("get-problem", problem.url);
-        (problem.tests ?? []).forEach((test, index, tests) => {
+    }
+    await denops.cmd("echo 'directory prepared'");
+    for(const _problem of contest.problems) {
+        const problemDir = `${contestDir}/${_problem.context.alphabet}`;
+        const problem = await getProblem(_problem.url);
+        problem.tests.forEach((test, index, tests) => {
             if(test.name === undefined) {
                 tests[index].name = `sample-${index+1}`;
             }
         });
         Deno.writeTextFileSync(`${problemDir}/probleminfo.yaml`, yaml.stringify(problem));
-    });
+    }
     await (await getModule(denops)).preparePost(contestDir, problemDirs);
+    await denops.cmd("echo 'test downloaded'");
 }
 
 const cacheModules: Record<string, ModuleType> = {};
