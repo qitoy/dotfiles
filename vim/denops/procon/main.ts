@@ -48,7 +48,7 @@ export async function main(denops: Denops): Promise<void> {
                     tests[index].name = `sample-${index+1}`;
                 }
             });
-            Deno.writeTextFileSync(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`, yaml.stringify(problem));
+            await Deno.writeTextFile(`${await fn.expand(denops, "%:p:h")}/probleminfo.yaml`, yaml.stringify(problem));
             await denops.cmd("echo 'success.'");
         },
 
@@ -117,14 +117,14 @@ async function readProblem(denops: Denops): Promise<Problem> {
 
 async function prepareDir(denops: Denops, contest: Contest): Promise<void> {
     const contestDir = contest.url.replace(/^https:\/\/(\w+)\..+\/([^/]+)$/, "$1/$2");
-    Deno.mkdirSync(contestDir, { recursive: true });
+    await Deno.mkdir(contestDir, { recursive: true });
     const main = (await getModule(denops)).main;
     const problemDirs: string[] = [];
     for(const problem of contest.problems) {
         problemDirs.push(`${problem.context.alphabet}`);
         const problemDir = `${contestDir}/${problem.context.alphabet}`;
-        Deno.mkdirSync(problemDir);
-        Deno.writeTextFileSync(`${problemDir}/${main.name}`, main.source);
+        await Deno.mkdir(problemDir);
+        await Deno.writeTextFile(`${problemDir}/${main.name}`, main.source);
     }
     await denops.cmd("echo 'directory prepared'");
     for(const _problem of contest.problems) {
@@ -135,7 +135,7 @@ async function prepareDir(denops: Denops, contest: Contest): Promise<void> {
                 tests[index].name = `sample-${index+1}`;
             }
         });
-        Deno.writeTextFileSync(`${problemDir}/probleminfo.yaml`, yaml.stringify(problem));
+        await Deno.writeTextFile(`${problemDir}/probleminfo.yaml`, yaml.stringify(problem));
     }
     await (await getModule(denops)).preparePost(contestDir, problemDirs);
     await denops.cmd("echo 'test downloaded'");

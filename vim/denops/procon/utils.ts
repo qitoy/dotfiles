@@ -33,13 +33,13 @@ export async function getContest(url: string): Promise<Contest> {
 
 export async function ojTest(problem: Problem, exec: string[], buffer: (line: string) => Promise<void>): Promise<boolean> {
     await ensureDir("/tmp/procon");
-    const tmpDir = Deno.makeTempDirSync({ dir: "/tmp/procon" });
+    const tmpDir = await Deno.makeTempDir({ dir: "/tmp/procon" });
     for(const test of problem.tests) {
         const name = test.name!;
         await Deno.writeTextFile(`${tmpDir}/${name}.in`, test.input);
         await Deno.writeTextFile(`${tmpDir}/${name}.out`, test.output);
     }
-    const child = $`oj test -N -c ${exec.join(' ')} --tle ${problem.timeLimit ?? 2} -d ${tmpDir}`
+    const child = $`oj test -N -c ${exec.join(' ')} --tle 2 -d ${tmpDir}`
         .stdout("piped").stderr("piped").noThrow().spawn();
     const stream = mergeReadableStreams(child.stdout(), child.stderr())
     .pipeThrough(new TextDecoderStream())
@@ -48,7 +48,7 @@ export async function ojTest(problem: Problem, exec: string[], buffer: (line: st
         await buffer(line);
     }
     const success = (await child).code === 0;
-    Deno.removeSync(tmpDir, { recursive: true });
+    await Deno.remove(tmpDir, { recursive: true });
     return success;
 }
 
