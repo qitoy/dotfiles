@@ -1,6 +1,9 @@
 import { ModuleType } from "../procon/types.ts";
 import { ensureDir } from "https://deno.land/std@0.171.0/fs/mod.ts";
+import { join } from "https://deno.land/std@0.171.0/path/mod.ts";
 import $ from "https://deno.land/x/dax@0.24.1/mod.ts";
+
+const libPath = join(Deno.env.get("HOME")!, ".local", "include", "cpp-library");
 
 export const Module: ModuleType = {
     main: {
@@ -34,7 +37,7 @@ void Main() {
         const tmpPath = await Deno.makeTempFile({ dir: "/tmp/procon", suffix: ".cpp" });
         await Deno.copyFile(sourcePath, tmpPath);
         const submitFile = Deno.makeTempFileSync({ dir: "/tmp/procon", suffix: ".cpp" });
-        const bundled = await $`oj-bundle ${tmpPath}`.cwd("/home/qitoy/Library/cpp-library").quiet("stderr").bytes();
+        const bundled = await $`oj-bundle ${tmpPath}`.cwd(libPath).quiet("stderr").bytes();
         await Deno.writeFile(submitFile, bundled);
         return submitFile;
     },

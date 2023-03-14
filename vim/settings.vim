@@ -23,7 +23,7 @@ let g:maplocalleader = '\'
 nmap <leader> <Plug>(leader)
 
 " for cpp-library
-execute 'set path+=' . expand('~/Library/cpp-library')
+execute 'set path+=' . expand('~/.local/include/cpp-library')
 
 " 便利コマンド
 command! -nargs=* Make

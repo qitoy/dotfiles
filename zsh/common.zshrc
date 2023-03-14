@@ -1,6 +1,6 @@
 # export
-export CPLUS_INCLUDE_PATH="$HOME/Library/cpp-library:$CPLUS_INCLUDE_PATH"
-export LIBRARY_PATH="$HOME/Library/cpp-library/boost/lib:$LIBRARY_PATH"
+export CPLUS_INCLUDE_PATH="$HOME/.local/include/boost:$HOME/.local/include/cpp-library:$CPLUS_INCLUDE_PATH"
+export LIBRARY_PATH="$HOME/.local/lib/boost:$LIBRARY_PATH"
 export CLANGD_FLAGS="--header-insertion=never"
 export EDITOR="nvim"
 export TERMINAL="wezterm"
@@ -48,6 +48,9 @@ bindkey "^I" expand-or-complete-prefix
 
 autoload -U select-word-style
 select-word-style bash
+
+# opam
+[[ ! -r $HOME/.opam/opam-init/init.zsh ]] || source $HOME/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 # powerline-shell
 function powerline_precmd() {

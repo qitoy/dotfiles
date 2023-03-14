@@ -126,6 +126,7 @@ async function prepareDir(denops: Denops, contest: Contest): Promise<void> {
         await Deno.mkdir(problemDir);
         await Deno.writeTextFile(`${problemDir}/${main.name}`, main.source);
     }
+    await (await getModule(denops)).preparePost(contestDir, problemDirs);
     await denops.cmd("echo 'directory prepared'");
     for(const _problem of contest.problems) {
         const problemDir = `${contestDir}/${_problem.context.alphabet}`;
@@ -137,7 +138,6 @@ async function prepareDir(denops: Denops, contest: Contest): Promise<void> {
         });
         await Deno.writeTextFile(`${problemDir}/probleminfo.yaml`, yaml.stringify(problem));
     }
-    await (await getModule(denops)).preparePost(contestDir, problemDirs);
     await denops.cmd("echo 'test downloaded'");
 }
 
