@@ -43,6 +43,9 @@ if(os() == "darwin") {
     links.push(
         ["config/systemd", "~/.config/systemd"],
         ["config/i3", "~/.config/i3"],
+        ["config/sway", "~/.config/sway"],
+        ["config/swaylock", "~/.config/swaylock"],
+        ["config/waybar", "~/.config/waybar"],
     )
 	path.push(
         "~/.deno/bin",
