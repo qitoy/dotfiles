@@ -80,6 +80,7 @@ inoremap <silent><expr> <TAB>
 \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
 \ '<TAB>' : ddc#map#manual_complete()
 inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+inoremap <C-Y> <Cmd>call pum#map#confirm()<CR>
 
 " Use cmdline ddc
 call ddc#custom#patch_global('autoCompleteEvents', [

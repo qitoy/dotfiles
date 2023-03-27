@@ -14,13 +14,11 @@ fn main() {
     todo!();
 }
 
-use proconio::{
-    input,
-    marker::*,
-};
+use proconio::{ input, marker::* };
 use ac_library_rs::ModInt998244353 as Mint;
-use itertools::Itertools;
-use qitoy::prelude::*;
+use itertools::{Itertools, iproduct};
+use num::integer::Integer;
+use qitoy_prelude::*;
 `
     },
 
@@ -65,7 +63,7 @@ pathfinding = "=4.2.1"
 recur-fn = "=2.2.0"
 indexing = "=0.4.1"
 index_vec = "=0.1.3"
-with_locals = "=0.3.0"
+# with_locals = "=0.3.0"
 amplify = "=3.13.0"
 ouroboros = "=0.15.5"
 easy-ext = "=1.0.1"
@@ -109,7 +107,14 @@ whiteread = "=0.5.0"
 rustc-hash = "=1.1.0"
 smallvec = "=1.10.0"
 
-qitoy = { path = "${join(Deno.env.get("HOME")!, ".local", "include", "rust-library")}" }
+qitoy-prelude = { git = "https://github.com/qitoy/rust-library.git" }
+qitoy-algorithm-mo = { git = "https://github.com/qitoy/rust-library.git" }
+qitoy-utils-float2uint = { git = "https://github.com/qitoy/rust-library.git" }
+qitoy-math-combi = { git = "https://github.com/qitoy/rust-library.git" }
+qitoy-prime-sieve = { git = "https://github.com/qitoy/rust-library.git" }
+qitoy-prime-check = { git = "https://github.com/qitoy/rust-library.git" }
+qitoy-prime-factorise = { git = "https://github.com/qitoy/rust-library.git" }
+qitoy-string-rolling_hash = { git = "https://github.com/qitoy/rust-library.git" }
 `, /*}}}*/
         );
         for(const problemDir of problemDirs) {

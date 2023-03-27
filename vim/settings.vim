@@ -6,14 +6,6 @@ augroup END
 
 " colorscheme
 set background=dark
-augroup vimrc
-  autocmd ColorScheme * highlight Normal ctermbg=none
-  autocmd ColorScheme * highlight NonText ctermbg=none
-  autocmd ColorScheme * highlight LineNr ctermbg=none
-  autocmd ColorScheme * highlight Folded ctermbg=none
-  autocmd ColorScheme * highlight SignColumn ctermbg=none
-  autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
-augroup END
 colorscheme carbonfox
 
 " leader関連
