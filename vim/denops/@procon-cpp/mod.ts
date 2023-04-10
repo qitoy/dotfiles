@@ -1,4 +1,4 @@
-import { ModuleType } from "../procon/types.ts";
+import { ModuleType } from "https://raw.githubusercontent.com/qitoy/dps-procon.vim/main/denops/procon/types.ts";
 import { ensureDir } from "https://deno.land/std@0.171.0/fs/mod.ts";
 import { join } from "https://deno.land/std@0.171.0/path/mod.ts";
 import $ from "https://deno.land/x/dax@0.24.1/mod.ts";
@@ -41,6 +41,4 @@ void Main() {
         await Deno.writeFile(submitFile, bundled);
         return submitFile;
     },
-    preparePost: () => Promise.resolve(),
-
 };

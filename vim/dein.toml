@@ -61,3 +61,7 @@ if $DENOPS_DEBUG
 let g:denops#debug = 1
 endif
 '''
+
+[[plugins]]
+repo = 'qitoy/dps-procon.vim'
+depends = 'denops.vim'
