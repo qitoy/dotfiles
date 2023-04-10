@@ -16,10 +16,6 @@ output eDP-1 scale 1
 # notification
 exec mako
 
-# bright
-bindsym $mod+F1 exec light -U 5
-bindsym $mod+F2 exec light -A 5
-
 # screen lock
 exec swayidle -w \
     timeout 150 'light -T 0.5' \
@@ -27,6 +23,26 @@ exec swayidle -w \
     timeout 300 'swaylock -f && swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' \
     before-sleep 'swaylock -f'
+
+# from vim-jp
+for_window [app_id="froat_nvim"] floating enable
+bindsym $mod+c exec sh ~/.config/sway/clip.sh
+
+# wob
+set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
+
+# bright
+bindsym $mod+F1 exec light -U 5 && light -G | cut -d'.' -f1 > $WOBSOCK
+bindsym $mod+F2 exec light -A 5 && light -G | cut -d'.' -f1 > $WOBSOCK
+
+# volume
+bindsym $mod+F10 exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && \
+    wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100*($3=="")}' > $WOBSOCK
+bindsym $mod+F11 exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && \
+    wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100*($3=="")}' > $WOBSOCK
+bindsym $mod+F12 exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && \
+    wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100*($3=="")}' > $WOBSOCK
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -190,8 +206,4 @@ bar {
     swaybar_command waybar
 }
 
-# enable fcitx
-exec fcitx5
-
-for_window [class="thunderbird"] move scratchpad
 for_window [class="^.*"] border pixel 1
