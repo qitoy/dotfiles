@@ -200,7 +200,11 @@ function s:skkeleton_init() abort
   call skkeleton#register_kanatable('gact10', g:vimrc#gACT10, v:true)
   call skkeleton#config(#{
   \ eggLikeNewline: v:true,
-  \ globalDictionaries: [['/usr/share/skk/SKK-JISYO.L', 'euc-jp']],
+  \ globalDictionaries: [
+  \   ['/usr/share/skk/SKK-JISYO.L', 'euc-jp'],
+  \   '~/.skk/SKK-JISYO.emoji.utf8',
+  \   '~/.skk/SKK-JISYO.edict'
+  \ ],
   \ userJisyo: "~/.skkeleton",
   \ selectCandidateKeys: 'aoeuhtn',
   \ kanaTable: 'gact10',

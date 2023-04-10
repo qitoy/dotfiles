@@ -27,6 +27,17 @@ repo = 'vim-jp/vimdoc-ja'
 on_ft='help'
 hook_add = 'set helplang=ja'
 
+[[plugins]]
+repo = 'segeljakt/vim-silicon'
+on_cmd = 'Silicon'
+hook_add = '''
+let g:silicon = {
+\ 'theme': 'Solarized (dark)',
+\ 'font': 'UDEV Gothic 35LG',
+\ 'output': '~/Documents/silicon-{time:%Y-%m-%d-%H%M%S}.png',
+\}
+'''
+
 # {{{ quickfix
 [[plugins]]
 repo = 'thinca/vim-qfreplace'
@@ -127,13 +138,6 @@ repo = 'skanehira/denops-translate.vim'
 on_cmd = 'Translate'
 
 [[plugins]]
-repo = 'skanehira/denops-silicon.vim'
-on_cmd = 'Silicon'
-hook_add = '''
-let g:silicon_options = #{ font: 'Source Code Pro for Powerline', }
-'''
-
-[[plugins]]
 repo = 'lambdalisue/gin.vim'
 depends = 'denops.vim'
 on_cmd = ['Gin', 'GinBranch', 'GinChaperon', 'GinDiff', 'GinEdit', 'GinPatch', 'GinStatus']
@@ -153,6 +157,11 @@ on_cmd = 'FuzzyMotion'
 hook_add = '''
 nnoremap <Plug>(leader)/ <Cmd>FuzzyMotion<CR>
 '''
+
+[[plugins]]
+repo = 'gamoutatsumi/dps-ghosttext.vim'
+depends = 'denops.vim'
+on_cmd = 'GhostStart'
 # }}}
 
 # {{{ lexima

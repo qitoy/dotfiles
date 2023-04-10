@@ -46,3 +46,10 @@ nvim_lsp.rust_analyzer.setup {
 repo = 'Shougo/ddc-source-nvim-lsp'
 depends = 'nvim-lspconfig'
 on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'rcarriga/nvim-notify'
+on_lua = 'notify'
+lua_add = '''
+vim.notify = require"notify"
+'''

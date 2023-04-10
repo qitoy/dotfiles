@@ -43,3 +43,6 @@ repo = 'shun/ddc-vim-lsp'
 depends = ['ddc.vim', 'vim-lsp']
 on_source = 'ddc.vim'
 
+[[plugins]]
+repo = 'mattn/vim-notification'
+
