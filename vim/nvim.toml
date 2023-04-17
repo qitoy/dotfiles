@@ -3,6 +3,15 @@ repo = 'nvim-treesitter/nvim-treesitter'
 on_event = ['BufRead', 'CursorHold']
 hook_post_update = 'TSUpdate'
 lua_source = '''
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.satysfi = {
+  install_info = {
+    url = "https://github.com/monaqa/tree-sitter-satysfi", -- local path or git repo
+    files = {"src/parser.c", "src/scanner.c"}
+  },
+  filetype = "satysfi", -- if filetype does not agrees with parser name
+}
+
 require'nvim-treesitter.configs'.setup {
     ensure_installed = 'all',
     highlight = {
@@ -19,7 +28,7 @@ on_cmd = ['TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor']
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
 lua_source = '''
-local nvim_lsp = require'lspconfig'
+local lspconfig = require'lspconfig'
 local on_attach = function(client, bufnr)
     vim.fn.setbufvar(bufnr, "&signcolumn", "yes")
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -28,16 +37,30 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<Plug>(leader)rn", vim.lsp.buf.rename, bufopts)
     vim.keymap.set("n", "<Plug>(leader)ca", vim.lsp.buf.code_action, bufopts)
 end
-nvim_lsp.clangd.setup {
+lspconfig.clangd.setup {
     on_attach = on_attach,
 }
-nvim_lsp.denols.setup {
+lspconfig.denols.setup {
     on_attach = on_attach,
 }
-nvim_lsp.texlab.setup {
+lspconfig.texlab.setup {
     on_attach = on_attach,
 }
-nvim_lsp.rust_analyzer.setup {
+lspconfig.rust_analyzer.setup {
+    on_attach = on_attach,
+}
+local configs = require 'lspconfig.configs'
+if not configs.satysfi_ls then
+    configs.satysfi_ls = {
+        default_config = {
+            cmd = { 'satysfi-language-server' },
+            filetypes = { 'satysfi' },
+            root_dir = lspconfig.util.root_pattern('.git'),
+            settings = {},
+        },
+    }
+end
+lspconfig.satysfi_ls.setup {
     on_attach = on_attach,
 }
 '''
