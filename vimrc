@@ -19,34 +19,24 @@ let g:dein#install_progress_type = 'floating'
 let g:dein#install_check_diff = v:true
 let g:dein#install_github_api_token = $DEIN_INSTALL_GITHUB_API_TOKEN
 
-let s:vim_dir = expand('~/.vim/')
+let $VIM_DIR = expand('~/.vim')
 
-let s:toml           = s:vim_dir . 'dein.toml'
-let s:lazy_toml      = s:vim_dir . 'dein_lazy.toml'
-let s:vim_toml       = s:vim_dir . 'vim.toml'
-let s:nvim_toml      = s:vim_dir . 'nvim.toml'
-let s:ddc_toml       = s:vim_dir . 'ddc.toml'
-let s:ddu_toml       = s:vim_dir . 'ddu.toml'
-let s:filetype_toml  = s:vim_dir . 'filetype.toml'
-
-let g:dein#inline_vimrcs = [s:vim_dir . 'settings.vim']
+let g:dein#inline_vimrcs = ['$VIM_DIR/settings.vim']
 
 if dein#load_state(s:cache . '/dein')
   " Required:
-  call dein#begin(s:cache . '/dein', [
-  \ expand('<sfile>'), s:toml, s:lazy_toml, s:nvim_toml, s:ddc_toml, s:ddu_toml, s:filetype_toml
-  \])
+  call dein#begin(s:cache . '/dein', expand('<sfile>'))
 
-  call dein#load_toml(s:toml, {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+  call dein#load_toml('$VIM_DIR/dein.toml', {'lazy': 0})
+  call dein#load_toml('$VIM_DIR/dein_lazy.toml', {'lazy': 1})
   if has('nvim')
-    call dein#load_toml(s:nvim_toml, {'lazy': 1})
+    call dein#load_toml('$VIM_DIR/nvim.toml', {'lazy': 1})
   else
-    call dein#load_toml(s:vim_toml, {'lazy': 1})
+    call dein#load_toml('$VIM_DIR/vim.toml', {'lazy': 1})
   endif
-  call dein#load_toml(s:ddc_toml, {'lazy': 1})
-  call dein#load_toml(s:ddu_toml, {'lazy': 1})
-  call dein#load_toml(s:filetype_toml)
+  call dein#load_toml('$VIM_DIR/ddc.toml', {'lazy': 1})
+  call dein#load_toml('$VIM_DIR/ddu.toml', {'lazy': 1})
+  call dein#load_toml('$VIM_DIR/filetype.toml')
 
   " Required:
   call dein#end()
