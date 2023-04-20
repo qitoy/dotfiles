@@ -41,26 +41,20 @@ on_cmd = ['TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor']
 repo = 'neovim/nvim-lspconfig'
 lua_source = '''
 local lspconfig = require'lspconfig'
-local on_attach = function(client, bufnr)
-    vim.fn.setbufvar(bufnr, "&signcolumn", "yes")
-    local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-    vim.keymap.set("n", "<Plug>(leader)e", vim.diagnostic.open_float, bufopts)
-    vim.keymap.set("n", "<Plug>(leader)rn", vim.lsp.buf.rename, bufopts)
-    vim.keymap.set("n", "<Plug>(leader)ca", vim.lsp.buf.code_action, bufopts)
-end
-lspconfig.clangd.setup {
-    on_attach = on_attach,
-}
-lspconfig.denols.setup {
-    on_attach = on_attach,
-}
-lspconfig.texlab.setup {
-    on_attach = on_attach,
-}
-lspconfig.rust_analyzer.setup {
-    on_attach = on_attach,
-}
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    callback = function(ev)
+        local bufopts = { noremap = true, silent = true, buffer = ev.buf }
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+        vim.keymap.set("n", "<Plug>(leader)e", vim.diagnostic.open_float, bufopts)
+        vim.keymap.set("n", "<Plug>(leader)rn", vim.lsp.buf.rename, bufopts)
+        vim.keymap.set("n", "<Plug>(leader)ca", vim.lsp.buf.code_action, bufopts)
+    end
+})
+lspconfig.clangd.setup {}
+lspconfig.denols.setup {}
+lspconfig.texlab.setup {}
+lspconfig.rust_analyzer.setup {}
 local configs = require 'lspconfig.configs'
 if not configs.satysfi_ls then
     configs.satysfi_ls = {
@@ -72,9 +66,7 @@ if not configs.satysfi_ls then
         },
     }
 end
-lspconfig.satysfi_ls.setup {
-    on_attach = on_attach,
-}
+lspconfig.satysfi_ls.setup {}
 '''
 
 [[plugins]]

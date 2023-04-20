@@ -19,7 +19,6 @@ endif
 autocmd vimrc BufEnter *.wls set filetype=wolframscript
 
 function! s:on_lsp_buffer_enabled() abort
-  setlocal signcolumn=yes
   nmap <buffer> <Plug>(leader)rn <plug>(lsp-rename)
   nmap <buffer> <Plug>(leader)ca <plug>(lsp-code-action)
   nmap <buffer> K <plug>(lsp-hover)
