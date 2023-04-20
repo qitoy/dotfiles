@@ -38,6 +38,24 @@ let g:silicon = {
 \}
 '''
 
+[[plugins]]
+repo = 'terryma/vim-expand-region'
+on_map = '<Plug>(expand_region'
+hook_add = '''
+xnoremap v <Plug>(expand_region_expand)
+xnoremap V <Plug>(expand_region_shrink)
+'''
+
+[[plugins]]
+repo = 'haya14busa/vim-asterisk'
+on_map = '<Plug>(asterisk-'
+hook_add = '''
+noremap * <Plug>(asterisk-z*)
+noremap # <Plug>(asterisk-z#)
+noremap g* <Plug>(asterisk-gz*)
+noremap g# <Plug>(asterisk-gz#)
+'''
+
 # {{{ quickfix
 [[plugins]]
 repo = 'thinca/vim-qfreplace'

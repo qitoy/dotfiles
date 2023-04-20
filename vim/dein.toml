@@ -28,6 +28,9 @@ nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 '''
 
+[[plugins]]
+repo = 'andymass/vim-matchup'
+
 # {{{ textobj and operator
 [[plugins]]
 repo = 'kana/vim-textobj-user'
