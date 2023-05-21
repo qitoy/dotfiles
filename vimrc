@@ -2,6 +2,10 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
+if has('nvim')
+  lua if vim.loader then vim.loader.enable() end
+endif
+
 " dein install
 let s:cache = expand('~/.cache')
 if !isdirectory(s:cache)
@@ -30,7 +34,8 @@ if dein#load_state(s:cache . '/dein')
   call dein#load_toml('$VIM_DIR/dein.toml', {'lazy': 0})
   call dein#load_toml('$VIM_DIR/dein_lazy.toml', {'lazy': 1})
   if has('nvim')
-    call dein#load_toml('$VIM_DIR/nvim.toml', {'lazy': 1})
+    call dein#load_toml('$VIM_DIR/nvim.toml', {'lazy': 0})
+    call dein#load_toml('$VIM_DIR/nvim_lazy.toml', {'lazy': 1})
   else
     call dein#load_toml('$VIM_DIR/vim.toml', {'lazy': 1})
   endif
