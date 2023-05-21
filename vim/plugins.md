@@ -1,4 +1,5 @@
 # 使用Vimプラグイン一覧
+- [David-Kunz/treesitter-unit](https://github.com/David-Kunz/treesitter-unit)
 - [EdenEast/nightfox.nvim](https://github.com/EdenEast/nightfox.nvim)
 - [Shougo/context_filetype.vim](https://github.com/Shougo/context_filetype.vim)
 - [Shougo/ddc-source-around](https://github.com/Shougo/ddc-source-around)
@@ -7,6 +8,7 @@
 - [Shougo/ddc-source-mocword](https://github.com/Shougo/ddc-source-mocword)
 - [Shougo/ddc-source-nvim-lsp](https://github.com/Shougo/ddc-source-nvim-lsp)
 - [Shougo/ddc-source-nvim-lua](https://github.com/Shougo/ddc-source-nvim-lua)
+- [Shougo/ddc-source-zsh](https://github.com/Shougo/ddc-source-zsh)
 - [Shougo/ddc-ui-pum](https://github.com/Shougo/ddc-ui-pum)
 - [Shougo/ddc.vim](https://github.com/Shougo/ddc.vim)
 - [Shougo/ddu-column-filename](https://github.com/Shougo/ddu-column-filename)
@@ -18,6 +20,7 @@
 - [Shougo/ddu-ui-filer](https://github.com/Shougo/ddu-ui-filer)
 - [Shougo/ddu.vim](https://github.com/Shougo/ddu.vim)
 - [Shougo/dein.vim](https://github.com/Shougo/dein.vim)
+- [Shougo/deol.nvim](https://github.com/Shougo/deol.nvim)
 - [Shougo/neco-vim](https://github.com/Shougo/neco-vim)
 - [Shougo/pum.vim](https://github.com/Shougo/pum.vim)
 - [SirVer/ultisnips](https://github.com/SirVer/ultisnips)
