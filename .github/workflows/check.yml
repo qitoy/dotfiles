@@ -11,12 +11,7 @@ jobs:
           - ubuntu-latest
     runs-on: ${{ matrix.runner }}
     steps:
-      - uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x
       - name: clone
         run: git clone https://github.com/qitoy/dotfiles.git ~/dotfiles
       - name: set symlink
-        run: ~/dotfiles/dfm.ts sync
-      - name: check
-        run: ~/dotfiles/dfm.ts stat
+        run: ~/dotfiles/mklink.sh
