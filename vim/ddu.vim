@@ -42,10 +42,16 @@ call ddu#custom#patch_global(#{
 \ },
 \ uiParams: #{
 \   ff: #{
-\     split: has('nvim') ? "floating" : "horizontal",
+\     split: "floating",
+\     winHeight: &lines * 4 / 5,
+\     winWidth: &columns * 4 / 5,
+\     winRow: &lines / 10,
 \   },
 \   filer: #{
-\     split: has('nvim') ? "floating" : "horizontal",
+\     split: "floating",
+\     winHeight: &lines * 4 / 5,
+\     winWidth: &columns * 4 / 5,
+\     winRow: &lines / 10,
 \     sort: 'filename',
 \     sortTreesFirst: v:true,
 \   },

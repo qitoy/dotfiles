@@ -74,6 +74,10 @@ call ddc#custom#patch_filetype(
 \ 'around',
 \ ])
 
+call ddc#custom#patch_filetype(['satysfi'], #{
+\ keywordPattern: '(\w|-)*',
+\ })
+
 " Use pum.vim
 call ddc#custom#patch_global('ui', 'pum')
 
@@ -100,7 +104,7 @@ call ddc#custom#patch_filetype(['deol'], #{
 \})
 
 " Use ddc.
-call ddc#enable()
+call ddc#enable(#{ context_filetype: has('nvim') ? 'treesitter' : 'context_filetype' })
 " }}}
 
 " hook_add {{{

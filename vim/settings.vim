@@ -90,6 +90,7 @@ nnoremap <C-S> <Cmd>update<CR>
 " 表示
 let &laststatus = has('nvim') ? 3 : 2
 set signcolumn=no
+set nohlsearch
 
 " undo永続化
 set undofile

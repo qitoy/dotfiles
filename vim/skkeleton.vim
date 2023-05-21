@@ -1,5 +1,5 @@
 " hook_add {{{
-let s:keymap = {
+let s:gact10 = {
 \ "!": ["！"],
 \ "'": ["あん"],
 \ ",": ["、"],
@@ -513,8 +513,9 @@ let s:keymap = {
 
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
+
 function s:skkeleton_init() abort
-  call skkeleton#register_kanatable('gact10', s:keymap, v:true)
+  call skkeleton#register_kanatable('gact10', s:gact10, v:true)
   call skkeleton#config(#{
   \ eggLikeNewline: v:true,
   \ globalDictionaries: [
@@ -527,8 +528,27 @@ function s:skkeleton_init() abort
   \ kanaTable: 'gact10',
   \})
 endfunction
+
 augroup skkeleton-initialize-pre
   autocmd!
   autocmd User skkeleton-initialize-pre call s:skkeleton_init()
+augroup END
+
+function s:skkeleton_set_keymap() abort
+  lnoremap <buffer> " <Cmd>call skkeleton#handle('handleKey', #{key: ';'})<CR><Cmd>call skkeleton#handle('handleKey', #{key: ''''})<CR>
+endfunction
+
+function s:skkeleton_del_keymap() abort
+  " lunmap <buffer> "
+endfunction
+
+augroup skkeleton-enable-post
+  autocmd!
+  autocmd User skkeleton-enable-post call s:skkeleton_set_keymap()
+augroup END
+
+augroup skkeleton-disable-post
+  autocmd!
+  autocmd User skkeleton-disable-post call s:skkeleton_del_keymap()
 augroup END
 " }}}
