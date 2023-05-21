@@ -40,6 +40,12 @@ call ddc#custom#patch_global('sourceOptions', #{
 \  cmdline-history: #{
 \    mark: '| history',
 \  },
+\  zsh: #{
+\    mark: '| zsh',
+\  },
+\  shell-history: #{
+\    mark: '| shell',
+\  },
 \})
 
 call ddc#custom#patch_global('filterParams', #{
@@ -80,8 +86,18 @@ inoremap <C-Y> <Cmd>call pum#map#confirm()<CR>
 
 " Use cmdline ddc
 call ddc#custom#patch_global('autoCompleteEvents', [
-\  'InsertEnter', 'TextChangedI', 'TextChangedP', 'CmdlineChanged',
+\ 'InsertEnter', 'TextChangedI', 'TextChangedP',
+\ 'CmdlineEnter', 'CmdlineChanged', 'TextChangedT',
 \])
+
+" Use terminal ddc
+call ddc#enable_terminal_completion()
+
+call ddc#custom#patch_filetype(['deol'], #{
+\ specialBufferCompletion: v:true,
+\ keywordPattern: '[0-9a-zA-Z_./#:-]*',
+\ sources: ['zsh', 'shell-history', 'around'],
+\})
 
 " Use ddc.
 call ddc#enable()

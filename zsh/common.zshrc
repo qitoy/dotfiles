@@ -24,6 +24,8 @@ autoload -Uz _zinit
 
 zinit light zsh-users/zsh-autosuggestions
 
+zmodload zsh/zpty
+
 # history
 export HISTFILE=$HOME/.zsh_history
 export HISTSIZE=10000

@@ -185,6 +185,11 @@ on_cmd = 'GhostStart'
 repo = '~/GitHub/dps-camp.vim'
 depends = 'denops.vim'
 on_cmd = ['CampTest', 'CampSubmit']
+
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+on_cmd = ['Deol', 'DeolCd', 'DeolEdit']
+hooks_file = '$VIM_DIR/deol.vim'
 # }}}
 
 # {{{ lexima

@@ -69,6 +69,10 @@ repo = 'Shougo/ddc-source-cmdline-history'
 on_source = 'ddc.vim'
 
 [[plugins]]
+repo = 'Shougo/ddc-source-zsh'
+on_source = 'ddc.vim'
+
+[[plugins]]
 repo = 'vim-skk/skkeleton'
 depends = 'denops.vim'
 on_event = 'InsertEnter'
