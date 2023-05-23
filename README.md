@@ -4,10 +4,8 @@
 
 ## install
 
-depends deno
-
-```bash
+```zsh
 git clone https://github.com/qitoy/dotfiles.git ~/dotfiles
-~/dotfiles/dfm.ts sync
+~/dotfiles/mklink.sh
 ```
 
