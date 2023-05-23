@@ -66,5 +66,8 @@ endif
 '''
 
 [[plugins]]
-repo = 'qitoy/dps-procon.vim'
-depends = 'denops.vim'
+repo = 'rcarriga/nvim-notify'
+if = 'has("nvim")'
+lua_add = '''
+vim.notify = require"notify"
+'''

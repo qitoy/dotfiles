@@ -170,6 +170,11 @@ depends = 'denops.vim'
 on_cmd = 'GhostStart'
 
 [[plugins]]
+repo = 'qitoy/dps-procon.vim'
+on_cmd = ['ProconTest', 'ProconSubmit', 'ProconDownload']
+depends = 'denops.vim'
+
+[[plugins]]
 repo = '~/GitHub/dps-camp.vim'
 depends = 'denops.vim'
 on_cmd = ['CampTest', 'CampSubmit', 'CampOpen']
@@ -177,7 +182,14 @@ on_cmd = ['CampTest', 'CampSubmit', 'CampOpen']
 [[plugins]]
 repo = 'Shougo/deol.nvim'
 on_cmd = ['Deol', 'DeolCd', 'DeolEdit']
-hooks_file = '$VIM_DIR/deol.vim'
+hook_source = '''
+let g:deol#shell_history_path = '~/.zsh-history'
+
+tnoremap <expr> <Tab> pum#visible() ?
+\ '<Cmd>call pum#map#insert_relative(+1)<CR>' : '<Tab>'
+tnoremap <expr> <S-Tab> pum#visible() ?
+\ '<Cmd>call pum#map#insert_relative(-1)<CR>' : '<S-Tab>'
+'''
 # }}}
 
 # {{{ lexima
