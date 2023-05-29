@@ -66,6 +66,10 @@ endif
 '''
 
 [[plugins]]
+repo = 'Shougo/shougo-s-github'
+if = false
+
+[[plugins]]
 repo = 'rcarriga/nvim-notify'
 if = 'has("nvim")'
 lua_add = '''

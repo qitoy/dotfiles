@@ -2,7 +2,7 @@
 repo = 'Shougo/ddc.vim'
 depends = ['denops.vim', 'pum.vim', 'context_filetype.vim']
 on_event = ['InsertEnter', 'CursorHold', 'CmdlineEnter']
-hooks_file = '$VIM_DIR/ddc.vim'
+hooks_file = '$VIM_HOOKS/ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/pum.vim'
@@ -76,7 +76,7 @@ on_source = 'ddc.vim'
 repo = 'vim-skk/skkeleton'
 depends = 'denops.vim'
 on_event = 'InsertEnter'
-hooks_file = '$VIM_DIR/skkeleton.vim'
+hooks_file = '$VIM_HOOKS/skkeleton.vim'
 
 # Install your filters
 [[plugins]]
