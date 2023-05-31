@@ -47,9 +47,10 @@ call ddu#custom#patch_global(#{
 \     winHeight: &lines * 4 / 5,
 \     winWidth: &columns * 4 / 5,
 \     winRow: &lines / 10,
+\     floatingBorder: "double",
 \   },
 \   filer: #{
-\     split: "floating",
+\     split: has('nvim') ? "floating" : "no",
 \     winHeight: &lines * 4 / 5,
 \     winWidth: &columns * 4 / 5,
 \     winRow: &lines / 10,
