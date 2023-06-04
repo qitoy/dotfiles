@@ -82,10 +82,10 @@ call ddc#custom#patch_filetype(['satysfi'], #{
 call ddc#custom#patch_global('ui', 'pum')
 
 inoremap <silent><expr> <TAB>
-\ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+\ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1, "loop")<CR>' :
 \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
 \ '<TAB>' : ddc#map#manual_complete()
-inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1, 'loop')<CR>
 inoremap <C-Y> <Cmd>call pum#map#confirm()<CR>
 
 " Use cmdline ddc
@@ -113,9 +113,9 @@ nnoremap : <Cmd>call CommandlinePre()<CR>:
 function! CommandlinePre() abort
   " Note: It disables default command line completion!
   cnoremap <expr> <Tab>
-  \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+  \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1, "loop")<CR>' :
   \ ddc#map#manual_complete()
-  cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+  cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1, 'loop')<CR>
 
   autocmd User DDCCmdlineLeave ++once call CommandlinePost()
 

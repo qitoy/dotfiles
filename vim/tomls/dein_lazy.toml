@@ -185,10 +185,11 @@ on_cmd = ['Deol', 'DeolCd', 'DeolEdit']
 hook_source = '''
 let g:deol#shell_history_path = '~/.zsh-history'
 
+tnoremap <Esc> <C-\><C-n>
 tnoremap <expr> <Tab> pum#visible() ?
-\ '<Cmd>call pum#map#insert_relative(+1)<CR>' : '<Tab>'
+\ '<Cmd>call pum#map#insert_relative(+1, "loop")<CR>' : '<Tab>'
 tnoremap <expr> <S-Tab> pum#visible() ?
-\ '<Cmd>call pum#map#insert_relative(-1)<CR>' : '<S-Tab>'
+\ '<Cmd>call pum#map#insert_relative(-1, "loop")<CR>' : '<S-Tab>'
 '''
 # }}}
 
