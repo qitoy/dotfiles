@@ -43,17 +43,15 @@ call ddu#custom#patch_global(#{
 \ },
 \ uiParams: #{
 \   ff: #{
-\     split: "floating",
-\     winHeight: &lines * 4 / 5,
-\     winWidth: &columns * 4 / 5,
-\     winRow: &lines / 10,
-\     floatingBorder: "double",
+\     split: "horizontal",
+\     previewSplit: "horizontal",
+\     autoAction: #{
+\       name: 'preview',
+\       previewCmds: ['bat', '-n', '%s', '-r', '%b:%e', '--highlight-line', '%l'],
+\     },
 \   },
 \   filer: #{
-\     split: has('nvim') ? "floating" : "no",
-\     winHeight: &lines * 4 / 5,
-\     winWidth: &columns * 4 / 5,
-\     winRow: &lines / 10,
+\     split: "no",
 \     sort: 'filename',
 \     sortTreesFirst: v:true,
 \   },

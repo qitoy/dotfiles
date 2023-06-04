@@ -1,12 +1,14 @@
 " ddu-filer {{{
 nnoremap <buffer><expr> <CR>
-\ ddu#ui#get_item().isTree ?
+\ ddu#ui#get_item()->get('isTree', v:false) ?
 \ "<Cmd>call ddu#ui#do_action('itemAction', #{ name: 'narrow' })<CR>" :
-\ "<Cmd>call ddu#ui#do_action('itemAction', #{ name: 'open' })<CR>"
+\ "<Cmd>call ddu#ui#do_action('itemAction')<CR>"
 nnoremap <buffer><silent> a
 \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
 nnoremap <buffer> <Space>
 \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
+xnoremap <buffer> <Space>
+\ :call ddu#ui#do_action('toggleSelectItem')<CR>
 nnoremap <buffer> h
 \ <Cmd>call ddu#ui#do_action('itemAction',
 \ #{ name: 'narrow', params: #{ path: ".." } })<CR>
@@ -15,12 +17,12 @@ nnoremap <buffer><expr> l
 \ "<Cmd>call ddu#ui#do_action('itemAction', #{name: 'narrow'})<CR>" : ""
 nnoremap <buffer> q
 \ <Cmd>call ddu#ui#do_action('quit')<CR>
+nnoremap <buffer> <Esc>
+\ <Cmd>call ddu#ui#do_action('quit')<CR>
 nnoremap <buffer><nowait> d
 \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'newDirectory' })<CR>
 nnoremap <buffer> N
 \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'newFile' })<CR>
-nnoremap <buffer> D
-\ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'delete' })<CR>
 nnoremap <buffer> t
 \ <Cmd>call ddu#ui#do_action('itemAction',
 \ #{ name: 'open', params: #{ command: 'tab drop' } })<CR>

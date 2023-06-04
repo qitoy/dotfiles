@@ -5,6 +5,8 @@ nnoremap <buffer><silent> i
 \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
 nnoremap <buffer><silent> q
 \ <Cmd>call ddu#ui#do_action('quit')<CR>
+nnoremap <buffer><silent> <Esc>
+\ <Cmd>call ddu#ui#do_action('quit')<CR>
 nnoremap <buffer><silent> a
 \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
 
@@ -32,10 +34,6 @@ nnoremap <buffer><silent> <CR>
 \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
 nnoremap <buffer><silent> q
 \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
-inoremap <buffer><silent> <C-n>
-\ <Cmd>call ddu#ui#do_action('cursorNext')<CR>
-inoremap <buffer><silent> <C-p>
-\ <Cmd>call ddu#ui#do_action('cursorPrevious')<CR>
-inoremap <buffer><silent> <C-y>
-\ <Cmd>call ddu#ui#do_action('itemAction')<CR>
+nnoremap <buffer><silent> <Esc>
+\ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
 " }}}
