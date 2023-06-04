@@ -40,6 +40,10 @@ autocmd vimrc BufNewFile,BufRead *.saty setfiletype satysfi
 _ = '''
 '''
 
+conf = '''
+setlocal noexpandtab
+'''
+
 cpp = '''
 nnoremap <buffer> <silent> <LocalLeader>cc
 \ <Cmd>QuickRun procon/exec<CR>
@@ -53,7 +57,7 @@ setlocal nofoldenable
 setlocal tabstop=8
 '''
 
-make_conf = '''
+make = '''
 setlocal noexpandtab
 '''
 
@@ -61,6 +65,10 @@ markdown = '''
 setlocal wrap
 nnoremap <buffer> K
 \ <cmd>QuickRun -exec '/usr/bin/env ejdict %{expand("<cword>")}' -outputter popup<CR>
+'''
+
+satysfi = '''
+setlocal wrap
 '''
 
 tex = '''
