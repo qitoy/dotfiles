@@ -1,85 +1,5 @@
 " hook_source {{{
-call ddc#custom#patch_global('sources', [
-\  has('nvim') ? 'nvim-lsp' : 'vim-lsp',
-\  'around',
-\  'ultisnips',
-\])
-
-call ddc#custom#patch_global('cmdlineSources',
-\  ['cmdline', 'cmdline-history', 'around'])
-
-call ddc#custom#patch_global('sourceOptions', #{
-\  _: #{
-\    ignoreCase: v:true,
-\    matchers: ['matcher_fuzzy'],
-\    sorters: ['sorter_fuzzy'],
-\    converters: ['converter_fuzzy'],
-\  },
-\  vim-lsp: #{
-\    mark: '| LSP',
-\    forceCompletionPattern: '(\.|:|->|"\w+/*).?',
-\  },
-\  nvim-lsp: #{
-\    mark: '| LSP',
-\    forceCompletionPattern: '(\.|:|->|"\w+/*).?',
-\  },
-\  ultisnips: #{ mark: '| US' },
-\  around: #{ mark: '| A' },
-\  necovim: #{ mark: '| vim' },
-\  nvim-lua: #{ mark: '| lua' },
-\  mocword: #{
-\    mark: '| mocword',
-\    minAutoCompleteLength: 3,
-\    isVolatile: v:true,
-\  },
-\  cmdline: #{
-\    ignoreCase: v:false,
-\    mark: '| cmd',
-\    forceCompletionPattern: '\S/\S*',
-\  },
-\  cmdline-history: #{
-\    mark: '| history',
-\  },
-\  zsh: #{
-\    mark: '| zsh',
-\  },
-\  shell-history: #{
-\    mark: '| shell',
-\  },
-\})
-
-call ddc#custom#patch_global('filterParams', #{
-\  converter_fuzzy: #{
-\    hlGroup: 'CursorLine'
-\  },
-\})
-
-call ddc#custom#patch_filetype(
-\ ['vim'], 'sources', [
-\  'necovim',
-\  'around',
-\  'ultisnips',
-\ ])
-
-call ddc#custom#patch_filetype(
-\ ['lua'], 'sources', [
-\  'nvim-lua',
-\  'around',
-\  'ultisnips',
-\ ])
-
-call ddc#custom#patch_filetype(
-\ ['markdown'], 'sources', [
-\ 'mocword',
-\ 'around',
-\ ])
-
-call ddc#custom#patch_filetype(['satysfi'], #{
-\ keywordPattern: '(\w|-)*',
-\ })
-
-" Use pum.vim
-call ddc#custom#patch_global('ui', 'pum')
+call ddc#custom#load_config('$VIM_HOOKS/ddc.ts'->expand())
 
 inoremap <silent><expr> <TAB>
 \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1, "loop")<CR>' :
@@ -88,20 +8,8 @@ inoremap <silent><expr> <TAB>
 inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1, 'loop')<CR>
 inoremap <C-Y> <Cmd>call pum#map#confirm()<CR>
 
-" Use cmdline ddc
-call ddc#custom#patch_global('autoCompleteEvents', [
-\ 'InsertEnter', 'TextChangedI', 'TextChangedP',
-\ 'CmdlineEnter', 'CmdlineChanged', 'TextChangedT',
-\])
-
 " Use terminal ddc
 call ddc#enable_terminal_completion()
-
-call ddc#custom#patch_filetype(['deol'], #{
-\ specialBufferCompletion: v:true,
-\ keywordPattern: '[0-9a-zA-Z_./#:-]*',
-\ sources: ['zsh', 'shell-history', 'around'],
-\})
 
 " Use ddc.
 call ddc#enable(#{ context_filetype: has('nvim') ? 'treesitter' : 'context_filetype' })

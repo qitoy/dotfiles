@@ -9,52 +9,5 @@ nnoremap <silent> <Plug>(ddu)f
 \ <Cmd>Ddu -ui=filer file -source-option-path=`expand('%:p:h')`<CR>
 " }}}
 " hook_source = {{{
-call ddu#custom#patch_global(#{
-\ ui: 'ff',
-\ sourceOptions: #{
-\   _: #{
-\     matchers: ['matcher_fzf'],
-\     sorters: ['sorter_fzf'],
-\   },
-\   file: #{
-\     columns: ['filename'],
-\   },
-\ },
-\ sourceParams: #{
-\   mr: #{
-\     kind: 'mrw',
-\   },
-\ },
-\ kindOptions: #{
-\   file: #{
-\     defaultAction: 'open',
-\   },
-\   help: #{
-\     defaultAction: 'open',
-\   },
-\   action: #{
-\     defaultAction: 'do',
-\   },
-\ },
-\ actionOptions: #{
-\   narrow: #{
-\     quit: v:false,
-\   },
-\ },
-\ uiParams: #{
-\   ff: #{
-\     split: "horizontal",
-\     previewSplit: "horizontal",
-\     autoAction: #{
-\       name: 'preview',
-\       previewCmds: ['bat', '-n', '%s', '-r', '%b:%e', '--highlight-line', '%l'],
-\     },
-\   },
-\   filer: #{
-\     split: "no",
-\     sort: 'filename',
-\     sortTreesFirst: v:true,
-\   },
-\ },
-\})
+call ddu#custom#load_config('$VIM_HOOKS/ddu.ts'->expand())
 " }}}
