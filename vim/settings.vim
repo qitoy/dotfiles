@@ -6,7 +6,7 @@ augroup END
 
 " colorscheme
 set background=dark
-colorscheme carbonfox
+autocmd vimrc VimEnter * ++once colorscheme carbonfox
 
 " leader関連
 let g:mapleader = ' '

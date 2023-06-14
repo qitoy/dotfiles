@@ -16,6 +16,13 @@ if = false
 
 [[plugins]]
 repo = 'EdenEast/nightfox.nvim'
+lua_add = '''
+require('nightfox').setup({
+  options = {
+    transparent = true,
+  }
+})
+'''
 
 [[plugins]]
 repo = 'vim-jp/syntax-vim-ex'
