@@ -14,10 +14,13 @@ export class Config extends BaseConfig {
       ui: "ff",
       sourceOptions: {
         _: {
-          matchers: ["matcher_fzf"],
-          sorters: ["sorter_fzf"],
+          ignoreCase: true,
+          matchers: ["matcher_substring"],
         },
         file: {
+          columns: ["filename"],
+        },
+        cargo_compete: {
           columns: ["filename"],
         },
       },
@@ -63,6 +66,11 @@ export class Config extends BaseConfig {
           split: "no",
           sort: "filename",
           sortTreesFirst: true,
+        },
+      },
+      filterParams: {
+        matcher_substring: {
+          highlightMatched: "Search",
         },
       },
     });
