@@ -56,7 +56,6 @@ noremap g* <Plug>(asterisk-gz*)
 noremap g# <Plug>(asterisk-gz#)
 '''
 
-# {{{ quickfix
 [[plugins]]
 repo = 'thinca/vim-qfreplace'
 on_cmd = 'Qfreplace'
@@ -64,9 +63,7 @@ on_cmd = 'Qfreplace'
 [[plugins]]
 repo = 'itchyny/vim-qfedit'
 on_event = 'QuickFixCmdPre'
-# }}}
 
-# {{{ QuickRun
 [[plugins]]
 repo = 'lambdalisue/vim-quickrun-neovim-job'
 
@@ -84,7 +81,6 @@ let g:quickrun_config = {
 \ },
 \}
 '''
-# }}}
 
 # {{{ context_filetype
 [[plugins]]
@@ -175,7 +171,7 @@ on_cmd = ['ProconTest', 'ProconSubmit', 'ProconDownload']
 depends = 'denops.vim'
 
 [[plugins]]
-repo = '~/GitHub/dps-camp.vim'
+repo = 'qitoy/dps-camp.vim'
 depends = 'denops.vim'
 on_cmd = ['CampTest', 'CampSubmit', 'CampOpen']
 
@@ -194,7 +190,6 @@ tnoremap <C-y> <Cmd>call pum#map#confirm()<CR>
 '''
 # }}}
 
-# {{{ lexima
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = ['InsertEnter']
@@ -215,7 +210,6 @@ let g:pandoc#command#autoexec_on_writes = 0
 [[plugins]]
 repo = 'vim-pandoc/vim-pandoc-syntax'
 on_source = ['vim-pandoc']
-# }}}
 
 [[plugins]]
 repo = 'qitoy/sssv'

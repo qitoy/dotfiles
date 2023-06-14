@@ -17,6 +17,7 @@
 /vim/nundo/*
 !/vim/undo/.gitkeep
 !/vim/nundo/.gitkeep
+/vim/minimum_vimrc/*
 !/.github/**
 !/public/**
 !/homebrew/**
