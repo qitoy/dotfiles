@@ -34,6 +34,12 @@ export class Config extends BaseConfig {
         action: {
           defaultAction: "do",
         },
+        lsp: {
+          defaultAction: "open",
+        },
+        lsp_codeAction: {
+          defaultAction: "apply",
+        },
       },
       actionOptions: {
         narrow: {
