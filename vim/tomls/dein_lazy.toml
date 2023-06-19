@@ -23,6 +23,10 @@ endif
 '''
 
 [[plugins]]
+repo = 'qitoy/vimsaty'
+on_ft = ['satysfi']
+
+[[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 on_ft='help'
 hook_add = 'set helplang=ja'

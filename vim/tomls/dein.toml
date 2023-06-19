@@ -12,7 +12,6 @@ merged = false
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
-if = false
 
 [[plugins]]
 repo = 'EdenEast/nightfox.nvim'
@@ -23,6 +22,9 @@ require('nightfox').setup({
   }
 })
 '''
+
+[[plugins]]
+repo = 'vm-xeck/retskelet-nvim'
 
 [[plugins]]
 repo = 'vim-jp/syntax-vim-ex'
@@ -71,6 +73,10 @@ if $DENOPS_DEBUG
 let g:denops#debug = 1
 endif
 '''
+
+[[plugins]]
+repo = 'lambdalisue/guise.vim'
+depends = 'denops.vim'
 
 [[plugins]]
 repo = 'Shougo/shougo-s-github'
