@@ -1,15 +1,10 @@
-import {
-  BaseConfig,
-  ContextBuilder,
-} from "https://deno.land/x/ddu_vim@v3.0.0/types.ts";
-import { Denops } from "https://deno.land/x/ddu_vim@v3.0.0/deps.ts";
+import { BaseConfig } from "https://deno.land/x/ddu_vim@v3.0.2/types.ts";
+import { ConfigArguments } from "https://deno.land/x/ddu_vim@v3.0.2/base/config.ts";
+import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.0.2/deps.ts";
 
 export class Config extends BaseConfig {
   // deno-lint-ignore require-await
-  override async config(args: {
-    denops: Denops;
-    contextBuilder: ContextBuilder;
-  }): Promise<void> {
+  override async config(args: ConfigArguments): Promise<void> {
     args.contextBuilder.patchGlobal({
       ui: "ff",
       sourceOptions: {
@@ -60,6 +55,12 @@ export class Config extends BaseConfig {
               "--highlight-line",
               "%l",
             ],
+          },
+          onPreview: async (args: {
+            denops: Denops;
+            previewWinId: number;
+          }) => {
+            await fn.win_execute(args.denops, args.previewWinId, "normal! zt");
           },
         },
         filer: {
