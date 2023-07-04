@@ -1,6 +1,6 @@
-import { BaseConfig } from "https://deno.land/x/ddu_vim@v3.0.2/types.ts";
-import { ConfigArguments } from "https://deno.land/x/ddu_vim@v3.0.2/base/config.ts";
-import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.0.2/deps.ts";
+import { BaseConfig } from "https://deno.land/x/ddu_vim@v3.2.7/types.ts";
+import { ConfigArguments } from "https://deno.land/x/ddu_vim@v3.2.7/base/config.ts";
+import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.2.7/deps.ts";
 
 export class Config extends BaseConfig {
   // deno-lint-ignore require-await
@@ -15,8 +15,8 @@ export class Config extends BaseConfig {
         file: {
           columns: ["filename"],
         },
-        cargo_compete: {
-          columns: ["filename"],
+        mr: {
+          converters: ["converter_hl_dir"],
         },
       },
       sourceParams: {

@@ -3,6 +3,7 @@ nmap <Plug>(leader)u <Plug>(ddu)
 nmap <F1> <Plug>(ddu)h
 
 nnoremap <Plug>(ddu)m <Cmd>Ddu mr<CR>
+nnoremap <Plug>(ddu)b <Cmd>Ddu buffer<CR>
 nnoremap <Plug>(ddu)h
 \ <Cmd>Ddu help -name=help -ui-param-startFilter<CR>
 nnoremap <Plug>(ddu)f

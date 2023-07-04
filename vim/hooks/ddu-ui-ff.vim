@@ -1,39 +1,39 @@
 " ddu-ff {{{
-nnoremap <buffer><silent> <CR>
+nnoremap <buffer> <CR>
 \ <Cmd>call ddu#ui#do_action('itemAction')<CR>
-nnoremap <buffer><silent> i
+nnoremap <buffer> i
 \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
-nnoremap <buffer><silent> q
+nnoremap <buffer> q
 \ <Cmd>call ddu#ui#do_action('quit')<CR>
-nnoremap <buffer><silent> <Esc>
+nnoremap <buffer> <Esc>
 \ <Cmd>call ddu#ui#do_action('quit')<CR>
-nnoremap <buffer><silent> a
+nnoremap <buffer> a
 \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
 
 if b:ddu_ui_name ==# 'help'
-  nnoremap <buffer><silent> t
+  nnoremap <buffer> t
   \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'tabopen' })<CR>
-  nnoremap <buffer><silent> v
+  nnoremap <buffer> v
   \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'vsplit' })<CR>
 else
-  nnoremap <buffer><silent> t
+  nnoremap <buffer> t
   \ <Cmd> call ddu#ui#do_action('itemAction',
   \ #{ name: 'open', params: #{ command: 'tab drop' } })<CR>
-  nnoremap <buffer><silent> v
+  nnoremap <buffer> v
   \ <Cmd> call ddu#ui#do_action('itemAction',
   \ #{ name: 'open', params: #{ command: 'rightbelow vsplit' } })<CR>
-  nnoremap <buffer><silent><nowait> s
+  nnoremap <buffer><nowait> s
   \ <Cmd> call ddu#ui#do_action('itemAction',
   \ #{ name: 'open', params: #{ command: 'split' } })<CR>
 endif
 " }}}
 " ddu-ff-filter {{{
-inoremap <buffer><silent> <CR>
+inoremap <buffer> <CR>
 \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
-nnoremap <buffer><silent> <CR>
+nnoremap <buffer> <CR>
 \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
-nnoremap <buffer><silent> q
+nnoremap <buffer> q
 \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
-nnoremap <buffer><silent> <Esc>
+nnoremap <buffer> <Esc>
 \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
 " }}}

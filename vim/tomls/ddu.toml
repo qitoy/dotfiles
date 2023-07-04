@@ -30,6 +30,10 @@ depends = 'ddu-kind-file'
 on_source = 'ddu.vim'
 
 [[plugins]]
+repo = 'shun/ddu-source-buffer'
+on_source = 'ddu.vim'
+
+[[plugins]]
 repo = 'kuuote/ddu-source-mr'
 depends = 'mr.vim'
 on_source = 'ddu.vim'
@@ -53,10 +57,6 @@ repo = 'Shougo/ddu-source-file_point'
 on_source = 'ddu.vim'
 
 [[plugins]]
-repo = 'qitoy/ddu-source-cargo_compete'
-on_source = 'ddu.vim'
-
-[[plugins]]
 repo = 'uga-rosa/ddu-source-lsp'
 on_source = 'ddu.vim'
 
@@ -67,6 +67,10 @@ on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'Shougo/ddu-filter-matcher_substring'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'kyoh86/ddu-filter-converter_hl_dir'
 on_source = 'ddu.vim'
 
 #kinds
