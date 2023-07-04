@@ -42,7 +42,7 @@ repo = 'Shougo/neco-vim'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-nvim-lua'
+repo = 'uga-rosa/ddc-source-nvim-lua'
 on_source = 'ddc.vim'
 
 [[plugins]]

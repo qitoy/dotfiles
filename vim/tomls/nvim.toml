@@ -51,10 +51,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set("n", "<Plug>(leader)rn", vim.lsp.buf.rename, bufopts)
     end
 })
-lspconfig.clangd.setup {}
-lspconfig.denols.setup {}
-lspconfig.texlab.setup {}
-lspconfig.rust_analyzer.setup {}
+local config = {
+  capabilities = require"ddc_nvim_lsp".make_client_capabilities(),
+}
+lspconfig.clangd.setup(config)
+lspconfig.denols.setup(config)
+lspconfig.texlab.setup(config)
+lspconfig.rust_analyzer.setup(config)
 local configs = require 'lspconfig.configs'
 if not configs.satysfi_ls then
     configs.satysfi_ls = {

@@ -1,6 +1,14 @@
 " hook_source {{{
 call ddc#custom#load_config('$VIM_HOOKS/ddc.ts'->expand())
 
+call ddc#custom#patch_global('sourceParams', #{
+\ nvim-lsp: #{
+\   snippetEngine: denops#callback#register({
+\     body -> UltiSnips#Anon(body)
+\   }),
+\ },
+\})
+
 inoremap <silent><expr> <TAB>
 \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1, "loop")<CR>' :
 \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?

@@ -1,8 +1,9 @@
 import {
   BaseConfig,
   ContextBuilder,
-} from "https://deno.land/x/ddc_vim@v3.5.0/types.ts";
-import { Denops, fn } from "https://deno.land/x/ddc_vim@v3.5.0/deps.ts";
+} from "https://deno.land/x/ddc_vim@v3.7.0/types.ts";
+import { Denops, fn } from "https://deno.land/x/ddc_vim@v3.7.0/deps.ts";
+import { register } from "https://deno.land/x/denops_std@v5.0.1/lambda/mod.ts";
 
 export class Config extends BaseConfig {
   override async config(args: {
@@ -37,6 +38,7 @@ export class Config extends BaseConfig {
         "nvim-lsp": {
           mark: "| LSP",
           forceCompletionPattern: '(\\.|:|->|"\\w+/*).?',
+          converters: ["converter_kind_labels"],
         },
         ultisnips: {
           mark: "| US",
@@ -65,6 +67,18 @@ export class Config extends BaseConfig {
           mark: "| shell",
         },
       },
+      sourceParams: {
+        "nvim-lsp": {
+          enableResolveItem: true,
+          enableAdditionalTextEdit: true,
+          confirmBehavior: "replace",
+        },
+        converter_kind_labels: {
+          kindLabels: {
+            Class: "c",
+          },
+        },
+      },
       filterParams: {
         converter_fuzzy: {
           hlGroup: "CursorLine",
@@ -89,12 +103,20 @@ export class Config extends BaseConfig {
     });
 
     args.contextBuilder.patchFiletype("satysfi", {
-      keywordPattern: "(\\w|-)*",
+      sourceOptions: {
+        _: {
+          keywordPattern: "(\\w|-)*",
+        },
+      },
     });
 
     args.contextBuilder.patchFiletype("deol", {
       specialBufferCompletion: true,
-      keywordPattern: "[0-9a-zA-Z_./#:-]*",
+      sourceOptions: {
+        _: {
+          keywordPattern: "[0-9a-zA-Z_./#:-]*",
+        },
+      },
       sources: ["zsh", "shell-history", "around"],
     });
   }
