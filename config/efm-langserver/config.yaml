@@ -1,0 +1,14 @@
+version: 2
+log-file: /tmp/efm-output.log
+log-level: 1
+
+tools:
+  satysfi: &satysfi
+    lint-command: 'satysfi ${INPUT}'
+    lint-ignore-exit-code: true
+    lint-formats:
+      - '  [%tarning] at "%f", line %l, characters %c-%k: %m'
+
+languages:
+  satysfi:
+    - <<: *satysfi

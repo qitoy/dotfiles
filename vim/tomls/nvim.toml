@@ -51,13 +51,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set("n", "<Plug>(leader)rn", vim.lsp.buf.rename, bufopts)
     end
 })
-local config = {
-  capabilities = require"ddc_nvim_lsp".make_client_capabilities(),
-}
-lspconfig.clangd.setup(config)
-lspconfig.denols.setup(config)
-lspconfig.texlab.setup(config)
-lspconfig.rust_analyzer.setup(config)
+local capabilities = require"ddc_nvim_lsp".make_client_capabilities()
+lspconfig.clangd.setup{ capabilities = capabilities }
+lspconfig.denols.setup{ capabilities = capabilities }
+lspconfig.texlab.setup{ capabilities = capabilities }
+lspconfig.rust_analyzer.setup{ capabilities = capabilities }
 local configs = require 'lspconfig.configs'
 if not configs.satysfi_ls then
     configs.satysfi_ls = {
@@ -69,7 +67,11 @@ if not configs.satysfi_ls then
         },
     }
 end
-lspconfig.satysfi_ls.setup {}
+lspconfig.satysfi_ls.setup{ capabilities = capabilities }
+lspconfig.efm.setup {
+  capabilities = capabilities,
+  filetypes = { 'satysfi' }
+}
 '''
 
 [[plugins]]

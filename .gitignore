@@ -23,13 +23,14 @@
 !/homebrew/**
 !/hammerspoon/**
 !/w3m/keymap
-!/config/wezterm/wezterm.lua
+!/config/efm-langserver/*
 !/config/gh/config.yml
 !/config/git/*
+!/config/i3/config
 !/config/karabiner/**
 !/config/powerline-shell/config.json
-!/config/systemd/user/*.service
-!/config/i3/config
 !/config/sway/*
 !/config/swaylock/*
+!/config/systemd/user/*.service
 !/config/waybar/*
+!/config/wezterm/wezterm.lua
