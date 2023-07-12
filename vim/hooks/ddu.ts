@@ -62,6 +62,7 @@ export class Config extends BaseConfig {
               "%l",
             ],
           },
+          startAutoAction: true,
           onPreview: async (args: {
             denops: Denops;
             previewWinId: number;

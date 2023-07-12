@@ -3,7 +3,6 @@ import {
   ContextBuilder,
 } from "https://deno.land/x/ddc_vim@v3.7.0/types.ts";
 import { Denops, fn } from "https://deno.land/x/ddc_vim@v3.7.0/deps.ts";
-import { register } from "https://deno.land/x/denops_std@v5.0.1/lambda/mod.ts";
 
 export class Config extends BaseConfig {
   override async config(args: {
@@ -72,6 +71,9 @@ export class Config extends BaseConfig {
           enableResolveItem: true,
           enableAdditionalTextEdit: true,
           confirmBehavior: "replace",
+          snippetEngine: async (body: string) => {
+            await args.denops.call("UltiSnips#Anon", body);
+          },
         },
         converter_kind_labels: {
           kindLabels: {

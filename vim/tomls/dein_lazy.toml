@@ -177,7 +177,7 @@ depends = 'denops.vim'
 [[plugins]]
 repo = 'qitoy/dps-camp.vim'
 depends = 'denops.vim'
-on_cmd = ['CampTest', 'CampSubmit', 'CampOpen']
+on_cmd = ['CampNew', 'CampTest', 'CampSubmit', 'CampOpen']
 
 [[plugins]]
 repo = 'Shougo/deol.nvim'

@@ -14,16 +14,7 @@ nnoremap gd
 nnoremap <Plug>(leader)a
 \ <Cmd>Ddu lsp_codeAction -ui-param-ignoreEmpty<CR>
 
-call timer_start(10, { _ ->
-\ ddu#start(#{
-\   ui: 'ff',
-\   uiParams: #{
-\     ff: #{
-\       ignoreEmpty: v:true,
-\     },
-\   },
-\ })
-\})
+call timer_start(10, { _ -> ddu#load('ui', ['ff']) })
 " }}}
 " hook_source = {{{
 call ddu#custom#load_config('$VIM_HOOKS/ddu.ts'->expand())
