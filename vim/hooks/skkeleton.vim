@@ -4,9 +4,9 @@ let s:gact10_dvp = {
 \ ",": ["、"],
 \ "-": ["ー"],
 \ ".": ["。"],
-\ "..": ["……"],
 \ "/": ["・"],
 \ ":": "abbrev",
+\ ";.": ["……"],
 \ ";\<Space>": ["\u3000"],
 \ ";h": ["←"],
 \ ";j": ["↓"],
@@ -544,6 +544,7 @@ endfor
 
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
+" tmap <C-j> <Plug>(skkeleton-toggle)
 
 function s:skkeleton_init() abort
   call skkeleton#register_kanatable('gact10_dvp', s:gact10_dvp, v:true)
