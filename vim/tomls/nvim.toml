@@ -55,7 +55,16 @@ local capabilities = require"ddc_nvim_lsp".make_client_capabilities()
 lspconfig.clangd.setup{ capabilities = capabilities }
 lspconfig.denols.setup{ capabilities = capabilities }
 lspconfig.texlab.setup{ capabilities = capabilities }
-lspconfig.rust_analyzer.setup{ capabilities = capabilities }
+lspconfig.rust_analyzer.setup{
+  capabilities = capabilities,
+  settings = {
+    ['rust-analyzer'] = {
+      check = {
+        command = 'clippy'
+      }
+    }
+  },
+ }
 local configs = require 'lspconfig.configs'
 if not configs.satysfi_ls then
     configs.satysfi_ls = {

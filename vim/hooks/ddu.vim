@@ -11,6 +11,9 @@ nnoremap <Plug>(ddu)f
 nnoremap gd
 \ <Cmd>Ddu lsp_definition -sync -ui-param-ignoreEmpty
 \ -ui-param-immediateAction=open<CR>
+nnoremap gD
+\ <Cmd>Ddu lsp_references -sync -ui-param-ignoreEmpty
+\ -ui-param-immediateAction=open<CR>
 nnoremap <Plug>(leader)a
 \ <Cmd>Ddu lsp_codeAction -ui-param-ignoreEmpty<CR>
 
