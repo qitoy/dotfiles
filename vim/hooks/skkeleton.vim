@@ -544,7 +544,7 @@ endfor
 
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
-" tmap <C-j> <Plug>(skkeleton-toggle)
+tmap <C-j> <Plug>(skkeleton-toggle)
 
 function s:skkeleton_init() abort
   call skkeleton#register_kanatable('gact10_dvp', s:gact10_dvp, v:true)
@@ -567,11 +567,15 @@ augroup skkeleton-initialize-pre
 augroup END
 
 function s:skkeleton_set_keymap() abort
-  lnoremap <buffer> " <Cmd>call skkeleton#handle('handleKey', #{key: '<F1>'})<CR><Cmd>call skkeleton#handle('handleKey', #{key: ''''})<CR>
+  inoremap <buffer> " <Cmd>call skkeleton#handle('handleKey', #{key: '<F1>'})<CR><Cmd>call skkeleton#handle('handleKey', #{key: ''''})<CR>
+  cnoremap <buffer> " <Cmd>call skkeleton#handle('handleKey', #{key: '<F1>'})<CR><Cmd>call skkeleton#handle('handleKey', #{key: ''''})<CR>
+  tnoremap <buffer> " <Cmd>call skkeleton#handle('handleKey', #{key: '<F1>'})<CR><Cmd>call skkeleton#handle('handleKey', #{key: ''''})<CR>
 endfunction
 
 function s:skkeleton_del_keymap() abort
-  " lunmap <buffer> "
+  " iunmap <buffer> "
+  " cunmap <buffer> "
+  " tunmap <buffer> "
 endfunction
 
 augroup skkeleton-enable-post
