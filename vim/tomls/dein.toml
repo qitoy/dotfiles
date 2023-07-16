@@ -3,8 +3,19 @@ repo = 'itchyny/lightline.vim'
 hook_add = '''
 let g:lightline = #{
 \ colorscheme: 'carbonfox',
+\ active: #{
+\   left: [ [ 'mode', 'paste', 'skk_mode' ],
+\             [ 'readonly', 'filename', 'modified' ] ]
+\   },
+\ component_function: #{
+\   skk_mode: 'g:lightline_skk#mode',
+\   },
 \}
 '''
+
+[[plugins]]
+repo = 'yasunori-kirin0418/lightline_skk.vim'
+on_source = 'skkeleton'
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
@@ -86,5 +97,11 @@ if = false
 repo = 'rcarriga/nvim-notify'
 if = 'has("nvim")'
 lua_add = '''
-vim.notify = require"notify"
+vim.notify = function(...)
+  vim.notify = require'notify'
+  vim.notify.setup {
+    background_colour = '#000000'
+  }
+  vim.notify(...)
+end
 '''
