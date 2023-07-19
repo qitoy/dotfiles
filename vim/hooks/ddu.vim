@@ -2,6 +2,19 @@
 nmap <Plug>(leader)u <Plug>(ddu)
 nmap <F1> <Plug>(ddu)h
 
+inoremap <C-x><C-e> <Cmd>call ddu#start(#{
+\ sources: [
+\   #{ name: 'emoji', options: #{ defaultAction: 'feedkeys' } },
+\ ],
+\ uiParams: #{
+\   ff: #{
+\     startFilter: v:true,
+\     replaceCol: col('.'),
+\     startAutoAction: v:false,
+\   }
+\ },
+\})<CR>
+
 nnoremap <Plug>(ddu)m <Cmd>Ddu mr<CR>
 nnoremap <Plug>(ddu)b <Cmd>Ddu buffer<CR>
 nnoremap <Plug>(ddu)h
