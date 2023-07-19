@@ -82,6 +82,11 @@ let g:quickrun_config = {
 \}
 '''
 
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+on_cmd = ['Deol', 'DeolCd', 'DeolEdit']
+hooks_file = '$VIM_HOOKS/deol.vim'
+
 # {{{ context_filetype
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
@@ -174,20 +179,6 @@ depends = 'denops.vim'
 repo = 'qitoy/dps-camp.vim'
 depends = 'denops.vim'
 on_cmd = ['CampNew', 'CampTest', 'CampSubmit', 'CampOpen']
-
-[[plugins]]
-repo = 'Shougo/deol.nvim'
-on_cmd = ['Deol', 'DeolCd', 'DeolEdit']
-hook_source = '''
-let g:deol#shell_history_path = '~/.zsh-history'
-
-tnoremap <Esc> <C-\><C-n>
-tnoremap <expr> <Tab> pum#visible() ?
-\ '<Cmd>call pum#map#select_relative(+1, "loop")<CR>' : '<Tab>'
-tnoremap <expr> <S-Tab> pum#visible() ?
-\ '<Cmd>call pum#map#select_relative(-1, "loop")<CR>' : '<S-Tab>'
-tnoremap <C-y> <Cmd>call pum#map#confirm()<CR>
-'''
 # }}}
 
 [[plugins]]
