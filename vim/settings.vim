@@ -48,8 +48,6 @@ cnoremap <expr> <Esc><Esc>
 " レジスタ関連
 nnoremap x "_x
 vnoremap x "_x
-nnoremap s <Nop>
-xnoremap s <Nop>
 nnoremap Y y$
 
 " 移動関連

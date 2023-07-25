@@ -1,6 +1,8 @@
 " hook_add {{{
 let s:gact10_dvp = {
 \ "!": ["！"],
+\ "(": ["（"],
+\ ")": ["）"],
 \ ",": ["、"],
 \ "-": ["ー"],
 \ ".": ["。"],
@@ -558,6 +560,7 @@ function s:skkeleton_init() abort
   \ userJisyo: "~/.skkeleton",
   \ selectCandidateKeys: 'aoeuhtn',
   \ kanaTable: 'gact10_dvp',
+  \ keepState: v:true,
   \})
 endfunction
 

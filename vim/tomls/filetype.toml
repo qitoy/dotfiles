@@ -38,6 +38,7 @@ autocmd vimrc BufNewFile,BufRead *.saty setfiletype satysfi
 [ftplugin]
 
 _ = '''
+setlocal matchpairs+=「:」,（:）
 '''
 
 conf = '''

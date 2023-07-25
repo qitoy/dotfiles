@@ -18,11 +18,9 @@ export class Config extends BaseConfig {
         "around",
         "ultisnips",
       ],
-      cmdlineSources: [
-        "cmdline",
-        "cmdline-history",
-        "around",
-      ],
+      cmdlineSources: {
+        ":": ["cmdline", "cmdline-history", "around"],
+      },
       sourceOptions: {
         _: {
           ignoreCase: true,
@@ -121,5 +119,7 @@ export class Config extends BaseConfig {
       },
       sources: ["zsh", "shell-history", "around"],
     });
+
+
   }
 }

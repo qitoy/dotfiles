@@ -53,6 +53,13 @@ repo = 'andymass/vim-matchup'
 
 # {{{ textobj and operator
 [[plugins]]
+repo = 'machakann/vim-sandwich'
+hook_add = '''
+nnoremap s <Nop>
+xnoremap s <Nop>
+'''
+
+[[plugins]]
 repo = 'kana/vim-textobj-user'
 
 [[plugins]]
@@ -73,9 +80,6 @@ on_map = '<Plug>(textobj-functioncall-'
 [[plugins]]
 repo = 'kana/vim-operator-user'
 # }}}
-
-[[plugins]]
-repo = 'machakann/vim-sandwich'
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'

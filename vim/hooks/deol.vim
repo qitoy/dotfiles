@@ -1,5 +1,6 @@
 " hook_source {{{
 let g:deol#shell_history_path = '~/.zsh-history'
+let g:deol#prompt_pattern = '\$ '
 
 tnoremap <Esc> <C-\><C-n>
 tnoremap <expr> <Tab> pum#visible() ?
