@@ -171,48 +171,6 @@ nnoremap <Plug>(leader)p <Cmd>call <SID>operator_partedit()<CR>
 '''
 # }}}
 
-# {{{ denops
-[[plugins]]
-repo = 'skanehira/denops-translate.vim'
-on_cmd = 'Translate'
-
-[[plugins]]
-repo = 'lambdalisue/gin.vim'
-depends = 'denops.vim'
-on_cmd = ['Gin', 'GinBranch', 'GinChaperon', 'GinDiff', 'GinEdit', 'GinPatch', 'GinStatus']
-hook_add = '''
-nnoremap gs <Cmd>GinStatus<CR>
-'''
-
-[[plugins]]
-repo = 'skanehira/denops-gh.vim'
-depends = 'denops.vim'
-on_path = ['https://github.com/*', 'gh://*']
-
-[[plugins]]
-repo = 'yuki-yano/fuzzy-motion.vim'
-depends = 'denops.vim'
-on_cmd = 'FuzzyMotion'
-hook_add = '''
-nnoremap <Plug>(leader)/ <Cmd>FuzzyMotion<CR>
-'''
-
-[[plugins]]
-repo = 'gamoutatsumi/dps-ghosttext.vim'
-depends = 'denops.vim'
-on_cmd = 'GhostStart'
-
-[[plugins]]
-repo = 'qitoy/dps-procon.vim'
-on_cmd = ['ProconTest', 'ProconSubmit', 'ProconDownload']
-depends = 'denops.vim'
-
-[[plugins]]
-repo = 'qitoy/dps-camp.vim'
-depends = 'denops.vim'
-on_cmd = ['CampNew', 'CampTest', 'CampSubmit', 'CampOpen']
-# }}}
-
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = ['InsertEnter']

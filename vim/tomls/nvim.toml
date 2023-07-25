@@ -84,11 +84,6 @@ lspconfig.efm.setup {
 '''
 
 [[plugins]]
-repo = 'Shougo/ddc-source-nvim-lsp'
-depends = 'nvim-lspconfig'
-on_source = 'ddc.vim'
-
-[[plugins]]
 repo = 'David-Kunz/treesitter-unit'
 on_lua = 'treesitter-unit'
 lua_add = '''

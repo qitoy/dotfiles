@@ -15,7 +15,6 @@ let g:lightline = #{
 
 [[plugins]]
 repo = 'yasunori-kirin0418/lightline_skk.vim'
-on_source = 'skkeleton'
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
@@ -81,6 +80,7 @@ on_map = '<Plug>(textobj-functioncall-'
 repo = 'kana/vim-operator-user'
 # }}}
 
+# {{{ denops
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 hook_add = '''
@@ -91,11 +91,40 @@ endif
 
 [[plugins]]
 repo = 'lambdalisue/guise.vim'
-depends = 'denops.vim'
 
 [[plugins]]
-repo = 'Shougo/shougo-s-github'
-if = false
+repo = 'skanehira/denops-translate.vim'
+
+[[plugins]]
+repo = 'lambdalisue/gin.vim'
+hook_add = '''
+nnoremap gs <Cmd>GinStatus<CR>
+'''
+
+[[plugins]]
+repo = 'skanehira/denops-gh.vim'
+
+[[plugins]]
+repo = 'yuki-yano/fuzzy-motion.vim'
+hook_add = '''
+nnoremap ss <Cmd>FuzzyMotion<CR>
+'''
+
+[[plugins]]
+repo = 'gamoutatsumi/dps-ghosttext.vim'
+
+[[plugins]]
+repo = 'qitoy/dps-procon.vim'
+
+[[plugins]]
+repo = 'qitoy/dps-camp.vim'
+hook_add = '''
+command! -nargs=1 CampNew Ddu camp_new -source-param-name=<args>
+'''
+
+[[plugins]]
+repo = 'lambdalisue/kensaku.vim'
+# }}}
 
 [[plugins]]
 repo = 'rcarriga/nvim-notify'
@@ -109,3 +138,7 @@ vim.notify = function(...)
   vim.notify(...)
 end
 '''
+
+[[plugins]]
+repo = 'Shougo/shougo-s-github'
+if = false

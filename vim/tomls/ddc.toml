@@ -1,22 +1,27 @@
 [[plugins]]
-repo = 'Shougo/ddc.vim'
-depends = ['denops.vim', 'pum.vim', 'context_filetype.vim']
-on_event = ['InsertEnter', 'CursorHold', 'CmdlineEnter']
-hooks_file = '$VIM_HOOKS/ddc.vim'
+repo = 'Shougo/pum.vim'
 
 [[plugins]]
-repo = 'Shougo/pum.vim'
+repo = 'Shougo/ddc.vim'
+depends = ['denops.vim', 'pum.vim']
+hooks_file = '$VIM_HOOKS/ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-ui-pum'
 depends = 'pum.vim'
-on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'shun/ddc-vim-lsp'
+depends = 'vim-lsp'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-nvim-lsp'
+depends = 'nvim-lspconfig'
 
 [[plugins]]
 repo = 'matsui54/denops-signature_help'
 depends = 'denops.vim'
-on_source = 'ddc.vim'
-hook_source = '''
+hook_add = '''
 call signature_help#enable()
 let g:lsp_signature_help_enabled = 0
 '''
@@ -24,30 +29,24 @@ let g:lsp_signature_help_enabled = 0
 [[plugins]]
 repo = 'matsui54/denops-popup-preview.vim'
 depends = 'denops.vim'
-on_source = 'ddc.vim'
-hook_source = '''
+hook_add = '''
 call popup_preview#enable()
 '''
 
 [[plugins]]
 repo = 'Shougo/ddc-source-mocword'
-on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-source-around'
-on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
-on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'uga-rosa/ddc-source-nvim-lua'
-on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'SirVer/ultisnips'
-on_source = 'ddc.vim'
 hook_add = '''
 let g:UltiSnipsEditSplit = 'horizontal'
 let g:UltiSnipsExpandTrigger = '<C-l>'
@@ -57,28 +56,22 @@ let g:UltiSnipsJumpBackwardTrigger = '<C-p>'
 
 [[plugins]]
 repo = 'matsui54/ddc-ultisnips'
-on_source = 'ddc.vim'
 depends = ['ddc.vim', 'ultisnips']
 
 [[plugins]]
 repo = 'Shougo/ddc-source-cmdline'
-on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-source-cmdline-history'
-on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-source-zsh'
-on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'vim-skk/skkeleton'
 depends = 'denops.vim'
-on_event = 'InsertEnter'
 hooks_file = '$VIM_HOOKS/skkeleton.vim'
 
 # Install your filters
 [[plugins]]
 repo = 'tani/ddc-fuzzy'
-on_source = 'ddc.vim'

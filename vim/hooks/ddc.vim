@@ -1,21 +1,6 @@
-" hook_source {{{
+" hook_add {{{
 call ddc#custom#load_config('$VIM_HOOKS/ddc.ts'->expand())
 
-inoremap <silent><expr> <TAB>
-\ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1, "loop")<CR>' :
-\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-\ '<TAB>' : ddc#map#manual_complete()
-inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1, 'loop')<CR>
-inoremap <C-Y> <Cmd>call pum#map#confirm()<CR>
-
-" Use terminal ddc
-call ddc#enable_terminal_completion()
-
-" Use ddc.
-call ddc#enable(#{ context_filetype: has('nvim') ? 'treesitter' : 'context_filetype' })
-" }}}
-
-" hook_add {{{
 nnoremap : <Cmd>call CommandlinePre()<CR>:
 
 function! CommandlinePre() abort
@@ -34,4 +19,17 @@ function! CommandlinePost() abort
   silent! cunmap <Tab>
   silent! cunmap <S-Tab>
 endfunction
+
+inoremap <silent><expr> <TAB>
+\ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1, "loop")<CR>' :
+\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+\ '<TAB>' : ddc#map#manual_complete()
+inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1, 'loop')<CR>
+inoremap <C-Y> <Cmd>call pum#map#confirm()<CR>
+
+" Use terminal ddc
+call ddc#enable_terminal_completion()
+
+" Use ddc.
+call ddc#enable(#{ context_filetype: has('nvim') ? 'treesitter' : 'context_filetype' })
 " }}}

@@ -1,4 +1,6 @@
 " hook_add {{{
+call ddu#custom#load_config('$VIM_HOOKS/ddu.ts'->expand())
+
 nmap <Plug>(leader)u <Plug>(ddu)
 nmap <F1> <Plug>(ddu)h
 
@@ -30,8 +32,7 @@ nnoremap gD
 nnoremap <Plug>(leader)a
 \ <Cmd>Ddu lsp_codeAction -ui-param-ignoreEmpty<CR>
 
+command! Dein Ddu dein
+
 call timer_start(10, { _ -> ddu#load('ui', ['ff']) })
-" }}}
-" hook_source = {{{
-call ddu#custom#load_config('$VIM_HOOKS/ddu.ts'->expand())
 " }}}
