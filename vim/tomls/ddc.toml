@@ -12,11 +12,9 @@ depends = 'pum.vim'
 
 [[plugins]]
 repo = 'shun/ddc-vim-lsp'
-depends = 'vim-lsp'
 
 [[plugins]]
 repo = 'Shougo/ddc-source-nvim-lsp'
-depends = 'nvim-lspconfig'
 
 [[plugins]]
 repo = 'matsui54/denops-signature_help'

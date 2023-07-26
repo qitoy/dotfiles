@@ -39,6 +39,7 @@ on_cmd = ['TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor']
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
+on_event = ['BufRead', 'CursorHold']
 lua_source = '''
 local lspconfig = require'lspconfig'
 vim.api.nvim_create_autocmd('LspAttach', {
