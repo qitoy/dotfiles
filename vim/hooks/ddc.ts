@@ -1,15 +1,12 @@
-import {
-  BaseConfig,
-  ContextBuilder,
-} from "https://deno.land/x/ddc_vim@v3.7.0/types.ts";
-import { Denops, fn } from "https://deno.land/x/ddc_vim@v3.7.0/deps.ts";
+import { BaseConfig } from "https://deno.land/x/ddc_vim@v3.9.1/types.ts";
+import { ConfigArguments } from "https://deno.land/x/ddc_vim@v3.9.1/base/config.ts";
+import { fn } from "https://deno.land/x/ddc_vim@v3.9.1/deps.ts";
 
 export class Config extends BaseConfig {
-  override async config(args: {
-    denops: Denops;
-    contextBuilder: ContextBuilder;
-  }): Promise<void> {
+  override async config(args: ConfigArguments): Promise<void> {
     const hasNvim = await fn.has(args.denops, "nvim");
+
+    args.setAlias("source", "zsh", "shell-native");
 
     args.contextBuilder.patchGlobal({
       ui: "pum",
@@ -73,6 +70,9 @@ export class Config extends BaseConfig {
             await args.denops.call("UltiSnips#Anon", body);
           },
         },
+        zsh: {
+          shell: "zsh",
+        },
         converter_kind_labels: {
           kindLabels: {
             Class: "c",
@@ -119,7 +119,5 @@ export class Config extends BaseConfig {
       },
       sources: ["zsh", "shell-history", "around"],
     });
-
-
   }
 }

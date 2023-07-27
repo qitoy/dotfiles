@@ -108,6 +108,7 @@ repo = 'skanehira/denops-gh.vim'
 repo = 'yuki-yano/fuzzy-motion.vim'
 hook_add = '''
 nnoremap ss <Cmd>FuzzyMotion<CR>
+let g:fuzzy_motion_matchers = ['fzf', 'kensaku']
 '''
 
 [[plugins]]

@@ -1,5 +1,10 @@
 [[plugins]]
 repo = 'Shougo/pum.vim'
+hook_add = '''
+call pum#set_option(#{
+\ preview: v:true,
+\})
+'''
 
 [[plugins]]
 repo = 'Shougo/ddc.vim'
@@ -63,7 +68,7 @@ repo = 'Shougo/ddc-source-cmdline'
 repo = 'Shougo/ddc-source-cmdline-history'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-zsh'
+repo = 'Shougo/ddc-source-shell-native'
 
 [[plugins]]
 repo = 'vim-skk/skkeleton'
