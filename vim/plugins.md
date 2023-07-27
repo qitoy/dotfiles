@@ -8,7 +8,7 @@
 - [Shougo/ddc-source-cmdline](https://github.com/Shougo/ddc-source-cmdline)
 - [Shougo/ddc-source-mocword](https://github.com/Shougo/ddc-source-mocword)
 - [Shougo/ddc-source-nvim-lsp](https://github.com/Shougo/ddc-source-nvim-lsp)
-- [Shougo/ddc-source-zsh](https://github.com/Shougo/ddc-source-zsh)
+- [Shougo/ddc-source-shell-native](https://github.com/Shougo/ddc-source-shell-native)
 - [Shougo/ddc-ui-pum](https://github.com/Shougo/ddc-ui-pum)
 - [Shougo/ddc.vim](https://github.com/Shougo/ddc.vim)
 - [Shougo/ddu-column-filename](https://github.com/Shougo/ddu-column-filename)
