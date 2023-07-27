@@ -115,6 +115,9 @@ repo = 'gamoutatsumi/dps-ghosttext.vim'
 
 [[plugins]]
 repo = 'qitoy/dps-procon.vim'
+hook_add = '''
+autocmd vimrc User DenopsPluginPost:procon call procon#modules('$VIM_HOOKS/procon.ts'->expand())
+'''
 
 [[plugins]]
 repo = 'qitoy/dps-camp.vim'
