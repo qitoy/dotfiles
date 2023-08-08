@@ -27,6 +27,7 @@ command! SourceVimrc
 nnoremap Q <Nop>
 " nnoremap q <Nop> マクロ大事
 nnoremap m <Nop>
+inoremap <F1> <Nop>
 
 " <BS>の挙動変更
 set backspace=indent,eol,start

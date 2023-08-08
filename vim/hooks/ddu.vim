@@ -32,7 +32,8 @@ nnoremap gD
 nnoremap <Plug>(leader)a
 \ <Cmd>Ddu lsp_codeAction -ui-param-ignoreEmpty<CR>
 
-command! Dein Ddu dein
-
-call timer_start(10, { _ -> ddu#load('ui', ['ff']) })
+command! Dein call ddu#start(#{
+\ sources: [#{ name: 'dein' }],
+\ uiParams: #{ ff: #{ startAutoAction: v:false } },
+\})
 " }}}
