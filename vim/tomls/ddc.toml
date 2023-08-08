@@ -33,7 +33,7 @@ let g:lsp_signature_help_enabled = 0
 repo = 'matsui54/denops-popup-preview.vim'
 depends = 'denops.vim'
 hook_add = '''
-call popup_preview#enable()
+" call popup_preview#enable()
 '''
 
 [[plugins]]

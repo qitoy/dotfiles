@@ -33,6 +33,7 @@ export class Config extends BaseConfig {
           mark: "| LSP",
           forceCompletionPattern: '(\\.|:|->|"\\w+/*).?',
           converters: ["converter_kind_labels"],
+          // sorters: ["sorter_lsp-kind"],
         },
         ultisnips: {
           mark: "| US",
@@ -82,6 +83,15 @@ export class Config extends BaseConfig {
       filterParams: {
         converter_fuzzy: {
           hlGroup: "CursorLine",
+        },
+        "sorter_lsp-kind": {
+          priority: [
+            ["Keyword", "Snippet"],
+            "Enum",
+            ["Method", "Function"],
+            "Field",
+            "Variable",
+          ],
         },
       },
       autoCompleteEvents: [

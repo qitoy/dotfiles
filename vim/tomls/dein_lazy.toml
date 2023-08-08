@@ -56,37 +56,37 @@ noremap g* <Plug>(asterisk-gz*)
 noremap g# <Plug>(asterisk-gz#)
 '''
 
-[[plugins]]
-repo = 'hrsh7th/vim-eft'
-on_map = '<Plug>(eft-'
-hook_add = '''
-let g:eft_ignorecase = v:true
-
-let g:eft_index_function = {
-\ 'head': function('eft#index#head'),
-\ 'camel': function('eft#index#camel'),
-\ 'space': function('eft#index#space'),
-\ 'symbol': function('eft#index#symbol'),
-\}
-
-" If you prefer ; as repeat.
-nmap ; <Plug>(eft-repeat)
-xmap ; <Plug>(eft-repeat)
-
-nmap f <Plug>(eft-f)
-xmap f <Plug>(eft-f)
-omap f <Plug>(eft-f)
-nmap F <Plug>(eft-F)
-xmap F <Plug>(eft-F)
-omap F <Plug>(eft-F)
-
-nmap t <Plug>(eft-t)
-xmap t <Plug>(eft-t)
-omap t <Plug>(eft-t)
-nmap T <Plug>(eft-T)
-xmap T <Plug>(eft-T)
-omap T <Plug>(eft-T)
-'''
+#[[plugins]]
+#repo = 'hrsh7th/vim-eft'
+#on_map = '<Plug>(eft-'
+#hook_add = '''
+#let g:eft_ignorecase = v:true
+#
+#let g:eft_index_function = {
+#\ 'head': function('eft#index#head'),
+#\ 'camel': function('eft#index#camel'),
+#\ 'space': function('eft#index#space'),
+#\ 'symbol': function('eft#index#symbol'),
+#\}
+#
+#" If you prefer ; as repeat.
+#nmap ; <Plug>(eft-repeat)
+#xmap ; <Plug>(eft-repeat)
+#
+#nmap f <Plug>(eft-f)
+#xmap f <Plug>(eft-f)
+#omap f <Plug>(eft-f)
+#nmap F <Plug>(eft-F)
+#xmap F <Plug>(eft-F)
+#omap F <Plug>(eft-F)
+#
+#nmap t <Plug>(eft-t)
+#xmap t <Plug>(eft-t)
+#omap t <Plug>(eft-t)
+#nmap T <Plug>(eft-T)
+#xmap T <Plug>(eft-T)
+#omap T <Plug>(eft-T)
+#'''
 
 [[plugins]]
 repo = 'thinca/vim-qfreplace'
