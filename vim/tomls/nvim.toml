@@ -38,9 +38,14 @@ repo = 'nvim-treesitter/playground'
 on_cmd = ['TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor']
 
 [[plugins]]
+repo = 'uga-rosa/ddc-nvim-lsp-setup'
+
+[[plugins]]
 repo = 'neovim/nvim-lspconfig'
+depends = 'ddc-nvim-lsp-setup'
 on_event = ['BufRead', 'CursorHold']
 lua_source = '''
+require'ddc_nvim_lsp_setup'.setup()
 local lspconfig = require'lspconfig'
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -52,12 +57,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set("n", "<Plug>(leader)rn", vim.lsp.buf.rename, bufopts)
     end
 })
-local capabilities = require"ddc_nvim_lsp".make_client_capabilities()
-lspconfig.clangd.setup{ capabilities = capabilities }
-lspconfig.denols.setup{ capabilities = capabilities }
-lspconfig.texlab.setup{ capabilities = capabilities }
+lspconfig.clangd.setup{}
+lspconfig.denols.setup{}
+lspconfig.texlab.setup{}
 lspconfig.rust_analyzer.setup{
-  capabilities = capabilities,
   settings = {
     ['rust-analyzer'] = {
       check = {
@@ -77,9 +80,8 @@ if not configs.satysfi_ls then
         },
     }
 end
-lspconfig.satysfi_ls.setup{ capabilities = capabilities }
+lspconfig.satysfi_ls.setup{}
 lspconfig.efm.setup {
-  capabilities = capabilities,
   filetypes = { 'satysfi' }
 }
 '''
