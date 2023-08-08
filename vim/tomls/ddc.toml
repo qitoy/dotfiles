@@ -71,8 +71,8 @@ repo = 'Shougo/ddc-source-cmdline-history'
 repo = 'Shougo/ddc-source-shell-native'
 
 [[plugins]]
-repo = 'vim-skk/skkeleton'
-depends = 'denops.vim'
+# repo = 'vim-skk/skkeleton'
+repo = 'qitoy/skkeleton'
 hooks_file = '$VIM_HOOKS/skkeleton.vim'
 
 # Install your filters

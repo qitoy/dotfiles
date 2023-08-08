@@ -507,9 +507,8 @@ for [key, value] in items({
   let s:gact10_dvp[key .. ">"] = value
 endfor
 
-let s:henkanPoint = "\<F1>"
-let s:gact10_dvp[s:henkanPoint] = "henkanPoint"
 let s:gact10_dvp["'"] = ["あん"]
+let s:gact10_dvp["\""] = "<s-'>"
 for [key, value] in items({
 \ "b": ["ばん"],
 \ "bv": ["びゃん"],
@@ -541,7 +540,7 @@ for [key, value] in items({
 \ "zm": ["じゃん"],
 \})
   let s:gact10_dvp[key .. "'"] = value
-  let s:gact10_dvp[key .. s:henkanPoint .. "'"] = value
+  let s:gact10_dvp[key .. "\""] = value
 endfor
 
 imap <C-j> <Plug>(skkeleton-toggle)
@@ -568,26 +567,3 @@ augroup skkeleton-initialize-pre
   autocmd!
   autocmd User skkeleton-initialize-pre call s:skkeleton_init()
 augroup END
-
-function s:skkeleton_set_keymap() abort
-  inoremap <buffer> " <Cmd>call skkeleton#handle('handleKey', #{key: '<F1>'})<CR><Cmd>call skkeleton#handle('handleKey', #{key: ''''})<CR>
-  cnoremap <buffer> " <Cmd>call skkeleton#handle('handleKey', #{key: '<F1>'})<CR><Cmd>call skkeleton#handle('handleKey', #{key: ''''})<CR>
-  tnoremap <buffer> " <Cmd>call skkeleton#handle('handleKey', #{key: '<F1>'})<CR><Cmd>call skkeleton#handle('handleKey', #{key: ''''})<CR>
-endfunction
-
-function s:skkeleton_del_keymap() abort
-  " iunmap <buffer> "
-  " cunmap <buffer> "
-  " tunmap <buffer> "
-endfunction
-
-augroup skkeleton-enable-post
-  autocmd!
-  autocmd User skkeleton-enable-post call s:skkeleton_set_keymap()
-augroup END
-
-augroup skkeleton-disable-post
-  autocmd!
-  autocmd User skkeleton-disable-post call s:skkeleton_del_keymap()
-augroup END
-" }}}
