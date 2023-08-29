@@ -12,6 +12,6 @@ tnoremap <C-y> <Cmd>call pum#map#confirm()<CR>
 
 " deol {{{
 nnoremap <buffer> gf
-\ <Cmd>Ddu file_point -sync -ui-param-ignoreEmpty
-\ -ui-param-immediateAction=open<CR>
+\ <Cmd>Ddu file_point -sync -ui-param-ff-ignoreEmpty
+\ -ui-param-ff-immediateAction=open<CR>
 " }}}

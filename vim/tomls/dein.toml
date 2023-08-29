@@ -123,7 +123,7 @@ autocmd vimrc User DenopsPluginPost:procon call procon#modules('$VIM_HOOKS/proco
 [[plugins]]
 repo = 'qitoy/dps-camp.vim'
 hook_add = '''
-command! -nargs=1 CampNew Ddu camp_new -source-param-name=<args>
+command! -nargs=1 CampNew Ddu camp_new -source-param-camp-name=<args>
 '''
 
 [[plugins]]
