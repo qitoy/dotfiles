@@ -70,7 +70,6 @@
 - [segeljakt/vim-silicon](https://github.com/segeljakt/vim-silicon)
 - [shun/ddc-vim-lsp](https://github.com/shun/ddc-vim-lsp)
 - [shun/ddu-source-buffer](https://github.com/shun/ddu-source-buffer)
-- [skanehira/denops-gh.vim](https://github.com/skanehira/denops-gh.vim)
 - [skanehira/denops-translate.vim](https://github.com/skanehira/denops-translate.vim)
 - [statiolake/vim-quickrun-runner-nvimterm](https://github.com/statiolake/vim-quickrun-runner-nvimterm)
 - [tani/ddc-fuzzy](https://github.com/tani/ddc-fuzzy)
