@@ -13,7 +13,7 @@ input type:touchpad {
 
 bindsym $mod+Shift+m input * xkb_switch_layout next
 
-output eDP-1 scale 1
+output eDP-1 scale 1.2
 
 # notification
 exec mako
@@ -210,4 +210,4 @@ bar {
 
 for_window [class="^.*"] border pixel 1
 
-output * background ~/.config/sway/wallpaper/keep_on_raving.png fill
+output * background ~/.config/sway/wallpaper/keep_on_raving.png stretch

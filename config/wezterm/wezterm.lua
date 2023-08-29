@@ -11,7 +11,7 @@ return {
     initial_cols = 100,
     initial_rows = 48,
     use_ime = false,
-    font_size = 14,
+    font_size = 12.5,
     color_scheme = "carbonfox",
     window_background_opacity = 0.85,
     hide_tab_bar_if_only_one_tab = true,

@@ -84,6 +84,7 @@ repo = 'kana/vim-operator-user'
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 hook_add = '''
+let g:denops#deno = '~/.deno/bin/deno'->expand()
 if $DENOPS_DEBUG
 let g:denops#debug = 1
 endif
@@ -100,9 +101,6 @@ repo = 'lambdalisue/gin.vim'
 hook_add = '''
 nnoremap gs <Cmd>GinStatus<CR>
 '''
-
-[[plugins]]
-repo = 'skanehira/denops-gh.vim'
 
 [[plugins]]
 repo = 'yuki-yano/fuzzy-motion.vim'
