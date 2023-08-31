@@ -1,6 +1,6 @@
-import { BaseConfig } from "https://deno.land/x/ddu_vim@v3.4.4/types.ts";
-import { ConfigArguments } from "https://deno.land/x/ddu_vim@v3.4.4/base/config.ts";
-import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.4.4/deps.ts";
+import { BaseConfig } from "https://deno.land/x/ddu_vim@v3.6.0/types.ts";
+import { ConfigArguments } from "https://deno.land/x/ddu_vim@v3.6.0/base/config.ts";
+import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.6.0/deps.ts";
 
 export class Config extends BaseConfig {
   // deno-lint-ignore require-await

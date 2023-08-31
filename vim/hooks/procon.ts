@@ -1,9 +1,7 @@
 import { Module } from "https://raw.githubusercontent.com/qitoy/dps-procon.vim/main/denops/procon/config.ts";
-import { ensureDir } from "https://deno.land/std@0.171.0/fs/mod.ts";
-import { join } from "https://deno.land/std@0.171.0/path/mod.ts";
-import $ from "https://deno.land/x/dax@0.24.1/mod.ts";
+import $ from "https://deno.land/x/dax@0.34.0/mod.ts";
 
-const libPath = join(Deno.env.get("HOME")!, ".local", "include", "cpp-library");
+const libPath = $.path.join(Deno.env.get("HOME")!, ".local", "include", "cpp-library");
 
 export const modules: Record<string, Module> = {
   cpp: {
@@ -25,7 +23,7 @@ void Main() {
 }`,
     },
     testPre: async (sourcePath: string) => {
-      await ensureDir("/tmp/procon");
+      await $.fs.ensureDir("/tmp/procon");
       const execPath = await Deno.makeTempFile({ dir: "/tmp/procon" });
       const result =
         await $`g++ -std=gnu++17 -Wall -Wextra -DLOCAL -O2 ${sourcePath} -o ${execPath}`
@@ -36,7 +34,7 @@ void Main() {
       return [execPath];
     },
     submitPre: async (sourcePath: string) => {
-      await ensureDir("/tmp/procon");
+      await $.fs.ensureDir("/tmp/procon");
       const tmpPath = await Deno.makeTempFile({
         dir: "/tmp/procon",
         suffix: ".cpp",

@@ -1,6 +1,6 @@
-import { BaseConfig } from "https://deno.land/x/ddc_vim@v3.9.1/types.ts";
-import { ConfigArguments } from "https://deno.land/x/ddc_vim@v3.9.1/base/config.ts";
-import { fn } from "https://deno.land/x/ddc_vim@v3.9.1/deps.ts";
+import { BaseConfig } from "https://deno.land/x/ddc_vim@v4.0.4/types.ts";
+import { ConfigArguments } from "https://deno.land/x/ddc_vim@v4.0.4/base/config.ts";
+import { fn } from "https://deno.land/x/ddc_vim@v4.0.4/deps.ts";
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<void> {
