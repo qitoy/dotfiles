@@ -69,6 +69,11 @@ lspconfig.rust_analyzer.setup{
       check = {
         command = 'clippy'
       },
+      completion = {
+        callable = {
+          snippets = 'none',
+        }
+      },
       server = {
         extraEnv = {
           RUSTUP_TOOLCHAIN = '1.70.0'
