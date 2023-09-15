@@ -31,3 +31,47 @@ augroup skkeleton-initialize-pre
   autocmd!
   autocmd User skkeleton-initialize-pre call s:skkeleton_init()
 augroup END
+
+" from https://zenn.dev/vim_jp/articles/my-azik-is-burning
+
+let s:okuris = [
+\ ['"', 'aNn'],
+\ ['Q', 'oNn'],
+\ ['J', 'eNn'],
+\ ['K', 'uNn'],
+\ ['X', 'iNn'],
+\
+\ [':', 'aI'],
+\ ['<', 'oU'],
+\ ['>', 'eI'],
+\ ['P', 'uU'],
+\ ['Y', 'uI'],
+\]
+
+function s:map_okuri(input, feed) abort
+  for mode in ['i', 'c', 't']
+    execute printf(
+    \ 'autocmd User skkeleton-enable-post %smap <buffer> %s <Cmd>call <SID>okuri(''%s'', ''%s'')<CR>',
+    \ mode, a:input, a:input, a:feed
+    \)
+    " unmapについてはskkeleton側がうまくやってくれる
+  endfor
+endfunction
+
+function s:okuri(input, feed) abort
+  if g:skkeleton#state.phase ==# 'input:okurinasi'
+  \ && g:skkeleton#mode !=# 'abbrev'
+  \ && skkeleton#vim_status().prevInput =~# '\a$'
+    call skkeleton#handle('handleKey', #{key: a:feed->split('\zs')})
+  else
+    call skkeleton#handle('handleKey', #{key: a:input})
+  endif
+endfunction
+
+augroup skkeleton-keymap
+  autocmd!
+  for [input, feed] in s:okuris
+    call s:map_okuri(input, feed)
+  endfor
+augroup END
+" }}}
