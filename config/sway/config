@@ -20,10 +20,6 @@ exec mako
 
 # screen lock
 exec swayidle -w \
-    timeout 300 'light -T 0.5' \
-        resume 'light -T 2' \
-    timeout 600 'swaylock -f && swaymsg "output * dpms off"' \
-        resume 'swaymsg "output * dpms on"' \
     before-sleep 'swaylock -f'
 
 # from vim-jp
