@@ -4,6 +4,10 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'Shougo/dpp.vim'
+if = 0
+
+[[plugins]]
 repo = 'tyru/capture.vim'
 on_cmd = 'Capture'
 
