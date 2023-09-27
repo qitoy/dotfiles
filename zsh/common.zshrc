@@ -23,6 +23,8 @@ autoload -Uz _zinit
 ### End of Zinit's installer chunk
 
 zinit light zsh-users/zsh-autosuggestions
+zinit ice lucid depth"1" blockf
+zinit light yuki-yano/zeno.zsh
 
 zmodload zsh/zpty
 
@@ -46,7 +48,7 @@ zstyle 'chpwd:*' recent-dirs-max 5000
 bindkey -d
 bindkey -e
 bindkey "^U" backward-kill-line
-bindkey "^I" expand-or-complete-prefix
+# bindkey "^I" expand-or-complete-prefix
 
 autoload -U select-word-style
 select-word-style bash
@@ -54,7 +56,19 @@ select-word-style bash
 # opam
 [[ ! -r $HOME/.opam/opam-init/init.zsh ]] || source $HOME/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
-# powerline-shell
+# {{{ zeno
+export ZENO_ENABLE_SOCK=1
+export ZENO_GIT_CAT="bat --color=always"
+
+if [[ -n $ZENO_LOADED ]]; then
+	bindkey " " zeno-auto-snippet
+	bindkey "^M" zeno-auto-snippet-and-accept-line
+	bindkey "^I" zeno-completion
+	bindkey "^R" zeno-history-selection
+fi
+# }}}
+
+# {{{ powerline-shell
 function powerline_precmd() {
     PS1=$(echo -e "\n$(powerline-shell --shell zsh $?)\n$ ")
 }
@@ -71,8 +85,9 @@ function install_powerline_precmd() {
 if [ "$TERM" != "linux" -a -x "$(command -v powerline-shell)" ]; then
     install_powerline_precmd
 fi
+# }}}
 
-# fzf
+# {{{ fzf
 export FZF_DEFAULT_OPTS="--no-sort --cycle --multi --ansi"
 
 function fzf-cdr() {
@@ -92,6 +107,7 @@ function fzf-history() {
     fi
 }
 zle -N fzf-history
-bindkey "^R" fzf-history
+# bindkey "^R" fzf-history
+# }}}
 
 # vim:ft=zsh
