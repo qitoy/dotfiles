@@ -42,7 +42,6 @@ if dein#load_state(s:cache .. '/dein')
   endif
   call dein#load_toml('$VIM_TOMLS/ddc.toml', {'lazy': 0})
   call dein#load_toml('$VIM_TOMLS/ddu.toml', {'lazy': 0})
-  call dein#load_toml('$VIM_TOMLS/filetype.toml')
 
   " Required:
   call dein#end()

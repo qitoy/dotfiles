@@ -1,4 +1,4 @@
-hook_add = '''
+" hook_add {{{
 " LaTeX
 let g:tex_flavor = 'latex'
 let g:tex_conceal = ''
@@ -33,46 +33,45 @@ let g:loaded_vimballPlugin     = v:true
 let g:loaded_zipPlugin         = v:true
 
 autocmd vimrc BufNewFile,BufRead *.saty setfiletype satysfi
-'''
+" }}}
 
-[ftplugin]
 
-_ = '''
+" _ {{{
 setlocal matchpairs+=「:」,（:）
-'''
+" }}}
 
-conf = '''
+" conf {{{
 setlocal noexpandtab
-'''
+" }}}
 
-cpp = '''
+" cpp {{{
 nnoremap <buffer> <silent> <LocalLeader>cc
 \ <Cmd>QuickRun procon/exec<CR>
 nnoremap <buffer> <silent> <LocalLeader>cl
 \ <Plug>(procon-init)
-'''
+" }}}
 
-help = '''
+" help {{{
 setlocal iskeyword+=:,#,-,(,)
 setlocal nofoldenable
 setlocal tabstop=8
-'''
+" }}}
 
-make = '''
+" make {{{
 setlocal noexpandtab
-'''
+" }}}
 
-markdown = '''
+" markdown {{{
 setlocal wrap
 nnoremap <buffer> K
 \ <cmd>QuickRun -exec '/usr/bin/env ejdict %{expand("<cword>")}' -outputter popup<CR>
-'''
+" }}}
 
-satysfi = '''
+" satysfi {{{
 setlocal wrap
-'''
+" }}}
 
-tex = '''
+" tex {{{
 iunmap <buffer>]]
 setlocal wrap
-'''
+" }}}
