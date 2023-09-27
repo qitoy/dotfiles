@@ -25,6 +25,7 @@
 - [Shougo/ddu.vim](https://github.com/Shougo/ddu.vim)
 - [Shougo/dein.vim](https://github.com/Shougo/dein.vim)
 - [Shougo/deol.nvim](https://github.com/Shougo/deol.nvim)
+- [Shougo/dpp.vim](https://github.com/Shougo/dpp.vim)
 - [Shougo/neco-vim](https://github.com/Shougo/neco-vim)
 - [Shougo/pum.vim](https://github.com/Shougo/pum.vim)
 - [Shougo/shougo-s-github](https://github.com/Shougo/shougo-s-github)
