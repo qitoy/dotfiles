@@ -5,7 +5,21 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/dpp.vim'
-if = 0
+
+[[plugins]]
+repo = 'Shougo/dpp-ext-lazy'
+
+[[plugins]]
+repo = 'Shougo/dpp-ext-toml'
+
+[[plugins]]
+repo = 'Shougo/dpp-ext-local'
+
+[[plugins]]
+repo = 'Shougo/dpp-ext-installer'
+
+[[plugins]]
+repo = 'Shougo/dpp-protocol-git'
 
 [[plugins]]
 repo = 'tyru/capture.vim'
