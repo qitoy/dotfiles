@@ -32,7 +32,7 @@ let g:loaded_tutor_mode_plugin = v:true
 let g:loaded_vimballPlugin     = v:true
 let g:loaded_zipPlugin         = v:true
 
-autocmd vimrc BufNewFile,BufRead *.saty setfiletype satysfi
+autocmd vimrc BufNewFile,BufRead *.saty,*.satyh,*.satyg setfiletype satysfi
 " }}}
 
 
