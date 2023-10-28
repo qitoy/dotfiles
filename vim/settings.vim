@@ -1,9 +1,5 @@
 scriptencoding utf-8
 
-augroup vimrc
-  autocmd!
-augroup END
-
 " colorscheme
 set background=dark
 autocmd vimrc VimEnter * ++once colorscheme carbonfox

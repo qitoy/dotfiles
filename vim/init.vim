@@ -6,53 +6,57 @@ if has('nvim')
   lua if vim.loader then vim.loader.enable() end
 endif
 
-" dein install
+augroup vimrc
+  autocmd!
+augroup END
+
+let g:denops#deno = '~/.deno/bin/deno'->expand()
+
+" dpp install
 let s:cache = expand('~/.cache')
 if !isdirectory(s:cache)
   call mkdir(s:cache, 'p')
 endif
 
-let s:dein = s:cache .. '/dein/repos/github.com/Shougo/dein.vim'
-if !isdirectory(s:dein)
-  execute '!git clone https://github.com/Shougo/dein.vim' s:dein
-endif
-execute 'set runtimepath^=' .. s:dein
-
-let g:dein#auto_recache = v:true
-let g:dein#install_progress_type = 'floating'
-let g:dein#install_check_diff = v:true
-let g:dein#install_github_api_token = $DEIN_INSTALL_GITHUB_API_TOKEN
+function InitPlugin(plugin)
+  let dir = s:cache .. '/dpp/repos/github.com/' .. a:plugin
+  if !dir->isdirectory()
+    execute '!git clone https://github.com/' .. a:plugin dir
+  endif
+  execute 'set runtimepath^=' .. dir
+endfunction
 
 let $VIM_DIR = expand('~/.vim')
 let $VIM_TOMLS = $VIM_DIR .. '/' .. 'tomls'
 let $VIM_HOOKS = $VIM_DIR .. '/' .. 'hooks'
 
-let g:dein#inline_vimrcs = ['$VIM_DIR/settings.vim']
+call InitPlugin('Shougo/dpp.vim')
+" need to load lazy plugins
+call InitPlugin('Shougo/dpp-ext-lazy')
 
-if dein#load_state(s:cache .. '/dein')
-  " Required:
-  call dein#begin(s:cache .. '/dein', expand('<sfile>'))
+if dpp#min#load_state(s:cache .. '/dpp')
+  echohl WarningMsg | echomsg 'begin make state' | echohl NONE
 
-  call dein#load_toml('$VIM_TOMLS/dein.toml', {'lazy': 0})
-  call dein#load_toml('$VIM_TOMLS/dein_lazy.toml', {'lazy': 1})
-  if has('nvim')
-    call dein#load_toml('$VIM_TOMLS/nvim.toml', {'lazy': 1})
-  else
-    call dein#load_toml('$VIM_TOMLS/vim.toml', {'lazy': 1})
-  endif
-  call dein#load_toml('$VIM_TOMLS/ddc.toml', {'lazy': 0})
-  call dein#load_toml('$VIM_TOMLS/ddu.toml', {'lazy': 0})
+  for s:plugin in [
+  \ 'Shougo/dpp-ext-installer',
+  \ 'Shougo/dpp-ext-toml',
+  \ 'Shougo/dpp-protocol-git',
+  \ 'vim-denops/denops.vim',
+  \]
+    call InitPlugin(s:plugin)
+  endfor
 
-  " Required:
-  call dein#end()
-  call dein#save_state()
+  " NOTE: need manual load
+  runtime! plugin/denops.vim
+
+  autocmd vimrc User DenopsReady
+  \ call dpp#make_state(s:cache .. '/dpp', '$VIM_HOOKS/dpp.ts'->expand())
+  autocmd vimrc User Dpp:makeStatePost
+  \ echohl WarningMsg | echomsg 'end make state' | echohl NONE
+else
+  autocmd vimrc BufWritePost *.lua,*.vim,*.toml,*.ts,vimrc,.vimrc
+  \ call dpp#check_files()
 endif
 
-" Required:
 filetype plugin indent on
 syntax enable
-
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-	call dein#install()
-endif

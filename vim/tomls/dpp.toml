@@ -10,13 +10,14 @@ let g:lightline = #{
 \             [ 'readonly', 'filename', 'modified' ] ]
 \   },
 \ component_function: #{
-\   skk_mode: 'g:lightline_skk#mode',
+\   skk_mode: 'g:statusline_skk#mode',
 \   },
 \}
 '''
 
 [[plugins]]
 repo = 'yasunori-kirin0418/lightline_skk.vim'
+hook_add = 'let g:lightline_skk_announce = v:true'
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
@@ -66,17 +67,14 @@ repo = 'kana/vim-textobj-user'
 [[plugins]]
 repo = 'kana/vim-textobj-entire'
 depends = 'vim-textobj-user'
-on_map = '<Plug>(textobj-entire-'
 
 [[plugins]]
 repo = 'kana/vim-textobj-line'
 depends = 'vim-textobj-user'
-on_map = '<Plug>(textobj-line-'
 
 [[plugins]]
 repo = 'machakann/vim-textobj-functioncall'
 depends = 'vim-textobj-user'
-on_map = '<Plug>(textobj-functioncall-'
 
 [[plugins]]
 repo = 'kana/vim-operator-user'

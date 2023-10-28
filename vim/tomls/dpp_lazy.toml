@@ -1,8 +1,3 @@
-# Let dein manage dein
-# Required:
-[[plugins]]
-repo = 'Shougo/dein.vim'
-
 [[plugins]]
 repo = 'Shougo/dpp.vim'
 
@@ -11,9 +6,6 @@ repo = 'Shougo/dpp-ext-lazy'
 
 [[plugins]]
 repo = 'Shougo/dpp-ext-toml'
-
-[[plugins]]
-repo = 'Shougo/dpp-ext-local'
 
 [[plugins]]
 repo = 'Shougo/dpp-ext-installer'
@@ -58,7 +50,7 @@ let g:silicon = {
 
 [[plugins]]
 repo = 'terryma/vim-expand-region'
-on_map = '<Plug>(expand_region'
+on_map = ['<Plug>(expand_region']
 hook_add = '''
 xnoremap v <Plug>(expand_region_expand)
 xnoremap V <Plug>(expand_region_shrink)
@@ -66,7 +58,7 @@ xnoremap V <Plug>(expand_region_shrink)
 
 [[plugins]]
 repo = 'haya14busa/vim-asterisk'
-on_map = '<Plug>(asterisk-'
+on_map = ['<Plug>(asterisk-']
 hook_add = '''
 noremap * <Plug>(asterisk-z*)
 noremap # <Plug>(asterisk-z#)
