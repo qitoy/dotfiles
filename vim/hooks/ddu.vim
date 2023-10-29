@@ -31,12 +31,6 @@ nnoremap gD
 \ -ui-param-ff-immediateAction=open<CR>
 nnoremap <Plug>(leader)a
 \ <Cmd>Ddu lsp_codeAction -ui-param-ff-ignoreEmpty<CR>
-
-command! Dein call ddu#start(#{
-\ sources: [#{ name: 'dein' }],
-\ uiParams: #{ ff: #{
-\   startAutoAction: v:false,
-\   startFilter: v:true,
-\ }},
-\})
+nnoremap <Plug>(ddu)p
+\ <Cmd>Ddu dpp -ui-param-ff-startFilter -ui-param-ff-startAutoAction=v:false<CR>
 " }}}

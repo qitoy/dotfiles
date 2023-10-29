@@ -1,5 +1,22 @@
 hooks_file = '$VIM_HOOKS/filetype.vim'
 
+# {{{ dpp.vim
+[[plugins]]
+repo = 'Shougo/dpp.vim'
+
+[[plugins]]
+repo = 'Shougo/dpp-ext-lazy'
+
+[[plugins]]
+repo = 'Shougo/dpp-ext-toml'
+
+[[plugins]]
+repo = 'Shougo/dpp-ext-installer'
+
+[[plugins]]
+repo = 'Shougo/dpp-protocol-git'
+# }}}
+
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
@@ -80,7 +97,6 @@ depends = 'vim-textobj-user'
 repo = 'kana/vim-operator-user'
 # }}}
 
-# {{{ denops
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 hook_add = '''
@@ -92,41 +108,6 @@ endif
 
 [[plugins]]
 repo = 'lambdalisue/guise.vim'
-
-[[plugins]]
-repo = 'skanehira/denops-translate.vim'
-
-[[plugins]]
-repo = 'lambdalisue/gin.vim'
-hook_add = '''
-nnoremap gs <Cmd>GinStatus<CR>
-'''
-
-[[plugins]]
-repo = 'yuki-yano/fuzzy-motion.vim'
-hook_add = '''
-nnoremap ss <Cmd>FuzzyMotion<CR>
-let g:fuzzy_motion_matchers = ['fzf', 'kensaku']
-'''
-
-[[plugins]]
-repo = 'gamoutatsumi/dps-ghosttext.vim'
-
-[[plugins]]
-repo = 'qitoy/dps-procon.vim'
-hook_add = '''
-autocmd vimrc User DenopsPluginPost:procon call procon#modules('$VIM_HOOKS/procon.ts'->expand())
-'''
-
-[[plugins]]
-repo = 'qitoy/dps-camp.vim'
-hook_add = '''
-command! -nargs=1 CampNew Ddu camp_new -source-param-camp-name=<args>
-'''
-
-[[plugins]]
-repo = 'lambdalisue/kensaku.vim'
-# }}}
 
 [[plugins]]
 repo = 'rcarriga/nvim-notify'

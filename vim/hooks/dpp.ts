@@ -24,7 +24,10 @@ export class Config extends BaseConfig {
     const hasNvim = args.denops.meta.host === "nvim";
 
     // setting inline_vimrcs
-    const inlineVimrcs = ["$VIM_DIR/settings.vim"];
+    const inlineVimrcs = [
+      "$VIM_DIR/settings.vim",
+      "$VIM_DIR/filetype.vim",
+    ];
 
     args.contextBuilder.setGlobal({
       inlineVimrcs,
@@ -44,8 +47,6 @@ export class Config extends BaseConfig {
     for (
       const toml of [
         "$VIM_TOMLS/dpp.toml",
-        "$VIM_TOMLS/ddc.toml",
-        "$VIM_TOMLS/ddu.toml",
       ]
     ) {
       tomls.push(
@@ -68,6 +69,8 @@ export class Config extends BaseConfig {
     for (
       const toml of [
         "$VIM_TOMLS/dpp_lazy.toml",
+        "$VIM_TOMLS/ddc.toml",
+        "$VIM_TOMLS/ddu.toml",
         hasNvim ? "$VIM_TOMLS/nvim.toml" : "$VIM_TOMLS/vim.toml",
       ]
     ) {

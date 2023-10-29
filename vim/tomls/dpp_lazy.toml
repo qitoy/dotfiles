@@ -1,19 +1,4 @@
 [[plugins]]
-repo = 'Shougo/dpp.vim'
-
-[[plugins]]
-repo = 'Shougo/dpp-ext-lazy'
-
-[[plugins]]
-repo = 'Shougo/dpp-ext-toml'
-
-[[plugins]]
-repo = 'Shougo/dpp-ext-installer'
-
-[[plugins]]
-repo = 'Shougo/dpp-protocol-git'
-
-[[plugins]]
 repo = 'tyru/capture.vim'
 on_cmd = 'Capture'
 
@@ -66,38 +51,6 @@ noremap g* <Plug>(asterisk-gz*)
 noremap g# <Plug>(asterisk-gz#)
 '''
 
-#[[plugins]]
-#repo = 'hrsh7th/vim-eft'
-#on_map = '<Plug>(eft-'
-#hook_add = '''
-#let g:eft_ignorecase = v:true
-#
-#let g:eft_index_function = {
-#\ 'head': function('eft#index#head'),
-#\ 'camel': function('eft#index#camel'),
-#\ 'space': function('eft#index#space'),
-#\ 'symbol': function('eft#index#symbol'),
-#\}
-#
-#" If you prefer ; as repeat.
-#nmap ; <Plug>(eft-repeat)
-#xmap ; <Plug>(eft-repeat)
-#
-#nmap f <Plug>(eft-f)
-#xmap f <Plug>(eft-f)
-#omap f <Plug>(eft-f)
-#nmap F <Plug>(eft-F)
-#xmap F <Plug>(eft-F)
-#omap F <Plug>(eft-F)
-#
-#nmap t <Plug>(eft-t)
-#xmap t <Plug>(eft-t)
-#omap t <Plug>(eft-t)
-#nmap T <Plug>(eft-T)
-#xmap T <Plug>(eft-T)
-#omap T <Plug>(eft-T)
-#'''
-
 [[plugins]]
 repo = 'thinca/vim-qfreplace'
 on_cmd = 'Qfreplace'
@@ -128,6 +81,49 @@ let g:quickrun_config = {
 repo = 'Shougo/deol.nvim'
 on_cmd = ['Deol', 'DeolCd', 'DeolEdit']
 hooks_file = '$VIM_HOOKS/deol.vim'
+
+# {{{ denops
+[[plugins]]
+repo = 'skanehira/denops-translate.vim'
+
+[[plugins]]
+repo = 'lambdalisue/gin.vim'
+hook_add = '''
+nnoremap gs <Cmd>GinStatus<CR>
+'''
+
+[[plugins]]
+repo = 'yuki-yano/fuzzy-motion.vim'
+hook_add = '''
+nnoremap ss <Cmd>FuzzyMotion<CR>
+let g:fuzzy_motion_matchers = ['fzf', 'kensaku']
+'''
+
+[[plugins]]
+repo = 'gamoutatsumi/dps-ghosttext.vim'
+
+[[plugins]]
+repo = 'qitoy/dps-procon.vim'
+hook_add = '''
+autocmd vimrc User DenopsPluginPost:procon call procon#modules('$VIM_HOOKS/procon.ts'->expand())
+'''
+
+[[plugins]]
+repo = 'qitoy/dps-camp.vim'
+on_cmd = ['CampNew', 'CampTest', 'CampOpen', 'CampSubmit']
+hook_add = '''
+command! -nargs=1 CampNew Ddu camp_new -source-param-camp-name=<args>
+'''
+
+[[plugins]]
+repo = 'lambdalisue/kensaku.vim'
+
+[[plugins]]
+# repo = 'vim-skk/skkeleton'
+repo = 'qitoy/skkeleton'
+on_map = { ict = ['<Plug>(skkeleton-'] }
+hooks_file = '$VIM_HOOKS/skkeleton.vim'
+# }}}
 
 # {{{ context_filetype
 [[plugins]]
