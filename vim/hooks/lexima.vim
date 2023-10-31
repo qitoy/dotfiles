@@ -39,7 +39,4 @@ for rule in s:lexima_tex_rules
   let rule.filetype = 'tex'
   call lexima#add_rule(rule)
 endfor
-
-inoremap <expr> <C-l> UltiSnips#CanExpandSnippet() <Bar><Bar> UltiSnips#CanJumpForwards() ?
-\ '<Cmd>call UltiSnips#ExpandSnippetOrJump()<CR>' : lexima#expand('<LT>C-L>', 'i')
 " }}}

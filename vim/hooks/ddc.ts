@@ -13,7 +13,7 @@ export class Config extends BaseConfig {
       sources: [
         hasNvim ? "nvim-lsp" : "vim-lsp",
         "around",
-        "ultisnips",
+        "denippet",
       ],
       cmdlineSources: {
         ":": ["cmdline", "cmdline-history", "around"],
@@ -35,8 +35,8 @@ export class Config extends BaseConfig {
           converters: ["converter_kind_labels"],
           // sorters: ["sorter_lsp-kind"],
         },
-        ultisnips: {
-          mark: "| US",
+        denippet: {
+          mark: "| snippet",
         },
         around: {
           mark: "| A",
@@ -68,7 +68,7 @@ export class Config extends BaseConfig {
           enableAdditionalTextEdit: true,
           confirmBehavior: "replace",
           snippetEngine: async (body: string) => {
-            await args.denops.call("UltiSnips#Anon", body);
+            await args.denops.call("denippet#anonymous", body);
           },
         },
         zsh: {
@@ -105,11 +105,11 @@ export class Config extends BaseConfig {
     });
 
     args.contextBuilder.patchFiletype("vim", {
-      sources: ["necovim", "around", "ultisnips"],
+      sources: ["necovim", "around", "denippet"],
     });
 
     args.contextBuilder.patchFiletype("lua", {
-      sources: ["nvim-lua", "around", "ultisnips"],
+      sources: ["nvim-lua", "around", "denippet"],
     });
 
     args.contextBuilder.patchFiletype("satysfi", {
