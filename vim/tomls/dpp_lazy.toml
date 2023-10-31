@@ -4,8 +4,8 @@ on_cmd = 'Capture'
 
 [[plugins]]
 repo = 'lervag/vimtex'
-on_ft=['tex']
-hook_add='''
+on_ft = ['tex']
+hook_add = '''
 if has('mac')
   let g:vimtex_view_method = 'skim'
   let g:vimtex_view_general_viewer='/Applications/Skim.app/Contents/SharedSupport/displayline'
@@ -19,7 +19,7 @@ endif
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
-on_ft='help'
+on_ft = 'help'
 hook_add = 'set helplang=ja'
 
 [[plugins]]
@@ -85,15 +85,32 @@ hooks_file = '$VIM_HOOKS/deol.vim'
 # {{{ denops
 [[plugins]]
 repo = 'skanehira/denops-translate.vim'
+on_cmd = 'Translate'
 
 [[plugins]]
 repo = 'lambdalisue/gin.vim'
+on_cmd = [
+  'Gin',
+  'GinBranch',
+  'GinBrowse',
+  'GinBuffer',
+  'GinCd',
+  'GinChaperon',
+  'GinDiff',
+  'GinEdit',
+  'GinLcd',
+  'GinLog',
+  'GinPatch',
+  'GinStatus',
+  'GinTcd',
+]
 hook_add = '''
 nnoremap gs <Cmd>GinStatus<CR>
 '''
 
 [[plugins]]
 repo = 'yuki-yano/fuzzy-motion.vim'
+on_cmd = 'FuzzyMotion'
 hook_add = '''
 nnoremap ss <Cmd>FuzzyMotion<CR>
 let g:fuzzy_motion_matchers = ['fzf', 'kensaku']

@@ -34,6 +34,7 @@ export class Config extends BaseConfig {
       extParams: {
         installer: {
           checkDiff: true,
+          maxProcesses: 10,
         },
       },
       protocols: ["git"],
