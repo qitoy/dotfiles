@@ -55,6 +55,7 @@ repo = 'uga-rosa/denippet.vim'
 on_source = 'ddc.vim'
 hook_add = '''
 imap <C-l> <Plug>(denippet-expand-or-jump)
+smap <C-l> <Plug>(denippet-jump-next)
 imap <C-n> <Plug>(denippet-choice-next)
 '''
 

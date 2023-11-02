@@ -26,6 +26,7 @@ export class Config extends BaseConfig {
     // setting inline_vimrcs
     const inlineVimrcs = [
       "$VIM_DIR/settings.vim",
+      "$VIM_DIR/mappings.vim",
       "$VIM_DIR/filetype.vim",
     ];
 

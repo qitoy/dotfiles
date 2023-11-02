@@ -195,12 +195,6 @@ nnoremap <Plug>(leader)p <Cmd>call <SID>operator_partedit()<CR>
 # }}}
 
 [[plugins]]
-repo = 'cohama/lexima.vim'
-on_event = ['InsertEnter']
-rev = 'feature/feedkeys'
-hooks_file = '$VIM_HOOKS/lexima.vim'
-
-[[plugins]]
 repo = 'vim-pandoc/vim-pandoc'
 on_ft = ['markdown']
 on_cmd = 'Pandoc'

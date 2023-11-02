@@ -4,12 +4,6 @@ scriptencoding utf-8
 set background=dark
 autocmd vimrc VimEnter * ++once colorscheme carbonfox
 
-" leader関連
-let g:mapleader = ' '
-let g:maplocalleader = '\'
-
-nmap <leader> <Plug>(leader)
-
 " for cpp-library
 execute 'set path+=' . expand('~/.local/include/cpp-library')
 
@@ -19,37 +13,13 @@ command! -nargs=* Make
 command! SourceVimrc
 \ source ~/.vimrc
 
-" 後でなんかするかも
-nnoremap Q <Nop>
-" nnoremap q <Nop> マクロ大事
-nnoremap m <Nop>
-inoremap <F1> <Nop>
-
 " <BS>の挙動変更
 set backspace=indent,eol,start
 
 " コマンド表示
 set showcmd
 
-" コマンドラインでの動き
-cnoremap <C-F> <Right>
-cnoremap <C-B> <Left>
-cnoremap <C-A> <Home>
-cnoremap <C-E> <End>
-cnoremap <Esc> <Nop>
-cnoremap <Esc>f <S-Right>
-cnoremap <Esc>b <S-Left>
-cnoremap <expr> <Esc><Esc>
-\ printf("<C-C><cmd>call vimrc#cmdwin('%s',%s)<CR>", getcmdtype(), getcmdline() ==# '')
-
-" レジスタ関連
-nnoremap x "_x
-vnoremap x "_x
-nnoremap Y y$
-
 " 移動関連
-nnoremap <silent> j gj
-nnoremap <silent> k gk
 set scrolloff=10
 
 " 折りたたみ
@@ -80,7 +50,6 @@ set updatetime=100
 
 " 保存
 set autowrite
-nnoremap <C-S> <Cmd>update<CR>
 
 " 表示
 let &laststatus = has('nvim') ? 3 : 2
