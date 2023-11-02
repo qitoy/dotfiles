@@ -136,8 +136,7 @@ command! -nargs=1 CampNew Ddu camp_new -source-param-camp-name=<args>
 repo = 'lambdalisue/kensaku.vim'
 
 [[plugins]]
-# repo = 'vim-skk/skkeleton'
-repo = 'qitoy/skkeleton'
+repo = 'vim-skk/skkeleton'
 on_map = { ict = ['<Plug>(skkeleton-'] }
 hooks_file = '$VIM_HOOKS/skkeleton.vim'
 # }}}

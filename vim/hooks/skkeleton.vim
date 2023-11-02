@@ -19,12 +19,8 @@ function s:skkeleton_init() abort
   \ selectCandidateKeys: 'aoeuhtn',
   \ kanaTable: 'gact10_dvp',
   \ keepState: v:true,
-  \ toLowerCase: {
-  \   "\"": "'",
-  \   ":": ";",
-  \   "<": ",",
-  \   ">": ".",
-  \ },
+  \ markerHenkan: "",
+  \ markerHenkanSelect: "",
   \})
 endfunction
 
@@ -34,9 +30,7 @@ augroup skkeleton-initialize-pre
 augroup END
 
 " from https://zenn.dev/vim_jp/articles/my-azik-is-burning
-
 let s:okuris = [
-\ ['"', 'aNn'],
 \ ['Q', 'oNn'],
 \ ['J', 'eNn'],
 \ ['K', 'uNn'],
@@ -69,10 +63,47 @@ function s:okuri(input, feed) abort
   endif
 endfunction
 
+function s:skk_dq() abort
+  if g:skkeleton#state.phase ==# 'input:okurinasi'
+  \ && g:skkeleton#mode !=# 'abbrev'
+  \ && skkeleton#vim_status().prevInput =~# '\a$'
+    call skkeleton#handle('handleKey', #{key: 'aNn'->split('\zs')})
+  elseif g:skkeleton#state.phase ==# 'input'
+  \ && g:skkeleton#mode !=# 'zenkaku'
+  \ && g:skkeleton#mode !=# 'abbrev'
+    call skkeleton#handle('handleKey', #{key: 'Ann'->split('\zs')})
+  else
+    call skkeleton#handle('handleKey', #{key: '"'})
+  endif
+endfunction
+
 augroup skkeleton-keymap
   autocmd!
-  for [input, feed] in s:okuris
-    call s:map_okuri(input, feed)
+  for [s:input, s:feed] in s:okuris
+    call s:map_okuri(s:input, s:feed)
+  endfor
+  for s:mode in 'ict'->split('\zs')
+    execute s:mode->printf('autocmd User skkeleton-enable-post %smap <buffer> " <Cmd>call <SID>skk_dq()<CR>')
   endfor
 augroup END
+
+" https://github.com/kuuote/dotvim/commit/4e7fd8fa99b6550414b0dc1a6f26bbc8a2389e98
+" 変換ポイント切ってる時だけcursorlineを表示する
+let s:cursorline_phase = {
+\   'input:okurinasi': v:true,
+\   'input:okuriari': v:true,
+\   'henkan': v:true,
+\ }
+
+function s:cursorline() abort
+  let phase = g:skkeleton#state.phase
+  if has_key(s:cursorline_phase, phase)
+    setlocal cursorline
+  else
+    setlocal nocursorline
+  endif
+endfunction
+
+autocmd User skkeleton-handled call s:cursorline()
+autocmd User skkeleton-disable-post setlocal nocursorline
 " }}}
