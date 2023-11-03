@@ -70,7 +70,6 @@ vmap gx <Plug>(openbrowser-smart-search)
 [[plugins]]
 repo = 'andymass/vim-matchup'
 
-# {{{ textobj and operator
 [[plugins]]
 repo = 'machakann/vim-sandwich'
 hook_add = '''
@@ -95,7 +94,6 @@ depends = 'vim-textobj-user'
 
 [[plugins]]
 repo = 'kana/vim-operator-user'
-# }}}
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'
@@ -108,19 +106,6 @@ endif
 
 [[plugins]]
 repo = 'lambdalisue/guise.vim'
-
-[[plugins]]
-repo = 'rcarriga/nvim-notify'
-if = 'has("nvim")'
-lua_add = '''
-vim.notify = function(...)
-  vim.notify = require'notify'
-  vim.notify.setup {
-    background_colour = '#000000'
-  }
-  vim.notify(...)
-end
-'''
 
 [[plugins]]
 repo = 'Shougo/shougo-s-github'

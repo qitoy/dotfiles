@@ -6,8 +6,6 @@ nmap <leader> <Plug>(leader)
 
 " 後でなんかするかも
 nnoremap Q <Nop>
-" nnoremap q <Nop> マクロ大事
-nnoremap m <Nop>
 inoremap <F1> <Nop>
 
 " コマンドラインでの動き

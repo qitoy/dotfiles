@@ -2,7 +2,7 @@
 call ddu#custom#load_config('$VIM_HOOKS/ddu.ts'->expand())
 
 nmap <Plug>(leader)u <Plug>(ddu)
-nmap <F1> <Plug>(ddu)h
+nmap m <Plug>(ddu)
 
 inoremap <C-x><C-e> <Cmd>call ddu#start(#{
 \ sources: [
@@ -29,6 +29,8 @@ nnoremap gd
 nnoremap gD
 \ <Cmd>Ddu lsp_references -sync -ui-param-ff-ignoreEmpty
 \ -ui-param-ff-immediateAction=open<CR>
+nnoremap <Plug>(ddu)d
+\ <Cmd>Ddu lsp_diagnostic -up-param-ff-ignoreEmpty<CR>
 nnoremap <Plug>(leader)a
 \ <Cmd>Ddu lsp_codeAction -ui-param-ff-ignoreEmpty<CR>
 nnoremap <Plug>(ddu)p
