@@ -7,11 +7,12 @@ tools:
     lint-command: 'satysfi ${INPUT}'
     lint-ignore-exit-code: true
     lint-formats:
-      - '  [%tarning] at "%f", line %l, characters %c-%k: %m'
+      - '  [%tarning] at "%.%#", line %l, characters %c-%k: %m'
       - '  [%tarning] %m'
-      - '%A! [%t%.%#] at "%f", line %l, characters %c-%k:'
+      - '%E! [%.%#] at "%.%#", line %l, characters %c-%k:'
       - '%C    %#%m'
       - '%Z'
+        # - '%-G%.%#'
 
 languages:
   satysfi:

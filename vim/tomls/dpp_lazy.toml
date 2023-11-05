@@ -126,13 +126,6 @@ autocmd vimrc User DenopsPluginPost:procon call procon#modules('$VIM_HOOKS/proco
 '''
 
 [[plugins]]
-repo = 'qitoy/dps-camp.vim'
-on_cmd = ['CampNew', 'CampTest', 'CampOpen', 'CampSubmit']
-hook_add = '''
-command! -nargs=1 CampNew Ddu camp_new -source-param-camp-name=<args>
-'''
-
-[[plugins]]
 repo = 'lambdalisue/kensaku.vim'
 
 [[plugins]]

@@ -30,7 +30,7 @@ nnoremap gD
 \ <Cmd>Ddu lsp_references -sync -ui-param-ff-ignoreEmpty
 \ -ui-param-ff-immediateAction=open<CR>
 nnoremap <Plug>(ddu)d
-\ <Cmd>Ddu lsp_diagnostic -up-param-ff-ignoreEmpty<CR>
+\ <Cmd>Ddu lsp_diagnostic -ui-param-ff-ignoreEmpty<CR>
 nnoremap <Plug>(leader)a
 \ <Cmd>Ddu lsp_codeAction -ui-param-ff-ignoreEmpty<CR>
 nnoremap <Plug>(ddu)p
