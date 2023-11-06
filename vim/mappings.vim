@@ -32,20 +32,3 @@ nnoremap <C-S> <Cmd>update<CR>
 " insert empty line
 nnoremap <CR> <Cmd>call append(line('.'), '')<CR>
 nnoremap <S-CR> <Cmd>call append(line('.') - 1, '')<CR>
-
-" auto pairs
-inoremap ( ()<C-g>U<Left>
-inoremap { {}<C-g>U<Left>
-inoremap [ []<C-g>U<Left>
-
-inoremap <expr> ) getline('.')[col('.') - 1] == ')' ? '<C-g>U<Right>' : ')'
-inoremap <expr> } getline('.')[col('.') - 1] == '}' ? '<C-g>U<Right>' : '}'
-inoremap <expr> ] getline('.')[col('.') - 1] == ']' ? '<C-g>U<Right>' : ']'
-
-function s:isinpair()
-  let col = col('.')
-  let str = getline('.')[col - 2 : col - 1]
-  return str == '()' || str == '[]' || str == '{}'
-endfunction
-
-inoremap <expr> <BS> <SID>isinpair() ? '<C-g>U<Right><BS><BS>' : '<BS>'
