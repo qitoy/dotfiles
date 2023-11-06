@@ -12,8 +12,8 @@ export class Config extends BaseConfig {
       ui: "pum",
       sources: [
         hasNvim ? "nvim-lsp" : "vim-lsp",
-        "around",
         "denippet",
+        "around",
       ],
       cmdlineSources: {
         ":": ["cmdline", "cmdline-history", "around"],

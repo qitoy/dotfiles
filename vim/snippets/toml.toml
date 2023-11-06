@@ -1,0 +1,13 @@
+[snippet]
+body = """
+[$1]
+body = '''
+$0
+'''\
+"""
+
+[plugins]
+body = '''
+[[plugins]]
+repo = '$0'
+'''

@@ -58,6 +58,11 @@ imap <C-l> <Plug>(denippet-expand-or-jump)
 smap <C-l> <Plug>(denippet-jump-next)
 imap <C-n> <Plug>(denippet-choice-next)
 '''
+hook_source = '''
+for s:snip in globpath($VIM_DIR, 'snippets/*', 1, 1)
+  call denippet#load(s:snip)
+endfor
+'''
 
 [[plugins]]
 repo = 'Shougo/ddc-source-cmdline'
