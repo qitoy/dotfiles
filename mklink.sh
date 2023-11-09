@@ -17,7 +17,7 @@ case $OSTYPE in
         dots+=("hammerspoon")
         configs+=("karabiner");;
     linux*)
-        configs+=("systemd" "i3" "sway" "swaylock" "waybar");;
+        configs+=("systemd" "i3" "sway" "swaylock" "waybar" "foot");;
 esac
 
 for conf in $configs; do dots+=("config/$conf"); done

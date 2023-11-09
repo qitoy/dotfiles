@@ -24,6 +24,7 @@
 !/hammerspoon/**
 !/w3m/keymap
 !/config/efm-langserver/*
+!/config/foot/foot.ini
 !/config/gh/config.yml
 !/config/git/*
 !/config/i3/config
