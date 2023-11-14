@@ -25,6 +25,8 @@ parser_config.satysfi = {
   filetype = "satysfi", -- if filetype does not agrees with parser name
 }
 
+vim.treesitter.language.register("markdown", "mdx")
+
 require'nvim-treesitter.configs'.setup {
     ensure_installed = 'all',
     highlight = {

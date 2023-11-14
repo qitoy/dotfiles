@@ -1,3 +1,6 @@
+" MDX
+autocmd vimrc BufNewFile,BufRead *.mdx setfiletype mdx
+
 " LaTeX
 let g:tex_flavor = 'latex'
 let g:tex_conceal = ''
