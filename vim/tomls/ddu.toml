@@ -72,15 +72,6 @@ on_source = 'ddu.vim'
 repo = 'mikanIchinose/ddu-source-markdown'
 on_source = 'ddu.vim'
 
-[[plugins]]
-repo = 'qitoy/dps-camp.vim'
-depends = 'ddu.vim'
-on_source = 'ddu.vim'
-on_cmd = ['CampNew', 'CampTest', 'CampOpen', 'CampSubmit']
-hook_add = '''
-command! -nargs=1 CampNew Ddu camp_new -source-param-camp-name=<args>
-'''
-
 #filters
 [[plugins]]
 repo = 'yuki-yano/ddu-filter-fzf'

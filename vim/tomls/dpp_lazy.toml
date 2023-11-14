@@ -82,6 +82,10 @@ repo = 'Shougo/deol.nvim'
 on_cmd = ['Deol', 'DeolCd', 'DeolEdit']
 hooks_file = '$VIM_HOOKS/deol.vim'
 
+[[plugins]]
+repo = 'qitoy/camp.vim'
+on_cmd = ['CampTest', 'CampOpen', 'CampSubmit']
+
 # {{{ denops
 [[plugins]]
 repo = 'skanehira/denops-translate.vim'
