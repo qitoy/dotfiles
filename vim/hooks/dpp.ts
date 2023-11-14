@@ -36,6 +36,7 @@ export class Config extends BaseConfig {
         installer: {
           checkDiff: true,
           maxProcesses: 10,
+          githubAPIToken: Deno.env.get("DPP_GITHUB_TOKEN")!,
         },
       },
       protocols: ["git"],

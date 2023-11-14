@@ -51,12 +51,13 @@ if dpp#min#load_state(s:cache .. '/dpp')
 
   autocmd vimrc User DenopsReady
   \ call dpp#make_state(s:cache .. '/dpp', '$VIM_HOOKS/dpp.ts'->expand())
-  autocmd vimrc User Dpp:makeStatePost
-  \ echohl WarningMsg | echomsg 'end make state' | echohl NONE
 else
   autocmd vimrc BufWritePost *.lua,*.vim,*.toml,*.ts,vimrc,.vimrc
   \ call dpp#check_files()
 endif
+
+autocmd vimrc User Dpp:makeStatePost
+\ echohl WarningMsg | echomsg 'end make state' | echohl NONE
 
 filetype plugin indent on
 syntax enable
