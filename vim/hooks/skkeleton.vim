@@ -86,24 +86,4 @@ augroup skkeleton-keymap
     execute s:mode->printf('autocmd User skkeleton-enable-post %smap <buffer> " <Cmd>call <SID>skk_dq()<CR>')
   endfor
 augroup END
-
-" https://github.com/kuuote/dotvim/commit/4e7fd8fa99b6550414b0dc1a6f26bbc8a2389e98
-" 変換ポイント切ってる時だけcursorlineを表示する
-let s:cursorline_phase = {
-\   'input:okurinasi': v:true,
-\   'input:okuriari': v:true,
-\   'henkan': v:true,
-\ }
-
-function s:cursorline() abort
-  let phase = g:skkeleton#state.phase
-  if has_key(s:cursorline_phase, phase)
-    setlocal cursorline
-  else
-    setlocal nocursorline
-  endif
-endfunction
-
-autocmd User skkeleton-handled call s:cursorline()
-autocmd User skkeleton-disable-post setlocal nocursorline
 " }}}

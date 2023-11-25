@@ -23,18 +23,12 @@ hook_add = '''
 let g:lightline = #{
 \ colorscheme: 'carbonfox',
 \ active: #{
-\   left: [ [ 'mode', 'paste', 'skk_mode' ],
-\             [ 'readonly', 'filename', 'modified' ] ]
-\   },
-\ component_function: #{
-\   skk_mode: 'g:statusline_skk#mode',
-\   },
+\   left: [['mode'], ['readonly', 'filename', 'modified']],
+\   right: [['lineinfo'], ['filetype']],
+\ },
+\ tabline: #{ right: [[]] },
 \}
 '''
-
-[[plugins]]
-repo = 'yasunori-kirin0418/lightline_skk.vim'
-hook_add = 'let g:lightline_skk_announce = v:true'
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
