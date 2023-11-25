@@ -127,7 +127,7 @@ export class Config extends BaseConfig {
       {
         plugins: Object.values(recordPlugins),
       },
-    ) as LazyMakeStateResult;
+    ) as LazyMakeStateResult | undefined;
 
     // $VIM_DIR/init.vim
     // $VIM_DIR/settings.vim

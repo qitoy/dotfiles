@@ -4,15 +4,6 @@ scriptencoding utf-8
 set background=dark
 autocmd vimrc VimEnter * ++once colorscheme carbonfox
 
-" for cpp-library
-execute 'set path+=' . expand('~/.local/include/cpp-library')
-
-" 便利コマンド
-command! -nargs=* Make
-\ call vimrc#make(<f-args>)
-command! SourceVimrc
-\ source ~/.vimrc
-
 " <BS>の挙動変更
 set backspace=indent,eol,start
 
