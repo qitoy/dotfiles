@@ -5,6 +5,7 @@ import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.6.0/deps.ts";
 export class Config extends BaseConfig {
   // deno-lint-ignore require-await
   override async config(args: ConfigArguments): Promise<void> {
+    const hasNvim = args.denops.meta.host === "nvim";
     args.contextBuilder.patchGlobal({
       ui: "ff",
       sourceOptions: {
@@ -48,8 +49,12 @@ export class Config extends BaseConfig {
       },
       uiParams: {
         ff: {
-          split: "horizontal",
+          split: hasNvim ? "floating" : "horizontal",
+          winWidth: "&columns",
+          winRow: "&lines - eval(uiParams.winHeight) - 1",
+          previewFloating: hasNvim,
           previewSplit: "horizontal",
+          previewWidth: "&columns",
           autoAction: {
             name: "preview",
             previewCmds: [
