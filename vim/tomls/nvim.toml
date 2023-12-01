@@ -67,14 +67,14 @@ vim.api.nvim_set_keymap('o', 'au', ':<C-u>lua require"treesitter-unit".select(tr
 # }}}
 
 [[plugins]]
-repo = 'uga-rosa/ddc-nvim-lsp-setup'
+repo = 'uga-rosa/ddc-source-lsp-setup'
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-depends = 'ddc-nvim-lsp-setup'
+depends = 'ddc-source-lsp-setup'
 on_event = ['BufRead', 'CursorHold']
 lua_source = '''
-require'ddc_nvim_lsp_setup'.setup()
+require'ddc_source_lsp_setup'.setup()
 local lspconfig = require'lspconfig'
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),

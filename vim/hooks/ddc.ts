@@ -11,7 +11,7 @@ export class Config extends BaseConfig {
     args.contextBuilder.patchGlobal({
       ui: "pum",
       sources: [
-        hasNvim ? "nvim-lsp" : "vim-lsp",
+        "lsp",
         "denippet",
         "around",
       ],
@@ -25,11 +25,7 @@ export class Config extends BaseConfig {
           sorters: ["sorter_fuzzy"],
           converters: ["converter_fuzzy"],
         },
-        "vim-lsp": {
-          mark: "| LSP",
-          forceCompletionPattern: '(\\.|:|->|"\\w+/*).?',
-        },
-        "nvim-lsp": {
+        lsp: {
           mark: "| LSP",
           forceCompletionPattern: '(\\.|:|->|"\\w+/*).?',
           converters: ["converter_kind_labels"],
@@ -63,7 +59,8 @@ export class Config extends BaseConfig {
         },
       },
       sourceParams: {
-        "nvim-lsp": {
+        lsp: {
+          lspEngine: hasNvim ? "nvim-lsp" : "vim-lsp",
           enableResolveItem: true,
           enableAdditionalTextEdit: true,
           confirmBehavior: "replace",
