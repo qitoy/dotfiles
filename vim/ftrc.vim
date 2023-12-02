@@ -11,11 +11,6 @@ autocmd vimrc BufNewFile,BufRead *.saty,*.satyh,*.satyg setfiletype satysfi
 " Vim
 let g:vim_indent_cont = 0
 
-" dpp toml syntax
-if !has('nvim')
-  autocmd vimrc CursorHold */vim/*.toml call dpp#ext#toml#syntax()
-endif
-
 " Disable default plugins
 let g:loaded_2html_plugin      = v:true
 let g:loaded_logiPat           = v:true

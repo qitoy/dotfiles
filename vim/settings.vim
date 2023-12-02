@@ -43,17 +43,13 @@ set updatetime=100
 set autowrite
 
 " 表示
-let &laststatus = has('nvim') ? 3 : 2
+set laststatus=3
 set signcolumn=no
 set nohlsearch
 
 " undo永続化
 set undofile
-if has('nvim')
-  let &undodir = expand('~/.vim/nundo/')
-else
-  let &undodir = expand('~/.vim/undo/')
-endif
+let &undodir = expand('~/.vim/nundo/')
 
 " マウス
 set mouse=

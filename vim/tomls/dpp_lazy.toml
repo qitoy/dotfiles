@@ -72,7 +72,7 @@ depends = ['vim-quickrun-neovim-job', 'vim-quickrun-runner-nvimterm']
 hook_add = '''
 let g:quickrun_config = {
 \ '_': {
-\   'runner': has('nvim') ? 'neovim_job' : 'job',
+\   'runner': 'neovim_job',
 \ },
 \}
 '''
@@ -154,58 +154,6 @@ call skkeleton_state_popup#config(#{
 call skkeleton_state_popup#run()
 '''
 
-# }}}
-
-# {{{ context_filetype
-[[plugins]]
-repo = 'osyo-manga/vim-precious'
-depends = 'context_filetype.vim'
-if = '!has("nvim")'
-hook_add = '''
-let g:precious_enable_switchers = #{
-\ toml: #{ setfiletype: 0 },
-\}
-'''
-
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
-hook_add = '''
-let g:context_filetype#filetypes = #{
-\ help: [
-\   #{
-\     start: '>$',
-\     end: '^\S',
-\     filetype: 'vim.help',
-\   },
-\ ],
-\ tex: [
-\   #{
-\     start: '\\begin{luacode\*}',
-\     end: '\\end{luacode\*}',
-\     filetype: 'lua',
-\   },
-\ ],
-\}
-'''
-
-[[plugins]]
-repo = 'thinca/vim-partedit'
-depends = 'context_filetype.vim'
-hook_add = '''
-function! s:operator_partedit() abort
-  let context = context_filetype#get()
-  if context.range == [[0, 0], [0, 0]]
-    echohl WarningMsg
-    echomsg 'Context is not found'
-    echohl NONE
-    return
-  endif
-  call partedit#start(context.range[0][0], context.range[1][0],
-        \ #{ filetype: context.filetype})
-  nnoremap <buffer> q <Cmd>parteditEnd<CR>
-endfunction
-nnoremap <Plug>(leader)p <Cmd>call <SID>operator_partedit()<CR>
-'''
 # }}}
 
 [[plugins]]

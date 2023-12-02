@@ -6,13 +6,6 @@ setlocal matchpairs+=「:」,（:）
 setlocal noexpandtab
 " }}}
 
-" cpp {{{
-nnoremap <buffer> <silent> <LocalLeader>cc
-\ <Cmd>QuickRun procon/exec<CR>
-nnoremap <buffer> <silent> <LocalLeader>cl
-\ <Plug>(procon-init)
-" }}}
-
 " help {{{
 setlocal iskeyword+=:,#,-,(,)
 setlocal nofoldenable

@@ -1,10 +1,4 @@
-if &compatible
-  set nocompatible               " Be iMproved
-endif
-
-if has('nvim')
-  lua if vim.loader then vim.loader.enable() end
-endif
+lua if vim.loader then vim.loader.enable() end
 
 augroup vimrc
   autocmd!

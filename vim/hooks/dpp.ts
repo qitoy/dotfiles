@@ -21,13 +21,11 @@ type LazyMakeStateResult = {
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
-    const hasNvim = args.denops.meta.host === "nvim";
-
     // setting inline_vimrcs
     const inlineVimrcs = [
       "$VIM_DIR/settings.vim",
       "$VIM_DIR/mappings.vim",
-      "$VIM_DIR/filetype.vim",
+      "$VIM_DIR/ftrc.vim",
     ];
 
     args.contextBuilder.setGlobal({
@@ -74,7 +72,7 @@ export class Config extends BaseConfig {
         "$VIM_TOMLS/dpp_lazy.toml",
         "$VIM_TOMLS/ddc.toml",
         "$VIM_TOMLS/ddu.toml",
-        hasNvim ? "$VIM_TOMLS/nvim.toml" : "$VIM_TOMLS/vim.toml",
+        "$VIM_TOMLS/nvim.toml",
       ]
     ) {
       tomls.push(
@@ -166,8 +164,8 @@ export class Config extends BaseConfig {
       checkFiles,
       ftplugins,
       hooksFiles,
-      plugins: lazyResult.plugins,
-      stateLines: lazyResult.stateLines,
+      plugins: lazyResult?.plugins ?? [],
+      stateLines: lazyResult?.stateLines ?? [],
     };
   }
 }

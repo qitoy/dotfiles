@@ -1,11 +1,9 @@
 import { BaseConfig } from "https://deno.land/x/ddc_vim@v4.0.4/types.ts";
 import { ConfigArguments } from "https://deno.land/x/ddc_vim@v4.0.4/base/config.ts";
-import { fn } from "https://deno.land/x/ddc_vim@v4.0.4/deps.ts";
 
 export class Config extends BaseConfig {
+  // deno-lint-ignore require-await
   override async config(args: ConfigArguments): Promise<void> {
-    const hasNvim = await fn.has(args.denops, "nvim");
-
     args.setAlias("source", "zsh", "shell-native");
 
     args.contextBuilder.patchGlobal({
@@ -60,7 +58,7 @@ export class Config extends BaseConfig {
       },
       sourceParams: {
         lsp: {
-          lspEngine: hasNvim ? "nvim-lsp" : "vim-lsp",
+          lspEngine: "nvim-lsp",
           enableResolveItem: true,
           enableAdditionalTextEdit: true,
           confirmBehavior: "replace",

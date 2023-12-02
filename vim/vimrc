@@ -1,1 +1,2 @@
-execute 'source' expand('<sfile>:h') .. '/init.vim'
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
