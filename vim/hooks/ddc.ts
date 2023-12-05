@@ -100,11 +100,11 @@ export class Config extends BaseConfig {
     });
 
     args.contextBuilder.patchFiletype("vim", {
-      sources: ["necovim", "around", "denippet"],
+      sources: ["necovim", "denippet", "around"],
     });
 
     args.contextBuilder.patchFiletype("lua", {
-      sources: ["nvim-lua", "around", "denippet"],
+      sources: ["nvim-lua", "denippet", "around"],
     });
 
     args.contextBuilder.patchFiletype("satysfi", {
