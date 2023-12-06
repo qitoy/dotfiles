@@ -1,6 +1,4 @@
 " hook_add {{{
-call ddc#custom#load_config('$VIM_HOOKS/ddc.ts'->expand())
-
 nnoremap : <Cmd>call CommandlinePre()<CR>:
 
 function! CommandlinePre() abort
@@ -27,10 +25,18 @@ inoremap <silent><expr> <TAB>
 inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1, 'loop')<CR>
 inoremap <C-y> <Cmd>call pum#map#confirm()<CR>
 inoremap <C-e> <Cmd>call pum#map#cancel()<CR>
+" }}}
+
+" hook_source {{{
+call ddc#custom#load_config('$VIM_HOOKS/ddc.ts'->expand())
 
 " Use terminal ddc
 call ddc#enable_terminal_completion()
 
 " Use ddc.
-call ddc#enable(#{ context_filetype: has('nvim') ? 'treesitter' : 'context_filetype' })
+call ddc#enable(#{ context_filetype: 'treesitter' })
+" }}}
+
+" hook_post_update {{{
+call ddc#set_static_import_path()
 " }}}

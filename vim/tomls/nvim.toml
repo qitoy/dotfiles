@@ -69,6 +69,7 @@ vim.api.nvim_set_keymap('o', 'au', ':<C-u>lua require"treesitter-unit".select(tr
 
 [[plugins]]
 repo = 'uga-rosa/ddc-source-lsp-setup'
+depends = 'ddc-source-lsp'
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'

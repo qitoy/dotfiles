@@ -1,6 +1,4 @@
 " hook_add {{{
-call ddu#custom#load_config('$VIM_HOOKS/ddu.ts'->expand())
-
 nmap <Plug>(leader)u <Plug>(ddu)
 nmap m <Plug>(ddu)
 
@@ -35,4 +33,12 @@ nnoremap <Plug>(leader)a
 \ <Cmd>Ddu lsp_codeAction -ui-param-ff-ignoreEmpty<CR>
 nnoremap <Plug>(ddu)p
 \ <Cmd>Ddu dpp -ui-param-ff-startFilter -ui-param-ff-startAutoAction=v:false<CR>
+" }}}
+
+" hook_source {{{
+call ddu#custom#load_config('$VIM_HOOKS/ddu.ts'->expand())
+" }}}
+
+" hook_post_update {{{
+call ddu#set_static_import_path()
 " }}}
