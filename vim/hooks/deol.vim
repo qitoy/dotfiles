@@ -1,3 +1,11 @@
+" hook_add {{{
+function s:deol_start(...) abort
+  call deol#start(a:0 ? #{ command: a:000 } : {})
+endfunction
+command! -nargs=* Deol
+\ call s:deol_start(<f-args>)
+" }}}
+
 " hook_source {{{
 let g:deol#shell_history_path = '~/.zsh-history'
 let g:deol#prompt_pattern = '\$ '

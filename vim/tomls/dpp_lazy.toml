@@ -79,7 +79,7 @@ let g:quickrun_config = {
 
 [[plugins]]
 repo = 'Shougo/deol.nvim'
-on_cmd = ['Deol', 'DeolCd', 'DeolEdit']
+on_cmd = 'Deol'
 hooks_file = '$VIM_HOOKS/deol.vim'
 
 [[plugins]]
