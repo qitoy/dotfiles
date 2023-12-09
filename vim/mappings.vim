@@ -30,3 +30,8 @@ nnoremap <C-S> <Cmd>update<CR>
 " insert empty line
 nnoremap <CR> <Cmd>call append(line('.'), '')<CR>
 nnoremap <S-CR> <Cmd>call append(line('.') - 1, '')<CR>
+
+" for camp.vim
+command! CampOpen call camp#open()
+command! CampTest call camp#test()
+command! -bang CampSubmit call camp#submit(<bang>0)
