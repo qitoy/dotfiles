@@ -131,3 +131,10 @@ on_event = ['InsertEnter', 'CursorHold']
 lua_source = '''
 require'insx.preset.standard'.setup()
 '''
+
+[[plugins]]
+repo = 'numToStr/Comment.nvim'
+on_map = ['gc', 'gb']
+lua_source = '''
+require'Comment'.setup()
+'''

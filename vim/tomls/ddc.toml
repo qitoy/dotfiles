@@ -3,6 +3,8 @@ repo = 'Shougo/pum.vim'
 hook_source = '''
 call pum#set_option(#{
 \ preview: v:true,
+\ preview_height: 100,
+\ preview_width: 80,
 \})
 '''
 
@@ -28,6 +30,10 @@ hook_add = '''
 call signature_help#enable()
 let g:lsp_signature_help_enabled = 0
 '''
+
+[[plugins]]
+repo = 'matsui54/ddc-buffer'
+on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-source-mocword'
@@ -74,4 +80,8 @@ on_source = 'ddc.vim'
 # Install your filters
 [[plugins]]
 repo = 'tani/ddc-fuzzy'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-filter-converter_remove_overlap'
 on_source = 'ddc.vim'

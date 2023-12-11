@@ -12,6 +12,7 @@ export class Config extends BaseConfig {
         "lsp",
         "denippet",
         "around",
+        "buffer",
       ],
       cmdlineSources: {
         ":": ["cmdline", "cmdline-history", "around"],
@@ -21,7 +22,7 @@ export class Config extends BaseConfig {
           ignoreCase: true,
           matchers: ["matcher_fuzzy"],
           sorters: ["sorter_fuzzy"],
-          converters: ["converter_fuzzy"],
+          converters: ["converter_fuzzy", "converter_remove_overlap"],
         },
         lsp: {
           mark: "| LSP",
@@ -34,6 +35,9 @@ export class Config extends BaseConfig {
         },
         around: {
           mark: "| A",
+        },
+        buffer: {
+          mark: "| B",
         },
         "nvim-lua": { mark: "| lua" },
         mocword: {
@@ -65,6 +69,9 @@ export class Config extends BaseConfig {
           snippetEngine: async (body: string) => {
             await args.denops.call("denippet#anonymous", body);
           },
+        },
+        buffer: {
+          bufNameStyle: "basename",
         },
         zsh: {
           shell: "zsh",

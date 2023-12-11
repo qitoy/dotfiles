@@ -90,6 +90,15 @@ depends = 'vim-textobj-user'
 repo = 'kana/vim-operator-user'
 
 [[plugins]]
+repo = 'yuki-yano/vim-operator-replace'
+depends = 'vim-operator-user'
+hook_add = '''
+nmap _ <Plug>(operator-replace)
+xmap _ <Plug>(operator-replace)
+omap _ <Plug>(operator-replace)
+'''
+
+[[plugins]]
 repo = 'vim-denops/denops.vim'
 hook_add = '''
 let g:denops#deno = '~/.deno/bin/deno'->expand()
