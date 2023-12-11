@@ -24,19 +24,7 @@ repo = 'Shougo/ddc-source-lsp'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'matsui54/denops-signature_help'
-on_source = 'ddc.vim'
-hook_add = '''
-call signature_help#enable()
-let g:lsp_signature_help_enabled = 0
-'''
-
-[[plugins]]
 repo = 'matsui54/ddc-buffer'
-on_source = 'ddc.vim'
-
-[[plugins]]
-repo = 'Shougo/ddc-source-mocword'
 on_source = 'ddc.vim'
 
 [[plugins]]

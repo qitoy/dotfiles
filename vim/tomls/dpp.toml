@@ -35,9 +35,6 @@ repo = 'vim-jp/vital.vim'
 merged = false
 
 [[plugins]]
-repo = 'cocopon/iceberg.vim'
-
-[[plugins]]
 repo = 'EdenEast/nightfox.nvim'
 lua_add = '''
 require('nightfox').setup({
@@ -48,18 +45,7 @@ require('nightfox').setup({
 '''
 
 [[plugins]]
-repo = 'vm-xeck/retskelet-nvim'
-
-[[plugins]]
 repo = 'vim-jp/syntax-vim-ex'
-
-[[plugins]]
-repo = 'tyru/open-browser.vim'
-hook_add = '''
-let g:netrw_nogx = 1 " disable netrw's gx mapping.
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-search)
-'''
 
 [[plugins]]
 repo = 'andymass/vim-matchup'

@@ -64,14 +64,6 @@ on_source = 'ddu.vim'
 repo = '4513ECHO/ddu-source-emoji'
 on_source = 'ddu.vim'
 
-[[plugins]]
-repo = 'Shougo/ddu-source-vim'
-on_source = 'ddu.vim'
-
-[[plugins]]
-repo = 'mikanIchinose/ddu-source-markdown'
-on_source = 'ddu.vim'
-
 #filters
 [[plugins]]
 repo = 'yuki-yano/ddu-filter-fzf'

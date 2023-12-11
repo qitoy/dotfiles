@@ -34,14 +34,6 @@ let g:silicon = {
 '''
 
 [[plugins]]
-repo = 'terryma/vim-expand-region'
-on_map = ['<Plug>(expand_region']
-hook_add = '''
-xnoremap v <Plug>(expand_region_expand)
-xnoremap V <Plug>(expand_region_shrink)
-'''
-
-[[plugins]]
 repo = 'haya14busa/vim-asterisk'
 on_map = ['<Plug>(asterisk-']
 hook_add = '''
@@ -109,26 +101,6 @@ nnoremap gs <Cmd>GinStatus<CR>
 '''
 
 [[plugins]]
-repo = 'yuki-yano/fuzzy-motion.vim'
-on_cmd = 'FuzzyMotion'
-hook_add = '''
-nnoremap ss <Cmd>FuzzyMotion<CR>
-let g:fuzzy_motion_matchers = ['fzf', 'kensaku']
-'''
-
-[[plugins]]
-repo = 'gamoutatsumi/dps-ghosttext.vim'
-
-[[plugins]]
-repo = 'qitoy/dps-procon.vim'
-hook_add = '''
-autocmd vimrc User DenopsPluginPost:procon call procon#modules('$VIM_HOOKS/procon.ts'->expand())
-'''
-
-[[plugins]]
-repo = 'lambdalisue/kensaku.vim'
-
-[[plugins]]
 repo = 'vim-skk/skkeleton'
 on_map = { ict = ['<Plug>(skkeleton-'] }
 hooks_file = '$VIM_HOOKS/skkeleton.vim'
@@ -149,7 +121,6 @@ call skkeleton_state_popup#config(#{
 \})
 call skkeleton_state_popup#run()
 '''
-
 # }}}
 
 [[plugins]]
@@ -166,7 +137,3 @@ let g:pandoc#command#autoexec_on_writes = 0
 [[plugins]]
 repo = 'vim-pandoc/vim-pandoc-syntax'
 on_source = ['vim-pandoc']
-
-[[plugins]]
-repo = 'qitoy/sssv'
-on_cmd = 'SSSV'
