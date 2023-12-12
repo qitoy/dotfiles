@@ -119,7 +119,7 @@ call skkeleton_state_popup#config(#{
 \ },
 \ opts: #{relative: 'cursor', col: 0, row: 1, anchor: 'NW', style: 'minimal'},
 \})
-call skkeleton_state_popup#run()
+call skkeleton_state_popup#enable()
 '''
 # }}}
 

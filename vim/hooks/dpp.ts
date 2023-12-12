@@ -140,8 +140,6 @@ export class Config extends BaseConfig {
         1,
         1,
       ) as unknown as string[],
-    );
-    checkFiles.push(
       ...await fn.globpath(
         args.denops,
         "$VIM_TOMLS",
@@ -149,8 +147,6 @@ export class Config extends BaseConfig {
         1,
         1,
       ) as unknown as string[],
-    );
-    checkFiles.push(
       ...await fn.globpath(
         args.denops,
         "$VIM_HOOKS",
