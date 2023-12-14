@@ -12,6 +12,10 @@ repo = 'Shougo/dpp-ext-toml'
 
 [[plugins]]
 repo = 'Shougo/dpp-ext-installer'
+hook_add = '''
+command DppInstall call dpp#async_ext_action('installer', 'install')
+command DppUpdate call dpp#async_ext_action('installer', 'update')
+'''
 
 [[plugins]]
 repo = 'Shougo/dpp-protocol-git'
@@ -24,10 +28,32 @@ let g:lightline = #{
 \ colorscheme: 'carbonfox',
 \ active: #{
 \   left: [['mode'], ['readonly', 'filename', 'modified']],
-\   right: [['lineinfo'], ['filetype']],
+\   right: [['lineinfo'], ['diagnostics', 'filetype']],
+\ },
+\ component_expand: #{
+\   diagnostics: 'LightlineDiagnostics',
 \ },
 \ tabline: #{ right: [[]] },
 \}
+function! LightlineDiagnostics() abort
+  return get(b:, 'lightline_diagnostics', '')
+endfunction
+'''
+lua_add = '''
+vim.api.nvim_create_autocmd('DiagnosticChanged', {
+  callback = function(args)
+    local diagnostics = args.data.diagnostics
+    local severity = {0, 0, 0, 0}
+    for i, d in ipairs(diagnostics) do
+      severity[d.severity] = severity[d.severity] + 1
+    end
+    for i, s in ipairs({'E', 'W', 'I', 'H'}) do
+      severity[i] = string.format('%s: %d', s, severity[i])
+    end
+    vim.b.lightline_diagnostics = table.concat(severity, ' ')
+    vim.fn['lightline#update']()
+  end,
+})
 '''
 
 [[plugins]]
