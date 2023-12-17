@@ -18,15 +18,19 @@ cnoremap <Esc>f <S-Right>
 cnoremap <Esc>b <S-Left>
 
 " レジスタ関連
-nnoremap x "_x
-vnoremap x "_x
+nnoremap x "xx
 nnoremap Y y$
+
+" とりあえずここに
+" https://blog.atusy.net/2023/12/17/vim-easy-to-remember-regnames/
+function! s:regname() abort
+  if v:event.regname ==# ''
+    call setreg(v:event.operator, getreg())
+  endif
+endfunction
+autocmd vimrc TextYankPost * call s:regname()
 
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 
 nnoremap <C-S> <Cmd>update<CR>
-
-" insert empty line
-nnoremap <CR> <Cmd>call append(line('.'), '')<CR>
-nnoremap <S-CR> <Cmd>call append(line('.') - 1, '')<CR>
