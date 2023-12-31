@@ -4,6 +4,8 @@ scriptencoding utf-8
 set background=dark
 autocmd vimrc VimEnter * ++once colorscheme carbonfox
 
+autocmd vimrc WinEnter * checktime %
+
 " <BS>の挙動変更
 set backspace=indent,eol,start
 

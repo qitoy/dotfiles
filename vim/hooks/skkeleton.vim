@@ -4,18 +4,16 @@ const s:gact10_dvp = {'bva': ['びゃ'], 'hnu': ['ひゅ'], 'bve': ['びぇ'], '
 nmap <C-j> i<Plug>(skkeleton-enable)
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
-tmap <C-j> <Plug>(skkeleton-toggle)
 
 function s:skkeleton_init() abort
   call skkeleton#register_kanatable('gact10_dvp', s:gact10_dvp, v:true)
   call skkeleton#config(#{
   \ eggLikeNewline: v:true,
+  \ databasePath: '~/.skkeleton/db'->expand(),
   \ globalDictionaries: [
   \   ['/usr/share/skk/SKK-JISYO.L', 'euc-jp'],
-  \   '~/.skk/SKK-JISYO.emoji.utf8',
-  \   '~/.skk/SKK-JISYO.edict'
   \ ],
-  \ userJisyo: "~/.skkeleton",
+  \ userJisyo: '~/.skkeleton/userJisyo'->expand(),
   \ selectCandidateKeys: 'aoeuhtn',
   \ kanaTable: 'gact10_dvp',
   \ keepState: v:true,
@@ -44,7 +42,7 @@ let s:okuris = [
 \]
 
 function s:map_okuri(input, feed) abort
-  for mode in ['i', 'c', 't']
+  for mode in ['i', 'c']
     execute printf(
     \ 'autocmd User skkeleton-enable-post %smap <buffer> %s <Cmd>call <SID>okuri(''%s'', ''%s'')<CR>',
     \ mode, a:input, a:input, a:feed
@@ -82,7 +80,7 @@ augroup skkeleton-keymap
   for [s:input, s:feed] in s:okuris
     call s:map_okuri(s:input, s:feed)
   endfor
-  for s:mode in 'ict'->split('\zs')
+  for s:mode in 'ic'->split('\zs')
     execute s:mode->printf('autocmd User skkeleton-enable-post %smap <buffer> " <Cmd>call <SID>skk_dq()<CR>')
   endfor
 augroup END
