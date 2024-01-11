@@ -9,11 +9,12 @@ function s:skkeleton_init() abort
   call skkeleton#register_kanatable('gact10_dvp', s:gact10_dvp, v:true)
   call skkeleton#config(#{
   \ eggLikeNewline: v:true,
+  \ sources: ["deno_kv"],
   \ databasePath: '~/.skkeleton/db'->expand(),
   \ globalDictionaries: [
   \   ['/usr/share/skk/SKK-JISYO.L', 'euc-jp'],
   \ ],
-  \ userJisyo: '~/.skkeleton/userJisyo'->expand(),
+  \ userDictionary: '~/.skkeleton/userDictionary'->expand(),
   \ selectCandidateKeys: 'aoeuhtn',
   \ kanaTable: 'gact10_dvp',
   \ keepState: v:true,
