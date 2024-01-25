@@ -43,8 +43,9 @@ if dpp#min#load_state(s:cache .. '/dpp')
   " NOTE: need manual load
   runtime! plugin/denops.vim
 
-  autocmd vimrc User DenopsReady
-  \ call dpp#make_state(s:cache .. '/dpp', '$VIM_HOOKS/dpp.ts'->expand())
+  call denops#server#wait_async({
+  \-> dpp#make_state(s:cache .. '/dpp', '$VIM_HOOKS/dpp.ts'->expand())
+  \})
 else
   autocmd vimrc BufWritePost *.lua,*.vim,*.toml,*.ts,vimrc,.vimrc
   \ call dpp#check_files()

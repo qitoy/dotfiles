@@ -114,6 +114,7 @@ omap _ <Plug>(operator-replace)
 repo = 'vim-denops/denops.vim'
 hook_add = '''
 let g:denops#deno = '~/.deno/bin/deno'->expand()
+let g:denops#server#deno_args = ['-q', '--no-lock', '--unstable-kv', '-A']
 if $DENOPS_DEBUG
 let g:denops#debug = 1
 endif
