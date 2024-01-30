@@ -75,8 +75,11 @@ export class Config extends BaseConfig {
           },
         },
         filer: {
-          split: "no",
+          split: "floating",
           sort: "filename",
+          winRow: "(&lines - eval(uiParams.winHeight)) / 2",
+          winWidth: "&columns - 10",
+          winHeight: "&lines - 10",
           sortTreesFirst: true,
         },
       },
