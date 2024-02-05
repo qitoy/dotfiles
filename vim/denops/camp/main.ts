@@ -1,4 +1,4 @@
-import { $, Denops, fn, is, systemopen, u } from "../deps.ts";
+import { $, batch, buffer, Denops, fn, is, systemopen, u } from "../deps.ts";
 
 export function main(denops: Denops): void {
   denops.dispatcher = {
@@ -12,7 +12,7 @@ export function main(denops: Denops): void {
 
     async campTest(): Promise<void> {
       const [_, output] = await competeTest(await currentFullPath(denops));
-      await denops.call("camp#write", "test", output);
+      await campWrite(denops, "test", output);
     },
 
     async campSubmit(force: unknown): Promise<void> {
@@ -21,7 +21,7 @@ export function main(denops: Denops): void {
       if (!force) {
         const [success, output] = await competeTest(source);
         if (!success) {
-          await denops.call("camp#write", "test", output);
+          await campWrite(denops, "test", output);
           return;
         }
         if (
@@ -35,6 +35,22 @@ export function main(denops: Denops): void {
       await systemopen(uri);
     },
   };
+}
+
+async function campWrite(
+  denops: Denops,
+  name: string,
+  content: string[],
+): Promise<void> {
+  const winid = await fn.win_getid(denops);
+  const { bufnr } = await buffer.open(denops, `camp://${name}`, {
+    opener: "split",
+  });
+  await batch.batch(denops, async (denops) => {
+    await buffer.replace(denops, bufnr, content);
+    await buffer.concrete(denops, bufnr);
+    await fn.win_gotoid(denops, winid);
+  });
 }
 
 async function currentFullPath(denops: Denops): Promise<string> {
