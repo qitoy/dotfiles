@@ -50,10 +50,14 @@ export class Config extends BaseConfig {
         ff: {
           split: "floating",
           winWidth: "&columns",
+          winHeight: 20,
           winRow: "&lines - eval(uiParams.winHeight) - 1",
+          filterSplitDirection: "floating",
           previewFloating: true,
-          previewSplit: "horizontal",
-          previewWidth: "&columns",
+          previewSplit: "vertical",
+          previewWidth: 40,
+          previewHeight: "eval(uiParams.winHeight)",
+          previewCol: "eval(uiParams.winWidth) - eval(uiParams.previewWidth)",
           autoAction: {
             name: "preview",
             previewCmds: [
@@ -78,8 +82,9 @@ export class Config extends BaseConfig {
           split: "floating",
           sort: "filename",
           winRow: "(&lines - eval(uiParams.winHeight)) / 2",
-          winWidth: "&columns - 10",
-          winHeight: "&lines - 10",
+          winWidth: "&columns - 8",
+          winHeight: "&lines - 8",
+          floatingBorder: "double",
           sortTreesFirst: true,
         },
       },
