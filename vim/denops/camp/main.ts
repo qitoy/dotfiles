@@ -42,10 +42,17 @@ async function campWrite(
   name: string,
   content: string[],
 ): Promise<void> {
-  const winid = await fn.win_getid(denops);
-  const { bufnr } = await buffer.open(denops, `camp://${name}`, {
-    opener: "split",
-  });
+  const filename = `camp://${name}`;
+  const [winid, bufwinid] = await batch.collect(denops, (denops) => [
+    fn.win_getid(denops),
+    fn.bufwinid(denops, filename),
+  ]);
+  if (bufwinid == -1) {
+    await buffer.open(denops, filename, {
+      opener: "split",
+    });
+  }
+  const bufnr = await fn.bufnr(denops, filename);
   await batch.batch(denops, async (denops) => {
     await buffer.replace(denops, bufnr, content);
     await buffer.concrete(denops, bufnr);
