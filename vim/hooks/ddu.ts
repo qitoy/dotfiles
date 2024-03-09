@@ -49,15 +49,16 @@ export class Config extends BaseConfig {
       uiParams: {
         ff: {
           split: "floating",
-          winWidth: "&columns",
-          winHeight: 20,
+          winWidth: 70,
+          winHeight: 25,
           winRow: "&lines - eval(uiParams.winHeight) - 1",
+          winCol: 0,
           filterSplitDirection: "floating",
           previewFloating: true,
           previewSplit: "vertical",
-          previewWidth: 40,
+          previewWidth: "&columns - eval(uiParams.winWidth)",
           previewHeight: "eval(uiParams.winHeight)",
-          previewCol: "eval(uiParams.winWidth) - eval(uiParams.previewWidth)",
+          previewCol: "eval(uiParams.winWidth)",
           autoAction: {
             name: "preview",
             previewCmds: [
