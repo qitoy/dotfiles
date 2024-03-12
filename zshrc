@@ -6,3 +6,5 @@ case ${OSTYPE} in
     linux*)
         source "$zsh_dir/linux.zshrc" ;;
 esac
+
+if [ -e /home/qitoy/.nix-profile/etc/profile.d/nix.sh ]; then . /home/qitoy/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

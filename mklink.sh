@@ -8,8 +8,8 @@ local -a symlinks
 
 dot_path=$(cd $(dirname $0) && pwd)
 
-dots+=("latexmkrc" "w3m" "vim" "zprofile" "zshrc" "gitmessage")
-configs+=("wezterm" "powerline-shell" "git" "efm-langserver")
+dots+=("latexmkrc" "w3m" "vim" "gitmessage")
+configs+=("git" "efm-langserver")
 symlinks+=("$dot_path/vim $HOME/.config/nvim")
 
 case $OSTYPE in

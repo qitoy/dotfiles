@@ -7,7 +7,7 @@ local act = wezterm.action
 -- end)
 
 return {
-    font = wezterm.font("UDEV Gothic 35LG"),
+    -- font = wezterm.font("UDEV Gothic 35LG"),
     initial_cols = 100,
     initial_rows = 48,
     use_ime = false,

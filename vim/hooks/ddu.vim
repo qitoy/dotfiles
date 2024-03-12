@@ -18,7 +18,11 @@ inoremap <C-x><C-e> <Cmd>call ddu#start(#{
 nnoremap <Plug>(ddu)m <Cmd>Ddu mr<CR>
 nnoremap <Plug>(ddu)b <Cmd>Ddu buffer<CR>
 nnoremap <Plug>(ddu)h
-\ <Cmd>Ddu help -name=help -ui-param-ff-startFilter<CR>
+\ <Cmd>call ddu#start(#{
+\ sources: ['help'],
+\ name: 'help',
+\ input: 'Pattern:'->input(),
+\})<CR>
 nnoremap <Plug>(ddu)f
 \ <Cmd>Ddu -ui=filer file -source-option-file-path=`expand('%:p:h')`<CR>
 nnoremap gd

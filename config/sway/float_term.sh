@@ -3,7 +3,7 @@
 float_term=$(swaymsg -t get_tree | jq -c '.. | .floating_nodes? | arrays[] | select(.app_id=="float_term")')
 
 if [ -z $float_term ]; then
-  wezterm --config initial_rows=60\
+  wezterm --config initial_rows=55\
     --config initial_cols=200\
     start --class float_term
 else
