@@ -61,15 +61,15 @@ export class Config extends BaseConfig {
           previewCol: "eval(uiParams.winWidth)",
           autoAction: {
             name: "preview",
-            // previewCmds: [
-            //   "bat",
-            //   "-n",
-            //   "%s",
-            //   "-r",
-            //   "%b:%e",
-            //   "--highlight-line",
-            //   "%l",
-            // ],
+            previewCmds: [
+              "bat",
+              "-n",
+              "%s",
+              "-r",
+              "%b:%e",
+              "--highlight-line",
+              "%l",
+            ],
           },
           startAutoAction: true,
           onPreview: async (args: {

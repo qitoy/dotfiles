@@ -108,12 +108,21 @@
     envExtra = ''
       if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
         . ~/.nix-profile/etc/profile.d/nix.sh
+        export EDITOR=nvim
       fi
     '';
   };
 
-  programs.wezterm = {
+  programs.foot = {
     enable = true;
+    server.enable = true;
+    settings = {
+      colors.alpha = 0.85;
+    };
+  };
+
+  programs.wezterm = {
+    # enable = true;
     extraConfig = ''
       local wezterm = require "wezterm"
       local act = wezterm.action

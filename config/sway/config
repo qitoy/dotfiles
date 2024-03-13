@@ -25,6 +25,12 @@ exec swayidle -w \
 # for kde connect
 exec /usr/lib/kdeconnectd
 
+# start a terminal
+bindsym $mod+Return exec footclient
+
+for_window [app_id="float_term"] floating enable
+bindsym $mod+Shift+Return exec sh ~/.config/sway/float_term.sh
+
 # from vim-jp
 for_window [app_id="float_nvim"] floating enable
 bindsym $mod+c exec sh ~/.config/sway/clip.sh
@@ -62,12 +68,6 @@ floating_modifier $mod
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
 # tiling_drag modifier titlebar
-
-# start a terminal
-bindsym $mod+Return exec wezterm
-
-for_window [app_id="float_term"] floating enable
-bindsym $mod+Shift+Return exec sh ~/.config/sway/float_term.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
