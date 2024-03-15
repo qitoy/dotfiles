@@ -15,9 +15,11 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  fonts.fontconfig.enable = true;
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -34,9 +36,13 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    pkgs.bat
-    pkgs.deno
-    pkgs.rustup
+    # command
+    bat
+    deno
+    rustup
+
+    # font
+    udev-gothic
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -85,6 +91,7 @@
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-nightly;
+    defaultEditor = true;
   };
 
   programs.go.enable = true;
@@ -108,15 +115,59 @@
     envExtra = ''
       if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
         . ~/.nix-profile/etc/profile.d/nix.sh
-        export EDITOR=nvim
       fi
     '';
+    initExtra = ''
+      zmodload zsh/zpty
+
+      autoload -U select-word-style
+      select-word-style bash
+
+      bindkey "^U" backward-kill-line
+    '';
+    profileExtra = ''
+      export PATH="$HOME/.cargo/bin:$PATH"
+      export PATH="$HOME/go/bin:$PATH"
+    '';
+  };
+
+  programs.fzf = {
+    enable = true;
+    defaultOptions = [
+      "--no-sort"
+      "--cycle"
+      "--multi"
+      "--ansi"
+    ];
+  };
+
+  programs.git = {
+    enable = true;
+    aliases = {
+      browse = "!deno run --allow-net --allow-run --allow-read --allow-env https://deno.land/x/git_browse/bin/browse.ts";
+    };
+    ignores = [
+      "*.DS_Store"
+      "*.swp"
+      "*.netrwhist"
+      "*.out"
+      "*.gch"
+      "*.satysfi-aux"
+    ];
+    extraConfig = {
+      init = {
+        defaultBranch = "main";
+      };
+    };
   };
 
   programs.foot = {
     enable = true;
-    server.enable = true;
+    # server.enable = true;
     settings = {
+      main = {
+        font = "UDEV Gothic 35LG:size=12.5";
+      };
       colors.alpha = 0.85;
     };
   };

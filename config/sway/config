@@ -26,6 +26,7 @@ exec swayidle -w \
 exec /usr/lib/kdeconnectd
 
 # start a terminal
+exec foot --server
 bindsym $mod+Return exec footclient
 
 for_window [app_id="float_term"] floating enable
