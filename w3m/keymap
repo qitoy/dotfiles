@@ -1,3 +1,0 @@
-keymap C-u PREV_PAGE
-keymap C-d NEXT_PAGE
-keymap ? HELP

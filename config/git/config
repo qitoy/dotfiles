@@ -1,8 +1,0 @@
-[alias]
-browse = "!deno run --allow-net --allow-run --allow-read https://deno.land/x/git_browse/bin/browse.ts"
-
-[commit]
-template = ~/.gitmessage
-
-[init]
-defaultBranch = main
