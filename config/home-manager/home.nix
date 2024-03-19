@@ -123,7 +123,15 @@
       autoload -U select-word-style
       select-word-style bash
 
+      autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+      add-zsh-hook chpwd chpwd_recent_dirs
+      zstyle ':chpwd:*' recent-dirs-max 10000
+
       bindkey "^U" backward-kill-line
+
+      # fzf
+      . ${./zsh/fzf-cdr.zsh}
+      alias cdr="fzf-cdr"
     '';
     profileExtra = ''
       export PATH="$HOME/.cargo/bin:$PATH"
