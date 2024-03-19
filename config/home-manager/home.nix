@@ -97,14 +97,6 @@
   programs.go.enable = true;
   programs.powerline-go = {
     enable = true;
-    modules = [
-      "host"
-      "ssh"
-      "cwd"
-      "gitlite"
-      "jobs"
-      "exit"
-    ];
     newline = true;
   };
 
