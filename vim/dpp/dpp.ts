@@ -47,7 +47,7 @@ export class Config extends BaseConfig {
     // non-lazy
     for (
       const toml of [
-        "$VIM_TOMLS/dpp.toml",
+        "$VIM_DPP/dpp.toml",
       ]
     ) {
       tomls.push(
@@ -69,10 +69,10 @@ export class Config extends BaseConfig {
     // lazy
     for (
       const toml of [
-        "$VIM_TOMLS/dpp_lazy.toml",
-        "$VIM_TOMLS/ddc.toml",
-        "$VIM_TOMLS/ddu.toml",
-        "$VIM_TOMLS/nvim.toml",
+        "$VIM_DPP/dpp_lazy.toml",
+        "$VIM_DPP/ddc.toml",
+        "$VIM_DPP/ddu.toml",
+        "$VIM_DPP/nvim.toml",
       ]
     ) {
       tomls.push(
@@ -129,10 +129,8 @@ export class Config extends BaseConfig {
 
     // $VIM_DIR/init.vim
     // $VIM_DIR/settings.vim
-    // $VIM_TOMLS/*,
-    // $VIM_HOOKS/*,
-    const checkFiles: string[] = [];
-    checkFiles.push(
+    // $VIM_DPP/*,
+    const checkFiles: string[] = [
       ...await fn.globpath(
         args.denops,
         "$VIM_DIR",
@@ -142,19 +140,12 @@ export class Config extends BaseConfig {
       ) as unknown as string[],
       ...await fn.globpath(
         args.denops,
-        "$VIM_TOMLS",
+        "$VIM_DPP",
         "*",
         1,
         1,
       ) as unknown as string[],
-      ...await fn.globpath(
-        args.denops,
-        "$VIM_HOOKS",
-        "*",
-        1,
-        1,
-      ) as unknown as string[],
-    );
+    ];
 
     return {
       checkFiles,

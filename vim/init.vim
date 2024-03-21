@@ -21,8 +21,7 @@ function InitPlugin(plugin)
 endfunction
 
 let $VIM_DIR = expand('~/.vim')
-let $VIM_TOMLS = $VIM_DIR .. '/' .. 'tomls'
-let $VIM_HOOKS = $VIM_DIR .. '/' .. 'hooks'
+let $VIM_DPP = $VIM_DIR .. '/dpp'
 
 call InitPlugin('Shougo/dpp.vim')
 " need to load lazy plugins
@@ -44,7 +43,7 @@ if dpp#min#load_state(s:cache .. '/dpp')
   runtime! plugin/denops.vim
 
   call denops#server#wait_async({
-  \-> dpp#make_state(s:cache .. '/dpp', '$VIM_HOOKS/dpp.ts'->expand())
+  \-> dpp#make_state(s:cache .. '/dpp', '$VIM_DPP/dpp.ts'->expand())
   \})
 else
   autocmd vimrc BufWritePost *.lua,*.vim,*.toml,*.ts,vimrc,.vimrc

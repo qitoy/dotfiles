@@ -1,4 +1,4 @@
-hooks_file = '$VIM_HOOKS/filetype.vim'
+hooks_file = '$VIM_DPP/filetype.vim'
 
 # {{{ dpp.vim
 [[plugins]]

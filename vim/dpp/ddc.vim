@@ -28,7 +28,7 @@ inoremap <C-e> <Cmd>call pum#map#cancel()<CR>
 " }}}
 
 " hook_source {{{
-call ddc#custom#load_config('$VIM_HOOKS/ddc.ts'->expand())
+call ddc#custom#load_config('$VIM_DPP/ddc.ts'->expand())
 
 " Use terminal ddc
 call ddc#enable_terminal_completion()

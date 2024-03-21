@@ -12,7 +12,7 @@ call pum#set_option(#{
 repo = 'Shougo/ddc.vim'
 on_event = ['InsertEnter', 'CmdlineEnter', 'CursorHold']
 depends = ['denops.vim', 'pum.vim']
-hooks_file = '$VIM_HOOKS/ddc.vim'
+hooks_file = '$VIM_DPP/ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-ui-pum'

@@ -40,7 +40,7 @@ nnoremap <Plug>(ddu)p
 " }}}
 
 " hook_source {{{
-call ddu#custom#load_config('$VIM_HOOKS/ddu.ts'->expand())
+call ddu#custom#load_config('$VIM_DPP/ddu.ts'->expand())
 " }}}
 
 " hook_post_update {{{

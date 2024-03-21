@@ -1,7 +1,7 @@
 [[plugins]]
 repo = 'Shougo/ddu.vim'
 depends = ['denops.vim']
-hooks_file = '$VIM_HOOKS/ddu.vim'
+hooks_file = '$VIM_DPP/ddu.vim'
 
 [[plugins]]
 repo = 'Shougo/ddu-commands.vim'
@@ -13,12 +13,12 @@ on_cmd = 'Ddu'
 repo = 'Shougo/ddu-ui-ff'
 on_source = 'ddu.vim'
 rev = '47de05d'
-hooks_file = '$VIM_HOOKS/ddu-ui-ff.vim'
+hooks_file = '$VIM_DPP/ddu-ui-ff.vim'
 
 [[plugins]]
 repo = 'Shougo/ddu-ui-filer'
 on_source = 'ddu.vim'
-hooks_file = '$VIM_HOOKS/ddu-ui-filer.vim'
+hooks_file = '$VIM_DPP/ddu-ui-filer.vim'
 
 # sources
 [[plugins]]
