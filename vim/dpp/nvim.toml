@@ -90,9 +90,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 lspconfig.clangd.setup{}
 lspconfig.denols.setup{}
-lspconfig.taplo.setup{}
+-- lspconfig.taplo.setup{}
 lspconfig.texlab.setup{}
-lspconfig.vimls.setup{}
+-- lspconfig.vimls.setup{}
 lspconfig.rust_analyzer.setup{
   settings = {
     ['rust-analyzer'] = {

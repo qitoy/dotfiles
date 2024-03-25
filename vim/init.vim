@@ -4,8 +4,6 @@ augroup vimrc
   autocmd!
 augroup END
 
-let g:denops#deno = '~/.deno/bin/deno'->expand()
-
 " dpp install
 let s:cache = expand('~/.cache')
 if !isdirectory(s:cache)
@@ -55,3 +53,8 @@ autocmd vimrc User Dpp:makeStatePost
 
 filetype plugin indent on
 syntax enable
+
+" hack: https://zenn.dev/vim_jp/articles/20240304_ekiden_disable_plugin
+let s:save_rtp = &runtimepath
+set rtp-=$VIMRUNTIME
+autocmd SourcePre */plugin/* ++once let &runtimepath = s:save_rtp

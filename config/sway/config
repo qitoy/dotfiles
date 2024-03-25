@@ -23,7 +23,7 @@ exec swayidle -w \
     before-sleep 'swaylock -f'
 
 # for kde connect
-exec /usr/lib/kdeconnectd
+exec /usr/libexec/kdeconnectd
 
 # start a terminal
 exec foot --server

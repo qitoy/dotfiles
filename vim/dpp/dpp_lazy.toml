@@ -74,6 +74,15 @@ repo = 'Shougo/deol.nvim'
 on_cmd = 'Deol'
 hooks_file = '$VIM_DPP/deol.vim'
 
+[[plugins]]
+repo = 'Shougo/cmdline.vim'
+hook_source = '''
+call cmdline#set_option(#{
+\ highlight_prompt: 'Statement',
+\ highlight_window: 'None',
+\})
+'''
+
 # {{{ denops
 [[plugins]]
 repo = 'skanehira/denops-translate.vim'

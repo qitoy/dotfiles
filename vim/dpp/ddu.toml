@@ -12,7 +12,6 @@ on_cmd = 'Ddu'
 [[plugins]]
 repo = 'Shougo/ddu-ui-ff'
 on_source = 'ddu.vim'
-rev = '47de05d'
 hooks_file = '$VIM_DPP/ddu-ui-ff.vim'
 
 [[plugins]]
