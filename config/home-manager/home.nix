@@ -40,6 +40,8 @@
     bat
     deno
     rustup
+    neofetch
+    ffmpeg
 
     # font
     udev-gothic
@@ -159,6 +161,10 @@
         defaultBranch = "main";
       };
     };
+  };
+
+  programs.wofi = {
+    enable = true;
   };
 
   programs.foot = {

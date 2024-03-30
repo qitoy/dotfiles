@@ -22,9 +22,6 @@ exec mako
 exec swayidle -w \
     before-sleep 'swaylock -f'
 
-# for kde connect
-exec /usr/libexec/kdeconnectd
-
 # start a terminal
 exec foot --server
 bindsym $mod+Return exec footclient
@@ -73,8 +70,8 @@ floating_modifier $mod
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start rofi (a program launcher)
-bindsym $mod+d exec rofi -show combi -run-command "swaymsg exec '{cmd}'" -show-icons
+# start wofi (a program launcher)
+bindsym $mod+d exec wofi --show drun --allow-images
 
 # change focus
 bindsym $mod+$left focus left
@@ -213,5 +210,6 @@ bar {
 
 for_window [class="^.*"] border pixel 1
 for_window [app_id="wpa_gui"] floating enable
+for_window [app_id="nm-connection-editor"] floating enable
 
 # output * background ~/.config/sway/wallpaper/keep_on_raving.png stretch

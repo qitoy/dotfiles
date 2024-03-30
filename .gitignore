@@ -25,6 +25,7 @@
 !/config/git/*
 !/config/i3/config
 !/config/karabiner/**
+!/config/hypr/*
 !/config/sway/*
 !/config/swaylock/*
 !/config/systemd/user/*.service
