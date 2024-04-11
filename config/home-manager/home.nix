@@ -42,9 +42,22 @@
     rustup
     neofetch
     ffmpeg
+    chafa
+    jnv
+    brightnessctl
+    wob
+    python312Packages.online-judge-tools
+    python312Packages.online-judge-api-client
+    imagemagick
+
+    # gui
+    xfce.thunar
+    libreoffice
 
     # font
     udev-gothic
+    twemoji-color-font
+    symbola
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

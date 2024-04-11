@@ -30,4 +30,5 @@
 !/config/swaylock/*
 !/config/systemd/user/*.service
 !/config/waybar/*
+!/config/nixpkgs/**
 !/config/home-manager/**
