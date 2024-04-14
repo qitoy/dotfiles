@@ -7,6 +7,10 @@ function camp#open() abort
   call camp#notify('campOpen')
 endfunction
 
+function camp#run() abort
+  call camp#notify('campRun')
+endfunction
+
 function camp#test() abort
   call camp#notify('campTest')
 endfunction
