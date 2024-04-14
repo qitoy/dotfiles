@@ -1,4 +1,4 @@
-import { $, batch, buffer, Denops, fn, is, systemopen, u } from "../deps.ts";
+import { $, batch, buffer, Denops, fn, is, systemopen, u, stdPath } from "../deps.ts";
 
 export function main(denops: Denops): void {
   denops.dispatcher = {
@@ -65,19 +65,14 @@ async function currentFullPath(denops: Denops): Promise<string> {
 }
 
 async function competeOpen(source: string): Promise<void> {
-  const path = $.path(source);
-  const dir = path.dirname();
-  // a.rs -> a
-  const name = path.basename().slice(0, -3);
+  const {dir, name} = stdPath.parse(source);
   await $`cargo compete open --bin ${name}`
     .cwd(dir)
     .quiet();
 }
 
 async function competeTest(source: string): Promise<[boolean, string[]]> {
-  const path = $.path(source);
-  const dir = path.dirname();
-  const name = path.basename().slice(0, -3);
+  const {dir, name} = stdPath.parse(source);
   const { code, combined } = await $`cargo compete test ${name}`
     .captureCombined()
     .cwd(dir)
@@ -87,9 +82,7 @@ async function competeTest(source: string): Promise<[boolean, string[]]> {
 }
 
 async function competeSubmit(source: string): Promise<string> {
-  const path = $.path(source);
-  const dir = path.dirname();
-  const name = path.basename().slice(0, -3);
+  const {dir, name} = stdPath.parse(source);
   const lines = await $`cargo compete submit ${name} --no-test --no-watch`
     .captureCombined()
     .cwd(dir)
