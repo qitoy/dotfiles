@@ -9,7 +9,7 @@ local -a symlinks
 dot_path=$(cd $(dirname $0) && pwd)
 
 dots+=("latexmkrc" "vim")
-configs+=("efm-langserver" "home-manager" "nixpkgs")
+configs+=("efm-langserver" "home-manager")
 symlinks+=("$dot_path/vim $HOME/.config/nvim")
 
 case $OSTYPE in
