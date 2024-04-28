@@ -1,6 +1,11 @@
 *
 !*/
 
+!/home.nix
+!/flake.nix
+!/flake.lock
+!/zsh/**
+
 !/README.md
 !/mklink.sh
 !/gitmessage
@@ -31,4 +36,3 @@
 !/config/systemd/user/*.service
 !/config/waybar/*
 !/config/nixpkgs/**
-!/config/home-manager/**

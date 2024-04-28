@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -47,7 +47,6 @@
     bat
     deno
     rustup
-    neofetch
     ffmpeg
     chafa
     jnv
@@ -56,7 +55,6 @@
     python312Packages.online-judge-tools
     python312Packages.online-judge-api-client
     imagemagick
-    pandoc
     ghq
     hugo
     opam
