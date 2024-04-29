@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -25,7 +25,9 @@
   nixpkgs.config = {};
 
   imports = [
-    inputs.xremap.homeManagerModules.default
+    home-manager/zsh.nix
+    home-manager/xremap.nix
+    home-manager/terminal.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -62,9 +64,6 @@
     ghq
     hugo
     opam
-
-    # lsp
-    nixd
 
     # gui
     xfce.thunar
@@ -115,25 +114,6 @@
     # EDITOR = "emacs";
   };
 
-  services.xremap = {
-    withWlroots = true;
-    watch = true;
-    config = {
-      modmap = [{
-        remap.Space = {
-          held = "Shift_L";
-          alone = "Space";
-        };
-      }];
-      keymap = [{
-        remap = {
-          Yen = "Dollar";
-          Shift-Yen = "Shift-Grave";
-        };
-      }];
-    };
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -146,55 +126,11 @@
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-nightly;
+    extraPackages = with pkgs; [
+      nixd
+    ];
     defaultEditor = true;
     extraConfig = builtins.readFile vim/init.vim;
-  };
-
-  programs.go.enable = true;
-  programs.powerline-go = {
-    enable = true;
-    newline = true;
-  };
-
-  programs.zsh = {
-    defaultKeymap = "emacs";
-    dotDir = ".config/zsh";
-    enable = true;
-    envExtra = ''
-      if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
-        . ~/.nix-profile/etc/profile.d/nix.sh
-      fi
-    '';
-    initExtra = ''
-      zmodload zsh/zpty
-
-      autoload -U select-word-style
-      select-word-style bash
-
-      autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-      add-zsh-hook chpwd chpwd_recent_dirs
-      zstyle ':chpwd:*' recent-dirs-max 10000
-
-      bindkey "^U" backward-kill-line
-
-      # fzf
-      . ${./zsh/fzf-cdr.zsh}
-      alias cdr="fzf-cdr"
-    '';
-    profileExtra = ''
-      export PATH="$HOME/.cargo/bin:$PATH"
-      export PATH="$HOME/go/bin:$PATH"
-    '';
-  };
-
-  programs.fzf = {
-    enable = true;
-    defaultOptions = [
-      "--no-sort"
-      "--cycle"
-      "--multi"
-      "--ansi"
-    ];
   };
 
   programs.git = {
@@ -214,58 +150,5 @@
 
   programs.wofi = {
     enable = true;
-  };
-
-  programs.foot = {
-    enable = true;
-    # server.enable = true;
-    settings = {
-      main = {
-        font = "UDEV Gothic 35LG:size=12.5";
-      };
-      colors.alpha = 0.85;
-    };
-  };
-
-  programs.wezterm = {
-    # enable = true;
-    extraConfig = ''
-      local wezterm = require "wezterm"
-      local act = wezterm.action
-
-      -- wezterm.on("gui-startup", function()
-      --     local tab, pane, window = wezterm.mux.spawn_window{}
-      --     window:gui_window():toggle_fullscreen()
-      -- end)
-
-      return {
-          -- font = wezterm.font("UDEV Gothic 35LG"),
-          initial_cols = 100,
-          initial_rows = 48,
-          use_ime = false,
-          font_size = 12.5,
-          color_scheme = "carbonfox",
-          window_background_opacity = 0.85,
-          hide_tab_bar_if_only_one_tab = true,
-          window_decorations = "NONE",
-          window_padding = {
-              left = 0,
-              right = 0,
-              top = 0,
-              bottom = 0,
-          },
-          default_cursor_style = 'BlinkingBlock',
-          keys = {
-              { key = '+', mods = 'SUPER', action = act.DisableDefaultAssignment, },
-              { key = '+', mods = 'CTRL' , action = act.DisableDefaultAssignment, },
-              { key = '-', mods = 'SUPER', action = act.DisableDefaultAssignment, },
-              { key = '-', mods = 'CTRL' , action = act.DisableDefaultAssignment, },
-              { key = '=', mods = 'SUPER', action = act.DisableDefaultAssignment, },
-              { key = '=', mods = 'CTRL' , action = act.DisableDefaultAssignment, },
-              { key = '0', mods = 'SUPER', action = act.DisableDefaultAssignment, },
-              { key = '0', mods = 'CTRL' , action = act.DisableDefaultAssignment, },
-          }
-      }
-    '';
   };
 }
