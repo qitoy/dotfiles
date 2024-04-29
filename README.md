@@ -6,6 +6,7 @@
 
 ```zsh
 git clone https://github.com/qitoy/dotfiles.git ~/dotfiles
-~/dotfiles/mklink.sh
+cd dotfiles
+home-manager switch --flake .#linux --impure
 ```
 

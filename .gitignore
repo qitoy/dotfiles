@@ -7,8 +7,6 @@
 !/zsh/**
 
 !/README.md
-!/mklink.sh
-!/gitmessage
 !/latexmkrc
 !/vimrc
 !/.gitignore
@@ -22,15 +20,11 @@
 !/public/**
 !/homebrew/**
 !/hammerspoon/**
-!/w3m/keymap
 !/config/efm-langserver/*
-!/config/foot/foot.ini
 !/config/gh/config.yml
-!/config/git/*
 !/config/i3/config
 !/config/karabiner/**
 !/config/hypr/*
 !/config/sway/*
 !/config/swaylock/*
 !/config/waybar/*
-!/config/nixpkgs/**
