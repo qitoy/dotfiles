@@ -11,7 +11,6 @@
 !/gitmessage
 !/latexmkrc
 !/vimrc
-!/xremap.yml
 !/.gitignore
 !/vim/**
 /vim/undo/*
@@ -33,6 +32,5 @@
 !/config/hypr/*
 !/config/sway/*
 !/config/swaylock/*
-!/config/systemd/user/*.service
 !/config/waybar/*
 !/config/nixpkgs/**

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -23,6 +23,10 @@
   };
 
   nixpkgs.config = {};
+
+  imports = [
+    inputs.xremap.homeManagerModules.default
+  ];
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -82,7 +86,6 @@
     ".latexmkrc".source = ./latexmkrc;
 
     ".config/efm-langserver".source = config/efm-langserver;
-    ".config/systemd".source = config/systemd;
     ".config/waybar".source = config/waybar;
     ".config/hypr".source = config/hypr;
 
@@ -110,6 +113,25 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+  };
+
+  services.xremap = {
+    withWlroots = true;
+    watch = true;
+    config = {
+      modmap = [{
+        remap.Space = {
+          held = "Shift_L";
+          alone = "Space";
+        };
+      }];
+      keymap = [{
+        remap = {
+          Yen = "Dollar";
+          Shift-Yen = "Shift-Grave";
+        };
+      }];
+    };
   };
 
   # Let Home Manager install and manage itself.
