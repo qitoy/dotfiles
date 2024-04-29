@@ -18,7 +18,7 @@ function InitPlugin(plugin)
   execute 'set runtimepath^=' .. dir
 endfunction
 
-let $VIM_DIR = expand('~/.vim')
+let $VIM_DIR = expand('~/dotfiles/vim')
 let $VIM_DPP = $VIM_DIR .. '/dpp'
 
 call InitPlugin('Shougo/dpp.vim')
