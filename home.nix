@@ -22,7 +22,7 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
-  nixpkgs.config = {};
+  nixpkgs.config = { };
 
   imports = [
     home-manager/zsh.nix
@@ -128,6 +128,7 @@
     package = pkgs.neovim-nightly;
     extraPackages = with pkgs; [
       nixd
+      nixpkgs-fmt
     ];
     defaultEditor = true;
     extraConfig = builtins.readFile vim/init.vim;
