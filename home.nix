@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -62,7 +62,6 @@
     python312Packages.online-judge-api-client
     imagemagick
     ghq
-    hugo
     opam
 
     # gui
@@ -118,9 +117,7 @@
   programs.home-manager.enable = true;
 
   nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
+    inputs.neovim-nightly-overlay.overlay
   ];
 
   programs.neovim = {
@@ -133,6 +130,8 @@
     defaultEditor = true;
     extraConfig = builtins.readFile vim/init.vim;
   };
+
+  programs.direnv.enable = true;
 
   programs.git = {
     enable = true;
