@@ -81,11 +81,6 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-    ".latexmkrc".source = ./latexmkrc;
-
-    ".config/efm-langserver".source = config/efm-langserver;
-    ".config/waybar".source = config/waybar;
-    ".config/hypr".source = config/hypr;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -128,7 +123,6 @@
       nixpkgs-fmt
     ];
     defaultEditor = true;
-    extraConfig = builtins.readFile vim/init.vim;
   };
 
   programs.direnv.enable = true;
