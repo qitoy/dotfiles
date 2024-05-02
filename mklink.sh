@@ -9,7 +9,7 @@ local -a symlinks
 dot_path=$(cd $(dirname $0) && pwd)
 
 dots+=("latexmkrc")
-configs+=("efm-langserver" "home-manager")
+configs+=("efm-langserver")
 symlinks+=("$dot_path/vim $HOME/.config/nvim")
 
 case $OSTYPE in
@@ -17,7 +17,7 @@ case $OSTYPE in
         dots+=("hammerspoon")
         configs+=("karabiner");;
     linux*)
-        configs+=("systemd" "i3" "sway" "swaylock" "waybar" "hypr");;
+        configs+=("i3" "sway" "swaylock" "waybar" "hypr");;
 esac
 
 for conf in $configs; do dots+=("config/$conf"); done
