@@ -122,6 +122,14 @@ export class Config extends BaseConfig {
       },
     });
 
+    args.contextBuilder.patchFiletype("nix", {
+      sourceOptions: {
+        _: {
+          keywordPattern: "(\\w|-)*",
+        },
+      },
+    });
+
     args.contextBuilder.patchFiletype("deol", {
       specialBufferCompletion: true,
       sourceOptions: {

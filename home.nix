@@ -61,8 +61,10 @@
     python312Packages.online-judge-tools
     python312Packages.online-judge-api-client
     imagemagick
+    ghostscript
     ghq
     opam
+    ripgrep
 
     # gui
     xfce.thunar
