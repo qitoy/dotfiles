@@ -1,9 +1,5 @@
 scriptencoding utf-8
 
-" colorscheme
-set background=dark
-autocmd vimrc VimEnter * ++once colorscheme carbonfox
-
 autocmd vimrc WinEnter * checktime %
 
 " <BS>の挙動変更
@@ -45,8 +41,9 @@ set updatetime=100
 set autowrite
 
 " 表示
-set laststatus=3
+set laststatus=0
 set signcolumn=no
+set statusline=%{repeat('─',winwidth('.'))}
 set nohlsearch
 
 " undo永続化

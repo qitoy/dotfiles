@@ -32,6 +32,7 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = 'all',
   highlight = {
     enable = true,
+    disable = { "markdown" },
     additional_vim_regex_highlighting = false,
   },
   yati = {
@@ -146,4 +147,11 @@ repo = 'tani/dmacro.nvim'
 on_event = ['InsertEnter', 'CursorHold', 'BufRead']
 lua_source = '''
 require'dmacro'.setup { dmacro_key = '<C-t>' }
+'''
+
+[[plugins]]
+repo = 'b0o/incline.nvim'
+on_event = ['CursorHold', 'BufRead']
+lua_source = '''
+require'incline'.setup {}
 '''
