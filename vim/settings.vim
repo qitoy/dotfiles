@@ -43,6 +43,7 @@ set autowrite
 " 表示
 set cmdheight=0
 set laststatus=0
+set showtabline=0
 set signcolumn=no
 set statusline=%{repeat('─',winwidth('.'))}
 set nohlsearch

@@ -9,6 +9,10 @@ nnoremap <buffer> <Esc>
 \ <Cmd>call ddu#ui#do_action('quit')<CR>
 nnoremap <buffer> a
 \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
+nnoremap <buffer> <Space>
+\ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
+xnoremap <buffer> <Space>
+\ :call ddu#ui#do_action('toggleSelectItem')<CR>
 
 if b:ddu_ui_name ==# 'help'
   nnoremap <buffer> t
@@ -25,6 +29,12 @@ else
   nnoremap <buffer><nowait> s
   \ <Cmd> call ddu#ui#do_action('itemAction',
   \ #{ name: 'open', params: #{ command: 'split' } })<CR>
+endif
+
+" source tab
+if b:ddu_ui_name ==# 'tab'
+  nnoremap <buffer><nowait> c
+  \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'close' })<CR>
 endif
 " }}}
 " ddu-ff-filter {{{

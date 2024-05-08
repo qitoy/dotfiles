@@ -40,6 +40,9 @@ export class Config extends BaseConfig {
         lsp_codeAction: {
           defaultAction: "apply",
         },
+        tab: {
+          defaultAction: "open",
+        },
       },
       actionOptions: {
         narrow: {
