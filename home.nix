@@ -71,7 +71,7 @@
     libreoffice
 
     # font
-    udev-gothic
+    udev-gothic-nf
     twemoji-color-font
     noto-fonts
   ];

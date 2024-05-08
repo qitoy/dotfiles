@@ -41,6 +41,7 @@ set updatetime=100
 set autowrite
 
 " 表示
+set cmdheight=0
 set laststatus=0
 set signcolumn=no
 set statusline=%{repeat('─',winwidth('.'))}
