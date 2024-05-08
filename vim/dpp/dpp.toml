@@ -95,7 +95,7 @@ endif
 '''
 
 [[plugins]]
-repo = 'lambdalisue/guise.vim'
+repo = 'lambdalisue/vim-guise'
 
 [[plugins]]
 repo = 'Shougo/shougo-s-github'

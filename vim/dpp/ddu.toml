@@ -35,11 +35,11 @@ on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'kuuote/ddu-source-mr'
-depends = 'mr.vim'
+depends = 'vim-mr'
 on_source = 'ddu.vim'
 
 [[plugins]]
-repo = 'lambdalisue/mr.vim'
+repo = 'lambdalisue/vim-mr'
 on_source = 'ddu.vim'
 hook_add = '''
 let g:mr#mru#predicates = [

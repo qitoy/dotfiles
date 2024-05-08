@@ -89,7 +89,7 @@ repo = 'skanehira/denops-translate.vim'
 on_cmd = 'Translate'
 
 [[plugins]]
-repo = 'lambdalisue/gin.vim'
+repo = 'lambdalisue/vim-gin'
 on_cmd = [
   'Gin',
   'GinBranch',
