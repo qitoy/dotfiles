@@ -10,7 +10,7 @@ end
 lua_source = '''
 require'notify'.setup {
   background_colour = 'NotifyBackground',
-  render = 'compact',
+  render = 'minimal',
 }
 '''
 

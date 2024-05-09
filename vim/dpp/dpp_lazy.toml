@@ -144,3 +144,12 @@ let g:pandoc#command#autoexec_on_writes = 0
 [[plugins]]
 repo = 'vim-pandoc/vim-pandoc-syntax'
 on_source = ['vim-pandoc']
+
+[[plugins]]
+repo = 'previm/previm'
+on_ft = ['markdown']
+on_cmd = 'PrevimOpen'
+hook_add = '''
+let g:previm_enable_realtime = 1
+let g:previm_open_cmd = 'xdg-open'
+'''
