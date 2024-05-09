@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, system, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -23,6 +23,11 @@
   };
 
   nixpkgs.config = { };
+
+  nixpkgs.overlays = [
+    inputs.neovim-nightly-overlay.overlay
+    inputs.qitoy.overlays.default
+  ];
 
   imports = [
     home-manager/zsh.nix
@@ -60,6 +65,7 @@
     wob
     python312Packages.online-judge-tools
     python312Packages.online-judge-api-client
+    online-judge-verify-helper
     imagemagick
     ghostscript
     ghq
@@ -112,10 +118,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  nixpkgs.overlays = [
-    inputs.neovim-nightly-overlay.overlay
-  ];
 
   programs.neovim = {
     enable = true;

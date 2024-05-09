@@ -14,6 +14,12 @@
     xremap.url = "github:xremap/nix-flake";
 
     flake-utils.url = "github:numtide/flake-utils";
+
+    qitoy = {
+      url = "github:qitoy/flakes";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
 
   outputs = inputs: {
@@ -27,17 +33,20 @@
       };
 
     homeConfigurations = {
-      linux = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = import inputs.nixpkgs {
-          system = "aarch64-linux";
+      linux =
+        let system = "aarch64-linux";
+        in inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = import inputs.nixpkgs {
+            inherit system;
+          };
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit system;
+          };
+          modules = [
+            ./home.nix
+          ];
         };
-        extraSpecialArgs = {
-          inherit inputs;
-        };
-        modules = [
-          ./home.nix
-        ];
-      };
     };
   };
 }
