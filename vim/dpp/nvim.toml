@@ -11,6 +11,7 @@ lua_source = '''
 require'notify'.setup {
   background_colour = 'NotifyBackground',
   render = 'minimal',
+  timeout = 1000,
 }
 '''
 
@@ -29,6 +30,16 @@ require'noice'.setup {
       ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
       ["vim.lsp.util.stylize_markdown"] = true,
       -- ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+    },
+  },
+  routes = {
+    {
+      view = "cmdline",
+      filter = { event = "msg_showmode" },
+      opts = {
+        position = { col = "100%" },
+        size = { width = "auto" },
+      },
     },
   },
   -- you can enable a preset for easier configuration
