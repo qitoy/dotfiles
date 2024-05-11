@@ -4,7 +4,7 @@
     # server.enable = true;
     settings = {
       main = {
-        font = "UDEV Gothic 35NF:size=12.5";
+        font = "MoralerspaceNeonNF-Regular:size=12.5";
       };
       colors.alpha = 0.85;
     };
