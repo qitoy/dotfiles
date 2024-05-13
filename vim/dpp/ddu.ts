@@ -43,6 +43,9 @@ export class Config extends BaseConfig {
         tab: {
           defaultAction: "open",
         },
+        word: {
+          defaultAction: "append",
+        },
       },
       actionOptions: {
         narrow: {
@@ -52,8 +55,8 @@ export class Config extends BaseConfig {
       uiParams: {
         ff: {
           split: "floating",
-          winWidth: 70,
-          winHeight: 25,
+          winWidth: "&columns / 2",
+          winHeight: "&lines / 2",
           winRow: "&lines - eval(uiParams.winHeight) - 1",
           winCol: 0,
           filterSplitDirection: "floating",

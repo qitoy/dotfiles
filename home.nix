@@ -75,6 +75,7 @@
     # gui
     xfce.thunar
     libreoffice
+    cliphist
 
     # font
     udev-gothic-nf

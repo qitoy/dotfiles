@@ -29,6 +29,10 @@ nnoremap <Plug>(ddu)p
 \ <Cmd>Ddu dpp -ui-param-ff-startFilter -ui-param-ff-startAutoAction=v:false<CR>
 nnoremap <Plug>(ddu)f
 \ <Cmd>Ddu -ui=filer file -source-option-file-path=`expand('%:p:h')`<CR>
+nnoremap <Plug>(ddu)t
+\ <Cmd>Ddu tab -name=tab<CR>
+nnoremap <Plug>(ddu)c
+\ <Cmd>Ddu cliphist<CR>
 
 nnoremap gd
 \ <Cmd>Ddu lsp_definition -sync -ui-param-ff-ignoreEmpty
@@ -40,9 +44,6 @@ nnoremap <Plug>(ddu)d
 \ <Cmd>Ddu lsp_diagnostic -ui-param-ff-ignoreEmpty<CR>
 nnoremap <Plug>(leader)a
 \ <Cmd>Ddu lsp_codeAction -ui-param-ff-ignoreEmpty<CR>
-
-nnoremap <Plug>(ddu)t
-\ <Cmd>Ddu tab -name=tab<CR>
 
 call timer_start(10, { _ -> ddu#load('ui', ['ff']) })
 " }}}
