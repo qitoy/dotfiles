@@ -71,6 +71,7 @@
     ghq
     opam
     ripgrep
+    fd
 
     # gui
     xfce.thunar
