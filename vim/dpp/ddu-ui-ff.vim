@@ -13,7 +13,10 @@ nnoremap <buffer> <Space>
 \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
 xnoremap <buffer> <Space>
 \ :call ddu#ui#do_action('toggleSelectItem')<CR>
+nnoremap <buffer> <C-a>
+\ <Cmd>call ddu#ui#do_action('toggleAllItems')<CR>
 
+" source help
 if b:ddu_ui_name ==# 'help'
   nnoremap <buffer> t
   \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'tabopen' })<CR>

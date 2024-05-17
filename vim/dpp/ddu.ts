@@ -23,6 +23,9 @@ export class Config extends BaseConfig {
         mr: {
           kind: "mrw",
         },
+        rg: {
+          args: ['--column', '--no-heading', '--json'],
+        },
       },
       kindOptions: {
         file: {
