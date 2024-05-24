@@ -40,13 +40,3 @@ if b:ddu_ui_name ==# 'tab'
   \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'close' })<CR>
 endif
 " }}}
-" ddu-ff-filter {{{
-inoremap <buffer> <CR>
-\ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
-nnoremap <buffer> <CR>
-\ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
-nnoremap <buffer> q
-\ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
-nnoremap <buffer> <Esc>
-\ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
-" }}}

@@ -60,7 +60,7 @@ export class Config extends BaseConfig {
           split: "floating",
           winWidth: "&columns / 2",
           winHeight: "&lines / 2",
-          winRow: "&lines - eval(uiParams.winHeight) - 1",
+          winRow: "&lines - eval(uiParams.winHeight)",
           winCol: 0,
           filterSplitDirection: "floating",
           previewFloating: true,
