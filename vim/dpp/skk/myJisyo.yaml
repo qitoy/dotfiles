@@ -1,0 +1,10 @@
+version: 0.0.0
+description: 自分のユーザー辞書から有用なものを移植する+コピペを貼る予定
+copyright: (c) 2024 qitoy
+license: ""
+
+okuri_ari: {}
+
+okuri_nasi:
+  "おとげー":
+    - 音ゲー
