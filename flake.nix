@@ -27,8 +27,7 @@
       let pkgs = inputs.nixpkgs.legacyPackages.aarch64-linux;
       in inputs.flake-utils.lib.mkApp {
         drv = pkgs.writeShellScriptBin "switch.sh" ''
-          home-manager switch --flake .#linux --impure
-          ./mklink.sh
+          home-manager switch --flake .#linux --impure && ./mklink.sh
         '';
       };
 

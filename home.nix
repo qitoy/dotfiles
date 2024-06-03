@@ -1,4 +1,4 @@
-{ pkgs, inputs, system, ... }:
+{ pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -22,10 +22,8 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
-  nixpkgs.config = { };
-
   nixpkgs.overlays = [
-    inputs.neovim-nightly-overlay.overlay
+    inputs.neovim-nightly-overlay.overlays.default
     inputs.qitoy.overlays.default
   ];
 
@@ -124,7 +122,6 @@
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly;
     extraPackages = with pkgs; [
       nixd
       nixpkgs-fmt
