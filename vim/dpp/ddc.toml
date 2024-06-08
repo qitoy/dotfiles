@@ -32,7 +32,7 @@ repo = 'Shougo/ddc-source-around'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/neco-vim'
+repo = 'Shougo/ddc-source-vim'
 on_source = 'ddc.vim'
 
 [[plugins]]

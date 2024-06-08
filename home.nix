@@ -125,6 +125,7 @@
     extraPackages = with pkgs; [
       nixd
       nixpkgs-fmt
+      vim-language-server
     ];
     defaultEditor = true;
   };

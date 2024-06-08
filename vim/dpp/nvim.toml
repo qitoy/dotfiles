@@ -145,7 +145,7 @@ lspconfig.nixd.setup{
 }
 -- lspconfig.taplo.setup{}
 lspconfig.texlab.setup{}
--- lspconfig.vimls.setup{}
+lspconfig.vimls.setup{}
 lspconfig.rust_analyzer.setup{
   settings = {
     ['rust-analyzer'] = {
