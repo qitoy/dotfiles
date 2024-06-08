@@ -59,6 +59,17 @@ repo = 'Shougo/deol.nvim'
 on_cmd = 'Deol'
 hooks_file = '$VIM_DPP/deol.vim'
 
+[[plugins]]
+repo = 'Bakudankun/BackAndForward.vim'
+on_map = ['<Plug>(backandforward-']
+hook_add = '''
+let g:backandforward_config = #{
+\ auto_map: 0,
+\ define_commands: 0,
+\}
+nnoremap g<C-o> <Plug>(backandforward-back)
+nnoremap g<C-i> <Plug>(backandforward-forward)
+'''
 
 # {{{ denops
 [[plugins]]
@@ -129,4 +140,6 @@ on_cmd = 'PrevimOpen'
 hook_add = '''
 let g:previm_enable_realtime = 1
 let g:previm_open_cmd = 'xdg-open'
+let g:previm_show_header = 0
+let g:previm_code_language_show = 1
 '''
