@@ -45,9 +45,6 @@ vim.cmd.colorscheme('carbonfox')
 '''
 
 [[plugins]]
-repo = 'vim-jp/syntax-vim-ex'
-
-[[plugins]]
 repo = 'andymass/vim-matchup'
 
 [[plugins]]

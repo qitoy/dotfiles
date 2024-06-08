@@ -1,8 +1,4 @@
 [[plugins]]
-repo = 'tyru/capture.vim'
-on_cmd = 'Capture'
-
-[[plugins]]
 repo = 'lervag/vimtex'
 on_ft = ['tex']
 hook_add = '''
@@ -21,17 +17,6 @@ endif
 repo = 'vim-jp/vimdoc-ja'
 on_ft = 'help'
 hook_add = 'set helplang=ja'
-
-[[plugins]]
-repo = 'segeljakt/vim-silicon'
-on_cmd = 'Silicon'
-hook_add = '''
-let g:silicon = {
-\ 'theme': 'Solarized (dark)',
-\ 'font': 'UDEV Gothic 35LG',
-\ 'output': '~/Documents/silicon-{time:%Y-%m-%d-%H%M%S}.png',
-\}
-'''
 
 [[plugins]]
 repo = 'haya14busa/vim-asterisk'
@@ -74,14 +59,6 @@ repo = 'Shougo/deol.nvim'
 on_cmd = 'Deol'
 hooks_file = '$VIM_DPP/deol.vim'
 
-[[plugins]]
-repo = 'Shougo/cmdline.vim'
-hook_source = '''
-call cmdline#set_option(#{
-\ highlight_prompt: 'Statement',
-\ highlight_window: 'None',
-\})
-'''
 
 # {{{ denops
 [[plugins]]

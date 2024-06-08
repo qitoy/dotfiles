@@ -94,20 +94,6 @@ require'nvim-treesitter.configs'.setup {
 [[plugins]]
 repo = 'yioneko/nvim-yati'
 on_source = 'nvim-treesitter'
-
-[[plugins]]
-repo = 'nvim-treesitter/playground'
-on_cmd = ['TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor']
-
-[[plugins]]
-repo = 'David-Kunz/treesitter-unit'
-on_lua = 'treesitter-unit'
-lua_add = '''
-vim.api.nvim_set_keymap('x', 'iu', ':lua require"treesitter-unit".select()<CR>', {noremap=true})
-vim.api.nvim_set_keymap('x', 'au', ':lua require"treesitter-unit".select(true)<CR>', {noremap=true})
-vim.api.nvim_set_keymap('o', 'iu', ':<C-u>lua require"treesitter-unit".select()<CR>', {noremap=true})
-vim.api.nvim_set_keymap('o', 'au', ':<C-u>lua require"treesitter-unit".select(true)<CR>', {noremap=true})
-'''
 # }}}
 
 # {{{ lsp
@@ -190,7 +176,7 @@ require'insx.preset.standard'.setup()
 repo = 'tani/dmacro.nvim'
 on_event = ['InsertEnter', 'CursorHold', 'BufRead']
 lua_source = '''
-require'dmacro'.setup { dmacro_key = '<C-t>' }
+-- require'dmacro'.setup { dmacro_key = '<C-t>' }
 '''
 
 [[plugins]]
