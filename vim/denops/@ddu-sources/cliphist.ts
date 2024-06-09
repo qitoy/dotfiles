@@ -1,4 +1,8 @@
 import { BaseSource, Item } from "https://deno.land/x/ddu_vim@v3.10.3/types.ts";
+import { fn } from "https://deno.land/x/ddu_vim@v3.10.3/deps.ts";
+import {
+  OnInitArguments,
+} from "https://deno.land/x/ddu_vim@v3.10.3/base/source.ts";
 import { ActionData } from "https://deno.land/x/ddu_kind_word@v0.2.1/word.ts";
 
 type Params = Record<never, never>;
@@ -13,13 +17,14 @@ export class Source extends BaseSource<Params> {
 
   #history: History[] = [];
 
-  override async onInit() {
+  override async onInit(args: OnInitArguments<Params>) {
+    const cmd = await fn.exepath(args.denops, "cliphist");
     const stdout = new TextDecoder().decode(
-      new Deno.Command("cliphist", { args: ["list"] }).outputSync().stdout,
+      new Deno.Command(cmd, { args: ["list"] }).outputSync().stdout,
     );
     this.#history = await Promise.all(
       stdout.split("\n").map((word) => {
-        const output = new Deno.Command("cliphist", { args: ["decode", word] })
+        const output = new Deno.Command(cmd, { args: ["decode", word] })
           .output();
         return output.then((output) => {
           return { word, text: new TextDecoder().decode(output.stdout) };
