@@ -20,6 +20,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+
+    nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
   };
 
   outputs = inputs: {

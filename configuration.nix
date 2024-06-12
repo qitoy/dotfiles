@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports =
@@ -10,13 +10,19 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # Include the necessary packages and configuration for Apple Silicon support.
-      <apple-silicon-support/apple-silicon-support>
+      (inputs.nixos-apple-silicon + "/apple-silicon-support")
       inputs.xremap.nixosModules.default
     ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
+
+  hardware.asahi = {
+    withRust = true;
+    useExperimentalGPUDriver = true;
+    experimentalGPUInstallMode = "replace";
+  };
 
   nix = {
     settings = {
@@ -87,6 +93,7 @@
     packages = with pkgs; [
       tree
     ];
+    shell = pkgs.zsh;
   };
 
   # List packages installed in system profile. To search, run:
@@ -94,10 +101,14 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    git
     foot
     firefox
     vivaldi
+    wl-clipboard
+
+    # for hyprland
+    waybar
+    mako
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -109,14 +120,16 @@
   # };
 
   programs.sway = {
-    enable = true;
+    # enable = true;
     wrapperFeatures.gtk = true;
   };
 
   programs.hyprland = {
-    # enable = true;
+    enable = true;
     xwayland.enable = true;
   };
+
+  programs.zsh.enable = true;
 
   # List services that you want to enable:
 
