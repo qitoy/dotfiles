@@ -70,6 +70,7 @@
 - [uga-rosa/ddc-source-nvim-lua](https://github.com/uga-rosa/ddc-source-nvim-lua)
 - [uga-rosa/ddu-source-lsp](https://github.com/uga-rosa/ddu-source-lsp)
 - [uga-rosa/denippet.vim](https://github.com/uga-rosa/denippet.vim)
+- [vim-denops/denops-shared-server.vim](https://github.com/vim-denops/denops-shared-server.vim)
 - [vim-denops/denops.vim](https://github.com/vim-denops/denops.vim)
 - [vim-jp/vimdoc-ja](https://github.com/vim-jp/vimdoc-ja)
 - [vim-jp/vital.vim](https://github.com/vim-jp/vital.vim)
