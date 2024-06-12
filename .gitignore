@@ -3,6 +3,8 @@
 
 !/home.nix
 !/flake.nix
+!/configuration.nix
+!/hardware-configuration.nix
 !/flake.lock
 !/home-manager/**
 

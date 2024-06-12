@@ -23,13 +23,17 @@
   };
 
   outputs = inputs: {
-    apps.aarch64-linux.default =
-      let pkgs = inputs.nixpkgs.legacyPackages.aarch64-linux;
-      in inputs.flake-utils.lib.mkApp {
-        drv = pkgs.writeShellScriptBin "switch.sh" ''
-          home-manager switch --flake .#linux --impure && ./mklink.sh
-        '';
+    nixosConfigurations = {
+      qitoy = inputs.nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          ./configuration.nix
+        ];
+        specialArgs = {
+          inherit inputs;
+        };
       };
+    };
 
     homeConfigurations = {
       linux =

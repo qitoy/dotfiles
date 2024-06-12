@@ -29,7 +29,6 @@
 
   imports = [
     home-manager/zsh.nix
-    home-manager/xremap.nix
     home-manager/terminal.nix
   ];
 
@@ -70,6 +69,7 @@
     opam
     ripgrep
     fd
+    jq
 
     # gui
     xfce.thunar
