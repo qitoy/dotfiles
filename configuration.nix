@@ -24,6 +24,19 @@
     experimentalGPUInstallMode = "replace";
   };
 
+  i18n.defaultLocale = "ja_JP.UTF-8";
+
+  xdg.mime = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = "vivaldi-stable.desktop";
+      "x-scheme-handler/http" = "vivaldi-stable.desktop";
+      "x-scheme-handler/https" = "vivaldi-stable.desktop";
+      "x-scheme-handler/about" = "vivaldi-stable.desktop";
+      "x-scheme-handler/unknown" = "vivaldi-stable.desktop";
+    };
+  };
+
   nix = {
     settings = {
       auto-optimise-store = true;
@@ -101,14 +114,17 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    foot
+    gcc
     firefox
     vivaldi
     wl-clipboard
+    xdg-utils
 
     # for hyprland
     waybar
     mako
+    swaylock-effects
+    swayidle
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
