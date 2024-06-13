@@ -61,6 +61,7 @@
 - [shun/ddu-source-buffer](https://github.com/shun/ddu-source-buffer)
 - [shun/ddu-source-rg](https://github.com/shun/ddu-source-rg)
 - [skanehira/denops-translate.vim](https://github.com/skanehira/denops-translate.vim)
+- [skk-dev/dict](https://github.com/skk-dev/dict)
 - [statiolake/vim-quickrun-runner-nvimterm](https://github.com/statiolake/vim-quickrun-runner-nvimterm)
 - [tani/ddc-fuzzy](https://github.com/tani/ddc-fuzzy)
 - [tani/dmacro.nvim](https://github.com/tani/dmacro.nvim)
