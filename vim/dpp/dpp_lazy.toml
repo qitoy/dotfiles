@@ -101,6 +101,11 @@ on_map = { ict = ['<Plug>(skkeleton-'] }
 hooks_file = '$VIM_DPP/skkeleton.vim'
 
 [[plugins]]
+repo = 'skk-dev/dict'
+name = 'skk-dict'
+if = false
+
+[[plugins]]
 repo = 'NI57721/skkeleton-state-popup'
 on_source = 'skkeleton'
 hook_source = '''

@@ -1,6 +1,7 @@
 " hook_add {{{
 const s:gact10_dvp = "$VIM_DPP/skk/keymap.json"
 \->expand()->readfile()->json_decode()
+const s:skk_dict = dpp#get('skk-dict').path
 
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
@@ -16,7 +17,7 @@ function s:skkeleton_init() abort
   \ sources: ["deno_kv"],
   \ databasePath: '~/.skkeleton/db'->expand(),
   \ globalDictionaries: [
-  \   ['/usr/share/skk/SKK-JISYO.L', 'euc-jp'],
+  \   [s:skk_dict .. "/SKK-JISYO.L", 'euc-jp'],
   \   "$VIM_DPP/skk/myJisyo.yaml"->expand(),
   \ ],
   \ userDictionary: '~/.skkeleton/userDictionary'->expand(),
