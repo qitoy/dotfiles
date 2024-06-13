@@ -54,15 +54,23 @@
     # command
     bat
     deno
+
+    ## rust
     rustup
+    cargo-udeps
+    cargo-compete
+    cargo-equip
+
+    ## python
+    python312Packages.online-judge-tools
+    python312Packages.online-judge-api-client
+    online-judge-verify-helper
+
     ffmpeg
     chafa
     jnv
     brightnessctl
     wob
-    python312Packages.online-judge-tools
-    python312Packages.online-judge-api-client
-    online-judge-verify-helper
     imagemagick
     ghostscript
     ghq
