@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -23,6 +23,9 @@
     useExperimentalGPUDriver = true;
     experimentalGPUInstallMode = "replace";
   };
+
+  powerManagement.enable = true;
+  services.tlp.enable = true;
 
   i18n.defaultLocale = "ja_JP.UTF-8";
 
@@ -55,9 +58,21 @@
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-  networking.wireless.iwd = {
+  networking = {
+    wireless.iwd = {
+      enable = true;
+      settings.General.EnableNetworkConfiguration = true;
+    };
+    firewall = {
+      enable = true;
+      trustedInterfaces = [ "tailscale0" ];
+      allowedUDPPorts = [ config.services.tailscale.port ];
+    };
+  };
+
+  services.tailscale = {
     enable = true;
-    settings.General.EnableNetworkConfiguration = true;
+    openFirewall = true;
   };
 
   # Set your time zone.
