@@ -143,8 +143,6 @@
     # for hyprland
     waybar
     mako
-    swaylock-effects
-    swayidle
     libnotify
   ];
 
@@ -156,15 +154,8 @@
   #   enableSSHSupport = true;
   # };
 
-  programs.sway = {
-    # enable = true;
-    wrapperFeatures.gtk = true;
-  };
-
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+  # for hyprlock
+  security.pam.services.hyprlock = { };
 
   programs.zsh.enable = true;
 
