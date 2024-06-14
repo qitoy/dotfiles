@@ -154,8 +154,11 @@
   #   enableSSHSupport = true;
   # };
 
-  # for hyprlock
-  security.pam.services.hyprlock = { };
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+  security.pam.services.hyprlock = { }; # for hyprlock
 
   programs.zsh.enable = true;
 

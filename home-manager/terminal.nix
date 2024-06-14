@@ -1,7 +1,7 @@
 { ... }: {
   programs.foot = {
     enable = true;
-    # server.enable = true;
+    server.enable = true;
     settings = {
       main = {
         font = "MoralerspaceNeonNF-Regular:size=12.5";

@@ -62,10 +62,8 @@
       ];
 
       exec-once = [
-        "foot --server"
         "waybar"
         "mako"
-        "hypridle"
         "rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob"
         "wl-paste --watch cliphist store"
       ];
