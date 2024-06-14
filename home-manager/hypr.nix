@@ -53,8 +53,8 @@
         "$mod Shift, Space, togglefloating,"
         "$mod Shift, m, exec, hyprctl switchxkblayout xremap next"
 
-        "$mod, F1, exec, brightnessctl set 5%- | grep Current | sed 's/.*(\(.*\)%).*/\1/' > $WOBSOCK"
-        "$mod, F2, exec, brightnessctl set 5%+ | grep Current | sed 's/.*(\(.*\)%).*/\1/' > $WOBSOCK"
+        "$mod, F1, exec, brightnessctl set 5%- | grep Current | sed 's/.*(\\(.*\\)%).*/\\1/' > $WOBSOCK"
+        "$mod, F2, exec, brightnessctl set 5%+ | grep Current | sed 's/.*(\\(.*\\)%).*/\\1/' > $WOBSOCK"
 
         "$mod, F10, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100*($3==\"\")}' > $WOBSOCK"
         "$mod, F11, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100*($3==\"\")}' > $WOBSOCK"

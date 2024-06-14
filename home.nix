@@ -69,7 +69,6 @@
 
     ffmpeg
     chafa
-    jnv
     brightnessctl
     wob
     imagemagick
@@ -79,6 +78,7 @@
     ripgrep
     fd
     jq
+    tree
 
     # gui
     xfce.thunar
