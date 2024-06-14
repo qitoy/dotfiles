@@ -30,6 +30,7 @@
   imports = [
     home-manager/zsh.nix
     home-manager/terminal.nix
+    home-manager/hypr.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
