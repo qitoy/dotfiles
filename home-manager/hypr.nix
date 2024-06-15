@@ -64,17 +64,11 @@
       exec-once = [
         "waybar"
         "mako"
+        "swayidle -w before-sleep 'swaylock -f'"
         "rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob"
         "wl-paste --watch cliphist store"
       ];
     };
-  };
-
-  services.swayidle = {
-    enable = true;
-    events = [
-      { event = "before-sleep"; command = "${pkgs.swaylock-effects}/bin/swaylock -f"; }
-    ];
   };
 
   programs.swaylock = {
