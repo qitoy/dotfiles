@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -70,23 +70,21 @@
     };
   };
 
-  services.hypridle = {
+  services.swayidle = {
     enable = true;
-    settings = {
-      general = {
-        lock_cmd = "pidof hyprlock || hyprlock";
-        before_sleep_cmd = "loginctl lock-session";
-        after_sleep_cmd = "hyprctl dispatch dpms on";
-      };
-    };
+    events = [
+      { event = "before-sleep"; command = "${pkgs.swaylock-effects}/bin/swaylock -f"; }
+    ];
   };
 
-  programs.hyprlock = {
+  programs.swaylock = {
     enable = true;
+    package = pkgs.swaylock-effects;
     settings = {
-      general = {
-        ignore_empty_input = true;
-      };
+      screenshots = true;
+      clock = true;
+      ignore-empty-password = true;
+      effect-pixelate = 16;
     };
   };
 }

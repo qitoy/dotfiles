@@ -155,7 +155,7 @@
     enable = true;
     xwayland.enable = true;
   };
-  security.pam.services.hyprlock = { }; # for hyprlock
+  security.pam.services.swaylock = { }; # for swaylock
 
   programs.zsh.enable = true;
 
