@@ -86,7 +86,6 @@
     cliphist
 
     # font
-    udev-gothic-nf
     moralerspace-nf
     twemoji-color-font
     noto-fonts

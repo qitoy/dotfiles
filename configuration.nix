@@ -138,8 +138,6 @@
     xdg-utils
 
     # for hyprland
-    waybar
-    mako
     libnotify
     swayidle
   ];

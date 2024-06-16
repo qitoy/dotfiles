@@ -1,4 +1,7 @@
 { pkgs, ... }: {
+
+  home.packages = [ pkgs.font-awesome ];
+
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -62,7 +65,6 @@
       ];
 
       exec-once = [
-        "waybar"
         "mako"
         "swayidle -w before-sleep 'swaylock -f'"
         "rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob"
@@ -80,5 +82,83 @@
       ignore-empty-password = true;
       effect-pixelate = 16;
     };
+  };
+
+  services.mako = {
+    enable = true;
+  };
+
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+    settings = {
+      mainBar = {
+        layer = "top";
+        position = "top";
+        height = 30;
+        spacing = 4;
+        modules-left = [ ];
+        modules-center = [ ];
+        modules-right = [ "network" "cpu" "memory" "temperature" "backlight" "pulseaudio" "battery" "clock" ];
+        clock = {
+          format = "{:%m-%d %H:%M}";
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+        };
+        cpu = {
+          format = "{usage}% ";
+          tooltip = false;
+        };
+        memory = {
+          format = "{}% ";
+        };
+        temperature = {
+          critical-threshold = 80;
+          format = "{temperatureC}°C {icon}";
+          format-icons = [ "" "" "" ];
+        };
+        backlight = {
+          format = "{percent}% {icon}";
+          format-icons = [ "" "" "" "" "" "" "" "" "" ];
+        };
+        battery = {
+          states = {
+            good = 95;
+            warning = 30;
+            critical = 15;
+          };
+          format = "{capacity}% {icon}";
+          format-charging = "{capacity}% ";
+          format-plugged = "{capacity}% ";
+          format-alt = "{time} {icon}";
+          format-icons = [ "" "" "" "" "" ];
+        };
+        network = {
+          format-wifi = "{essid} ({signalStrength}%) ";
+          format-ethernet = "{ipaddr}/{cidr} ";
+          tooltip-format = "{ifname} via {gwaddr} ";
+          format-linked = "{ifname} (No IP) ";
+          format-disconnected = "Disconnected ⚠";
+          format-alt = "{ifname}: {ipaddr}/{cidr}";
+        };
+        pulseaudio = {
+          format = "{volume}% {icon} {format_source}";
+          format-bluetooth = "{volume}% {icon} {format_source}";
+          format-bluetooth-muted = " {icon} {format_source}";
+          format-muted = " {format_source}";
+          format-source = "{volume}% ";
+          format-source-muted = "";
+          format-icons = {
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = [ "" "" "" ];
+          };
+        };
+      };
+    };
+    style = builtins.readFile ./hypr/waybar.css;
   };
 }
