@@ -22,14 +22,23 @@
     };
 
     nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: {
     nixosConfigurations = {
-      qitoy = inputs.nixpkgs.lib.nixosSystem {
+      qitoy = inputs.nixpkgs.lib.nixosSystem rec {
         system = "aarch64-linux";
         modules = [
           ./configuration.nix
+          inputs.agenix.nixosModules.default
+          {
+            environment.systemPackages = [ inputs.agenix.packages.${system}.default ];
+          }
         ];
         specialArgs = {
           inherit inputs;

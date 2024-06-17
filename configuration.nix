@@ -59,9 +59,20 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   networking = {
-    wireless.iwd = {
+    wireless = {
       enable = true;
-      settings.General.EnableNetworkConfiguration = true;
+      userControlled.enable = true;
+      environmentFile = config.age.secrets.wifi.path;
+      networks = {
+        "@HOME_SSID@".psk = "@HOME_PSK@";
+        "@UNIV_SSID@".auth = ''
+          key_mgmt=WPA-EAP
+          eap=PEAP
+          phase2="auth=MSCHAPV2"
+          identity="@UNIV_IDENT@"
+          password="@UNIV_PSK@"
+        '';
+      };
     };
     firewall = {
       enable = true;
@@ -136,6 +147,7 @@
     vivaldi
     wl-clipboard
     xdg-utils
+    wpa_supplicant_gui
 
     # for hyprland
     libnotify
@@ -161,7 +173,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   services.xremap = {
     withWlroots = true;
@@ -185,6 +197,9 @@
       ];
     };
   };
+
+  # agenix secrets
+  age.secrets.wifi.file = ./secrets/wifi.age;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

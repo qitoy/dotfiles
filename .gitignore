@@ -7,6 +7,8 @@
 !/hardware-configuration.nix
 !/flake.lock
 !/home-manager/**
+!/secrets.nix
+!/secrets/**
 
 !/README.md
 !/mklink.sh
