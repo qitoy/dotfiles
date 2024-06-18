@@ -125,6 +125,15 @@
     # EDITOR = "emacs";
   };
 
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    name = "macOS-Monterey";
+    package = pkgs.apple-cursor;
+    size = 22;
+  };
+  gtk.enable = true;
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
