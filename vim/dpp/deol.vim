@@ -7,8 +7,11 @@ command! -nargs=* Deol
 " }}}
 
 " hook_source {{{
-let g:deol#shell_history_path = '~/.zsh-history'
-let g:deol#prompt_pattern = '% '
+call deol#set_option(#{
+\ internal_history_path: '~/.cache/deol-history',
+\ external_history_path: '~/.zsh-history',
+\ prompt_pattern: '% ',
+\})
 
 tnoremap <Esc> <C-\><C-n>
 tnoremap <expr> <Tab> pum#visible() ?
