@@ -19,6 +19,7 @@
   boot.loader.efi.canTouchEfiVariables = false;
 
   hardware.asahi = {
+    enable = true;
     withRust = true;
     useExperimentalGPUDriver = true;
     experimentalGPUInstallMode = "replace";
@@ -115,10 +116,7 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
+  sound.enable = true;
 
   # Enable bluetooth.
   hardware.bluetooth = {
