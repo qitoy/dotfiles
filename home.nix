@@ -70,7 +70,6 @@
     ffmpeg
     chafa
     brightnessctl
-    wob
     imagemagick
     ghostscript
     ghq
