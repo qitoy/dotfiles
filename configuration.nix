@@ -142,7 +142,10 @@
     wget
     gcc
     firefox
-    vivaldi
+    (vivaldi.override {
+      proprietaryCodecs = true;
+      vivaldi-ffmpeg-codecs = inputs.qitoy.packages.aarch64-linux.vivaldi-ffmpeg-codecs;
+    })
     wl-clipboard
     xdg-utils
     wpa_supplicant_gui
