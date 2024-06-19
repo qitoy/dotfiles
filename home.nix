@@ -151,7 +151,7 @@
   programs.git = {
     enable = true;
     aliases = {
-      browse = "!deno run --allow-net --allow-run --allow-read --allow-env https://deno.land/x/git_browse/bin/browse.ts";
+      browse = "!deno run --allow-net --allow-run --allow-read --allow-env jsr:@lambdalisue/git-browse/cli";
     };
     ignores = [
       "*.DS_Store"
