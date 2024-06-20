@@ -40,7 +40,7 @@
         "$mod, Return, exec, $terminal"
         "$mod Shift, Return, togglespecialworkspace, term"
         "$mod, c, exec, ${./clip.sh}"
-        "$mod, d, exec, wofi --show drun --allow-images"
+        "$mod, d, exec, ${pkgs.wofi}/bin/wofi --show drun --allow-images"
 
         "$mod, h, movefocus, l"
         "$mod, l, movefocus, r"
@@ -66,7 +66,6 @@
       exec-once = [
         "mako"
         "swayidle -w before-sleep 'swaylock -f'"
-        "wl-paste --watch cliphist store"
       ];
     };
   };
@@ -95,9 +94,13 @@
         position = "top";
         height = 30;
         spacing = 4;
-        modules-left = [ ];
+        modules-left = [ "custom/powor" ];
         modules-center = [ ];
         modules-right = [ "network" "cpu" "memory" "temperature" "backlight" "pulseaudio" "battery" "clock" ];
+        "custom/powor" = {
+          format = "";
+          on-click = "${pkgs.sway}/bin/swaynag -t warning -m 'Power Menu Options' -b 'Shutdown' 'shutdown -h now' -b 'Restart' 'shutdown -r now' -b 'Logout' 'hyprctl dispatch exit'";
+        };
         clock = {
           format = "{:%m-%d %H:%M}";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";

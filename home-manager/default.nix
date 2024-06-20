@@ -82,7 +82,6 @@
     # gui
     xfce.thunar
     libreoffice
-    cliphist
 
     # font
     moralerspace-nf
@@ -164,7 +163,5 @@
     ];
   };
 
-  programs.wofi = {
-    enable = true;
-  };
+  services.cliphist.enable = true;
 }
