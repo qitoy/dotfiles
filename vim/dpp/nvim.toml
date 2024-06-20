@@ -132,6 +132,7 @@ lspconfig.nixd.setup{
 -- lspconfig.taplo.setup{}
 lspconfig.texlab.setup{}
 lspconfig.vimls.setup{}
+lspconfig.pylsp.setup{}
 lspconfig.rust_analyzer.setup{
   settings = {
     ['rust-analyzer'] = {
@@ -145,7 +146,7 @@ lspconfig.rust_analyzer.setup{
       }
     }
   },
- }
+}
 local configs = require 'lspconfig.configs'
 if not configs.satysfi_ls then
     configs.satysfi_ls = {

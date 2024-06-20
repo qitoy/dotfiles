@@ -142,6 +142,7 @@
       nixd
       nixpkgs-fmt
       vim-language-server
+      python312Packages.python-lsp-server
     ];
     defaultEditor = true;
   };
