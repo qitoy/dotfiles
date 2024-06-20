@@ -39,7 +39,7 @@
       bind = [
         "$mod, Return, exec, $terminal"
         "$mod Shift, Return, togglespecialworkspace, term"
-        "$mod, c, exec, ${./hypr/clip.sh}"
+        "$mod, c, exec, ${./clip.sh}"
         "$mod, d, exec, wofi --show drun --allow-images"
 
         "$mod, h, movefocus, l"
@@ -157,6 +157,6 @@
         };
       };
     };
-    style = builtins.readFile ./hypr/waybar.css;
+    style = builtins.readFile ./waybar.css;
   };
 }

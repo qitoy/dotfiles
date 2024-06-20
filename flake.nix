@@ -34,7 +34,7 @@
       qitoy = inputs.nixpkgs.lib.nixosSystem rec {
         system = "aarch64-linux";
         modules = [
-          ./configuration.nix
+          ./nixos
           inputs.agenix.nixosModules.default
           {
             environment.systemPackages = [ inputs.agenix.packages.${system}.default ];
@@ -58,7 +58,7 @@
             inherit system;
           };
           modules = [
-            ./home.nix
+            ./home-manager
           ];
         };
     };

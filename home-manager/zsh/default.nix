@@ -27,7 +27,7 @@
       bindkey "^U" backward-kill-line
 
       # fzf
-      . ${./zsh/fzf-cdr.zsh}
+      . ${./fzf-cdr.zsh}
       alias cdr="fzf-cdr"
     '';
     profileExtra = ''
