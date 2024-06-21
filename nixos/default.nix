@@ -163,6 +163,11 @@
   #   enableSSHSupport = true;
   # };
 
+  programs.nh = {
+    enable = true;
+    flake = "/home/qitoy/dotfiles";
+  };
+
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;

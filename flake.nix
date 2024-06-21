@@ -31,7 +31,7 @@
 
   outputs = inputs: {
     nixosConfigurations = {
-      qitoy = inputs.nixpkgs.lib.nixosSystem rec {
+      nixos = inputs.nixpkgs.lib.nixosSystem rec {
         system = "aarch64-linux";
         modules = [
           ./nixos
@@ -47,7 +47,7 @@
     };
 
     homeConfigurations = {
-      linux =
+      "qitoy@nixos" =
         let system = "aarch64-linux";
         in inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = import inputs.nixpkgs {
