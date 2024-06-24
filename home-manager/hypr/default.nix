@@ -54,13 +54,15 @@
         "$mod Shift, q, killactive,"
         "$mod Shift, Space, togglefloating,"
         "$mod Shift, m, exec, hyprctl switchxkblayout xremap next"
+      ];
 
-        "$mod, F1, exec, brightnessctl set 5%-"
-        "$mod, F2, exec, brightnessctl set 5%+"
+      binde = [
+        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+        ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
 
-        "$mod, F10, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        "$mod, F11, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        "$mod, F12, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
       ];
 
       exec-once = [

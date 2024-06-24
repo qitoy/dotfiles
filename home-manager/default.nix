@@ -90,6 +90,7 @@
       nixpkgs-fmt
       vim-language-server
       python312Packages.python-lsp-server
+      clang-tools
     ];
     defaultEditor = true;
   };
