@@ -64,15 +64,14 @@
       ];
 
       exec-once = [
-        "mako"
-        "swayidle -w before-sleep 'swaylock -f'"
+        "${pkgs.mako}/bin/mako"
+        "${pkgs.swayidle}/bin/swayidle -w before-sleep '${pkgs.swaylock-effects}/bin/swaylock -f'"
       ];
     };
   };
 
   programs.swaylock = {
     enable = true;
-    package = pkgs.swaylock-effects;
     settings = {
       screenshots = true;
       clock = true;
