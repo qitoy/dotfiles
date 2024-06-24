@@ -83,8 +83,8 @@ omap _ <Plug>(operator-replace)
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'
+merged = false
 hook_add = '''
-"let g:denops#deno = '~/.deno/bin/deno'->expand()
 let g:denops#server#deno_args = ['-q', '--no-lock', '--unstable-kv', '-A']
 "let g:denops_server_addr = '127.0.0.1:32123'
 if $DENOPS_DEBUG

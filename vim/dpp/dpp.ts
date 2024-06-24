@@ -3,8 +3,8 @@ import {
   ConfigArguments,
   ConfigReturn,
   Plugin,
-} from "https://deno.land/x/dpp_vim@v0.0.8/types.ts";
-import { fn } from "https://deno.land/x/dpp_vim@v0.0.8/deps.ts";
+} from "https://deno.land/x/dpp_vim@v0.3.0/types.ts";
+import { fn } from "https://deno.land/x/dpp_vim@v0.3.0/deps.ts";
 
 // dpp-ext-toml
 type Toml = {

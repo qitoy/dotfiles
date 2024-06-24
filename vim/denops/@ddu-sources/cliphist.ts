@@ -1,8 +1,8 @@
-import { BaseSource, Item } from "https://deno.land/x/ddu_vim@v3.10.3/types.ts";
-import { fn } from "https://deno.land/x/ddu_vim@v3.10.3/deps.ts";
+import { BaseSource, Item } from "https://deno.land/x/ddu_vim@v4.1.1/types.ts";
+import { fn } from "https://deno.land/x/ddu_vim@v4.1.1/deps.ts";
 import {
   OnInitArguments,
-} from "https://deno.land/x/ddu_vim@v3.10.3/base/source.ts";
+} from "https://deno.land/x/ddu_vim@v4.1.1/base/source.ts";
 import { ActionData } from "https://deno.land/x/ddu_kind_word@v0.2.1/word.ts";
 
 type Params = Record<never, never>;
