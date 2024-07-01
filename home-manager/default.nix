@@ -85,6 +85,7 @@
 
   programs.neovim = {
     enable = true;
+    package = pkgs.neovim; # for neovim nightly
     extraPackages = with pkgs; [
       nixd
       nixpkgs-fmt
