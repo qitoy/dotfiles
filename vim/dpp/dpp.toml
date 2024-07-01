@@ -22,10 +22,6 @@ repo = 'Shougo/dpp-protocol-git'
 # }}}
 
 [[plugins]]
-repo = 'vim-jp/vital.vim'
-merged = false
-
-[[plugins]]
 repo = 'EdenEast/nightfox.nvim'
 lua_add = '''
 require('nightfox').setup({
@@ -83,7 +79,6 @@ omap _ <Plug>(operator-replace)
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'
-merged = false
 hook_add = '''
 let g:denops#server#deno_args = ['-q', '--no-lock', '--unstable-kv', '-A']
 "let g:denops_server_addr = '127.0.0.1:32123'
