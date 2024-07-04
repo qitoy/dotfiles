@@ -74,7 +74,6 @@
 - [vim-denops/denops-shared-server.vim](https://github.com/vim-denops/denops-shared-server.vim)
 - [vim-denops/denops.vim](https://github.com/vim-denops/denops.vim)
 - [vim-jp/vimdoc-ja](https://github.com/vim-jp/vimdoc-ja)
-- [vim-jp/vital.vim](https://github.com/vim-jp/vital.vim)
 - [vim-pandoc/vim-pandoc-syntax](https://github.com/vim-pandoc/vim-pandoc-syntax)
 - [vim-pandoc/vim-pandoc](https://github.com/vim-pandoc/vim-pandoc)
 - [vim-skk/skkeleton](https://github.com/vim-skk/skkeleton)
