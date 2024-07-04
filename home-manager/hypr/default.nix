@@ -20,6 +20,10 @@
         };
       };
 
+      gestures = {
+        workspace_swipe = true;
+      };
+
       monitor = "eDP-1,2560x1600@60,0x0,1.25";
 
       debug.disable_logs = false;
@@ -50,6 +54,11 @@
         "$mod Shift, l, movewindow, r"
         "$mod Shift, j, movewindow, d"
         "$mod Shift, k, movewindow, u"
+
+        "$mod, left, workspace, -1"
+        "$mod, right, workspace, +1"
+        "$mod Shift, left, movetoworkspace, -1"
+        "$mod Shift, right, movetoworkspace, +1"
 
         "$mod Shift, q, killactive,"
         "$mod Shift, Space, togglefloating,"
@@ -95,8 +104,8 @@
         position = "top";
         height = 30;
         spacing = 4;
-        modules-left = [ "custom/powor" ];
-        modules-center = [ ];
+        modules-left = [ "custom/powor" "hyprland/workspaces" ];
+        modules-center = [ "hyprland/window" ];
         modules-right = [ "network" "cpu" "memory" "temperature" "backlight" "pulseaudio" "battery" "clock" ];
         "custom/powor" = {
           format = "";
