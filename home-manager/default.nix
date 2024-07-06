@@ -28,7 +28,7 @@
   imports = [
     ./zsh
     ./hypr
-    ./terminal.nix
+    ./terminal
   ];
 
   home.packages = with pkgs; [
