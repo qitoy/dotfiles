@@ -29,14 +29,14 @@
       debug.disable_logs = false;
 
       "$mod" = "Super";
-      "$terminal" = "footclient";
+      "$terminal" = "alacritty";
 
       workspace = [
         "special:term, on-created-empty:$terminal"
       ];
 
       windowrule = [
-        "noblur, ^(footclient)$"
+        "noblur, ^(Alacritty)$"
         "float, ^(sway_clip)$"
       ];
 
