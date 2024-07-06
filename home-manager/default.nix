@@ -113,5 +113,7 @@
     ];
   };
 
+  programs.imv.enable = true;
+
   services.cliphist.enable = true;
 }

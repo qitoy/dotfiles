@@ -7,7 +7,7 @@
 
     settings = {
       input = {
-        kb_layout = "us,jp";
+        kb_layout = "us,";
         kb_variant = "dvp,";
         kb_model = "hhk,applealu_jis";
 
