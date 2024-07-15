@@ -61,6 +61,7 @@
     # gui
     xfce.thunar
     libreoffice
+    kolourpaint
 
     # font
     moralerspace-nf
