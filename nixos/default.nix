@@ -14,6 +14,7 @@
 
   hardware.asahi = {
     enable = true;
+    setupAsahiSound = true;
     withRust = true;
     useExperimentalGPUDriver = true;
     experimentalGPUInstallMode = "replace";
@@ -84,12 +85,16 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  sound.enable = true;
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
   };
   services.blueman.enable = true;
+
+  swapDevices = [{
+    device = "/var/swapfile";
+    size = 8 * 1024;
+  }];
 
   users.users.qitoy = {
     isNormalUser = true;
