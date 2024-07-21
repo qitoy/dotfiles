@@ -21,8 +21,7 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
-    # nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
-    nixos-apple-silicon.url = "github:oliverbestmann/nixos-apple-silicon";
+    nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
 
     agenix = {
       url = "github:ryantm/agenix";

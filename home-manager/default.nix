@@ -41,7 +41,6 @@
     imagemagick
     ghostscript
     ghq
-    opam
     ripgrep
     fd
     jq
@@ -113,6 +112,15 @@
       "*.satysfi-aux"
     ];
   };
+
+  programs.gh = {
+    enable = true;
+    settings = {
+      git_protocol = "ssh";
+    };
+  };
+
+  programs.opam.enable = true;
 
   programs.imv.enable = true;
 
