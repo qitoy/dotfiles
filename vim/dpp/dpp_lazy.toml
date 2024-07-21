@@ -71,6 +71,14 @@ nnoremap g<C-o> <Plug>(backandforward-back)
 nnoremap g<C-i> <Plug>(backandforward-forward)
 '''
 
+[[plugins]]
+repo = 'tani/dmacro.vim'
+on_event = ['InsertEnter', 'CursorHold', 'BufRead']
+hook_source = '''
+inoremap <C-@> <Plug>(dmacro-play-macro)
+nnoremap <C-@> <Plug>(dmacro-play-macro)
+'''
+
 # {{{ denops
 [[plugins]]
 repo = 'skanehira/denops-translate.vim'

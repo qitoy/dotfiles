@@ -173,13 +173,6 @@ require'insx.preset.standard'.setup()
 '''
 
 [[plugins]]
-repo = 'tani/dmacro.nvim'
-on_event = ['InsertEnter', 'CursorHold', 'BufRead']
-lua_source = '''
-require'dmacro'.setup { dmacro_key = '<C-@>' }
-'''
-
-[[plugins]]
 repo = 'b0o/incline.nvim'
 on_event = ['CursorHold', 'BufRead']
 lua_source = '''
