@@ -66,6 +66,7 @@
     moralerspace-nf
     twemoji-color-font
     noto-fonts
+    noto-fonts-cjk
   ];
 
   home.file = { };
