@@ -79,7 +79,6 @@ inoremap <C-@> <Plug>(dmacro-play-macro)
 nnoremap <C-@> <Plug>(dmacro-play-macro)
 '''
 
-# {{{ denops
 [[plugins]]
 repo = 'skanehira/denops-translate.vim'
 on_cmd = 'Translate'
@@ -129,30 +128,14 @@ call skkeleton_state_popup#config(#{
 \})
 call skkeleton_state_popup#enable()
 '''
-# }}}
 
 [[plugins]]
-repo = 'vim-pandoc/vim-pandoc'
-on_ft = ['markdown']
-on_cmd = 'Pandoc'
+repo = 'tani/vim-glance'
+on_cmd = 'Glance'
 hook_add = '''
-let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
-let g:pandoc#filetypes#pandoc_markdown = 0
-let g:pandoc#spell#enabled = 0
-let g:pandoc#command#autoexec_on_writes = 0
-'''
-
-[[plugins]]
-repo = 'vim-pandoc/vim-pandoc-syntax'
-on_source = ['vim-pandoc']
-
-[[plugins]]
-repo = 'previm/previm'
-on_ft = ['markdown']
-on_cmd = 'PrevimOpen'
-hook_add = '''
-let g:previm_enable_realtime = 1
-let g:previm_open_cmd = 'xdg-open'
-let g:previm_show_header = 0
-let g:previm_code_language_show = 1
+let g:glance#stylesheet = [
+\ '@import url("https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css");',
+\ '@import url("https://cdn.jsdelivr.net/npm/water.css@2/out/light.css");',
+\]->join("\n")
+let g:glance#config = '$VIM_DPP/glance.ts'->expand()
 '''
