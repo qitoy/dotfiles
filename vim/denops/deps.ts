@@ -1,5 +1,4 @@
 export { $ } from "https://deno.land/x/dax@0.39.2/mod.ts";
-export { systemopen } from "https://deno.land/x/systemopen@v1.0.0/mod.ts";
 export { type Denops } from "https://deno.land/x/denops_std@v6.5.0/mod.ts";
 export * as batch from "https://deno.land/x/denops_std@v6.5.0/batch/mod.ts";
 export * as buffer from "https://deno.land/x/denops_std@v6.5.0/buffer/mod.ts";

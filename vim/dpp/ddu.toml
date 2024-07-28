@@ -94,6 +94,10 @@ on_source = 'ddu.vim'
 repo = 'Shougo/ddu-kind-word'
 on_source = 'ddu.vim'
 
+[[plugins]]
+repo = '4513ECHO/ddu-kind-url'
+on_source = 'ddu.vim'
+
 #columns
 [[plugins]]
 repo = 'Shougo/ddu-column-filename'

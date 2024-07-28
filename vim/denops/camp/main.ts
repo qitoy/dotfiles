@@ -6,7 +6,6 @@ import {
   fn,
   is,
   stdPath,
-  systemopen,
   u,
 } from "../deps.ts";
 
@@ -52,8 +51,7 @@ export function main(denops: Denops): void {
           return;
         }
       }
-      const uri = await competeSubmit(source);
-      await systemopen(uri);
+      await competeSubmit(source);
     },
   };
 }
@@ -102,18 +100,8 @@ async function competeTest(source: string): Promise<[boolean, string[]]> {
   return [code === 0, combined.split("\n")];
 }
 
-async function competeSubmit(source: string): Promise<string> {
+async function competeSubmit(source: string) {
   const { dir, name } = stdPath.parse(source);
-  const lines = await $`cargo compete submit ${name} --no-test --no-watch`
-    .captureCombined()
-    .cwd(dir)
-    .noThrow()
-    .lines();
-  let uri = "";
-  for (const line of lines) {
-    if (line.includes("URL (detail)")) {
-      uri = line.replace(/^.*(https\S+).*$/, "$1");
-    }
-  }
-  return uri;
+  await $`cargo compete submit ${name} --no-test --no-watch`
+    .cwd(dir).quiet();
 }

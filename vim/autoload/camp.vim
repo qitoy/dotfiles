@@ -18,3 +18,9 @@ endfunction
 function camp#submit(force) abort
   call camp#notify('campSubmit', !!a:force)
 endfunction
+
+function camp#summaries() abort
+  call ddu#start(#{
+  \ sources: ['camp_summaries'],
+  \})
+endfunction
