@@ -24,8 +24,6 @@ function s:skkeleton_init() abort
   \ selectCandidateKeys: 'aoeuhtn',
   \ kanaTable: 'gact10_dvp',
   \ keepState: v:true,
-  \ markerHenkan: "",
-  \ markerHenkanSelect: "",
   \})
 endfunction
 
