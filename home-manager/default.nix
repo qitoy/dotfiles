@@ -111,6 +111,7 @@
       "*.out"
       "*.gch"
       "*.satysfi-aux"
+      ".jj"
     ];
   };
 
@@ -119,6 +120,10 @@
     settings = {
       git_protocol = "ssh";
     };
+  };
+
+  programs.jujutsu = {
+    enable = true;
   };
 
   programs.opam.enable = true;
