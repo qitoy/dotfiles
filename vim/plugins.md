@@ -1,9 +1,9 @@
 # 使用Vimプラグイン一覧
+- [4513ECHO/ddu-kind-url](https://github.com/4513ECHO/ddu-kind-url)
 - [4513ECHO/ddu-source-emoji](https://github.com/4513ECHO/ddu-source-emoji)
 - [Bakudankun/BackAndForward.vim](https://github.com/Bakudankun/BackAndForward.vim)
 - [EdenEast/nightfox.nvim](https://github.com/EdenEast/nightfox.nvim)
 - [MunifTanjim/nui.nvim](https://github.com/MunifTanjim/nui.nvim)
-- [NI57721/skkeleton-state-popup](https://github.com/NI57721/skkeleton-state-popup)
 - [Shougo/ddc-filter-converter_remove_overlap](https://github.com/Shougo/ddc-filter-converter_remove_overlap)
 - [Shougo/ddc-source-around](https://github.com/Shougo/ddc-source-around)
 - [Shougo/ddc-source-cmdline-history](https://github.com/Shougo/ddc-source-cmdline-history)
