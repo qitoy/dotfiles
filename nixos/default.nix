@@ -52,20 +52,9 @@
 
   # networking.hostName = "nixos"; # Define your hostname.
   networking = {
-    wireless = {
+    wireless.iwd = {
       enable = true;
-      userControlled.enable = true;
-      environmentFile = config.age.secrets.wifi.path;
-      networks = {
-        "@HOME_SSID@".psk = "@HOME_PSK@";
-        "@UNIV_SSID@".auth = ''
-          key_mgmt=WPA-EAP
-          eap=PEAP
-          phase2="auth=MSCHAPV2"
-          identity="@UNIV_IDENT@"
-          password="@UNIV_PSK@"
-        '';
-      };
+      settings.General.EnableNetworkConfiguration = true;
     };
     firewall = {
       enable = true;
@@ -113,7 +102,6 @@
     })
     wl-clipboard
     xdg-utils
-    wpa_supplicant_gui
 
     # for hyprland
     libnotify
