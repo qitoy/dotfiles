@@ -49,6 +49,9 @@ export class Config extends BaseConfig {
         word: {
           defaultAction: "append",
         },
+        url: {
+          defaultAction: "browse",
+        },
       },
       actionOptions: {
         narrow: {
