@@ -6,7 +6,9 @@ import {
 import { ActionData } from "https://raw.githubusercontent.com/4513ECHO/ddu-kind-url/main/denops/%40ddu-kinds/url.ts";
 import { parse } from "jsr:@std/jsonc";
 
-type Params = Record<never, never>;
+type Params = {
+  bin_name_or_alias: string;
+};
 
 const isSummary = is.ObjectOf({
   submission_time: is.String,
@@ -22,8 +24,8 @@ const isSummary = is.ObjectOf({
   score: is.String,
   code_size: is.String,
   status: is.String,
-  exec_time: is.String,
-  memory: is.String,
+  exec_time: is.OptionalOf(is.String),
+  memory: is.OptionalOf(is.String),
   detail: is.String,
 });
 
@@ -36,9 +38,13 @@ export class Source extends BaseSource<Params> {
 
   override async onInit(args: OnInitArguments<Params>) {
     const cmd = await fn.exepath(args.denops, "cargo");
+    const cmd_args = ["compete", "retrieve", "submission-summaries"];
+    if (args.sourceParams.bin_name_or_alias !== "") {
+      cmd_args.push(args.sourceParams.bin_name_or_alias);
+    }
     const stdout = new TextDecoder().decode(
       new Deno.Command(cmd, {
-        args: ["compete", "retrieve", "submission-summaries"],
+        args: cmd_args,
       }).outputSync().stdout,
     );
     this.#summary = u.ensure(
@@ -69,6 +75,8 @@ export class Source extends BaseSource<Params> {
   }
 
   override params(): Params {
-    return {};
+    return {
+      bin_name_or_alias: "",
+    };
   }
 }
