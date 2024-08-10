@@ -45,6 +45,7 @@
     fd
     jq
     tree
+    vhs
 
     ## rust
     rustup

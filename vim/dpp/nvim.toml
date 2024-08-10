@@ -178,3 +178,16 @@ on_event = ['CursorHold', 'BufRead']
 lua_source = '''
 require'incline'.setup {}
 '''
+
+[[plugins]]
+repo = '4513ECHO/nvim-keycastr'
+on_lua = 'keycastr'
+lua_source = '''
+require"keycastr".config.set {
+  ignore_mouse = true,
+  position = "SE",
+  win_config = {
+    border = "rounded",
+  },
+}
+'''
