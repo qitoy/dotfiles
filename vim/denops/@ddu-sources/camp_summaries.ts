@@ -1,6 +1,6 @@
 import * as fn from "jsr:@denops/std@7/function";
 import * as u from "jsr:@core/unknownutil@4";
-import { as, is } from "jsr:@core/unknownutil@4";
+import { is } from "jsr:@core/unknownutil@4";
 import { BaseSource, Item } from "jsr:@shougo/ddu-vim@5/types";
 import { OnInitArguments } from "jsr:@shougo/ddu-vim@5/source";
 import { ActionData } from "jsr:@4513echo/ddu-kind-url@0.4";
@@ -23,8 +23,8 @@ const isSummary = is.ObjectOf({
   score: is.String,
   code_size: is.String,
   status: is.String,
-  exec_time: as.Optional(is.String),
-  memory: as.Optional(is.String),
+  exec_time: is.UnionOf([is.Null, is.String]),
+  memory: is.UnionOf([is.Null, is.String]),
   detail: is.String,
 });
 
