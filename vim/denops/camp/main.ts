@@ -1,13 +1,11 @@
-import {
-  $,
-  batch,
-  buffer,
-  Denops,
-  fn,
-  is,
-  stdPath,
-  u,
-} from "../deps.ts";
+import { $ } from "jsr:@david/dax@0.41";
+import { type Denops } from "jsr:@denops/core@7";
+import * as batch from "jsr:@denops/std@7/batch";
+import * as buffer from "jsr:@denops/std@7/buffer";
+import * as fn from "jsr:@denops/std@7/function";
+import * as u from "jsr:@core/unknownutil@4";
+import { is } from "jsr:@core/unknownutil@4";
+import * as stdPath from "jsr:@std/path@1";
 
 export function main(denops: Denops): void {
   denops.dispatcher = {

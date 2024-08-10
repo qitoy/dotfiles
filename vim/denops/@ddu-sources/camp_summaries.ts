@@ -1,10 +1,9 @@
-import { fn, is, u } from "../deps.ts";
-import { BaseSource, Item } from "https://deno.land/x/ddu_vim@v4.1.1/types.ts";
-import {
-  OnInitArguments,
-} from "https://deno.land/x/ddu_vim@v4.1.1/base/source.ts";
-import { ActionData } from "https://raw.githubusercontent.com/4513ECHO/ddu-kind-url/main/denops/%40ddu-kinds/url.ts";
-import { parse } from "jsr:@std/jsonc";
+import * as fn from "jsr:@denops/std@7/function";
+import * as u from "jsr:@core/unknownutil@4";
+import { as, is } from "jsr:@core/unknownutil@4";
+import { BaseSource, Item } from "jsr:@shougo/ddu-vim@5/types";
+import { OnInitArguments } from "jsr:@shougo/ddu-vim@5/source";
+import { ActionData } from "jsr:@4513echo/ddu-kind-url@0.4";
 
 type Params = {
   bin_name_or_alias: string;
@@ -24,8 +23,8 @@ const isSummary = is.ObjectOf({
   score: is.String,
   code_size: is.String,
   status: is.String,
-  exec_time: is.OptionalOf(is.String),
-  memory: is.OptionalOf(is.String),
+  exec_time: as.Optional(is.String),
+  memory: as.Optional(is.String),
   detail: is.String,
 });
 
@@ -48,7 +47,7 @@ export class Source extends BaseSource<Params> {
       }).outputSync().stdout,
     );
     this.#summary = u.ensure(
-      parse(stdout),
+      JSON.parse(stdout),
       is.ObjectOf({
         summaries: is.ArrayOf(isSummary),
       }),

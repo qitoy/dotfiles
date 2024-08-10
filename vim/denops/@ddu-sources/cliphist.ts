@@ -1,9 +1,7 @@
-import { BaseSource, Item } from "https://deno.land/x/ddu_vim@v4.1.1/types.ts";
-import { fn } from "https://deno.land/x/ddu_vim@v4.1.1/deps.ts";
-import {
-  OnInitArguments,
-} from "https://deno.land/x/ddu_vim@v4.1.1/base/source.ts";
-import { ActionData } from "https://deno.land/x/ddu_kind_word@v0.2.1/word.ts";
+import { BaseSource, Item } from "jsr:@shougo/ddu-vim@5/types";
+import * as fn from "jsr:@denops/std@7/function";
+import { OnInitArguments } from "jsr:@shougo/ddu-vim@5/source";
+import { ActionData } from "jsr:@shougo/ddu-kind-word@0.3";
 
 type Params = Record<never, never>;
 
@@ -23,12 +21,10 @@ export class Source extends BaseSource<Params> {
       new Deno.Command(cmd, { args: ["list"] }).outputSync().stdout,
     );
     this.#history = await Promise.all(
-      stdout.split("\n").map((word) => {
-        const output = new Deno.Command(cmd, { args: ["decode", word] })
+      stdout.split("\n").map(async (word) => {
+        const output = await new Deno.Command(cmd, { args: ["decode", word] })
           .output();
-        return output.then((output) => {
-          return { word, text: new TextDecoder().decode(output.stdout) };
-        });
+        return { word, text: new TextDecoder().decode(output.stdout) };
       }),
     );
   }
