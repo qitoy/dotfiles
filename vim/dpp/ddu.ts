@@ -1,10 +1,11 @@
-import { BaseConfig } from "https://deno.land/x/ddu_vim@v4.1.1/types.ts";
-import { ConfigArguments } from "https://deno.land/x/ddu_vim@v4.1.1/base/config.ts";
-import { Denops, fn } from "https://deno.land/x/ddu_vim@v4.1.1/deps.ts";
+import { BaseConfig, Denops } from "jsr:@shougo/ddu-vim@5/types";
+import { ConfigArguments } from "jsr:@shougo/ddu-vim@5/config";
+import { Params as FFParams } from "jsr:@shougo/ddu-ui-ff@1";
+import { Params as FilerParams } from "jsr:@shougo/ddu-ui-filer@1";
+import * as fn from "jsr:@denops/std@7/function";
 
 export class Config extends BaseConfig {
-  // deno-lint-ignore require-await
-  override async config(args: ConfigArguments): Promise<void> {
+  override config(args: ConfigArguments): Promise<void> {
     args.contextBuilder.patchGlobal({
       ui: "ff",
       sourceOptions: {
@@ -24,7 +25,7 @@ export class Config extends BaseConfig {
           kind: "mrw",
         },
         rg: {
-          args: ['--column', '--no-heading', '--json'],
+          args: ["--column", "--no-heading", "--json"],
         },
       },
       kindOptions: {
@@ -90,7 +91,7 @@ export class Config extends BaseConfig {
           }) => {
             await fn.win_execute(args.denops, args.previewWinId, "normal! zt");
           },
-        },
+        } as Partial<FFParams>,
         filer: {
           split: "floating",
           sort: "filename",
@@ -99,7 +100,7 @@ export class Config extends BaseConfig {
           winHeight: "&lines - 8",
           floatingBorder: "double",
           sortTreesFirst: true,
-        },
+        } as Partial<FilerParams>,
       },
       filterParams: {
         matcher_substring: {
@@ -107,5 +108,7 @@ export class Config extends BaseConfig {
         },
       },
     });
+
+    return Promise.resolve();
   }
 }
