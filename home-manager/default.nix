@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, config, ... }:
 
 {
   home.username = "qitoy";
@@ -70,7 +70,11 @@
     noto-fonts-cjk
   ];
 
-  home.file = { };
+  home.file = {
+    ".latexmkrc".source = ../latexmkrc;
+    ".config/efm-langserver".source = ../config/efm-langserver;
+    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/vim";
+  };
   home.sessionVariables = { };
 
   home.pointerCursor = {
@@ -89,6 +93,7 @@
     enable = true;
     package = pkgs.neovim; # for neovim nightly
     extraPackages = with pkgs; [
+      efm-langserver
       nixd
       nixpkgs-fmt
       vim-language-server
