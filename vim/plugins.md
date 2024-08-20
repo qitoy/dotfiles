@@ -1,6 +1,7 @@
 # 使用Vimプラグイン一覧
 - [4513ECHO/ddu-kind-url](https://github.com/4513ECHO/ddu-kind-url)
 - [4513ECHO/ddu-source-emoji](https://github.com/4513ECHO/ddu-source-emoji)
+- [4513ECHO/nvim-keycastr](https://github.com/4513ECHO/nvim-keycastr)
 - [Bakudankun/BackAndForward.vim](https://github.com/Bakudankun/BackAndForward.vim)
 - [EdenEast/nightfox.nvim](https://github.com/EdenEast/nightfox.nvim)
 - [MunifTanjim/nui.nvim](https://github.com/MunifTanjim/nui.nvim)
