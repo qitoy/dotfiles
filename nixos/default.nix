@@ -6,6 +6,7 @@
       # Include the necessary packages and configuration for Apple Silicon support.
       (inputs.nixos-apple-silicon + "/apple-silicon-support")
       inputs.xremap.nixosModules.default
+      inputs.home-manager.nixosModules.home-manager
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -89,6 +90,11 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     shell = pkgs.zsh;
+  };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users.qitoy = import ../home-manager;
   };
 
   environment.systemPackages = with pkgs; [

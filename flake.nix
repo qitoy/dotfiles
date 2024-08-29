@@ -45,22 +45,5 @@
         };
       };
     };
-
-    homeConfigurations = {
-      "qitoy@nixos" =
-        let system = "aarch64-linux";
-        in inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = import inputs.nixpkgs {
-            inherit system;
-          };
-          extraSpecialArgs = {
-            inherit inputs;
-            inherit system;
-          };
-          modules = [
-            ./home-manager
-          ];
-        };
-    };
   };
 }

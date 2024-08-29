@@ -15,11 +15,6 @@
 
   fonts.fontconfig.enable = true;
 
-  nix = {
-    package = pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
-  };
-
   nixpkgs.overlays = [
     inputs.neovim-nightly-overlay.overlays.default
     inputs.qitoy.overlays.default
