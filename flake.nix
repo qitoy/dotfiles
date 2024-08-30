@@ -30,20 +30,6 @@
   };
 
   outputs = inputs: {
-    nixosConfigurations = {
-      nixos = inputs.nixpkgs.lib.nixosSystem rec {
-        system = "aarch64-linux";
-        modules = [
-          ./nixos
-          inputs.agenix.nixosModules.default
-          {
-            environment.systemPackages = [ inputs.agenix.packages.${system}.default ];
-          }
-        ];
-        specialArgs = {
-          inherit inputs;
-        };
-      };
-    };
+    nixosConfigurations = import ./systems/nixos { inherit inputs; };
   };
 }

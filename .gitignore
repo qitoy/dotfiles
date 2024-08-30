@@ -1,25 +1,21 @@
 *
 !*/
 
-!/home.nix
 !/flake.nix
-!/configuration.nix
-!/hardware-configuration.nix
 !/flake.lock
 !/nixos/**
 !/home-manager/**
+!/systems/**
 !/secrets.nix
 
 !/README.md
 !/latexmkrc
-!/vimrc
 !/.gitignore
 !/vim/**
 /vim/undo/*
 /vim/nundo/*
 !/vim/undo/.gitkeep
 !/vim/nundo/.gitkeep
-/vim/minimum_vimrc/*
 !/.github/**
 !/public/**
 !/homebrew/**
