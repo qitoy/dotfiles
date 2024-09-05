@@ -18,8 +18,6 @@
   powerManagement.enable = true;
   services.tlp.enable = true;
 
-  i18n.defaultLocale = "ja_JP.UTF-8";
-
   xdg.mime = {
     enable = true;
     defaultApplications = {
@@ -64,6 +62,7 @@
   };
 
   time.timeZone = "Asia/Tokyo";
+  i18n.defaultLocale = "ja_JP.UTF-8";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

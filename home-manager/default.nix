@@ -67,9 +67,13 @@
 
   home.file = {
     ".latexmkrc".source = ../latexmkrc;
-    ".config/efm-langserver".source = ../config/efm-langserver;
-    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/vim";
   };
+  
+  xdg.configFile = {
+    "efm-langserver".source = ../config/efm-langserver;
+    "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/vim";
+  };
+
   home.sessionVariables = { };
 
   home.pointerCursor = {
@@ -94,6 +98,7 @@
       vim-language-server
       python312Packages.python-lsp-server
       clang-tools
+      texlab
     ];
     defaultEditor = true;
   };
