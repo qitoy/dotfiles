@@ -20,6 +20,8 @@
     inputs.qitoy.overlays.default
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   imports = [
     ./zsh
     ./hypr
@@ -79,7 +81,7 @@
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
-    name = "macOS-Monterey";
+    name = "macOS";
     package = pkgs.apple-cursor;
     size = 22;
   };
