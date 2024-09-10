@@ -37,7 +37,6 @@ require('nightfox').setup({
 })
 vim.opt.background = "dark"
 vim.cmd.colorscheme('carbonfox')
-
 '''
 
 [[plugins]]
