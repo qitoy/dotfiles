@@ -54,3 +54,6 @@ let &undodir = expand('~/.vim/nundo/')
 
 " マウス
 set mouse=
+
+" TODO 別のいい場所に置く
+lua require('extmode')
