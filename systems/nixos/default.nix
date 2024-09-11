@@ -2,6 +2,8 @@
 let
   username = "qitoy";
   system = "aarch64-linux";
+  pkgs = import inputs.nixpkgs { inherit system; };
+  qitoypkgs = pkgs.callPackage ../../packages { };
 in
 {
   nixos = inputs.nixpkgs.lib.nixosSystem {
@@ -15,13 +17,13 @@ in
       {
         environment.systemPackages = [ inputs.agenix.packages.${system}.default ];
         home-manager = {
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = { inputs = inputs // { inherit qitoypkgs; }; };
           users."${username}" = import ../../home-manager;
         };
       }
     ];
     specialArgs = {
-      inherit inputs;
+      inputs = inputs // { inherit qitoypkgs; };
     };
   };
 }

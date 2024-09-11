@@ -1,0 +1,39 @@
+[ssss]
+src.git = "https://github.com/vm-xeck/ssss.git"
+fetch.github = "vm-xeck/ssss"
+
+[online-judge-verify-helper]
+src.git = "https://github.com/online-judge-tools/verification-helper.git"
+fetch.github = "online-judge-tools/verification-helper"
+
+[vivaldi-ffmpeg-codecs]
+src.manual = "126.0.6478.126"
+fetch.url = "https://api.snapcraft.io/api/v1/snaps/download/XKEcBqPM06H1Z7zGOdG5fbICuf8NWK5R_2899.snap"
+
+[moralerspace-nf]
+src.github = "yuru7/moralerspace"
+src.prefix = "v"
+fetch.url = "https://github.com/yuru7/moralerspace/releases/download/v$ver/MoralerspaceNF_v$ver.zip"
+
+[vlgothic]
+src.github = "daisukesuzuki/VLGothic"
+fetch.github = "daisukesuzuki/VLGothic"
+
+[cargo-compete]
+src.github = "qryxip/cargo-compete"
+fetch.github = "qryxip/cargo-compete"
+cargo_locks = ["Cargo.lock"]
+
+[cargo-equip]
+src.github = "qryxip/cargo-equip"
+fetch.github = "qryxip/cargo-equip"
+cargo_locks = ["Cargo.lock"]
+
+[cargo-executable-payload]
+src.github = "qryxip/cargo-executable-payload"
+fetch.github = "qryxip/cargo-executable-payload"
+cargo_locks = ["Cargo.lock"]
+
+[janome]
+src.pypi = "Janome"
+fetch.pypi = "Janome"

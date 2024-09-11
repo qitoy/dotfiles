@@ -1,5 +1,4 @@
 { pkgs, inputs, config, ... }:
-
 {
   home.username = "qitoy";
   home.homeDirectory = "/home/qitoy";
@@ -17,7 +16,6 @@
 
   nixpkgs.overlays = [
     inputs.neovim-nightly-overlay.overlays.default
-    inputs.qitoy.overlays.default
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -47,13 +45,13 @@
     ## rust
     rustup
     cargo-udeps
-    cargo-compete
-    cargo-equip
+    inputs.qitoypkgs.cargo-compete
+    inputs.qitoypkgs.cargo-equip
 
     ## python
     python312Packages.online-judge-tools
     python312Packages.online-judge-api-client
-    online-judge-verify-helper
+    inputs.qitoypkgs.online-judge-verify-helper
 
     # gui
     xfce.thunar
@@ -61,16 +59,16 @@
     kolourpaint
 
     # font
-    moralerspace-nf
+    inputs.qitoypkgs.moralerspace-nf
     twemoji-color-font
-    noto-fonts
     noto-fonts-cjk
+    noto-fonts
   ];
 
   home.file = {
     ".latexmkrc".source = ../latexmkrc;
   };
-  
+
   xdg.configFile = {
     "efm-langserver".source = ../config/efm-langserver;
     "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/vim";

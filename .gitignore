@@ -6,6 +6,9 @@
 !/nixos/**
 !/home-manager/**
 !/systems/**
+!/_sources/**
+!/packages/**
+!/nvfetcher.toml
 !/secrets.nix
 
 !/README.md

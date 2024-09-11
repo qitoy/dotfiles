@@ -92,7 +92,7 @@
     firefox
     (vivaldi.override {
       proprietaryCodecs = true;
-      vivaldi-ffmpeg-codecs = inputs.qitoy.packages.aarch64-linux.vivaldi-ffmpeg-codecs;
+      vivaldi-ffmpeg-codecs = inputs.qitoypkgs.vivaldi-ffmpeg-codecs;
     })
     wl-clipboard
     xdg-utils

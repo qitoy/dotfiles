@@ -15,12 +15,6 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
-    qitoy = {
-      url = "github:qitoy/flakes";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-
     nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
 
     agenix = {
