@@ -7,14 +7,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
 
-  hardware.asahi = {
-    enable = true;
-    setupAsahiSound = true;
-    withRust = true;
-    useExperimentalGPUDriver = true;
-    experimentalGPUInstallMode = "replace";
-  };
-
   powerManagement.enable = true;
   services.tlp.enable = true;
 

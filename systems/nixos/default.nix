@@ -13,6 +13,15 @@ in
       ./hardware-configuration.nix
       inputs.agenix.nixosModules.default
       (inputs.nixos-apple-silicon + "/apple-silicon-support")
+      {
+        hardware.asahi = {
+          enable = true;
+          setupAsahiSound = true;
+          withRust = true;
+          useExperimentalGPUDriver = true;
+          experimentalGPUInstallMode = "replace";
+        };
+      }
       inputs.home-manager.nixosModules.home-manager
       {
         environment.systemPackages = [ inputs.agenix.packages.${system}.default ];
