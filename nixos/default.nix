@@ -1,6 +1,6 @@
-{ config, pkgs, inputs, ... }: {
+{ config, pkgs, xremap, qitoypkgs, ... }: {
   imports = [
-    inputs.xremap.nixosModules.default
+    xremap.nixosModules.default
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -84,7 +84,7 @@
     firefox
     (vivaldi.override {
       proprietaryCodecs = true;
-      vivaldi-ffmpeg-codecs = inputs.qitoypkgs.vivaldi-ffmpeg-codecs;
+      vivaldi-ffmpeg-codecs = qitoypkgs.vivaldi-ffmpeg-codecs;
     })
     wl-clipboard
     xdg-utils

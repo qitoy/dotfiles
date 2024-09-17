@@ -1,4 +1,4 @@
-{ pkgs, inputs, config, ... }:
+{ pkgs, neovim-nightly-overlay, qitoypkgs, config, ... }:
 {
   home.username = "qitoy";
   home.homeDirectory = "/home/qitoy";
@@ -15,7 +15,7 @@
   fonts.fontconfig.enable = true;
 
   nixpkgs.overlays = [
-    inputs.neovim-nightly-overlay.overlays.default
+    neovim-nightly-overlay.overlays.default
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -45,13 +45,13 @@
     ## rust
     rustup
     cargo-udeps
-    inputs.qitoypkgs.cargo-compete
-    inputs.qitoypkgs.cargo-equip
+    qitoypkgs.cargo-compete
+    qitoypkgs.cargo-equip
 
     ## python
     python312Packages.online-judge-tools
     python312Packages.online-judge-api-client
-    inputs.qitoypkgs.online-judge-verify-helper
+    qitoypkgs.online-judge-verify-helper
 
     # gui
     xfce.thunar
@@ -59,7 +59,7 @@
     kolourpaint
 
     # font
-    inputs.qitoypkgs.moralerspace-nf
+    qitoypkgs.moralerspace-nf
     twemoji-color-font
     noto-fonts-cjk
     noto-fonts

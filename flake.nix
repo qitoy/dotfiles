@@ -16,7 +16,16 @@
     nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
   };
 
-  outputs = inputs: {
-    nixosConfigurations = import ./systems/nixos { inherit inputs; };
-  };
+  outputs =
+    { nixpkgs
+    , home-manager
+    , neovim-nightly-overlay
+    , xremap
+    , nixos-apple-silicon
+    , ...
+    }: {
+      nixosConfigurations = import ./systems/nixos {
+        inherit nixpkgs home-manager neovim-nightly-overlay xremap nixos-apple-silicon;
+      };
+    };
 }
