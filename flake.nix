@@ -16,11 +16,6 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
-
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs: {

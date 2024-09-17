@@ -11,7 +11,6 @@ in
     modules = [
       ../../nixos
       ./hardware-configuration.nix
-      inputs.agenix.nixosModules.default
       (inputs.nixos-apple-silicon + "/apple-silicon-support")
       {
         hardware.asahi = {
@@ -24,7 +23,6 @@ in
       }
       inputs.home-manager.nixosModules.home-manager
       {
-        environment.systemPackages = [ inputs.agenix.packages.${system}.default ];
         home-manager = {
           extraSpecialArgs = { inputs = inputs // { inherit qitoypkgs; }; };
           users."${username}" = import ../../home-manager;
