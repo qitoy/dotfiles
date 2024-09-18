@@ -1,6 +1,9 @@
 { config, pkgs, xremap, qitoypkgs, ... }: {
   imports = [
     xremap.nixosModules.default
+    ./xremap.nix
+    (import ./network.nix { inherit config; })
+    ./nix.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -19,38 +22,6 @@
       "x-scheme-handler/about" = "vivaldi-stable.desktop";
       "x-scheme-handler/unknown" = "vivaldi-stable.desktop";
     };
-  };
-
-  nix = {
-    settings = {
-      auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-  };
-
-  nixpkgs.config.allowUnfree = true;
-
-  # networking.hostName = "nixos"; # Define your hostname.
-  networking = {
-    wireless.iwd = {
-      enable = true;
-      settings.General.EnableNetworkConfiguration = true;
-    };
-    firewall = {
-      enable = true;
-      trustedInterfaces = [ "tailscale0" ];
-      allowedUDPPorts = [ config.services.tailscale.port ];
-    };
-  };
-
-  services.tailscale = {
-    enable = true;
-    openFirewall = true;
   };
 
   time.timeZone = "Asia/Tokyo";
@@ -101,11 +72,6 @@
   #   enableSSHSupport = true;
   # };
 
-  programs.nh = {
-    enable = true;
-    flake = "/home/qitoy/dotfiles";
-  };
-
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -113,31 +79,6 @@
   security.pam.services.swaylock = { }; # for swaylock
 
   programs.zsh.enable = true;
-
-  services.openssh.enable = true;
-
-  services.xremap = {
-    withWlroots = true;
-    watch = true;
-    config = {
-      modmap = [
-        {
-          remap.Space = {
-            held = "Shift_L";
-            alone = "Space";
-          };
-        }
-      ];
-      keymap = [
-        {
-          remap = {
-            Yen = "Dollar";
-            Shift-Yen = "Shift-Grave";
-          };
-        }
-      ];
-    };
-  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

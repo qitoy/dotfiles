@@ -12,18 +12,15 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  fonts.fontconfig.enable = true;
-
-  nixpkgs.overlays = [
-    neovim-nightly-overlay.overlays.default
-  ];
-
   nixpkgs.config.allowUnfree = true;
 
   imports = [
     ./zsh
     ./hypr
     ./terminal
+    (import ./fonts.nix { inherit pkgs qitoypkgs; })
+    (import ./compe.nix { inherit pkgs qitoypkgs; })
+    (import ./nvim.nix { inherit config pkgs neovim-nightly-overlay; })
   ];
 
   home.packages = with pkgs; [
@@ -45,24 +42,11 @@
     ## rust
     rustup
     cargo-udeps
-    qitoypkgs.cargo-compete
-    qitoypkgs.cargo-equip
-
-    ## python
-    python312Packages.online-judge-tools
-    python312Packages.online-judge-api-client
-    qitoypkgs.online-judge-verify-helper
 
     # gui
     xfce.thunar
     libreoffice
     kolourpaint
-
-    # font
-    qitoypkgs.moralerspace-nf
-    twemoji-color-font
-    noto-fonts-cjk
-    noto-fonts
   ];
 
   home.file = {
@@ -71,7 +55,6 @@
 
   xdg.configFile = {
     "efm-langserver".source = ../config/efm-langserver;
-    "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/vim";
   };
 
   home.sessionVariables = { };
@@ -87,21 +70,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  programs.neovim = {
-    enable = true;
-    package = pkgs.neovim; # for neovim nightly
-    extraPackages = with pkgs; [
-      efm-langserver
-      nixd
-      nixpkgs-fmt
-      vim-language-server
-      python312Packages.python-lsp-server
-      clang-tools
-      texlab
-    ];
-    defaultEditor = true;
-  };
 
   programs.direnv.enable = true;
 
