@@ -37,6 +37,10 @@ repo = 'itchyny/vim-qfedit'
 on_event = 'QuickFixCmdPre'
 
 [[plugins]]
+repo = 'tyru/capture.vim'
+on_cmd = 'Capture'
+
+[[plugins]]
 repo = 'lambdalisue/vim-quickrun-neovim-job'
 
 [[plugins]]

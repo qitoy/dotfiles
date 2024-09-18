@@ -19,17 +19,13 @@ local extmode = vim.schedule_wrap(function()
   for idx, extmark in ipairs(extmarks) do
     vim.api.nvim_buf_del_extmark(0, ns, extmark[1])
   end
-  local text = vim.fn.mode()
   local reg = vim.fn.reg_recording()
   if reg ~= "" then
-    text = text .. " @" .. reg
-  else
-    text = text .. "   "
+    vim.api.nvim_buf_set_extmark(0, ns, vim.fn.line(".") - 1, 0, {
+      virt_text = { { "@" .. reg, "ModeMsg" } },
+      virt_text_pos = "right_align",
+    })
   end
-  vim.api.nvim_buf_set_extmark(0, ns, vim.fn.line(".") - 1, 0, {
-    virt_text = { { text, "ModeMsg" } },
-    virt_text_pos = "right_align",
-  })
 end)
 
 vim.on_key(debounce(extmode, 100), ns)
