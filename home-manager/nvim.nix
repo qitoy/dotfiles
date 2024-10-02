@@ -13,6 +13,7 @@
       python3Packages.python-lsp-server
       clang-tools
       texlab
+      zathura
     ];
     defaultEditor = true;
   };

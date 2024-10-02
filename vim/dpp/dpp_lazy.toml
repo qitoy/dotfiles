@@ -2,15 +2,9 @@
 repo = 'lervag/vimtex'
 on_ft = ['tex']
 hook_add = '''
-if has('mac')
-  let g:vimtex_view_method = 'skim'
-  let g:vimtex_view_general_viewer='/Applications/Skim.app/Contents/SharedSupport/displayline'
-  let g:vimtex_view_general_options = '@line @pdf @tex'
-endif
-if has('nvim')
-  let g:vimtex_syntax_enabled = 0
-  let g:vimtex_syntax_conceal_disable = 1
-endif
+let g:vimtex_view_method = 'zathura_simple'
+let g:vimtex_syntax_enabled = 0
+let g:vimtex_syntax_conceal_disable = 1
 '''
 
 [[plugins]]
