@@ -66,6 +66,7 @@
 - [tani/vim-glance](https://github.com/tani/vim-glance)
 - [thinca/vim-qfreplace](https://github.com/thinca/vim-qfreplace)
 - [thinca/vim-quickrun](https://github.com/thinca/vim-quickrun)
+- [tyru/capture.vim](https://github.com/tyru/capture.vim)
 - [uga-rosa/ddc-source-lsp-setup](https://github.com/uga-rosa/ddc-source-lsp-setup)
 - [uga-rosa/ddc-source-nvim-lua](https://github.com/uga-rosa/ddc-source-nvim-lua)
 - [uga-rosa/ddu-source-lsp](https://github.com/uga-rosa/ddu-source-lsp)
