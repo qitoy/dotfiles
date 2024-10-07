@@ -57,18 +57,6 @@ repo = 'Shougo/deol.nvim'
 hooks_file = '$VIM_DPP/deol.vim'
 
 [[plugins]]
-repo = 'Bakudankun/BackAndForward.vim'
-on_map = ['<Plug>(backandforward-']
-hook_add = '''
-let g:backandforward_config = #{
-\ auto_map: 0,
-\ define_commands: 0,
-\}
-nnoremap g<C-o> <Plug>(backandforward-back)
-nnoremap g<C-i> <Plug>(backandforward-forward)
-'''
-
-[[plugins]]
 repo = 'tani/dmacro.vim'
 on_event = ['InsertEnter', 'CursorHold', 'BufRead']
 hook_source = '''
@@ -79,25 +67,6 @@ nnoremap <C-@> <Plug>(dmacro-play-macro)
 [[plugins]]
 repo = 'skanehira/denops-translate.vim'
 on_cmd = 'Translate'
-
-[[plugins]]
-repo = 'lambdalisue/vim-gin'
-on_cmd = [
-  'Gin',
-  'GinBranch',
-  'GinBrowse',
-  'GinBuffer',
-  'GinCd',
-  'GinChaperon',
-  'GinDiff',
-  'GinEdit',
-  'GinLcd',
-  'GinLog',
-  'GinPatch',
-  'GinStatus',
-  'GinTcd',
-]
-hooks_file = '$VIM_DPP/gin.vim'
 
 [[plugins]]
 repo = 'vim-skk/skkeleton'

@@ -87,9 +87,6 @@ endif
 '''
 
 [[plugins]]
-repo = 'vim-denops/denops-shared-server.vim'
-
-[[plugins]]
 repo = 'lambdalisue/vim-guise'
 
 [[plugins]]
