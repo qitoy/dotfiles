@@ -126,7 +126,7 @@
     },
     "ssss": {
         "cargoLocks": null,
-        "date": "2022-11-22",
+        "date": "2024-09-19",
         "extract": null,
         "name": "ssss",
         "passthru": null,
@@ -138,11 +138,11 @@
             "name": null,
             "owner": "vm-xeck",
             "repo": "ssss",
-            "rev": "484620eaa0826c545269e8d25c5762d97baf78df",
-            "sha256": "sha256-XOLEz8yFORJGKXj8sj2m0A5KgqXObQkfsMSq3kcl684=",
+            "rev": "239926f8b53af2a59dbf1566f786b83de8fad410",
+            "sha256": "sha256-3oRph/iio6O2BJ4+9cY0zpyUek0Tknm1874AFLe7K9Q=",
             "type": "github"
         },
-        "version": "484620eaa0826c545269e8d25c5762d97baf78df"
+        "version": "239926f8b53af2a59dbf1566f786b83de8fad410"
     },
     "vivaldi-ffmpeg-codecs": {
         "cargoLocks": null,

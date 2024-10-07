@@ -82,15 +82,15 @@
   };
   ssss = {
     pname = "ssss";
-    version = "484620eaa0826c545269e8d25c5762d97baf78df";
+    version = "239926f8b53af2a59dbf1566f786b83de8fad410";
     src = fetchFromGitHub {
       owner = "vm-xeck";
       repo = "ssss";
-      rev = "484620eaa0826c545269e8d25c5762d97baf78df";
+      rev = "239926f8b53af2a59dbf1566f786b83de8fad410";
       fetchSubmodules = false;
-      sha256 = "sha256-XOLEz8yFORJGKXj8sj2m0A5KgqXObQkfsMSq3kcl684=";
+      sha256 = "sha256-3oRph/iio6O2BJ4+9cY0zpyUek0Tknm1874AFLe7K9Q=";
     };
-    date = "2022-11-22";
+    date = "2024-09-19";
   };
   vivaldi-ffmpeg-codecs = {
     pname = "vivaldi-ffmpeg-codecs";
