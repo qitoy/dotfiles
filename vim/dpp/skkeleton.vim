@@ -21,6 +21,11 @@ function s:skkeleton_init() abort
   \   "$VIM_DPP/skk/myJisyo.yaml"->expand(),
   \ ],
   \ userDictionary: '~/.skkeleton/userDictionary'->expand(),
+  \ lowercaseMap: {
+  \   '"': '''',
+  \   '<': ',',
+  \   '>': '.',
+  \ },
   \ selectCandidateKeys: 'aoeuhtn',
   \ kanaTable: 'gact10_dvp',
   \ keepState: v:true,
@@ -34,6 +39,7 @@ augroup END
 
 " from https://zenn.dev/vim_jp/articles/my-azik-is-burning
 let s:okuris = [
+\ ['"', 'aNn'],
 \ ['Q', 'oNn'],
 \ ['J', 'eNn'],
 \ ['K', 'uNn'],
@@ -48,6 +54,7 @@ let s:okuris = [
 
 function s:map_okuri(input, feed) abort
   for mode in ['i', 'c']
+    call skkeleton#internal#map#save(mode)
     execute printf(
     \ 'autocmd User skkeleton-enable-post %smap <buffer> %s <Cmd>call <SID>okuri(''%s'', ''%s'')<CR>',
     \ mode, a:input, a:input, a:feed
@@ -66,27 +73,10 @@ function s:okuri(input, feed) abort
   endif
 endfunction
 
-function s:skk_dq() abort
-  if g:skkeleton#state.phase ==# 'input:okurinasi'
-  \ && g:skkeleton#mode !=# 'abbrev'
-  \ && skkeleton#vim_status().prevInput =~# '\a$'
-    call skkeleton#handle('handleKey', #{key: 'aNn'->split('\zs')})
-  elseif g:skkeleton#state.phase ==# 'input'
-  \ && g:skkeleton#mode !=# 'zenkaku'
-  \ && g:skkeleton#mode !=# 'abbrev'
-    call skkeleton#handle('handleKey', #{key: 'Ann'->split('\zs')})
-  else
-    call skkeleton#handle('handleKey', #{key: '"'})
-  endif
-endfunction
-
 augroup skkeleton-keymap
   autocmd!
   for [s:input, s:feed] in s:okuris
     call s:map_okuri(s:input, s:feed)
-  endfor
-  for s:mode in 'ic'->split('\zs')
-    execute s:mode->printf('autocmd User skkeleton-enable-post %smap <buffer> " <Cmd>call <SID>skk_dq()<CR>')
   endfor
 augroup END
 " }}}
