@@ -106,7 +106,7 @@
     },
     "online-judge-verify-helper": {
         "cargoLocks": null,
-        "date": "2023-12-09",
+        "date": "2024-10-09",
         "extract": null,
         "name": "online-judge-verify-helper",
         "passthru": null,
@@ -118,11 +118,11 @@
             "name": null,
             "owner": "online-judge-tools",
             "repo": "verification-helper",
-            "rev": "c42032627b21f4b1d45a8f42cb9d00dd0fa70668",
-            "sha256": "sha256-Q7uI13kazajeYb3LRK7mMhx0V3hh7CVqnptmQksMLOA=",
+            "rev": "adbff121b1f96de5f34e9f1483eb47d661c54075",
+            "sha256": "sha256-f7Ge8kLRQv9uxdNGtgNsypGVY0XAnKPCg8HYQ5nT6mI=",
             "type": "github"
         },
-        "version": "c42032627b21f4b1d45a8f42cb9d00dd0fa70668"
+        "version": "adbff121b1f96de5f34e9f1483eb47d661c54075"
     },
     "ssss": {
         "cargoLocks": null,

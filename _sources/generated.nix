@@ -70,15 +70,15 @@
   };
   online-judge-verify-helper = {
     pname = "online-judge-verify-helper";
-    version = "c42032627b21f4b1d45a8f42cb9d00dd0fa70668";
+    version = "adbff121b1f96de5f34e9f1483eb47d661c54075";
     src = fetchFromGitHub {
       owner = "online-judge-tools";
       repo = "verification-helper";
-      rev = "c42032627b21f4b1d45a8f42cb9d00dd0fa70668";
+      rev = "adbff121b1f96de5f34e9f1483eb47d661c54075";
       fetchSubmodules = false;
-      sha256 = "sha256-Q7uI13kazajeYb3LRK7mMhx0V3hh7CVqnptmQksMLOA=";
+      sha256 = "sha256-f7Ge8kLRQv9uxdNGtgNsypGVY0XAnKPCg8HYQ5nT6mI=";
     };
-    date = "2023-12-09";
+    date = "2024-10-09";
   };
   ssss = {
     pname = "ssss";
