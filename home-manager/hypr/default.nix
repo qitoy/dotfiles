@@ -6,6 +6,11 @@
     enable = true;
 
     settings = {
+      general = {
+        gaps_in = 5;
+        gaps_out = 10;
+      };
+
       input = {
         kb_layout = "us,jp";
         kb_variant = "dvp,";
@@ -38,6 +43,10 @@
       windowrule = [
         "noblur, ^(Alacritty)$"
         "float, ^(sway_clip)$"
+      ];
+
+      animation = [
+        "specialWorkspace, 1, 4, default, slidefadevert -100%"
       ];
 
       bind = [
