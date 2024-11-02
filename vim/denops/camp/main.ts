@@ -66,7 +66,7 @@ async function campWrite(
   ]);
   if (bufwinid == -1) {
     await buffer.open(denops, filename, {
-      opener: "split",
+      opener: "rightbelow vsplit",
     });
   }
   const bufnr = await fn.bufnr(denops, filename);
