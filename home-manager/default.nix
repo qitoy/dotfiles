@@ -21,6 +21,7 @@
     (import ./fonts.nix { inherit pkgs qitoypkgs; })
     (import ./compe.nix { inherit pkgs qitoypkgs; })
     (import ./nvim.nix { inherit config pkgs neovim-nightly-overlay; })
+    ./git.nix
   ];
 
   home.packages = with pkgs; [
@@ -72,33 +73,6 @@
   programs.home-manager.enable = true;
 
   programs.direnv.enable = true;
-
-  programs.git = {
-    enable = true;
-    aliases = {
-      browse = "!deno run --allow-net --allow-run --allow-read --allow-env jsr:@lambdalisue/git-browse/cli";
-    };
-    ignores = [
-      "*.DS_Store"
-      "*.swp"
-      "*.netrwhist"
-      "*.out"
-      "*.gch"
-      "*.satysfi-aux"
-      ".jj"
-    ];
-  };
-
-  programs.gh = {
-    enable = true;
-    settings = {
-      git_protocol = "ssh";
-    };
-  };
-
-  programs.jujutsu = {
-    enable = true;
-  };
 
   programs.opam.enable = true;
 
