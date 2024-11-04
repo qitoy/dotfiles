@@ -39,6 +39,7 @@
     jq
     tree
     vhs
+    texliveFull
 
     ## rust
     rustup
