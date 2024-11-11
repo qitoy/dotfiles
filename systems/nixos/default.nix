@@ -16,7 +16,7 @@ in
     modules = [
       ../../nixos
       ./hardware-configuration.nix
-      (nixos-apple-silicon + "/apple-silicon-support")
+      nixos-apple-silicon.nixosModules.default
       {
         hardware.asahi = {
           enable = true;
