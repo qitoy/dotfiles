@@ -1,5 +1,7 @@
 " hook_add {{{
-const s:gact10_dvp = "$VIM_DPP/skk/keymap.json"
+const s:gact10_dvp = "$VIM_DPP/skk/gact10_dvp.json"
+\->expand()->readfile()->json_decode()
+const s:tsuki_dvp = "$VIM_DPP/skk/tsuki_dvp.json"
 \->expand()->readfile()->json_decode()
 const s:skk_dict = dpp#get('skk-dict').path
 
@@ -8,6 +10,7 @@ cmap <C-j> <Plug>(skkeleton-toggle)
 
 function s:skkeleton_init() abort
   call skkeleton#register_kanatable('gact10_dvp', s:gact10_dvp, v:true)
+  call skkeleton#register_kanatable('tsuki_dvp', s:tsuki_dvp, v:true)
   call skkeleton#register_keymap('henkan', 'x', '')
   call skkeleton#register_keymap('henkan', 'X', '')
   call skkeleton#register_keymap('henkan', ';', 'henkanBackward')
