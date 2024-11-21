@@ -29,7 +29,6 @@
     bat
     deno
     ffmpeg
-    chafa
     brightnessctl
     imagemagick
     ghostscript
@@ -70,10 +69,10 @@
   };
   gtk.enable = true;
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
-  programs.direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   programs.opam.enable = true;
 
