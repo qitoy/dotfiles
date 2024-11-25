@@ -56,14 +56,23 @@ export class Config extends BaseConfig {
     if (tomlExt) {
       const tomlLoad = tomlExt.actions["load"];
 
+      const paths = [
+        { path: "$VIM_DPP/dpp.toml", lazy: false },
+        { path: "$VIM_DPP/dpp_lazy.toml", lazy: true },
+        { path: "$VIM_DPP/ddc.toml", lazy: true },
+        { path: "$VIM_DPP/ddu.toml", lazy: true },
+        { path: "$VIM_DPP/nvim.toml", lazy: true },
+      ];
+      const generated = await fn.expand(
+        args.denops,
+        "~/.cache/dpp/_generated.toml",
+      ) as string;
+      if (await fn.filereadable(args.denops, generated)) {
+        paths.push({ path: generated, lazy: false });
+      }
+
       const tomls = await Promise.all(
-        [
-          { path: "$VIM_DPP/dpp.toml", lazy: false },
-          { path: "$VIM_DPP/dpp_lazy.toml", lazy: true },
-          { path: "$VIM_DPP/ddc.toml", lazy: true },
-          { path: "$VIM_DPP/ddu.toml", lazy: true },
-          { path: "$VIM_DPP/nvim.toml", lazy: true },
-        ].map((toml) =>
+        paths.map((toml) =>
           tomlLoad.callback({
             denops: args.denops,
             context,
@@ -88,7 +97,11 @@ export class Config extends BaseConfig {
         }
 
         for (const plugin of toml.plugins ?? []) {
-          recordPlugins[plugin.name] = plugin;
+          // recordPlugins[plugin.name] = plugin;
+          recordPlugins[plugin.name] = {
+            ...plugin,
+            ...recordPlugins[plugin.name],
+          };
         }
 
         if (toml.ftplugins) {
@@ -109,7 +122,7 @@ export class Config extends BaseConfig {
 
     let lazyResult: LazyMakeStateResult | undefined = undefined;
 
-    if(lazyExt) {
+    if (lazyExt) {
       const makeState = lazyExt.actions["makeState"];
 
       lazyResult = await makeState.callback({

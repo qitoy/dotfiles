@@ -144,6 +144,26 @@
         },
         "version": "239926f8b53af2a59dbf1566f786b83de8fad410"
     },
+    "tree-sitter-satysfi": {
+        "cargoLocks": null,
+        "date": "2023-04-09",
+        "extract": null,
+        "name": "tree-sitter-satysfi",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "monaqa",
+            "repo": "tree-sitter-satysfi",
+            "rev": "5519c547418ecb31ac7d63e64653aed726b5d1c3",
+            "sha256": "sha256-yei8UHiVChYpx2UyPsDyOd3usItZN68rwu0+VoBtPi0=",
+            "type": "github"
+        },
+        "version": "5519c547418ecb31ac7d63e64653aed726b5d1c3"
+    },
     "vivaldi-ffmpeg-codecs": {
         "cargoLocks": null,
         "date": null,

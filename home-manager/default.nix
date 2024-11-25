@@ -20,7 +20,7 @@
     ./terminal
     (import ./fonts.nix { inherit pkgs qitoypkgs; })
     (import ./compe.nix { inherit pkgs qitoypkgs; })
-    (import ./nvim.nix { inherit config pkgs neovim-nightly-overlay; })
+    (import ./nvim { inherit config pkgs qitoypkgs neovim-nightly-overlay; })
     ./git.nix
   ];
 

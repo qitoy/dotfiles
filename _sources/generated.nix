@@ -92,6 +92,18 @@
     };
     date = "2024-09-19";
   };
+  tree-sitter-satysfi = {
+    pname = "tree-sitter-satysfi";
+    version = "5519c547418ecb31ac7d63e64653aed726b5d1c3";
+    src = fetchFromGitHub {
+      owner = "monaqa";
+      repo = "tree-sitter-satysfi";
+      rev = "5519c547418ecb31ac7d63e64653aed726b5d1c3";
+      fetchSubmodules = false;
+      sha256 = "sha256-yei8UHiVChYpx2UyPsDyOd3usItZN68rwu0+VoBtPi0=";
+    };
+    date = "2023-04-09";
+  };
   vivaldi-ffmpeg-codecs = {
     pname = "vivaldi-ffmpeg-codecs";
     version = "126.0.6478.126";
