@@ -27,6 +27,5 @@ setlocal wrap
 " }}}
 
 " tex {{{
-iunmap <buffer>]]
 setlocal wrap
 " }}}
