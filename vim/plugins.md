@@ -53,7 +53,6 @@
 - [matsui54/ddc-buffer](https://github.com/matsui54/ddc-buffer)
 - [matsui54/ddu-source-help](https://github.com/matsui54/ddu-source-help)
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-- [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [shun/ddu-source-buffer](https://github.com/shun/ddu-source-buffer)
 - [shun/ddu-source-rg](https://github.com/shun/ddu-source-rg)
 - [skanehira/denops-translate.vim](https://github.com/skanehira/denops-translate.vim)
