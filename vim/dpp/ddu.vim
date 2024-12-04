@@ -33,8 +33,6 @@ nnoremap <Plug>(ddu)d
 \ <Cmd>Ddu lsp_diagnostic -ui-param-ff-ignoreEmpty<CR>
 nnoremap <Plug>(leader)a
 \ <Cmd>Ddu lsp_codeAction -ui-param-ff-ignoreEmpty<CR>
-
-call timer_start(10, { _ -> ddu#load('ui', ['ff']) })
 " }}}
 
 " hook_source {{{
