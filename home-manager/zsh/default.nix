@@ -26,10 +26,12 @@
 
       bindkey "^U" backward-kill-line
 
-      # fzf
-      . ${./fzf-cdr.zsh}
-      alias cdr="fzf-cdr"
+      . ${./.}/fzf.zsh
     '';
+    shellAliases = {
+      cdr = "fzf-cdr";
+      cdg = "fzf-ghq";
+    };
     profileExtra = ''
       export PATH="$HOME/.cargo/bin:$PATH"
       export PATH="$HOME/go/bin:$PATH"
