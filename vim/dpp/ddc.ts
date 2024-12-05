@@ -1,5 +1,4 @@
-import { BaseConfig } from "jsr:@shougo/ddc-vim@6/types";
-import { ConfigArguments } from "jsr:@shougo/ddc-vim@6/config";
+import { BaseConfig, ConfigArguments } from "jsr:@shougo/ddc-vim@9/config";
 
 export class Config extends BaseConfig {
   // deno-lint-ignore require-await

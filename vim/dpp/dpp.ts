@@ -2,10 +2,9 @@ import {
   BaseConfig,
   ConfigArguments,
   ConfigReturn,
-  ExtOptions,
-  Plugin,
-} from "jsr:@shougo/dpp-vim@2/types";
-import { mergeFtplugins } from "jsr:@shougo/dpp-vim@2/utils";
+} from "jsr:@shougo/dpp-vim@4/config";
+import { ExtOptions, Plugin } from "jsr:@shougo/dpp-vim@4/types";
+import { mergeFtplugins } from "jsr:@shougo/dpp-vim@4/utils";
 
 import {
   Ext as LazyExt,

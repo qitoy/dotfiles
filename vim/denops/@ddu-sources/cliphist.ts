@@ -1,7 +1,8 @@
-import { BaseSource, Item } from "jsr:@shougo/ddu-vim@5/types";
+import { BaseSource } from "jsr:@shougo/ddu-vim@9/source";
+import { Item } from "jsr:@shougo/ddu-vim@9/types";
 import * as fn from "jsr:@denops/std@7/function";
-import { OnInitArguments } from "jsr:@shougo/ddu-vim@5/source";
-import { ActionData } from "jsr:@shougo/ddu-kind-word@0.3";
+import { OnInitArguments } from "jsr:@shougo/ddu-vim@9/source";
+import { ActionData } from "jsr:@shougo/ddu-kind-word@0.4";
 
 type Params = Record<never, never>;
 

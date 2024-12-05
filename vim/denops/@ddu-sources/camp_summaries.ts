@@ -1,9 +1,10 @@
 import * as fn from "jsr:@denops/std@7/function";
 import * as u from "jsr:@core/unknownutil@4";
 import { is } from "jsr:@core/unknownutil@4";
-import { BaseSource, Item } from "jsr:@shougo/ddu-vim@5/types";
-import { OnInitArguments } from "jsr:@shougo/ddu-vim@5/source";
-import { ActionData } from "jsr:@4513echo/ddu-kind-url@0.4";
+import { BaseSource } from "jsr:@shougo/ddu-vim@9/source";
+import { Item } from "jsr:@shougo/ddu-vim@9/types";
+import { OnInitArguments } from "jsr:@shougo/ddu-vim@9/source";
+import { ActionData } from "jsr:@4513echo/ddu-kind-url@0.7";
 
 type Params = {
   bin_name_or_alias: string;

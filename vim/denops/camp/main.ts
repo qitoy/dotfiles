@@ -1,4 +1,4 @@
-import { $ } from "jsr:@david/dax@0.41";
+import { $ } from "jsr:@david/dax@0.42";
 import { type Denops } from "jsr:@denops/core@7";
 import * as batch from "jsr:@denops/std@7/batch";
 import * as buffer from "jsr:@denops/std@7/buffer";

@@ -1,5 +1,4 @@
-import { BaseConfig, Denops } from "jsr:@shougo/ddu-vim@5/types";
-import { ConfigArguments } from "jsr:@shougo/ddu-vim@5/config";
+import { BaseConfig, ConfigArguments } from "jsr:@shougo/ddu-vim@9/config";
 import { Params as FFParams } from "jsr:@shougo/ddu-ui-ff@1";
 import { Params as FilerParams } from "jsr:@shougo/ddu-ui-filer@1";
 import * as fn from "jsr:@denops/std@7/function";
@@ -85,10 +84,7 @@ export class Config extends BaseConfig {
             ],
           },
           startAutoAction: true,
-          onPreview: async (args: {
-            denops: Denops;
-            previewWinId: number;
-          }) => {
+          onPreview: async (args) => {
             await fn.win_execute(args.denops, args.previewWinId, "normal! zt");
           },
         } as Partial<FFParams>,
