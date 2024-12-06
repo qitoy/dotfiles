@@ -1,5 +1,6 @@
 local ns = vim.api.nvim_create_namespace("extmode")
 
+-- from ryoppippi/dotfiles MIT https://github.com/ryoppippi/dotfiles/blob/c08768adf7ad4e15098be1ea3592b4422d66ba29/nvim/lua/core/utils.lua#L60-L74
 function debounce(fn, wait)
   local timer
   return function()
