@@ -5,14 +5,9 @@
       path =
         let
           ts = pkgs.vimPlugins.nvim-treesitter;
-          ts-all = pkgs.stdenv.mkDerivation {
+          ts-all = pkgs.symlinkJoin {
             name = "ts-all";
-            srcs = [ ts (pkgs.neovimUtils.grammarToPlugin qitoypkgs.tree-sitter-satysfi) ] ++ ts.withAllGrammars.dependencies;
-            sourceRoot = ".";
-            installPhase = ''
-              mkdir -p $out
-              cp -R */* $out
-            '';
+            paths = [ ts (pkgs.neovimUtils.grammarToPlugin qitoypkgs.tree-sitter-satysfi) ] ++ ts.withAllGrammars.dependencies;
           };
         in
         "${ts-all}";
