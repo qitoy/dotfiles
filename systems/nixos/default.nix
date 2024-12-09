@@ -7,6 +7,7 @@
 let
   username = "qitoy";
   system = "aarch64-linux";
+  vivaldi-overlay = import ./vivaldi-overlay.nix;
   pkgs = import nixpkgs { inherit system; };
   qitoypkgs = pkgs.callPackage ../../packages { };
 in
@@ -29,11 +30,14 @@ in
       home-manager.nixosModules.home-manager
       {
         home-manager = {
-          extraSpecialArgs = { inherit neovim-nightly-overlay qitoypkgs; };
+          extraSpecialArgs = {
+            inherit neovim-nightly-overlay qitoypkgs;
+            overlays = [ vivaldi-overlay ];
+          };
           users."${username}" = import ../../home-manager;
         };
       }
     ];
-    specialArgs = { inherit xremap qitoypkgs; };
+    specialArgs = { inherit xremap; };
   };
 }

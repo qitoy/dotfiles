@@ -1,4 +1,4 @@
-{ config, pkgs, xremap, qitoypkgs, ... }: {
+{ config, pkgs, xremap, ... }: {
   imports = [
     xremap.nixosModules.default
     ./xremap.nix
@@ -52,11 +52,6 @@
     vim
     wget
     gcc
-    firefox
-    (vivaldi.override {
-      proprietaryCodecs = true;
-      vivaldi-ffmpeg-codecs = qitoypkgs.vivaldi-ffmpeg-codecs;
-    })
     wl-clipboard
     xdg-utils
 

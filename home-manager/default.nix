@@ -1,4 +1,4 @@
-{ pkgs, neovim-nightly-overlay, qitoypkgs, config, ... }:
+{ pkgs, neovim-nightly-overlay, qitoypkgs, overlays ? [ ], config, ... }:
 {
   home.username = "qitoy";
   home.homeDirectory = "/home/qitoy";
@@ -12,7 +12,10 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    inherit overlays;
+    config.allowUnfree = true;
+  };
 
   imports = [
     ./zsh
@@ -48,6 +51,7 @@
     xfce.thunar
     libreoffice
     kolourpaint
+    vivaldi
   ];
 
   home.file = {
