@@ -1,8 +1,9 @@
-{ nixpkgs
-, home-manager
-, neovim-nightly-overlay
-, xremap
-, nixos-apple-silicon
+{
+  nixpkgs,
+  home-manager,
+  neovim-nightly-overlay,
+  xremap,
+  nixos-apple-silicon,
 }:
 let
   username = "qitoy";

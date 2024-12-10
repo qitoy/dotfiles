@@ -1,4 +1,10 @@
-{ pkgs, neovim-nightly-overlay, overlays ? [ ], config, ... }:
+{
+  pkgs,
+  neovim-nightly-overlay,
+  overlays ? [ ],
+  config,
+  ...
+}:
 let
   sources = pkgs.callPackage ../_sources/generated.nix { };
 in
@@ -26,7 +32,14 @@ in
     ./terminal
     (import ./fonts.nix { inherit pkgs sources; })
     (import ./compe { inherit pkgs sources; })
-    (import ./nvim { inherit config pkgs sources neovim-nightly-overlay; })
+    (import ./nvim {
+      inherit
+        config
+        pkgs
+        sources
+        neovim-nightly-overlay
+        ;
+    })
     ./git.nix
   ];
 

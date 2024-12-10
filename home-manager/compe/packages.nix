@@ -1,4 +1,11 @@
-{ sources, rustPlatform, pkg-config, openssl, python3Packages }: {
+{
+  sources,
+  rustPlatform,
+  pkg-config,
+  openssl,
+  python3Packages,
+}:
+{
   cargo-compete = rustPlatform.buildRustPackage {
     inherit (sources.cargo-compete) pname version src;
     cargoLock.lockFile = sources.cargo-compete.cargoLock."Cargo.lock".lockFile;

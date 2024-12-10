@@ -1,4 +1,10 @@
-{ config, pkgs, xremap, ... }: {
+{
+  config,
+  pkgs,
+  xremap,
+  ...
+}:
+{
   imports = [
     xremap.nixosModules.default
     ./xremap.nix
@@ -37,10 +43,12 @@
   };
   services.blueman.enable = true;
 
-  swapDevices = [{
-    device = "/var/swapfile";
-    size = 8 * 1024;
-  }];
+  swapDevices = [
+    {
+      device = "/var/swapfile";
+      size = 8 * 1024;
+    }
+  ];
 
   users.users.qitoy = {
     isNormalUser = true;
