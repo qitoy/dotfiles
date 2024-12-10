@@ -8,8 +8,6 @@ let
   username = "qitoy";
   system = "aarch64-linux";
   vivaldi-overlay = import ./vivaldi-overlay.nix;
-  pkgs = import nixpkgs { inherit system; };
-  qitoypkgs = pkgs.callPackage ../../packages { };
 in
 {
   nixos = nixpkgs.lib.nixosSystem {
@@ -31,7 +29,7 @@ in
       {
         home-manager = {
           extraSpecialArgs = {
-            inherit neovim-nightly-overlay qitoypkgs;
+            inherit neovim-nightly-overlay;
             overlays = [ vivaldi-overlay ];
           };
           users."${username}" = import ../../home-manager;

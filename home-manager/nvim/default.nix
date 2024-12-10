@@ -1,8 +1,8 @@
-{ config, pkgs, qitoypkgs, neovim-nightly-overlay }: {
+{ config, pkgs, sources, neovim-nightly-overlay }: {
   home.file = {
     ".cache/dpp/_generated.toml".source =
       let tomlFormat = pkgs.formats.toml { };
-      in tomlFormat.generate "_generated.toml" (import ./plugins.nix { inherit pkgs qitoypkgs; });
+      in tomlFormat.generate "_generated.toml" (import ./plugins.nix { inherit pkgs sources; });
   };
   xdg.configFile = {
     "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/vim";

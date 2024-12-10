@@ -1,4 +1,7 @@
-{ pkgs, neovim-nightly-overlay, qitoypkgs, overlays ? [ ], config, ... }:
+{ pkgs, neovim-nightly-overlay, overlays ? [ ], config, ... }:
+let
+  sources = pkgs.callPackage ../_sources/generated.nix { };
+in
 {
   home.username = "qitoy";
   home.homeDirectory = "/home/qitoy";
@@ -21,9 +24,9 @@
     ./zsh
     ./hypr
     ./terminal
-    (import ./fonts.nix { inherit pkgs qitoypkgs; })
-    (import ./compe.nix { inherit pkgs qitoypkgs; })
-    (import ./nvim { inherit config pkgs qitoypkgs neovim-nightly-overlay; })
+    (import ./fonts.nix { inherit pkgs sources; })
+    (import ./compe { inherit pkgs sources; })
+    (import ./nvim { inherit config pkgs sources neovim-nightly-overlay; })
     ./git.nix
   ];
 

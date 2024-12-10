@@ -35,31 +35,6 @@
       };
     };
   };
-  cargo-executable-payload = {
-    pname = "cargo-executable-payload";
-    version = "v0.2.0";
-    src = fetchFromGitHub {
-      owner = "qryxip";
-      repo = "cargo-executable-payload";
-      rev = "v0.2.0";
-      fetchSubmodules = false;
-      sha256 = "sha256-eb/5K65Tavtm2w6QqAM5hSSrLL5LiCcDGw3u+HwRiMs=";
-    };
-    cargoLock."Cargo.lock" = {
-      lockFile = ./cargo-executable-payload-v0.2.0/Cargo.lock;
-      outputHashes = {
-        
-      };
-    };
-  };
-  janome = {
-    pname = "janome";
-    version = "0.5.0";
-    src = fetchurl {
-      url = "https://pypi.org/packages/source/J/Janome/Janome-0.5.0.tar.gz";
-      sha256 = "sha256-zko+16RjXC+AE5Y5Mn1bHgOBhYrXSjxKYejMg/ggQA4=";
-    };
-  };
   moralerspace-nf = {
     pname = "moralerspace-nf";
     version = "1.0.2";
@@ -80,18 +55,6 @@
     };
     date = "2024-10-09";
   };
-  ssss = {
-    pname = "ssss";
-    version = "239926f8b53af2a59dbf1566f786b83de8fad410";
-    src = fetchFromGitHub {
-      owner = "vm-xeck";
-      repo = "ssss";
-      rev = "239926f8b53af2a59dbf1566f786b83de8fad410";
-      fetchSubmodules = false;
-      sha256 = "sha256-3oRph/iio6O2BJ4+9cY0zpyUek0Tknm1874AFLe7K9Q=";
-    };
-    date = "2024-09-19";
-  };
   tree-sitter-satysfi = {
     pname = "tree-sitter-satysfi";
     version = "5519c547418ecb31ac7d63e64653aed726b5d1c3";
@@ -110,17 +73,6 @@
     src = fetchurl {
       url = "https://api.snapcraft.io/api/v1/snaps/download/XKEcBqPM06H1Z7zGOdG5fbICuf8NWK5R_2899.snap";
       sha256 = "sha256-pBFKnW1zcthqyUhMG4DN/tVcSo41HTliuRYOscWTEwY=";
-    };
-  };
-  vlgothic = {
-    pname = "vlgothic";
-    version = "20230918";
-    src = fetchFromGitHub {
-      owner = "daisukesuzuki";
-      repo = "VLGothic";
-      rev = "20230918";
-      fetchSubmodules = false;
-      sha256 = "sha256-X4HbFxJCzoU+QP/P328fB7BiHJZCiJmuJ1Mh2MrOZlw=";
     };
   };
 }

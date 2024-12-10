@@ -49,46 +49,6 @@
         },
         "version": "v0.20.1"
     },
-    "cargo-executable-payload": {
-        "cargoLocks": {
-            "Cargo.lock": [
-                "./cargo-executable-payload-v0.2.0/Cargo.lock",
-                {}
-            ]
-        },
-        "date": null,
-        "extract": null,
-        "name": "cargo-executable-payload",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "qryxip",
-            "repo": "cargo-executable-payload",
-            "rev": "v0.2.0",
-            "sha256": "sha256-eb/5K65Tavtm2w6QqAM5hSSrLL5LiCcDGw3u+HwRiMs=",
-            "type": "github"
-        },
-        "version": "v0.2.0"
-    },
-    "janome": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "janome",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-zko+16RjXC+AE5Y5Mn1bHgOBhYrXSjxKYejMg/ggQA4=",
-            "type": "url",
-            "url": "https://pypi.org/packages/source/J/Janome/Janome-0.5.0.tar.gz"
-        },
-        "version": "0.5.0"
-    },
     "moralerspace-nf": {
         "cargoLocks": null,
         "date": null,
@@ -124,26 +84,6 @@
         },
         "version": "adbff121b1f96de5f34e9f1483eb47d661c54075"
     },
-    "ssss": {
-        "cargoLocks": null,
-        "date": "2024-09-19",
-        "extract": null,
-        "name": "ssss",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "vm-xeck",
-            "repo": "ssss",
-            "rev": "239926f8b53af2a59dbf1566f786b83de8fad410",
-            "sha256": "sha256-3oRph/iio6O2BJ4+9cY0zpyUek0Tknm1874AFLe7K9Q=",
-            "type": "github"
-        },
-        "version": "239926f8b53af2a59dbf1566f786b83de8fad410"
-    },
     "tree-sitter-satysfi": {
         "cargoLocks": null,
         "date": "2023-04-09",
@@ -178,25 +118,5 @@
             "url": "https://api.snapcraft.io/api/v1/snaps/download/XKEcBqPM06H1Z7zGOdG5fbICuf8NWK5R_2899.snap"
         },
         "version": "126.0.6478.126"
-    },
-    "vlgothic": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "vlgothic",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "daisukesuzuki",
-            "repo": "VLGothic",
-            "rev": "20230918",
-            "sha256": "sha256-X4HbFxJCzoU+QP/P328fB7BiHJZCiJmuJ1Mh2MrOZlw=",
-            "type": "github"
-        },
-        "version": "20230918"
     }
 }
