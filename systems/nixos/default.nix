@@ -33,6 +33,7 @@ in
             inherit neovim-nightly-overlay;
             overlays = [ vivaldi-overlay ];
           };
+          useUserPackages = true;
           users."${username}" = import ../../home-manager;
         };
       }
