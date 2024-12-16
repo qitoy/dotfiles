@@ -1,11 +1,8 @@
 {
-  nixpkgs,
-  home-manager,
-  neovim-nightly-overlay,
-  xremap,
-  nixos-apple-silicon,
+  inputs,
 }:
 let
+  inherit (inputs) nixpkgs home-manager nixos-apple-silicon;
   username = "qitoy";
   system = "aarch64-linux";
   vivaldi-overlay = import ./vivaldi-overlay.nix;
@@ -30,7 +27,7 @@ in
       {
         home-manager = {
           extraSpecialArgs = {
-            inherit neovim-nightly-overlay;
+            inherit (inputs) neovim-nightly-overlay;
             overlays = [ vivaldi-overlay ];
           };
           useUserPackages = true;
@@ -38,6 +35,6 @@ in
         };
       }
     ];
-    specialArgs = { inherit xremap; };
+    specialArgs = { inherit (inputs) xremap; };
   };
 }

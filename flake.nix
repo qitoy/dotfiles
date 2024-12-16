@@ -29,25 +29,13 @@
   };
 
   outputs =
-    {
+    inputs@{
       nixpkgs,
-      home-manager,
-      neovim-nightly-overlay,
-      xremap,
-      nixos-apple-silicon,
       flake-utils,
       ...
     }:
     {
-      nixosConfigurations = import ./systems/nixos {
-        inherit
-          nixpkgs
-          home-manager
-          neovim-nightly-overlay
-          xremap
-          nixos-apple-silicon
-          ;
-      };
+      nixosConfigurations = import ./systems/nixos { inherit inputs; };
     }
     // flake-utils.lib.eachDefaultSystem (
       system:
