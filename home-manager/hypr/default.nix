@@ -121,17 +121,25 @@
         modules-center = [ "hyprland/window" ];
         modules-right = [
           "network"
-          "cpu"
-          "memory"
-          "temperature"
           "backlight"
           "pulseaudio"
-          "battery"
+          "group/hardware"
           "clock"
         ];
         "custom/powor" = {
           format = "";
           on-click = "${pkgs.sway}/bin/swaynag -t warning -m 'Power Menu Options' -b 'Shutdown' 'shutdown -h now' -b 'Restart' 'shutdown -r now' -b 'Logout' 'hyprctl dispatch exit'";
+        };
+        "group/hardware" = {
+          orientation = "inherit";
+          drawer = { };
+          modules = [
+            "battery"
+            "cpu"
+            "memory"
+            "temperature"
+            "disk"
+          ];
         };
         clock = {
           format = "{:%m-%d %H:%M}";
