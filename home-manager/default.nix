@@ -56,6 +56,7 @@ in
     fd
     jq
     tree
+    trash-cli
     vhs
     texliveFull
 

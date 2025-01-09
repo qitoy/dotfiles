@@ -30,7 +30,7 @@
     '';
     shellAliases = {
       cdr = "fzf-cdr";
-      cdg = "fzf-ghq";
+      cg = "fzf-ghq";
     };
     profileExtra = ''
       export PATH="$HOME/.cargo/bin:$PATH"

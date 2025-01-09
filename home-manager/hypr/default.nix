@@ -35,15 +35,16 @@
       debug.disable_logs = false;
 
       "$mod" = "Super";
-      "$terminal" = "alacritty";
+      "$terminal" = "ghostty";
 
       workspace = [
         "special:term, on-created-empty:$terminal"
       ];
 
       windowrule = [
-        "noblur, ^(Alacritty)$"
-        "float, ^(sway_clip)$"
+        "noblur, ^(com.mitchellh.ghostty)$"
+        "float, ^(hypr.clip)$"
+        "size 800 600, ^(hypr.clip)$"
       ];
 
       animation = [
