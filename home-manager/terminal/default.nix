@@ -7,7 +7,11 @@
       font-family = "MoralerspaceNeonNF";
       font-style = "Regular";
       font-size = 12.5;
-      font-feature = [ "-calt" "-liga" "-dlig" ];
+      font-feature = [
+        "-calt"
+        "-liga"
+        "-dlig"
+      ];
 
       theme = "starlight";
       background-opacity = 0.85;
