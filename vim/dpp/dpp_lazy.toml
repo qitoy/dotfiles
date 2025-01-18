@@ -53,8 +53,12 @@ let g:quickrun_config = {
 '''
 
 [[plugins]]
-repo = 'Shougo/deol.nvim'
-hooks_file = '$VIM_DPP/deol.vim'
+repo = 'Shougo/ddt.vim'
+hooks_file = '$VIM_DPP/ddt.vim'
+
+[[plugins]]
+repo = 'Shougo/ddt-ui-terminal'
+on_source = 'ddt.vim'
 
 [[plugins]]
 repo = 'tani/dmacro.vim'

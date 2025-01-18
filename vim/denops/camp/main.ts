@@ -21,10 +21,16 @@ export function main(denops: Denops): void {
       const path = await currentFullPath(denops);
       const { dir, name } = stdPath.parse(path);
       const contest = stdPath.basename(stdPath.resolve(dir, "../../"));
-      denops.call("deol#start", {
-        command: ["cargo", "run", "--bin", `${contest}-${name}`],
-        cwd: dir,
-        split: "split",
+      denops.call("ddt#start", {
+        ui: "terminal",
+        name: "camp-run",
+        uiParams: {
+          terminal: {
+            command: ["cargo", "run", "--bin", `${contest}-${name}`],
+            cwd: dir,
+            split: "split",
+          },
+        },
       });
     },
 
