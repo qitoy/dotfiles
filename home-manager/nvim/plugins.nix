@@ -22,5 +22,9 @@
         in
         "${ts-all}";
     }
+    {
+      name = "skk-dict";
+      path = "${pkgs.skkDictionaries.l}";
+    }
   ];
 }

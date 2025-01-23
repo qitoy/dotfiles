@@ -78,8 +78,8 @@ on_map = { ict = ['<Plug>(skkeleton-'] }
 hooks_file = '$VIM_DPP/skkeleton.vim'
 
 [[plugins]]
-repo = 'skk-dev/dict'
 name = 'skk-dict'
+local = true
 if = false
 
 [[plugins]]

@@ -20,7 +20,7 @@ function s:skkeleton_init() abort
   \ sources: ["deno_kv"],
   \ databasePath: '~/.skkeleton/db'->expand(),
   \ globalDictionaries: [
-  \   [s:skk_dict .. "/SKK-JISYO.L", 'euc-jp'],
+  \   [s:skk_dict .. '/share/skk/SKK-JISYO.L', 'euc-jp'],
   \   "$VIM_DPP/skk/myJisyo.yaml"->expand(),
   \ ],
   \ userDictionary: '~/.skkeleton/userDictionary'->expand(),
