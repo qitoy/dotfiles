@@ -35,8 +35,10 @@ export function main(denops: Denops): void {
     },
 
     async campTest(): Promise<void> {
-      const [_, output] = await competeTest(await currentFullPath(denops));
-      await campWrite(denops, "test", output);
+      const path = await currentFullPath(denops);
+      const { name } = stdPath.parse(path);
+      const [_, output] = await competeTest(path);
+      await campWrite(denops, `test-${name}`, output);
     },
 
     async campSubmit(force: unknown): Promise<void> {
@@ -45,7 +47,8 @@ export function main(denops: Denops): void {
       if (!force) {
         const [success, output] = await competeTest(source);
         if (!success) {
-          await campWrite(denops, "test", output);
+          const { name } = stdPath.parse(source);
+          await campWrite(denops, `test-${name}`, output);
           return;
         }
         if (
