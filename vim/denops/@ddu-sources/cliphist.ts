@@ -1,56 +1,38 @@
 import { BaseSource } from "jsr:@shougo/ddu-vim@9/source";
 import { Item } from "jsr:@shougo/ddu-vim@9/types";
-import * as fn from "jsr:@denops/std@7/function";
-import { OnInitArguments } from "jsr:@shougo/ddu-vim@9/source";
+import { GatherArguments } from "jsr:@shougo/ddu-vim@9/source";
 import { ActionData } from "jsr:@shougo/ddu-kind-word@0.4";
 
-type Params = Record<never, never>;
-
-type History = {
-  word: string;
-  text: string;
+type Params = {
+  cmd: string;
 };
 
 export class Source extends BaseSource<Params> {
-  override kind = "word";
+  override kind = "cliphist";
 
-  #history: History[] = [];
-
-  override async onInit(args: OnInitArguments<Params>) {
-    const cmd = await fn.exepath(args.denops, "cliphist");
-    const stdout = new TextDecoder().decode(
-      new Deno.Command(cmd, { args: ["list"] }).outputSync().stdout,
-    );
-    this.#history = await Promise.all(
-      stdout.split("\n").map(async (word) => {
-        const output = await new Deno.Command(cmd, { args: ["decode", word] })
-          .output();
-        return { word, text: new TextDecoder().decode(output.stdout) };
-      }),
-    );
-  }
-
-  override gather(): ReadableStream<Item<ActionData>[]> {
-    const history = this.#history;
+  override gather(
+    args: GatherArguments<Params>,
+  ): ReadableStream<Item<ActionData>[]> {
+    const cmd = args.sourceParams.cmd;
+    console.log(cmd);
     return new ReadableStream({
       start(controller) {
-        controller.enqueue(history.map(
-          ({ word, text }) => {
+        controller.enqueue(
+          (new TextDecoder().decode(
+            new Deno.Command(cmd, { args: ["list"] }).outputSync().stdout,
+          )).split("\n").map((word) => {
             return {
               word,
               display: word.split("\t")[1],
-              action: {
-                text,
-              },
             };
-          },
-        ));
+          }),
+        );
         controller.close();
       },
     });
   }
 
   override params(): Params {
-    return {};
+    return { cmd: "" };
   }
 }

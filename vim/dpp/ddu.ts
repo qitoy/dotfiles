@@ -4,9 +4,10 @@ import { Params as FilerParams } from "jsr:@shougo/ddu-ui-filer@1";
 import * as fn from "jsr:@denops/std@7/function";
 
 export class Config extends BaseConfig {
-  override config(args: ConfigArguments): Promise<void> {
+  override async config(args: ConfigArguments): Promise<void> {
     args.contextBuilder.patchGlobal({
       ui: "ff",
+
       sourceOptions: {
         _: {
           ignoreCase: true,
@@ -19,6 +20,7 @@ export class Config extends BaseConfig {
           converters: ["converter_hl_dir"],
         },
       },
+
       sourceParams: {
         mr: {
           kind: "mrw",
@@ -26,7 +28,11 @@ export class Config extends BaseConfig {
         rg: {
           args: ["--column", "--no-heading", "--json"],
         },
+        cliphist: {
+          cmd: await fn.exepath(args.denops, "cliphist"),
+        },
       },
+
       kindOptions: {
         file: {
           defaultAction: "open",
@@ -52,12 +58,17 @@ export class Config extends BaseConfig {
         url: {
           defaultAction: "browse",
         },
+        cliphist: {
+          defaultAction: "append",
+        },
       },
+
       actionOptions: {
         narrow: {
           quit: false,
         },
       },
+
       uiParams: {
         ff: {
           split: "floating",
@@ -88,6 +99,7 @@ export class Config extends BaseConfig {
             await fn.win_execute(args.denops, args.previewWinId, "normal! zt");
           },
         } as Partial<FFParams>,
+
         filer: {
           split: "floating",
           sort: "filename",
@@ -98,13 +110,12 @@ export class Config extends BaseConfig {
           sortTreesFirst: true,
         } as Partial<FilerParams>,
       },
+
       filterParams: {
         matcher_substring: {
           highlightMatched: "Search",
         },
       },
     });
-
-    return Promise.resolve();
   }
 }
