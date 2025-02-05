@@ -14,7 +14,6 @@ export class Source extends BaseSource<Params> {
     args: GatherArguments<Params>,
   ): ReadableStream<Item<ActionData>[]> {
     const cmd = args.sourceParams.cmd;
-    console.log(cmd);
     return new ReadableStream({
       start(controller) {
         controller.enqueue(
