@@ -16,6 +16,10 @@ import {
   Params as TomlParams,
   Toml,
 } from "jsr:@shougo/dpp-ext-toml@1";
+import {
+  Ext as LocalExt,
+  Params as LocalParams,
+} from "jsr:@shougo/dpp-ext-local@1";
 
 import * as fn from "jsr:@denops/std@7/function";
 
@@ -55,23 +59,14 @@ export class Config extends BaseConfig {
     if (tomlExt) {
       const tomlLoad = tomlExt.actions["load"];
 
-      const paths = [
-        { path: "$VIM_DPP/dpp.toml", lazy: false },
-        { path: "$VIM_DPP/dpp_lazy.toml", lazy: true },
-        { path: "$VIM_DPP/ddc.toml", lazy: true },
-        { path: "$VIM_DPP/ddu.toml", lazy: true },
-        { path: "$VIM_DPP/nvim.toml", lazy: true },
-      ];
-      const generated = await fn.expand(
-        args.denops,
-        "~/.cache/dpp/_generated.toml",
-      ) as string;
-      if (await fn.filereadable(args.denops, generated)) {
-        paths.push({ path: generated, lazy: false });
-      }
-
       const tomls = await Promise.all(
-        paths.map((toml) =>
+        [
+          { path: "$VIM_DPP/dpp.toml", lazy: false },
+          { path: "$VIM_DPP/dpp_lazy.toml", lazy: true },
+          { path: "$VIM_DPP/ddc.toml", lazy: true },
+          { path: "$VIM_DPP/ddu.toml", lazy: true },
+          { path: "$VIM_DPP/nvim.toml", lazy: true },
+        ].map((toml) =>
           tomlLoad.callback({
             denops: args.denops,
             context,
@@ -96,11 +91,7 @@ export class Config extends BaseConfig {
         }
 
         for (const plugin of toml.plugins ?? []) {
-          // recordPlugins[plugin.name] = plugin;
-          recordPlugins[plugin.name] = {
-            ...plugin,
-            ...recordPlugins[plugin.name],
-          };
+          recordPlugins[plugin.name] = plugin;
         }
 
         if (toml.ftplugins) {
@@ -109,6 +100,35 @@ export class Config extends BaseConfig {
 
         if (toml.hooks_file) {
           hooksFiles.push(toml.hooks_file);
+        }
+      }
+    }
+
+    const [localExt, localOptions, localParams] = await args.dpp.getExt(
+      args.denops,
+      options,
+      "local",
+    ) as [LocalExt | undefined, ExtOptions, LocalParams];
+    if (localExt) {
+      const local = localExt.actions.local;
+
+      const localPlugins = await local.callback({
+        denops: args.denops,
+        context,
+        options,
+        protocols,
+        extOptions: localOptions,
+        extParams: localParams,
+        actionParams: {
+          directory: "~/.cache/dpp/_generated",
+        },
+      });
+
+      for (const plugin of localPlugins) {
+        if (plugin.name in recordPlugins) {
+          Object.assign(recordPlugins[plugin.name], plugin);
+        } else {
+          recordPlugins[plugin.name] = plugin;
         }
       }
     }

@@ -79,7 +79,6 @@ hooks_file = '$VIM_DPP/skkeleton.vim'
 
 [[plugins]]
 name = 'skk-dict'
-local = true
 if = false
 
 [[plugins]]

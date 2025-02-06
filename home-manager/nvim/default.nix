@@ -5,13 +5,14 @@
   neovim-nightly-overlay,
 }:
 {
-  home.file = {
-    ".cache/dpp/_generated.toml".source =
-      let
-        tomlFormat = pkgs.formats.toml { };
-      in
-      tomlFormat.generate "_generated.toml" (import ./plugins.nix { inherit pkgs sources; });
-  };
+  home.file =
+    let
+      base = ".cache/dpp/_generated";
+    in
+    pkgs.lib.attrsets.foldlAttrs (
+      acc: name: drv:
+      acc // { "${base}/${name}".source = drv; }
+    ) { } (import ./plugins.nix { inherit pkgs sources; });
   xdg.configFile = {
     "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/vim";
   };

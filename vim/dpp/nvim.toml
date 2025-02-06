@@ -1,7 +1,6 @@
 # {{{ treesitter
 [[plugins]]
-name = 'nvim-treesitter'
-local = true
+repo = 'nvim-treesitter/nvim-treesitter'
 on_event = ['BufRead', 'CursorHold']
 lua_source = '''
 vim.treesitter.language.register("markdown", "mdx")
