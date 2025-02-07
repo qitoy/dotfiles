@@ -20,6 +20,7 @@
             "repo": "cargo-compete",
             "rev": "v0.10.7",
             "sha256": "sha256-qlRVHSUVOqdTx4H3pE19Fy634742veTisHm6IqfKBUQ=",
+            "sparseCheckout": [],
             "type": "github"
         },
         "version": "v0.10.7"
@@ -45,6 +46,7 @@
             "repo": "cargo-equip",
             "rev": "v0.20.1",
             "sha256": "sha256-yxRiG96jC7zdlMQpL0B9Mle2kD1TOhqTZzMX3I8IE9I=",
+            "sparseCheckout": [],
             "type": "github"
         },
         "version": "v0.20.1"
@@ -80,9 +82,36 @@
             "repo": "verification-helper",
             "rev": "adbff121b1f96de5f34e9f1483eb47d661c54075",
             "sha256": "sha256-f7Ge8kLRQv9uxdNGtgNsypGVY0XAnKPCg8HYQ5nT6mI=",
+            "sparseCheckout": [],
             "type": "github"
         },
         "version": "adbff121b1f96de5f34e9f1483eb47d661c54075"
+    },
+    "pahcer": {
+        "cargoLocks": {
+            "Cargo.lock": [
+                "./pahcer-v0.1.1/Cargo.lock",
+                {}
+            ]
+        },
+        "date": null,
+        "extract": null,
+        "name": "pahcer",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "terry-u16",
+            "repo": "pahcer",
+            "rev": "v0.1.1",
+            "sha256": "sha256-f4R+I00uRl2fBOnHejBzjkM596rSJH7s8+/vySH3WnY=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v0.1.1"
     },
     "tree-sitter-satysfi": {
         "cargoLocks": null,
@@ -100,6 +129,7 @@
             "repo": "tree-sitter-satysfi",
             "rev": "5519c547418ecb31ac7d63e64653aed726b5d1c3",
             "sha256": "sha256-yei8UHiVChYpx2UyPsDyOd3usItZN68rwu0+VoBtPi0=",
+            "sparseCheckout": [],
             "type": "github"
         },
         "version": "5519c547418ecb31ac7d63e64653aed726b5d1c3"

@@ -8,7 +8,7 @@
 {
   cargo-compete = rustPlatform.buildRustPackage {
     inherit (sources.cargo-compete) pname version src;
-    cargoLock.lockFile = sources.cargo-compete.cargoLock."Cargo.lock".lockFile;
+    cargoLock = sources.cargo-compete.cargoLock."Cargo.lock";
     nativeBuildInputs = [ pkg-config ];
     buildInputs = [ openssl ];
     doCheck = false;
@@ -16,10 +16,15 @@
 
   cargo-equip = rustPlatform.buildRustPackage {
     inherit (sources.cargo-equip) pname version src;
-    cargoLock.lockFile = sources.cargo-equip.cargoLock."Cargo.lock".lockFile;
+    cargoLock = sources.cargo-equip.cargoLock."Cargo.lock";
     nativeBuildInputs = [ pkg-config ];
     buildInputs = [ openssl ];
     doCheck = false;
+  };
+
+  pahcer = rustPlatform.buildRustPackage {
+    inherit (sources.pahcer) pname version src;
+    cargoLock = sources.pahcer.cargoLock."Cargo.lock";
   };
 
   online-judge-verify-helper = python3Packages.buildPythonApplication {

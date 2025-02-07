@@ -21,6 +21,11 @@ src.github = "qryxip/cargo-equip"
 fetch.github = "qryxip/cargo-equip"
 cargo_locks = ["Cargo.lock"]
 
+[pahcer]
+src.github = "terry-u16/pahcer"
+fetch.github = "terry-u16/pahcer"
+cargo_locks = ["Cargo.lock"]
+
 [tree-sitter-satysfi]
 src.git = "https://github.com/monaqa/tree-sitter-satysfi.git"
 fetch.github = "monaqa/tree-sitter-satysfi"
