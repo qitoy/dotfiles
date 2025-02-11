@@ -23,7 +23,7 @@
       efm-langserver
       nixd
       nixfmt-rfc-style
-      vim-language-server
+      # vim-language-server # error with fixupPhase
       python3Packages.python-lsp-server
       clang-tools
       texlab
