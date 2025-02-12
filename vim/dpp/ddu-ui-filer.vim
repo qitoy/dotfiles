@@ -5,6 +5,8 @@ nnoremap <buffer><expr> <CR>
 \ "<Cmd>call ddu#ui#do_action('itemAction')<CR>"
 nnoremap <buffer><silent> a
 \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
+nnoremap <buffer><silent> i
+\ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
 nnoremap <buffer> <Space>
 \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
 xnoremap <buffer> <Space>

@@ -3,7 +3,7 @@ import { BaseConfig, ConfigArguments } from "jsr:@shougo/ddc-vim@9/config";
 export class Config extends BaseConfig {
   // deno-lint-ignore require-await
   override async config(args: ConfigArguments): Promise<void> {
-    args.setAlias("source", "zsh", "shell-native");
+    args.setAlias("source", "zsh", "shell_native");
 
     args.contextBuilder.patchGlobal({
       ui: "pum",
@@ -14,7 +14,7 @@ export class Config extends BaseConfig {
         "buffer",
       ],
       cmdlineSources: {
-        ":": ["cmdline", "cmdline-history", "around"],
+        ":": ["cmdline", "cmdline_history", "around"],
       },
       sourceOptions: {
         _: {
@@ -49,7 +49,7 @@ export class Config extends BaseConfig {
           mark: "| cmd",
           forceCompletionPattern: "\\S/\\S*",
         },
-        "cmdline-history": {
+        cmdline_history: {
           mark: "| history",
         },
         zsh: {
