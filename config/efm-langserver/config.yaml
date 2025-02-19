@@ -4,15 +4,15 @@ log-level: 3
 
 tools:
   satysfi: &satysfi
-    lint-command: 'satysfi ${INPUT}'
+    lint-command: "satysfi ${INPUT}"
     lint-ignore-exit-code: true
     lint-formats:
       - '  [%tarning] at "%.%#", line %l, characters %c-%k: %m'
-      - '  [%tarning] %m'
+      - "  [%tarning] %m"
       - '%E! [%.%#] at "%.%#", line %l, characters %c-%k:'
-      - '%C    %#%m'
-      - '%Z'
-        # - '%-G%.%#'
+      - "%C    %#%m"
+      - "%Z"
+# - '%-G%.%#'
 
 languages:
   satysfi:

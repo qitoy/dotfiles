@@ -1,5 +1,8 @@
 import { TSSnippet } from "https://deno.land/x/denippet_vim@v0.6.0/loader.ts";
-import { Denops, fn } from "https://deno.land/x/denippet_vim@v0.6.0/deps/denops.ts";
+import {
+  Denops,
+  fn,
+} from "https://deno.land/x/denippet_vim@v0.6.0/deps/denops.ts";
 
 export const snippets: Record<string, TSSnippet> = {
   "autoload function": {

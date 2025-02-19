@@ -1,152 +1,152 @@
 {
-    "cargo-compete": {
-        "cargoLocks": {
-            "Cargo.lock": [
-                "./cargo-compete-v0.10.7/Cargo.lock",
-                {}
-            ]
-        },
-        "date": null,
-        "extract": null,
-        "name": "cargo-compete",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "qryxip",
-            "repo": "cargo-compete",
-            "rev": "v0.10.7",
-            "sha256": "sha256-qlRVHSUVOqdTx4H3pE19Fy634742veTisHm6IqfKBUQ=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "v0.10.7"
+  "cargo-compete": {
+    "cargoLocks": {
+      "Cargo.lock": [
+        "./cargo-compete-v0.10.7/Cargo.lock",
+        {}
+      ]
     },
-    "cargo-equip": {
-        "cargoLocks": {
-            "Cargo.lock": [
-                "./cargo-equip-v0.20.1/Cargo.lock",
-                {}
-            ]
-        },
-        "date": null,
-        "extract": null,
-        "name": "cargo-equip",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "qryxip",
-            "repo": "cargo-equip",
-            "rev": "v0.20.1",
-            "sha256": "sha256-yxRiG96jC7zdlMQpL0B9Mle2kD1TOhqTZzMX3I8IE9I=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "v0.20.1"
+    "date": null,
+    "extract": null,
+    "name": "cargo-compete",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
+      "name": null,
+      "owner": "qryxip",
+      "repo": "cargo-compete",
+      "rev": "v0.10.7",
+      "sha256": "sha256-qlRVHSUVOqdTx4H3pE19Fy634742veTisHm6IqfKBUQ=",
+      "sparseCheckout": [],
+      "type": "github"
     },
-    "moralerspace-nf": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "moralerspace-nf",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-B6R7Mgre4zFAVi8rCus/hT5f2Gdg++qhA2u40ZrUM6Y=",
-            "type": "url",
-            "url": "https://github.com/yuru7/moralerspace/releases/download/v1.1.0/MoralerspaceNF_v1.1.0.zip"
-        },
-        "version": "1.1.0"
+    "version": "v0.10.7"
+  },
+  "cargo-equip": {
+    "cargoLocks": {
+      "Cargo.lock": [
+        "./cargo-equip-v0.20.1/Cargo.lock",
+        {}
+      ]
     },
-    "online-judge-verify-helper": {
-        "cargoLocks": null,
-        "date": "2024-10-09",
-        "extract": null,
-        "name": "online-judge-verify-helper",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "online-judge-tools",
-            "repo": "verification-helper",
-            "rev": "adbff121b1f96de5f34e9f1483eb47d661c54075",
-            "sha256": "sha256-f7Ge8kLRQv9uxdNGtgNsypGVY0XAnKPCg8HYQ5nT6mI=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "adbff121b1f96de5f34e9f1483eb47d661c54075"
+    "date": null,
+    "extract": null,
+    "name": "cargo-equip",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
+      "name": null,
+      "owner": "qryxip",
+      "repo": "cargo-equip",
+      "rev": "v0.20.1",
+      "sha256": "sha256-yxRiG96jC7zdlMQpL0B9Mle2kD1TOhqTZzMX3I8IE9I=",
+      "sparseCheckout": [],
+      "type": "github"
     },
-    "pahcer": {
-        "cargoLocks": {
-            "Cargo.lock": [
-                "./pahcer-v0.1.1/Cargo.lock",
-                {}
-            ]
-        },
-        "date": null,
-        "extract": null,
-        "name": "pahcer",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "terry-u16",
-            "repo": "pahcer",
-            "rev": "v0.1.1",
-            "sha256": "sha256-f4R+I00uRl2fBOnHejBzjkM596rSJH7s8+/vySH3WnY=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "v0.1.1"
+    "version": "v0.20.1"
+  },
+  "moralerspace-nf": {
+    "cargoLocks": null,
+    "date": null,
+    "extract": null,
+    "name": "moralerspace-nf",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-B6R7Mgre4zFAVi8rCus/hT5f2Gdg++qhA2u40ZrUM6Y=",
+      "type": "url",
+      "url": "https://github.com/yuru7/moralerspace/releases/download/v1.1.0/MoralerspaceNF_v1.1.0.zip"
     },
-    "tree-sitter-satysfi": {
-        "cargoLocks": null,
-        "date": "2023-04-09",
-        "extract": null,
-        "name": "tree-sitter-satysfi",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "monaqa",
-            "repo": "tree-sitter-satysfi",
-            "rev": "5519c547418ecb31ac7d63e64653aed726b5d1c3",
-            "sha256": "sha256-yei8UHiVChYpx2UyPsDyOd3usItZN68rwu0+VoBtPi0=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "5519c547418ecb31ac7d63e64653aed726b5d1c3"
+    "version": "1.1.0"
+  },
+  "online-judge-verify-helper": {
+    "cargoLocks": null,
+    "date": "2024-10-09",
+    "extract": null,
+    "name": "online-judge-verify-helper",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
+      "name": null,
+      "owner": "online-judge-tools",
+      "repo": "verification-helper",
+      "rev": "adbff121b1f96de5f34e9f1483eb47d661c54075",
+      "sha256": "sha256-f7Ge8kLRQv9uxdNGtgNsypGVY0XAnKPCg8HYQ5nT6mI=",
+      "sparseCheckout": [],
+      "type": "github"
     },
-    "vivaldi-ffmpeg-codecs": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "vivaldi-ffmpeg-codecs",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-pBFKnW1zcthqyUhMG4DN/tVcSo41HTliuRYOscWTEwY=",
-            "type": "url",
-            "url": "https://api.snapcraft.io/api/v1/snaps/download/XKEcBqPM06H1Z7zGOdG5fbICuf8NWK5R_2899.snap"
-        },
-        "version": "126.0.6478.126"
-    }
+    "version": "adbff121b1f96de5f34e9f1483eb47d661c54075"
+  },
+  "pahcer": {
+    "cargoLocks": {
+      "Cargo.lock": [
+        "./pahcer-v0.1.1/Cargo.lock",
+        {}
+      ]
+    },
+    "date": null,
+    "extract": null,
+    "name": "pahcer",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
+      "name": null,
+      "owner": "terry-u16",
+      "repo": "pahcer",
+      "rev": "v0.1.1",
+      "sha256": "sha256-f4R+I00uRl2fBOnHejBzjkM596rSJH7s8+/vySH3WnY=",
+      "sparseCheckout": [],
+      "type": "github"
+    },
+    "version": "v0.1.1"
+  },
+  "tree-sitter-satysfi": {
+    "cargoLocks": null,
+    "date": "2023-04-09",
+    "extract": null,
+    "name": "tree-sitter-satysfi",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
+      "name": null,
+      "owner": "monaqa",
+      "repo": "tree-sitter-satysfi",
+      "rev": "5519c547418ecb31ac7d63e64653aed726b5d1c3",
+      "sha256": "sha256-yei8UHiVChYpx2UyPsDyOd3usItZN68rwu0+VoBtPi0=",
+      "sparseCheckout": [],
+      "type": "github"
+    },
+    "version": "5519c547418ecb31ac7d63e64653aed726b5d1c3"
+  },
+  "vivaldi-ffmpeg-codecs": {
+    "cargoLocks": null,
+    "date": null,
+    "extract": null,
+    "name": "vivaldi-ffmpeg-codecs",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-pBFKnW1zcthqyUhMG4DN/tVcSo41HTliuRYOscWTEwY=",
+      "type": "url",
+      "url": "https://api.snapcraft.io/api/v1/snaps/download/XKEcBqPM06H1Z7zGOdG5fbICuf8NWK5R_2899.snap"
+    },
+    "version": "126.0.6478.126"
+  }
 }
