@@ -2,7 +2,8 @@
   config,
   pkgs,
   sources,
-  neovim-nightly-overlay,
+  inputs,
+  ...
 }:
 {
   home.file =
@@ -18,7 +19,7 @@
   };
   programs.neovim = {
     enable = true;
-    package = neovim-nightly-overlay.packages.${pkgs.system}.default;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     extraPackages = with pkgs; [
       efm-langserver
       nixd

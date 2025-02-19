@@ -1,4 +1,4 @@
-{ pkgs, sources }:
+{ pkgs, sources, ... }:
 let
   moralerspace-nf = pkgs.stdenv.mkDerivation rec {
     inherit (sources.moralerspace-nf) pname version src;

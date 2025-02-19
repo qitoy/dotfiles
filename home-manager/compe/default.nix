@@ -1,4 +1,4 @@
-{ pkgs, sources }:
+{ pkgs, sources, ... }:
 let
   qitoypkgs = pkgs.callPackage ./packages.nix { inherit sources; };
 in

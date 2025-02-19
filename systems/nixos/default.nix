@@ -2,18 +2,18 @@
   inputs,
 }:
 let
-  inherit (inputs) nixpkgs home-manager nixos-apple-silicon;
   username = "qitoy";
   system = "aarch64-linux";
-  vivaldi-overlay = import ./vivaldi-overlay.nix;
+  pkgs = import inputs.nixpkgs { inherit system; };
+  sources = pkgs.callPackage ../../_sources/generated.nix { };
 in
 {
-  nixos = nixpkgs.lib.nixosSystem {
+  nixos = inputs.nixpkgs.lib.nixosSystem {
     inherit system;
     modules = [
       ../../nixos
       ./hardware-configuration.nix
-      nixos-apple-silicon.nixosModules.default
+      inputs.nixos-apple-silicon.nixosModules.default
       {
         hardware.asahi = {
           enable = true;
@@ -23,15 +23,14 @@ in
           experimentalGPUInstallMode = "replace";
         };
       }
-      home-manager.nixosModules.home-manager
+      inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
           extraSpecialArgs = {
-            inherit (inputs) neovim-nightly-overlay;
-            overlays = [ vivaldi-overlay ];
+            inherit inputs sources;
           };
           useUserPackages = true;
-          users."${username}" = import ../../home-manager;
+          users."${username}" = import ./home-manager.nix;
         };
       }
     ];

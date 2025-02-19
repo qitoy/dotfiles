@@ -1,12 +1,9 @@
 {
   pkgs,
-  neovim-nightly-overlay,
-  overlays ? [ ],
-  config,
   ...
 }:
 let
-  sources = pkgs.callPackage ../_sources/generated.nix { };
+  vivaldi-overlay = import ./vivaldi-overlay.nix;
 in
 {
   home.username = "qitoy";
@@ -22,25 +19,18 @@ in
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   nixpkgs = {
-    inherit overlays;
+    overlays = [ vivaldi-overlay ];
     config.allowUnfree = true;
   };
 
   imports = [
-    ./zsh
-    ./hypr
-    ./terminal
-    (import ./fonts.nix { inherit pkgs sources; })
-    (import ./compe { inherit pkgs sources; })
-    (import ./nvim {
-      inherit
-        config
-        pkgs
-        sources
-        neovim-nightly-overlay
-        ;
-    })
-    ./git.nix
+    ../../home-manager/zsh
+    ../../home-manager/hypr
+    ../../home-manager/terminal
+    ../../home-manager/fonts.nix
+    ../../home-manager/compe
+    ../../home-manager/nvim
+    ../../home-manager/git.nix
   ];
 
   home.packages = with pkgs; [
@@ -72,11 +62,11 @@ in
   ];
 
   home.file = {
-    ".latexmkrc".source = ../latexmkrc;
+    ".latexmkrc".source = ../../latexmkrc;
   };
 
   xdg.configFile = {
-    "efm-langserver".source = ../config/efm-langserver;
+    "efm-langserver".source = ../../config/efm-langserver;
   };
 
   home.sessionVariables = { };
