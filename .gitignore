@@ -4,6 +4,7 @@
 !/flake.nix
 !/flake.lock
 !/nixos/**
+!/nix-darwin/**
 !/home-manager/**
 !/systems/**
 !/_sources/**

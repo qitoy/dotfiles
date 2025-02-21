@@ -16,6 +16,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,6 +54,7 @@
 
       flake = {
         nixosConfigurations = import ./systems/nixos { inherit inputs; };
+        darwinConfigurations = import ./systems/darwin { inherit inputs; };
       };
 
       perSystem =
