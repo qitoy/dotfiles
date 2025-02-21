@@ -1,13 +1,14 @@
 {
   pkgs,
+  username,
   ...
 }:
 let
   vivaldi-overlay = import ./vivaldi-overlay.nix;
 in
 {
-  home.username = "qitoy";
-  home.homeDirectory = "/home/qitoy";
+  home.username = username;
+  home.homeDirectory = "/home/${username}";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release

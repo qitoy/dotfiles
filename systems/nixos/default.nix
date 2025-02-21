@@ -27,7 +27,7 @@ in
       {
         home-manager = {
           extraSpecialArgs = {
-            inherit inputs sources;
+            inherit inputs sources username;
           };
           useUserPackages = true;
           users."${username}" = import ./home-manager.nix;
