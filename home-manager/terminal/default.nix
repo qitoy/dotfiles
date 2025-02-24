@@ -1,7 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.ghostty = {
     enable = true;
+    # ghostty is temporary broken in macos
+    package = if pkgs.stdenv.isLinux then pkgs.ghostty else null;
     clearDefaultKeybinds = true;
     settings = {
       font-family = "MoralerspaceNeonNF";

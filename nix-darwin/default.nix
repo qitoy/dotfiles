@@ -20,9 +20,10 @@
       cleanup = "uninstall";
     };
     casks = [
+      "ghostty"
       "karabiner-elements"
       "programmer-dvorak"
-      "vivaldi"
+      "vivaldi" 
     ];
   };
 }
