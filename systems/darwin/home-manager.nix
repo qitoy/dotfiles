@@ -1,7 +1,7 @@
 { pkgs, username, ... }:
 {
   home.username = username;
-  home.homeDirectory = "/Users/${username}";
+  home.homeDirectory = pkgs.lib.mkForce "/Users/${username}";
 
   home.stateVersion = "24.11";
 
@@ -9,9 +9,9 @@
 
   imports = [
     ../../home-manager/zsh
-    ../../home-manager/terminal
+#   ../../home-manager/terminal
     ../../home-manager/fonts.nix
-    ../../home-manager/compe
+#   ../../home-manager/compe
     ../../home-manager/nvim
     ../../home-manager/git.nix
   ];
@@ -26,8 +26,6 @@
     texliveFull
 
     rustup
-
-    vivaldi
   ];
 
   home.file = {

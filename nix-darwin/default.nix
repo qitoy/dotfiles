@@ -7,10 +7,10 @@
       max-jobs = 8;
     };
   };
-  services.nix-daemon.enable = true;
 
   system = {
     defaults = { };
+    stateVersion = 6;
   };
 
   homebrew = {
@@ -19,6 +19,10 @@
       autoUpdate = true;
       cleanup = "uninstall";
     };
-    casks = [ ];
+    casks = [
+      "karabiner-elements"
+      "programmer-dvorak"
+      "vivaldi"
+    ];
   };
 }
