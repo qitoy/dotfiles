@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "build": "deno run -A karabiner.ts",
+    "watch": "deno run --watch -A karabiner.ts"
+  },
+  "imports": {
+    "karabiner.ts": "https://deno.land/x/karabinerts@1.31.0/deno.ts"
+  }
+}

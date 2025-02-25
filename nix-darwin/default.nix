@@ -8,8 +8,6 @@
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   system = {
     defaults = { };
     stateVersion = 6;

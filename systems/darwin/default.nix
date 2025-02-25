@@ -11,7 +11,13 @@ in
   darwin = inputs.nix-darwin.lib.darwinSystem {
     inherit system;
     modules = [
+      {
+        nixpkgs = {
+          config.allowUnfree = true;
+        };
+      }
       ../../nix-darwin
+
       inputs.home-manager.darwinModules.home-manager
       {
         home-manager = {
