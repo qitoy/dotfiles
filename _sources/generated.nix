@@ -40,14 +40,6 @@
       };
     };
   };
-  moralerspace-nf = {
-    pname = "moralerspace-nf";
-    version = "1.1.0";
-    src = fetchurl {
-      url = "https://github.com/yuru7/moralerspace/releases/download/v1.1.0/MoralerspaceNF_v1.1.0.zip";
-      sha256 = "sha256-B6R7Mgre4zFAVi8rCus/hT5f2Gdg++qhA2u40ZrUM6Y=";
-    };
-  };
   online-judge-verify-helper = {
     pname = "online-judge-verify-helper";
     version = "adbff121b1f96de5f34e9f1483eb47d661c54075";
@@ -62,16 +54,16 @@
   };
   pahcer = {
     pname = "pahcer";
-    version = "v0.1.1";
+    version = "v0.2.0";
     src = fetchFromGitHub {
       owner = "terry-u16";
       repo = "pahcer";
-      rev = "v0.1.1";
+      rev = "v0.2.0";
       fetchSubmodules = false;
-      sha256 = "sha256-f4R+I00uRl2fBOnHejBzjkM596rSJH7s8+/vySH3WnY=";
+      sha256 = "sha256-yZaIZUuxlVJt/wvke+M6ATHXQLLE7siRx73IexY3njU=";
     };
     cargoLock."Cargo.lock" = {
-      lockFile = ./pahcer-v0.1.1/Cargo.lock;
+      lockFile = ./pahcer-v0.2.0/Cargo.lock;
       outputHashes = {
 
       };

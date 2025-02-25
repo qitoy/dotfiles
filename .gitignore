@@ -10,7 +10,6 @@
 !/_sources/**
 !/nvfetcher.toml
 
-!/README.md
 !/latexmkrc
 !/.gitignore
 !/vim/**
@@ -19,10 +18,7 @@
 !/vim/undo/.gitkeep
 !/vim/nundo/.gitkeep
 !/.github/**
-!/homebrew/**
-!/hammerspoon/**
 !/config/efm-langserver/*
 !/config/gh/config.yml
 !/config/i3/config
-!/config/karabiner/**
 !/config/sway/*

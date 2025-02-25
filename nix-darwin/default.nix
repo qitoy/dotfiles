@@ -8,6 +8,8 @@
     };
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   system = {
     defaults = { };
     stateVersion = 6;
@@ -23,7 +25,7 @@
       "ghostty"
       "karabiner-elements"
       "programmer-dvorak"
-      "vivaldi" 
+      "vivaldi"
     ];
   };
 }

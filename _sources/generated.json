@@ -51,21 +51,6 @@
     },
     "version": "v0.20.1"
   },
-  "moralerspace-nf": {
-    "cargoLocks": null,
-    "date": null,
-    "extract": null,
-    "name": "moralerspace-nf",
-    "passthru": null,
-    "pinned": false,
-    "src": {
-      "name": null,
-      "sha256": "sha256-B6R7Mgre4zFAVi8rCus/hT5f2Gdg++qhA2u40ZrUM6Y=",
-      "type": "url",
-      "url": "https://github.com/yuru7/moralerspace/releases/download/v1.1.0/MoralerspaceNF_v1.1.0.zip"
-    },
-    "version": "1.1.0"
-  },
   "online-judge-verify-helper": {
     "cargoLocks": null,
     "date": "2024-10-09",
@@ -90,7 +75,7 @@
   "pahcer": {
     "cargoLocks": {
       "Cargo.lock": [
-        "./pahcer-v0.1.1/Cargo.lock",
+        "./pahcer-v0.2.0/Cargo.lock",
         {}
       ]
     },
@@ -106,12 +91,12 @@
       "name": null,
       "owner": "terry-u16",
       "repo": "pahcer",
-      "rev": "v0.1.1",
-      "sha256": "sha256-f4R+I00uRl2fBOnHejBzjkM596rSJH7s8+/vySH3WnY=",
+      "rev": "v0.2.0",
+      "sha256": "sha256-yZaIZUuxlVJt/wvke+M6ATHXQLLE7siRx73IexY3njU=",
       "sparseCheckout": [],
       "type": "github"
     },
-    "version": "v0.1.1"
+    "version": "v0.2.0"
   },
   "tree-sitter-satysfi": {
     "cargoLocks": null,

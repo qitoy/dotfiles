@@ -19,6 +19,7 @@ in
             inherit inputs sources username;
           };
           useUserPackages = true;
+          useGlobalPkgs = true;
           users."${username}" = import ./home-manager.nix;
         };
       }
