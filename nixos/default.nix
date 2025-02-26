@@ -1,14 +1,11 @@
 {
-  config,
   pkgs,
-  xremap,
   ...
 }:
 {
   imports = [
-    xremap.nixosModules.default
     ./xremap.nix
-    (import ./network.nix { inherit config; })
+    ./network.nix
     ./nix.nix
   ];
 

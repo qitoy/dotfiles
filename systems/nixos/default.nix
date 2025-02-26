@@ -6,13 +6,22 @@ let
   system = "aarch64-linux";
   pkgs = import inputs.nixpkgs { inherit system; };
   sources = pkgs.callPackage ../../_sources/generated.nix { };
+  vivaldi-overlay = import ./vivaldi-overlay.nix;
 in
 {
   nixos = inputs.nixpkgs.lib.nixosSystem {
     inherit system;
     modules = [
+      {
+        nixpkgs = {
+          overlays = [ vivaldi-overlay ];
+          config.allowUnfree = true;
+        };
+      }
+      inputs.xremap.nixosModules.default
       ../../nixos
       ./hardware-configuration.nix
+
       inputs.nixos-apple-silicon.nixosModules.default
       {
         hardware.asahi = {
@@ -23,6 +32,7 @@ in
           experimentalGPUInstallMode = "replace";
         };
       }
+
       inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
@@ -30,10 +40,10 @@ in
             inherit inputs sources username;
           };
           useUserPackages = true;
+          useGlobalPkgs = true;
           users."${username}" = import ./home-manager.nix;
         };
       }
     ];
-    specialArgs = { inherit (inputs) xremap; };
   };
 }
