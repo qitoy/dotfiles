@@ -14,7 +14,6 @@
     ../../home-manager/zsh
     ../../home-manager/terminal
     ../../home-manager/fonts.nix
-    #   ../../home-manager/compe
     ../../home-manager/nvim
     ../../home-manager/git.nix
   ];
@@ -24,10 +23,9 @@
     deno
     ghq
     ripgrep
+    jq
     tree
     trash-cli
-    texliveFull
-
     rustup
   ];
 

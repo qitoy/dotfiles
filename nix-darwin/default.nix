@@ -24,6 +24,9 @@
       "karabiner-elements"
       "programmer-dvorak"
       "vivaldi"
+      "steam"
+      "discord"
+      "slack"
     ];
   };
 }
