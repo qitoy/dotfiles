@@ -9,6 +9,7 @@ imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
 
 function s:skkeleton_init() abort
+  call mkdir('~/.skkeleton'->expand(), 'p')
   call skkeleton#register_kanatable('gact10_dvp', s:gact10_dvp, v:true)
   call skkeleton#register_kanatable('tsuki_dvp', s:tsuki_dvp, v:true)
   call skkeleton#register_keymap('henkan', 'x', '')
