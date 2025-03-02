@@ -12,6 +12,7 @@
 
   imports = [
     ../../home-manager/zsh
+    ../../home-manager/compe
     ../../home-manager/terminal
     ../../home-manager/fonts.nix
     ../../home-manager/nvim

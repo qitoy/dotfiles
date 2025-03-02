@@ -8,7 +8,13 @@
 {
   cargo-compete = rustPlatform.buildRustPackage {
     inherit (sources.cargo-compete) pname version src;
-    cargoLock = sources.cargo-compete.cargoLock."Cargo.lock";
+    cargoLock = {
+      lockFile = ./cargo-compete/Cargo.lock;
+      outputHashes = { };
+    };
+    postPatch = ''
+      cp ${./cargo-compete/Cargo.lock} Cargo.lock
+    '';
     nativeBuildInputs = [ pkg-config ];
     buildInputs = [ openssl ];
     doCheck = false;
