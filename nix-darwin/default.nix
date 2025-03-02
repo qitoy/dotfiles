@@ -9,7 +9,18 @@
   };
 
   system = {
-    defaults = { };
+    defaults = {
+      NSGlobalDomain.AppleShowAllExtensions = true;
+      controlcenter = {
+        BatteryShowPercentage = true;
+        Bluetooth = true;
+        Sound = true;
+      };
+      finder = {
+        AppleShowAllExtensions = true;
+        AppleShowAllFiles = true;
+      };
+    };
     stateVersion = 6;
   };
 
@@ -20,13 +31,14 @@
       cleanup = "uninstall";
     };
     casks = [
+      "discord"
       "ghostty"
       "karabiner-elements"
+      "microsoft-teams"
       "programmer-dvorak"
-      "vivaldi"
-      "steam"
-      "discord"
       "slack"
+      "steam"
+      "vivaldi"
     ];
   };
 }
