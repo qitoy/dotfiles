@@ -29,6 +29,7 @@
         "global:super+shift+enter=toggle_quick_terminal"
       ];
 
+      macos-option-as-alt = true;
       macos-non-native-fullscreen = true;
       quick-terminal-position = "top";
       quick-terminal-screen = "main";

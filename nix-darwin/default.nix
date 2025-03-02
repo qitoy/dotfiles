@@ -10,7 +10,10 @@
 
   system = {
     defaults = {
-      NSGlobalDomain.AppleShowAllExtensions = true;
+      NSGlobalDomain = {
+        AppleShowAllExtensions = true;
+        "com.apple.trackpad.scaling" = 3.0;
+      };
       controlcenter = {
         BatteryShowPercentage = true;
         Bluetooth = true;
