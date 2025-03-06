@@ -31,16 +31,12 @@
     enable = true;
     onActivation = {
       autoUpdate = true;
-      cleanup = "uninstall";
     };
     casks = [
-      "discord"
       "ghostty"
       "karabiner-elements"
       "microsoft-teams"
       "programmer-dvorak"
-      "slack"
-      "steam"
       "vivaldi"
     ];
   };
