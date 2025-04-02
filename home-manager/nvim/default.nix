@@ -29,6 +29,7 @@
       clang-tools
       texlab
       zathura
+      nodejs
     ];
     defaultEditor = true;
   };

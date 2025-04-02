@@ -65,6 +65,17 @@ on_source = 'ddc.vim'
 repo = 'Shougo/ddc-source-shell-native'
 on_source = 'ddc.vim'
 
+[[plugins]]
+repo = 'github/copilot.vim'
+on_cmd = 'Copilot'
+hook_source = '''
+let g:copilot_no_maps = v:true
+'''
+
+[[plugins]]
+repo = 'Shougo/ddc-source-copilot'
+on_source = 'ddc.vim'
+
 # Install your filters
 [[plugins]]
 repo = 'tani/ddc-fuzzy'

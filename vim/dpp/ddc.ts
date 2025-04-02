@@ -12,6 +12,7 @@ export class Config extends BaseConfig {
         "denippet",
         "around",
         "buffer",
+        "copilot",
       ],
       cmdlineSources: {
         ":": ["cmdline", "cmdline_history", "around"],
@@ -51,6 +52,12 @@ export class Config extends BaseConfig {
         },
         cmdline_history: {
           mark: "| history",
+        },
+        copilot: {
+          mark: "| copilot",
+          matchers: [],
+          minAutoCompleteLength: 0,
+          isVolatile: false,
         },
         zsh: {
           mark: "| zsh",
