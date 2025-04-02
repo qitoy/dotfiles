@@ -6,8 +6,6 @@
     package = if pkgs.stdenv.isLinux then pkgs.ghostty else null;
     clearDefaultKeybinds = true;
     settings = {
-      font-family = "MoralerspaceNeonNF";
-      font-style = "Regular";
       font-size = 12.5;
       font-feature = [
         "-calt"
