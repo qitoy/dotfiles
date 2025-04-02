@@ -2,7 +2,7 @@
   inputs,
 }:
 let
-  username = "qitoy";
+  username = "k-yamanaka";
   system = "aarch64-darwin";
   pkgs = import inputs.nixpkgs { inherit system; };
   sources = pkgs.callPackage ../../_sources/generated.nix { };
