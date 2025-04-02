@@ -18,7 +18,7 @@
       theme = "starlight";
       background-opacity = 0.85;
 
-      window-decoration = false;
+      window-decoration = true;
 
       mouse-hide-while-typing = true;
 

@@ -19,6 +19,9 @@
         Bluetooth = true;
         Sound = true;
       };
+      dock = {
+        autohide = true;
+      };
       finder = {
         AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
