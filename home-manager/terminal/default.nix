@@ -23,6 +23,10 @@
       keybind = [
         "ctrl+shift+c=copy_to_clipboard"
         "ctrl+shift+v=paste_from_clipboard"
+        "ctrl+shift+t=new_tab"
+        "ctrl+shift+n=new_window"
+        "ctrl+tab=next_tab"
+        "ctrl+shift+tab=previous_tab"
 
         "global:super+shift+enter=toggle_quick_terminal"
       ];
