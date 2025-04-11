@@ -14,7 +14,10 @@
     ../../home-manager/zsh
     ../../home-manager/terminal
     ../../home-manager/nvim
-    ../../home-manager/git.nix
+    (import ../../home-manager/git.nix {
+      userName = username;
+      userEmail = "";
+    })
   ];
 
   home.packages = with pkgs; [

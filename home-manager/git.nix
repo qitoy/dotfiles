@@ -1,7 +1,7 @@
-let
-  userName = "qitoy";
-  userEmail = "itmkan@icloud.com";
-in
+{
+  userName ? "qitoy",
+  userEmail ? "itmkan@icloud.com",
+}:
 {
   programs.git = {
     enable = true;
