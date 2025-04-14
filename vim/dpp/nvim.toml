@@ -40,7 +40,6 @@ depends = 'ddc-source-lsp-setup'
 on_event = ['BufRead', 'CursorHold']
 lua_source = '''
 require'ddc_source_lsp_setup'.setup()
-local lspconfig = require'lspconfig'
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
     callback = function(ev)
@@ -51,9 +50,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set("n", "<Plug>(leader)rn", vim.lsp.buf.rename, bufopts)
     end
 })
-lspconfig.clangd.setup{}
-lspconfig.denols.setup{}
-lspconfig.nixd.setup{
+
+vim.lsp.config('nixd', {
   settings = {
     nixd = {
       formatting = {
@@ -61,12 +59,9 @@ lspconfig.nixd.setup{
       }
     }
   }
-}
--- lspconfig.taplo.setup{}
-lspconfig.texlab.setup{}
-lspconfig.vimls.setup{}
-lspconfig.pylsp.setup{}
-lspconfig.rust_analyzer.setup{
+})
+
+vim.lsp.config('rust_analyzer', {
   settings = {
     ['rust-analyzer'] = {
       check = {
@@ -79,23 +74,34 @@ lspconfig.rust_analyzer.setup{
       }
     }
   },
-}
-local configs = require 'lspconfig.configs'
-if not configs.satysfi_ls then
-    configs.satysfi_ls = {
-        default_config = {
-            cmd = { 'satysfi-language-server' },
-            filetypes = { 'satysfi' },
-            root_dir = lspconfig.util.root_pattern('.git'),
-            single_file_support = true,
-            settings = {},
-        },
-    }
-end
-lspconfig.satysfi_ls.setup{}
-lspconfig.efm.setup {
-  filetypes = { 'satysfi' }
-}
+})
+
+vim.lsp.config('satysfi_ls', {
+  cmd = { 'satysfi-language-server' },
+  filetypes = { 'satysfi' },
+  root_markers = { '.git' },
+  single_file_support = true,
+})
+
+vim.lsp.config('efm', {
+  cmd = { 'efm-langserver' },
+  filetypes = { 'satysfi' },
+  root_markers = { '.git' },
+  single_file_support = true,
+})
+
+vim.lsp.enable({
+  "clangd",
+  "denols",
+  "efm",
+  "nixd",
+  "pylsp",
+  "rust-analyzer",
+  "satysfi_ls",
+  "taplo",
+  "texlab",
+  "vimls",
+})
 '''
 # }}}
 

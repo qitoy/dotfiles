@@ -21,15 +21,16 @@
     enable = true;
     package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     extraPackages = with pkgs; [
+      clang-tools
       efm-langserver
       nixd
       nixfmt-rfc-style
-      # vim-language-server # error with fixupPhase
-      python3Packages.python-lsp-server
-      clang-tools
-      texlab
-      zathura
       nodejs
+      python3Packages.python-lsp-server
+      taplo
+      texlab
+      vim-language-server # error with fixupPhase
+      zathura
     ];
     defaultEditor = true;
   };
