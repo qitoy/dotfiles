@@ -16,7 +16,7 @@
     ../../home-manager/terminal
     ../../home-manager/fonts.nix
     ../../home-manager/nvim
-    ../../home-manager/git.nix
+    (import ../../home-manager/git.nix { })
   ];
 
   home.packages = with pkgs; [
