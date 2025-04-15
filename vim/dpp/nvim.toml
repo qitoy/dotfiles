@@ -96,7 +96,7 @@ vim.lsp.enable({
   "efm",
   "nixd",
   "pylsp",
-  "rust-analyzer",
+  "rust_analyzer",
   "satysfi_ls",
   "taplo",
   "texlab",
