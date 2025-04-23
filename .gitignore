@@ -1,6 +1,7 @@
 *
 !*/
 
+!/githooks/*
 !/flake.nix
 !/flake.lock
 !/nixos/**
