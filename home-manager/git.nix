@@ -17,6 +17,9 @@
       "*.gch"
       "*.satysfi-aux"
       ".jj"
+      "result"
+      "result-*"
+      ".direnv"
     ];
   };
 
