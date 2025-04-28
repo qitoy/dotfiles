@@ -1,4 +1,5 @@
 import type { Entrypoint } from "jsr:@denops/core@7";
+import * as fn from "jsr:@denops/std@7/function";
 import * as u from "jsr:@core/unknownutil@4";
 import { is } from "jsr:@core/unknownutil@4";
 import * as fs from "jsr:@std/fs@1";
@@ -19,8 +20,19 @@ export const main: Entrypoint = async (denops) => {
         { append: true },
       );
     },
+    memoView: async () => {
+      const [date] = new Date().toLocaleString("ja-JP").split(" ");
+      const fname = date.replaceAll("/", "-");
+      const dataDir = `${xdg().data}/memovim`;
+      await fs.ensureDir(dataDir);
+      const escapedPath = await fn.fnameescape(denops, `${dataDir}/${fname}.txt`);
+      await denops.cmd(`edit ${escapedPath}`);
+    },
   };
   await denops.cmd(
     `command! -nargs=1 -bang Memo call denops#notify('${denops.name}', 'memo', [<bang>0, <q-args>])`,
+  );
+  await denops.cmd(
+    `command! MemoView call denops#notify('${denops.name}', 'memoView', [])`,
   );
 };
