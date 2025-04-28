@@ -36,7 +36,3 @@ call ddc#enable_terminal_completion()
 " Use ddc.
 call ddc#enable(#{ context_filetype: 'treesitter' })
 " }}}
-
-" hook_post_update {{{
-call ddc#set_static_import_path()
-" }}}

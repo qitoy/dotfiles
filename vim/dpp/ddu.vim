@@ -38,7 +38,3 @@ nnoremap <Plug>(leader)a
 " hook_source {{{
 call ddu#custom#load_config('$VIM_DPP/ddu.ts'->expand())
 " }}}
-
-" hook_post_update {{{
-call ddu#set_static_import_path()
-" }}}
