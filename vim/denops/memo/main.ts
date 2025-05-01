@@ -25,7 +25,10 @@ export const main: Entrypoint = async (denops) => {
       const fname = date.replaceAll("/", "-");
       const dataDir = `${xdg().data}/memovim`;
       await fs.ensureDir(dataDir);
-      const escapedPath = await fn.fnameescape(denops, `${dataDir}/${fname}.txt`);
+      const escapedPath = await fn.fnameescape(
+        denops,
+        `${dataDir}/${fname}.txt`,
+      );
       await denops.cmd(`edit ${escapedPath}`);
     },
   };
