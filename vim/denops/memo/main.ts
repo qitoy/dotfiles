@@ -10,8 +10,7 @@ export const main: Entrypoint = async (denops) => {
     memo: async (bang, text) => {
       u.assert(bang, is.Number);
       u.assert(text, is.String);
-      const [date, time] = new Date().toLocaleString("ja-JP").split(" ");
-      const fname = date.replaceAll("/", "-");
+      const [fname, time] = get_fname_time();
       const dataDir = `${xdg().data}/memovim`;
       await fs.ensureDir(dataDir);
       await Deno.writeTextFile(
@@ -21,8 +20,7 @@ export const main: Entrypoint = async (denops) => {
       );
     },
     memoView: async () => {
-      const [date] = new Date().toLocaleString("ja-JP").split(" ");
-      const fname = date.replaceAll("/", "-");
+      const [fname] = get_fname_time();
       const dataDir = `${xdg().data}/memovim`;
       await fs.ensureDir(dataDir);
       const escapedPath = await fn.fnameescape(
@@ -39,3 +37,14 @@ export const main: Entrypoint = async (denops) => {
     `command! MemoView call denops#notify('${denops.name}', 'memoView', [])`,
   );
 };
+
+function get_fname_time(): string[] {
+  return new Date().toLocaleString("ja-JP", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }).replaceAll("/", "-").split(" ");
+}
