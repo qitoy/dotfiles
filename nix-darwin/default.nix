@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   nix = {
     optimise.automatic = true;
@@ -29,6 +29,10 @@
     };
     stateVersion = 6;
   };
+
+  environment.systemPackages = [
+    pkgs.nh
+  ];
 
   homebrew = {
     enable = true;
