@@ -30,6 +30,7 @@ export class Config extends BaseConfig {
       "$VIM_DIR/settings.vim",
       "$VIM_DIR/mappings.vim",
       "$VIM_DIR/ftrc.vim",
+      "$VIM_DIR/nvim.lua",
     ];
 
     args.contextBuilder.setGlobal({
