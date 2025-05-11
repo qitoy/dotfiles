@@ -19,6 +19,9 @@ call ddt#custom#patch_global(#{
 \   terminal: #{
 \     prompt_pattern: '% ',
 \   },
+\   shell: #{
+\     userPrompt: '"| " .. fnamemodify(getcwd(), ":~")',
+\   },
 \ },
 \})
 
@@ -31,4 +34,9 @@ tnoremap <C-y> <Cmd>call pum#map#confirm()<CR>
 " }}}
 
 " ddt-terminal {{{
+" }}}
+
+" ddt-shell {{{
+inoremap <buffer> <CR> <Cmd>call ddt#ui#do_action('executeLine')<CR>
+inoremap <buffer> <C-l> <Cmd>call ddt#ui#do_action('redraw')<CR>
 " }}}
