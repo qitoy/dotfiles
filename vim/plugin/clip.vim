@@ -8,5 +8,5 @@ function s:clip_init() abort
 endfunction
 
 function s:clip_copy() abort
-  let @+ = getline(1, '$')->join("\<CR>")
+  let @+ = getline(1, '$')->join("\n")
 endfunction
