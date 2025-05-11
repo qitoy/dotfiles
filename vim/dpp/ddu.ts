@@ -1,7 +1,17 @@
-import { BaseConfig, ConfigArguments } from "jsr:@shougo/ddu-vim@9/config";
-import { Params as FFParams } from "jsr:@shougo/ddu-ui-ff@1";
-import { Params as FilerParams } from "jsr:@shougo/ddu-ui-filer@1";
+import {
+  type ActionArguments,
+  ActionFlags,
+} from "jsr:@shougo/ddu-vim@10/types";
+import {
+  BaseConfig,
+  type ConfigArguments,
+} from "jsr:@shougo/ddu-vim@10/config";
+import type { ActionData as FileAction } from "jsr:@shougo/ddu-kind-file@0.9";
+import type { Params as FFParams } from "jsr:@shougo/ddu-ui-ff@2";
+import type { Params as FilerParams } from "jsr:@shougo/ddu-ui-filer@2";
 import * as fn from "jsr:@denops/std@7/function";
+
+type Params = Record<string, unknown>;
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<void> {
@@ -36,6 +46,53 @@ export class Config extends BaseConfig {
       kindOptions: {
         file: {
           defaultAction: "open",
+          actions: {
+            filer: {
+              description: "start ddu-ui-filer from the path.",
+              callback: async (args: ActionArguments<Params>) => {
+                const action = args.items[0]?.action as FileAction;
+
+                await args.denops.call("ddu#start", {
+                  ui: "filer",
+                  name: args.options.name,
+                  sources: [
+                    {
+                      name: "file",
+                      options: {
+                        path: action.path,
+                      },
+                    }
+                  ],
+                });
+
+                return Promise.resolve(ActionFlags.None);
+              },
+            },
+            grep: {
+              description: "Grep from the path.",
+              callback: async (args: ActionArguments<Params>) => {
+                const paths = [];
+                for(const item of args.items) {
+                  paths.push((item?.action as FileAction).path);
+                }
+                await args.denops.call("ddu#start", {
+                  name: args.options.name,
+                  // push: true,
+                  sources: [
+                    {
+                      name: "rg",
+                      params: {
+                        paths,
+                        input: await fn.input(args.denops, "Pattern: "),
+                      },
+                    },
+                  ],
+                });
+
+                return Promise.resolve(ActionFlags.None);
+              },
+            },
+          },
         },
         help: {
           defaultAction: "open",
