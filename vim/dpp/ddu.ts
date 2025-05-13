@@ -77,6 +77,12 @@ export class Config extends BaseConfig {
                 }
                 await args.denops.call("ddu#start", {
                   name: args.options.name,
+                  ui: {
+                    name: "ff",
+                    params: {
+                      startAutoAction: true,
+                    },
+                  },
                   // push: true,
                   sources: [
                     {

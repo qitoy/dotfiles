@@ -16,6 +16,14 @@ xnoremap <buffer> <Space>
 nnoremap <buffer> <C-a>
 \ <Cmd>call ddu#ui#do_action('toggleAllItems')<CR>
 
+" source dpp
+if b:ddu_ui_name ==# 'dpp'
+  nnoremap <buffer> f
+  \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'filer' })<CR>
+  nnoremap <buffer> g
+  \ <Cmd>call ddu#ui#do_action('itemAction', #{ name: 'grep' })<CR>
+endif
+
 " source help
 if b:ddu_ui_name ==# 'help'
   nnoremap <buffer> t

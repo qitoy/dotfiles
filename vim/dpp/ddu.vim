@@ -15,7 +15,7 @@ nnoremap <Plug>(ddu)h
 \})<CR>
 
 nnoremap <Plug>(ddu)p
-\ <Cmd>Ddu dpp -ui-param-ff-startFilter -ui-param-ff-startAutoAction=v:false<CR>
+\ <Cmd>Ddu dpp -name=dpp -ui-param-ff-startFilter -ui-param-ff-startAutoAction=v:false<CR>
 nnoremap <Plug>(ddu)f
 \ <Cmd>Ddu -ui=filer file -source-option-file-path=`'%:p:h'->expand()->fnameescape()`<CR>
 nnoremap <Plug>(ddu)t
