@@ -61,7 +61,7 @@ export class Config extends BaseConfig {
                       options: {
                         path: action.path,
                       },
-                    }
+                    },
                   ],
                 });
 
@@ -72,7 +72,7 @@ export class Config extends BaseConfig {
               description: "Grep from the path.",
               callback: async (args: ActionArguments<Params>) => {
                 const paths = [];
-                for(const item of args.items) {
+                for (const item of args.items) {
                   paths.push((item?.action as FileAction).path);
                 }
                 await args.denops.call("ddu#start", {
