@@ -15,6 +15,7 @@
     ".latexmkrc".source = ../latexmkrc;
   };
 
+  xdg.enable = true;
   xdg.configFile = {
     "efm-langserver".source = ../config/efm-langserver;
   };

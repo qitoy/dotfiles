@@ -10,4 +10,5 @@ endfunction
 
 function s:clip_copy() abort
   let @+ = getline(1, '$')->join("\n")
+  call writefile([@+->json_encode()], '/tmp/vimclip', 'a')
 endfunction

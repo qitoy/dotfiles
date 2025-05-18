@@ -21,7 +21,7 @@ nnoremap <Plug>(ddu)f
 nnoremap <Plug>(ddu)t
 \ <Cmd>Ddu tab -name=tab<CR>
 nnoremap <Plug>(ddu)c
-\ <Cmd>Ddu cliphist<CR>
+\ <Cmd>Ddu clip<CR>
 
 nnoremap gd
 \ <Cmd>Ddu lsp_definition -sync -ui-param-ff-ignoreEmpty
