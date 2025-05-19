@@ -14,6 +14,7 @@ inputs.nix-darwin.lib.darwinSystem {
       nixpkgs = {
         config.allowUnfree = true;
       };
+      system.primaryUser = username;
     }
     ../../nix-darwin
 

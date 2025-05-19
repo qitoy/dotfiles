@@ -14,7 +14,7 @@
         . ~/.nix-profile/etc/profile.d/nix.sh
       fi
     '';
-    initExtra = ''
+    initContent = ''
       zmodload zsh/zpty
 
       autoload -U select-word-style
