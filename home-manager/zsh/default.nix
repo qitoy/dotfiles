@@ -24,6 +24,10 @@
       add-zsh-hook chpwd chpwd_recent_dirs
       zstyle ':chpwd:*' recent-dirs-max 10000
 
+      autoload -Uz edit-command-line
+      zle -N edit-command-line
+      bindkey "^X^E" edit-command-line
+
       bindkey "^U" backward-kill-line
 
       . ${./.}/fzf.zsh
