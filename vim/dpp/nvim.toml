@@ -131,3 +131,15 @@ require"keycastr".config.set {
   },
 }
 '''
+
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+
+[[plugins]]
+repo = 'CopilotC-Nvim/CopilotChat.nvim'
+depends = ['copilot.vim', 'plenary.nvim']
+on_cmd = ['CopilotChat']
+lua_source = '''
+require"CopilotChat".setup{}
+'''
+
