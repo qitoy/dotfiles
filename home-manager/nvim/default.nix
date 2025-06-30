@@ -22,6 +22,7 @@
     package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     extraPackages = with pkgs; [
       clang-tools
+      copilot-language-server
       efm-langserver
       nixd
       nixfmt-rfc-style

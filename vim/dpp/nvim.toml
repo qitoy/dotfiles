@@ -136,8 +136,26 @@ require"keycastr".config.set {
 repo = 'nvim-lua/plenary.nvim'
 
 [[plugins]]
+repo = 'zbirenbaum/copilot.lua'
+on_cmd = 'Copilot'
+on_lua = 'copilot'
+lua_source = '''
+require"copilot".setup({
+  suggestions = { enable = false },
+  panels = { enable = false },
+  server_opts_overrides = {
+    trace = 'verbose',
+    cmd = {
+      vim.fn.exepath('copilot-language-server'),
+      '--stdio'
+    },
+  },
+})
+'''
+
+[[plugins]]
 repo = 'CopilotC-Nvim/CopilotChat.nvim'
-depends = ['copilot.vim', 'plenary.nvim']
+depends = ['copilot.lua', 'plenary.nvim']
 on_cmd = ['CopilotChat']
 lua_source = '''
 require"CopilotChat".setup{}

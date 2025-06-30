@@ -12,7 +12,7 @@ export class Config extends BaseConfig {
         "denippet",
         "around",
         "buffer",
-        // "copilot",
+        "copilot",
       ],
       cmdlineSources: {
         ":": ["cmdline", "cmdline_history", "around"],
@@ -78,6 +78,9 @@ export class Config extends BaseConfig {
         },
         buffer: {
           bufNameStyle: "basename",
+        },
+        copilot: {
+          copilot: "lua",
         },
         zsh: {
           shell: "zsh",
