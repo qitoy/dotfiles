@@ -35,11 +35,12 @@
 
   online-judge-verify-helper = python3Packages.buildPythonApplication {
     inherit (sources.online-judge-verify-helper) pname version src;
+    pyproject = true;
+    build-system = [ python3Packages.setuptools ];
     propagatedBuildInputs = with python3Packages; [
       colorlog
       pyyaml
       online-judge-tools
-      setuptools
       toml
       importlab
     ];
