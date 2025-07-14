@@ -128,6 +128,9 @@ export class Config extends BaseConfig {
         cliphist: {
           defaultAction: "append",
         },
+        ui_select: {
+          defaultAction: "select",
+        },
       },
 
       actionOptions: {

@@ -80,6 +80,10 @@ on_source = 'ddu.vim'
 repo = 'kamecha/ddu-source-tab'
 on_source = 'ddu.vim'
 
+[[plugins]]
+repo = 'matsui54/ddu-vim-ui-select'
+on_source = 'ddu.vim'
+
 #filters
 [[plugins]]
 repo = 'yuki-yano/ddu-filter-fzf'
