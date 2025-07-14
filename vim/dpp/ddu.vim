@@ -3,7 +3,9 @@ nmap <Plug>(leader)u <Plug>(ddu)
 nmap m <Plug>(ddu)
 
 nnoremap <Plug>(ddu)m
-\ <Cmd>Ddu file_old mr -unique<CR>
+\ <Cmd>Ddu file_old mr
+\ `'.git'->finddir(';') != '' ? 'file_git' : ''`
+\ -unique<CR>
 nnoremap <Plug>(ddu)b <Cmd>Ddu buffer<CR>
 nnoremap <Plug>(ddu)e
 \ <Cmd>Ddu emoji -ui-param-ff-startAutoAction=v:false<CR>

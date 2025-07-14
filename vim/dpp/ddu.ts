@@ -15,6 +15,7 @@ type Params = Record<string, unknown>;
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<void> {
+    args.setAlias("_", "source", "file_git", "file_external");
     args.contextBuilder.patchGlobal({
       ui: "ff",
 
@@ -32,6 +33,9 @@ export class Config extends BaseConfig {
       },
 
       sourceParams: {
+        file_git: {
+          cmd: ["git", "ls-files", "-co", "--exclude-standard"],
+        },
         mr: {
           kind: "mrw",
         },

@@ -53,6 +53,10 @@ repo = 'Shougo/ddu-source-file_old'
 on_source = 'ddu.vim'
 
 [[plugins]]
+repo = 'matsui54/ddu-source-file_external'
+on_source = 'ddu.vim'
+
+[[plugins]]
 repo = 'shun/ddu-source-rg'
 on_source = 'ddu.vim'
 
