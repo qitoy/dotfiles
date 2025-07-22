@@ -178,6 +178,30 @@ export class Config extends BaseConfig {
           winHeight: "&lines - 8",
           floatingBorder: "double",
           sortTreesFirst: true,
+          previewFloating: true,
+          previewSplit: "vertical",
+          previewWidth: "eval(uiParams.winWidth) / 2",
+          previewHeight: "eval(uiParams.winHeight)",
+          previewRow: "(&lines - eval(uiParams.winHeight)) / 2",
+          previewCol:
+            "eval(uiParams.winCol) + eval(uiParams.winWidth) - eval(uiParams.previewWidth)",
+          previewFloatingBorder: "double",
+          autoAction: {
+            name: "preview",
+            previewCmds: [
+              "bat",
+              "-n",
+              "%s",
+              "-r",
+              "%b:%e",
+              "--highlight-line",
+              "%l",
+            ],
+          },
+          startAutoAction: true,
+          onPreview: async (args) => {
+            await fn.win_execute(args.denops, args.previewWinId, "normal! zt");
+          },
         } as Partial<FilerParams>,
       },
 

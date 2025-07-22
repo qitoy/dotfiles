@@ -15,7 +15,8 @@
       paths = [
         ts
         tree-sitter-satysfi
-      ] ++ ts.withAllGrammars.dependencies;
+      ]
+      ++ ts.withAllGrammars.dependencies;
     };
 
   skk-dict = pkgs.skkDictionaries.l;
