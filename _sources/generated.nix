@@ -40,6 +40,18 @@
       };
     };
   };
+  nvim-treesitter-main = {
+    pname = "nvim-treesitter-main";
+    version = "682d083292f01636622362cf9eb0e4b2f9de2b13";
+    src = fetchFromGitHub {
+      owner = "nvim-treesitter";
+      repo = "nvim-treesitter";
+      rev = "682d083292f01636622362cf9eb0e4b2f9de2b13";
+      fetchSubmodules = false;
+      sha256 = "sha256-XLJGKjK5SnabTuQYm9wZ+7uUbVrdI5cyI5fOxUoLPbU=";
+    };
+    date = "2025-09-13";
+  };
   online-judge-verify-helper = {
     pname = "online-judge-verify-helper";
     version = "adbff121b1f96de5f34e9f1483eb47d661c54075";

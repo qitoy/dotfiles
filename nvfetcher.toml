@@ -24,3 +24,8 @@ cargo_locks = ["Cargo.lock"]
 [tree-sitter-satysfi]
 src.git = "https://github.com/monaqa/tree-sitter-satysfi.git"
 fetch.github = "monaqa/tree-sitter-satysfi"
+
+[nvim-treesitter-main]
+src.git = "https://github.com/nvim-treesitter/nvim-treesitter.git"
+src.branch = "main"
+fetch.github = "nvim-treesitter/nvim-treesitter"
