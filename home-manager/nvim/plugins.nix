@@ -2,7 +2,10 @@
 {
   nvim-treesitter =
     let
-      ts = pkgs.vimPlugins.nvim-treesitter;
+      nvim-treesitter-main = pkgs.vimUtils.buildVimPlugin {
+        inherit (sources.nvim-treesitter-main) pname version src;
+        nvimSkipModules = [ "nvim-treesitter._meta.parsers" ];
+      };
       tree-sitter-satysfi = pkgs.neovimUtils.grammarToPlugin (
         pkgs.tree-sitter.buildGrammar {
           language = "satysfi";
@@ -13,10 +16,15 @@
     pkgs.symlinkJoin {
       name = "ts-all";
       paths = [
-        ts
+        nvim-treesitter-main
         tree-sitter-satysfi
       ]
-      ++ ts.withAllGrammars.dependencies;
+      ++ pkgs.vimPlugins.nvim-treesitter.withAllGrammars.dependencies;
+      postBuild = ''
+        cd $out
+        mkdir -p ./queries
+        mv ./runtime/queries/* ./queries
+      '';
     };
 
   skk-dict = pkgs.skkDictionaries.l;
