@@ -77,3 +77,7 @@ on_source = 'ddc.vim'
 [[plugins]]
 repo = 'Shougo/ddc-filter-converter_remove_overlap'
 on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-filter-converter_kind_labels'
+on_source = 'ddc.vim'

@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   programs.powerline-go = {
     enable = true;
@@ -7,7 +7,7 @@
 
   programs.zsh = {
     defaultKeymap = "emacs";
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     enable = true;
     envExtra = ''
       if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
