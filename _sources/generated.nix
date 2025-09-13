@@ -54,16 +54,16 @@
   };
   pahcer = {
     pname = "pahcer";
-    version = "v0.2.0";
+    version = "v0.3.1";
     src = fetchFromGitHub {
       owner = "terry-u16";
       repo = "pahcer";
-      rev = "v0.2.0";
+      rev = "v0.3.1";
       fetchSubmodules = false;
-      sha256 = "sha256-yZaIZUuxlVJt/wvke+M6ATHXQLLE7siRx73IexY3njU=";
+      sha256 = "sha256-LNQsmAvoAbWipdI9MZfeZfQ8826Dz0EzwjvHiICfFec=";
     };
     cargoLock."Cargo.lock" = {
-      lockFile = ./pahcer-v0.2.0/Cargo.lock;
+      lockFile = ./pahcer-v0.3.1/Cargo.lock;
       outputHashes = {
 
       };

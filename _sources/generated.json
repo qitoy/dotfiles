@@ -75,7 +75,7 @@
   "pahcer": {
     "cargoLocks": {
       "Cargo.lock": [
-        "./pahcer-v0.2.0/Cargo.lock",
+        "./pahcer-v0.3.1/Cargo.lock",
         {}
       ]
     },
@@ -91,12 +91,12 @@
       "name": null,
       "owner": "terry-u16",
       "repo": "pahcer",
-      "rev": "v0.2.0",
-      "sha256": "sha256-yZaIZUuxlVJt/wvke+M6ATHXQLLE7siRx73IexY3njU=",
+      "rev": "v0.3.1",
+      "sha256": "sha256-LNQsmAvoAbWipdI9MZfeZfQ8826Dz0EzwjvHiICfFec=",
       "sparseCheckout": [],
       "type": "github"
     },
-    "version": "v0.2.0"
+    "version": "v0.3.1"
   },
   "tree-sitter-satysfi": {
     "cargoLocks": null,
