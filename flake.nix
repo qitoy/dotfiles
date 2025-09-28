@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-24.11";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -61,8 +62,14 @@
       };
 
       perSystem =
-        { ... }:
+        { pkgs, system, ... }:
         {
+          packages =
+            let
+              pkgs-stable = import inputs.nixpkgs-stable { inherit system; };
+            in
+            import ./pkgs { inherit pkgs pkgs-stable; };
+
           treefmt = {
             projectRootFile = "flake.nix";
             programs = {

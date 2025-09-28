@@ -9,6 +9,7 @@
 !/systems/**
 !/_sources/**
 !/nvfetcher.toml
+!/pkgs/**
 
 !/latexmkrc
 !/.gitignore
