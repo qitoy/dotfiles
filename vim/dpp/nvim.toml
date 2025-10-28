@@ -56,7 +56,7 @@ vim.lsp.config('rust_analyzer', {
       },
       server = {
         extraEnv = {
-          RUSTUP_TOOLCHAIN = '1.70.0'
+          RUSTUP_TOOLCHAIN = '1.89.0'
         }
       }
     }
