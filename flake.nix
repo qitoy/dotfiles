@@ -32,6 +32,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+
     nixos-apple-silicon = {
       url = "github:tpwrules/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,6 +58,7 @@
       flake = {
         nixosConfigurations = {
           asahi = import ./systems/asahi { inherit inputs; };
+          nixos = import ./systems/nixos { inherit inputs; };
         };
         darwinConfigurations = {
           darwin = import ./systems/darwin { inherit inputs; };
