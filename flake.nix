@@ -54,7 +54,9 @@
       ];
 
       flake = {
-        nixosConfigurations = import ./systems/nixos { inherit inputs; };
+        nixosConfigurations = {
+          asahi = import ./systems/asahi { inherit inputs; };
+        };
         darwinConfigurations = {
           darwin = import ./systems/darwin { inherit inputs; };
           work = import ./systems/work { inherit inputs; };
