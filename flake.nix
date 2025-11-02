@@ -18,8 +18,8 @@
     };
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:LnL7/nix-darwin?ref=nix-darwin-25.05";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     neovim-nightly-overlay = {
