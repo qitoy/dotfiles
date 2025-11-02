@@ -17,6 +17,7 @@ inputs.nixpkgs.lib.nixosSystem {
     }
     inputs.xremap.nixosModules.default
     ../../nixos
+    ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen5
 
     inputs.home-manager.nixosModules.home-manager

@@ -1,5 +1,6 @@
 {
   services.xremap = {
+    enable = true;
     withWlroots = true;
     watch = true;
     config = {

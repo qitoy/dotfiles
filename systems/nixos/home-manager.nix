@@ -23,7 +23,7 @@
     ../../home-manager/fonts.nix
     ../../home-manager/compe
     ../../home-manager/nvim
-    ../../home-manager/git.nix
+    (import ../../home-manager/git.nix { })
   ];
 
   home.packages = with pkgs; [
@@ -49,8 +49,6 @@
 
     # gui
     xfce.thunar
-    libreoffice
-    kolourpaint
     vivaldi
   ];
 
