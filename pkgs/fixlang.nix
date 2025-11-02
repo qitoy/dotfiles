@@ -3,11 +3,10 @@
   fetchFromGitHub,
   pkg-config,
   libffi,
-  libtinfo,
   libxml2,
   git,
   openssl,
-  llvmPackages_17,
+  pkgs-stable,
 }:
 rustPlatform.buildRustPackage rec {
   pname = "fixlang";
@@ -23,11 +22,11 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = [
     git
     pkg-config
-    llvmPackages_17.libllvm
+    pkgs-stable.llvmPackages_17.libllvm
   ];
   propagatedBuildInputs = [
     libffi
-    libtinfo
+    pkgs-stable.libtinfo
     libxml2
   ];
   buildInputs = [ openssl ];

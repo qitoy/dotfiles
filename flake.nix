@@ -73,7 +73,10 @@
             let
               pkgs-stable = import inputs.nixpkgs-stable { inherit system; };
             in
-            import ./pkgs { inherit pkgs pkgs-stable; };
+            pkgs.lib.filesystem.packagesFromDirectoryRecursive {
+              callPackage = pkgs.lib.callPackageWith (pkgs // { inherit pkgs-stable; });
+              directory = ./pkgs;
+            };
 
           treefmt = {
             projectRootFile = "flake.nix";
