@@ -5,9 +5,14 @@
 {
   programs.git = {
     enable = true;
-    inherit userName userEmail;
-    aliases = {
-      browse = "!deno run --allow-net --allow-run --allow-read --allow-env jsr:@lambdalisue/git-browse/cli";
+    settings = {
+      user = {
+        name = userName;
+        email = userEmail;
+      };
+      aliases = {
+        browse = "!deno run --allow-net --allow-run --allow-read --allow-env jsr:@lambdalisue/git-browse/cli";
+      };
     };
     ignores = [
       "*.DS_Store"
