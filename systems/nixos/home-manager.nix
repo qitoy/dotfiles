@@ -19,6 +19,7 @@
   imports = [
     ../../home-manager/zsh
     ../../home-manager/hypr
+    ../../home-manager/niri
     ../../home-manager/terminal
     ../../home-manager/fonts.nix
     ../../home-manager/compe
@@ -41,7 +42,6 @@
     tree
     trash-cli
     vhs
-    texliveFull
 
     ## rust
     rustup
