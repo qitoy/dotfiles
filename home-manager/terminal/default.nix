@@ -13,7 +13,7 @@
         "-dlig"
       ];
 
-      theme = "starlight";
+      theme = "Starlight";
       background-opacity = 0.85;
 
       window-decoration = true;
