@@ -6,20 +6,6 @@
   python3Packages,
 }:
 {
-  cargo-compete = rustPlatform.buildRustPackage {
-    inherit (sources.cargo-compete) pname version src;
-    cargoLock = {
-      lockFile = ./cargo-compete/Cargo.lock;
-      outputHashes = { };
-    };
-    postPatch = ''
-      cp ${./cargo-compete/Cargo.lock} Cargo.lock
-    '';
-    nativeBuildInputs = [ pkg-config ];
-    buildInputs = [ openssl ];
-    doCheck = false;
-  };
-
   cargo-equip = rustPlatform.buildRustPackage {
     inherit (sources.cargo-equip) pname version src;
     cargoLock = sources.cargo-equip.cargoLock."Cargo.lock";
