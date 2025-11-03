@@ -6,16 +6,15 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "cargo-compete";
-  version = "94b4d8ef500fc1fdb88ef26a3806102dca42fd1b";
+  version = "f11c742e64ed6d9d69700295aa3e28161226e357";
   src = fetchFromGitHub {
     owner = "qitoy";
     repo = pname;
     rev = version;
-    sha256 = "sha256-E40kzgpKwW6YezW2NIp/vNH4fEUx5P+XEqjIY5X3BC4=";
+    sha256 = "sha256-csty4cQMEfQ/KiRLMEWpL9CJ/h7/KGT2KmnGXKfGVBo=";
   };
-  cargoHash = "sha256-8Hgo2wNnxjUJmwC1Ick8Nbv6IOUQLb5WuOvNWRm8APo=";
+  cargoHash = "sha256-Vryho8VgKLhk8GENI3jKgdXCjpzGNE5fCkFQRxSkwKc=";
   nativeBuildInputs = [ pkg-config ];
   buildInputs = [ openssl ];
   doCheck = false;
 }
-

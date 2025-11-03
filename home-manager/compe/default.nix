@@ -1,4 +1,9 @@
-{ pkgs, sources, inputs, ... }:
+{
+  pkgs,
+  sources,
+  inputs,
+  ...
+}:
 let
   qitoypkgs = pkgs.callPackage ./packages.nix { inherit sources; };
   selfpkgs = inputs.self.packages.${pkgs.stdenv.hostPlatform.system};
