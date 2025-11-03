@@ -5,10 +5,11 @@ augroup vimrc
 augroup END
 
 " dpp install
-let s:cache = expand('~/.cache')
+const s:cache = expand('~/.cache')
 if !isdirectory(s:cache)
   call mkdir(s:cache, 'p')
 endif
+const s:dpp_cache = s:cache .. '/dpp'
 
 function InitPlugin(plugin)
   let dir = s:cache .. '/dpp/repos/github.com/' .. a:plugin
@@ -38,15 +39,14 @@ if dpp#min#load_state(s:cache .. '/dpp')
     call InitPlugin(s:plugin)
   endfor
 
-  " NOTE: need manual load
-  runtime! plugin/denops.vim
-
   call denops#server#wait_async({
-  \-> dpp#make_state(s:cache .. '/dpp', '$VIM_DPP/dpp.ts'->expand())
+  \-> dpp#make_state(s:dpp_cache, '$VIM_DPP/dpp.ts'->expand())
   \})
 else
   autocmd vimrc BufWritePost *.lua,*.vim,*.toml,*.ts,vimrc,.vimrc
-  \ call dpp#check_files()
+  \: if !dpp#check_files(s:dpp_cache)->empty()
+  \| call dpp#make_state(s:dpp_cache, '$VIM_DPP/dpp.ts'->expand())
+  \| endif
 endif
 
 autocmd vimrc User Dpp:makeStatePost
