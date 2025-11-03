@@ -12,7 +12,6 @@ export class Config extends BaseConfig {
         "denippet",
         "around",
         "buffer",
-        "copilot",
       ],
       cmdlineSources: {
         ":": ["cmdline", "cmdline_history", "around"],
