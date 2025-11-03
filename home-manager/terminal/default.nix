@@ -7,6 +7,7 @@
     clearDefaultKeybinds = true;
     settings = {
       font-size = 12.5;
+      font-family = "Moralerspace Neon";
       font-feature = [
         "-calt"
         "-liga"
