@@ -144,14 +144,6 @@ require"copilot".setup({
 '''
 
 [[plugins]]
-repo = 'CopilotC-Nvim/CopilotChat.nvim'
-depends = ['copilot.lua', 'plenary.nvim']
-on_cmd = ['CopilotChat']
-lua_source = '''
-require"CopilotChat".setup{}
-'''
-
-[[plugins]]
 repo = 'yetone/avante.nvim'
 depends = ['copilot.lua', 'plenary.nvim', 'nui.nvim']
 on_cmd = ['AvanteAsk', 'AvanteChat', 'AvanteChatNew']
@@ -159,5 +151,10 @@ lua_source = '''
 require"avante_lib".load()
 require"avante".setup {
   provider = "copilot",
+  providers = {
+    copilot = {
+      model = "claude-haiku-4.5";
+    };
+  };
 }
 '''
