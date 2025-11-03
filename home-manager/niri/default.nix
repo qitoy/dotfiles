@@ -24,7 +24,6 @@
           };
 
           touchpad = {
-            tap = { };
             natural-scroll = { };
           };
         };
