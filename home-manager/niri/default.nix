@@ -21,6 +21,10 @@
         touchpad = {
           natural-scroll = { };
         };
+
+        mouse = {
+          natural-scroll = { };
+        };
       };
 
       output = {
