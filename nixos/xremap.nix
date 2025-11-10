@@ -1,7 +1,7 @@
 {
   services.xremap = {
     enable = true;
-    withWlroots = true;
+    withNiri = true;
     watch = true;
     config = {
       modmap = [
