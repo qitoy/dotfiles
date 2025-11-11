@@ -9,6 +9,7 @@ let
 in
 inputs.nixpkgs.lib.nixosSystem {
   inherit system;
+  specialArgs = { inherit username; };
   modules = [
     {
       nixpkgs = {

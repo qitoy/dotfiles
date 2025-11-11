@@ -1,8 +1,11 @@
+{ username, ... }:
 {
   services.xremap = {
     enable = true;
     withNiri = true;
     watch = true;
+    serviceMode = "user";
+    userName = username;
     config = {
       modmap = [
         {
