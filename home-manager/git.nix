@@ -43,7 +43,7 @@
         email = userEmail;
       };
       ui = {
-        pager = "less -FRX";
+        pager = "less -FRX --tabs 4";
       };
     };
   };
