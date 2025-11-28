@@ -44,6 +44,7 @@
       "karabiner-elements"
       "microsoft-teams"
       "programmer-dvorak"
+      "raycast"
     ];
   };
 }
