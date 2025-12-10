@@ -5,6 +5,7 @@ nmap m <Plug>(ddu)
 nnoremap <Plug>(ddu)m
 \ <Cmd>Ddu file_old
 \ `'.git'->finddir(';') != '' ? 'file_git' : ''`
+\ `'.git'->findfile(';') != '' ? 'file_git' : ''`
 \ mr -unique<CR>
 nnoremap <Plug>(ddu)b <Cmd>Ddu buffer<CR>
 nnoremap <Plug>(ddu)e
