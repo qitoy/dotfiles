@@ -26,6 +26,8 @@ repo = 'neovim/nvim-lspconfig'
 depends = 'ddc-source-lsp-setup'
 on_event = ['BufRead', 'CursorHold']
 lua_source = '''
+vim.fn.mkdir('/tmp/nvim', 'p')
+vim.lsp.log._set_filename('/tmp/nvim/lsp.log')
 require'ddc_source_lsp_setup'.setup()
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
