@@ -20,6 +20,4 @@
     };
 
   skk-dict = pkgs.skkDictionaries.l;
-
-  "avante.nvim" = pkgs.vimPlugins.avante-nvim;
 }

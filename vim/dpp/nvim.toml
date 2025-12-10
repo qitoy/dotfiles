@@ -122,41 +122,8 @@ require"keycastr".config.set {
 '''
 
 [[plugins]]
-repo = 'nvim-lua/plenary.nvim'
-
-[[plugins]]
-repo = 'MunifTanjim/nui.nvim'
-
-[[plugins]]
-repo = 'zbirenbaum/copilot.lua'
-on_cmd = 'Copilot'
-on_lua = 'copilot'
+repo = 'lambdalisue/nvim-aibo'
+on_cmd = ['Aibo', 'AiboSend']
 lua_source = '''
-require"copilot".setup({
-  suggestions = { enable = false },
-  panels = { enable = false },
-  server_opts_overrides = {
-    trace = 'verbose',
-    cmd = {
-      vim.fn.exepath('copilot-language-server'),
-      '--stdio'
-    },
-  },
-})
-'''
-
-[[plugins]]
-repo = 'yetone/avante.nvim'
-depends = ['copilot.lua', 'plenary.nvim', 'nui.nvim']
-on_cmd = ['AvanteAsk', 'AvanteChat', 'AvanteChatNew']
-lua_source = '''
-require"avante_lib".load()
-require"avante".setup {
-  provider = "copilot",
-  providers = {
-    copilot = {
-      model = "claude-haiku-4.5";
-    };
-  };
-}
+require"aibo".setup()
 '''

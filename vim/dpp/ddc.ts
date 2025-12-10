@@ -52,12 +52,6 @@ export class Config extends BaseConfig {
         cmdline_history: {
           mark: "| history",
         },
-        copilot: {
-          mark: "| copilot",
-          matchers: [],
-          minAutoCompleteLength: 0,
-          isVolatile: false,
-        },
         zsh: {
           mark: "| zsh",
         },
@@ -77,9 +71,6 @@ export class Config extends BaseConfig {
         },
         buffer: {
           bufNameStyle: "basename",
-        },
-        copilot: {
-          copilot: "lua",
         },
         zsh: {
           shell: "zsh",

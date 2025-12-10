@@ -65,10 +65,6 @@ on_source = 'ddc.vim'
 repo = 'Shougo/ddc-source-shell-native'
 on_source = 'ddc.vim'
 
-[[plugins]]
-repo = 'Shougo/ddc-source-copilot'
-on_source = 'ddc.vim'
-
 # Install your filters
 [[plugins]]
 repo = 'tani/ddc-fuzzy'
