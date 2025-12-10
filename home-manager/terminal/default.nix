@@ -2,11 +2,10 @@
 {
   programs.ghostty = {
     enable = true;
-    # ghostty is temporary broken in macos
-    package = if pkgs.stdenv.hostPlatform.isLinux then pkgs.ghostty else null;
+    package = if pkgs.stdenv.hostPlatform.isLinux then pkgs.ghostty else pkgs.ghostty-bin;
     clearDefaultKeybinds = true;
     settings = {
-      font-size = 12.5;
+      font-size = 12;
       font-family = "Moralerspace Neon";
       font-feature = [
         "-calt"

@@ -40,7 +40,6 @@
       autoUpdate = true;
     };
     casks = [
-      "ghostty"
       "karabiner-elements"
       "microsoft-teams"
       "programmer-dvorak"
