@@ -15,3 +15,6 @@ cnoremap <Esc>b <S-Left>
 
 nnoremap <C-S> <Cmd>update<CR>
 nnoremap U <C-R>
+
+command! Xed
+\ execute '!xed -l' .. line('.') .. ' ' .. shellescape(expand('%'))
