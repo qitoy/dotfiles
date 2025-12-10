@@ -5,8 +5,9 @@ const s:tsuki_dvp = "$VIM_DPP/skk/tsuki_dvp.json"
 \->expand()->readfile()->json_decode()
 const s:skk_dict = dpp#get('skk-dict').path
 
-imap <C-j> <Plug>(skkeleton-toggle)
-cmap <C-j> <Plug>(skkeleton-toggle)
+inoremap <C-j> <Plug>(skkeleton-toggle)
+cnoremap <C-j> <Plug>(skkeleton-toggle)
+tnoremap <C-j> <Plug>(skkeleton-toggle)
 
 function s:skkeleton_init() abort
   call mkdir('~/.skkeleton'->expand(), 'p')
