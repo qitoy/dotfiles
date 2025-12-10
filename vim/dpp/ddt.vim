@@ -1,16 +1,19 @@
 " hook_add {{{
-function s:ddt_start(...) abort
+function s:ddt_start(name, ...) abort
   call ddt#start(#{
+  \ name: a:name,
   \ ui: 'terminal',
   \ uiParams: #{
   \   terminal: #{
-  \     command: a:0 ? a:000 : ['zsh'],
+  \     command: a:0 ? a:000 : [$SHELL],
   \   },
   \ },
   \})
 endfunction
 command! -nargs=* Ddt
-\ call s:ddt_start(<f-args>)
+\ call s:ddt_start('default', <f-args>)
+command! -nargs=* DdtNew
+\ call s:ddt_start('default-' .. win_getid(), <f-args>)
 " }}}
 
 " hook_source {{{
