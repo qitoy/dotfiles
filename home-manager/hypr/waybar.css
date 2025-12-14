@@ -127,3 +127,8 @@ label:focus {
 #pulseaudio.muted {
   color: #90b1b1;
 }
+
+#hardware {
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+}
