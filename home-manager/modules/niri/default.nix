@@ -6,10 +6,10 @@
 }:
 let
   inherit (lib) mkIf mkOption types;
-  cfg = config.programs.niri;
+  cfg = config.qitoy.programs.niri;
 in
 {
-  options.programs.niri = {
+  options.qitoy.programs.niri = {
     enable = lib.mkEnableOption "niri";
     package = lib.mkPackageOption pkgs "niri" { };
     xwayland = mkOption {

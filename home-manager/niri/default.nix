@@ -4,7 +4,7 @@
 }:
 {
   imports = [ ../modules/niri ];
-  programs.niri = {
+  qitoy.programs.niri = {
     enable = true;
     xwayland = true;
     settings = {
