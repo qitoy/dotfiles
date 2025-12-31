@@ -6,6 +6,7 @@
 {
   home.username = username;
   home.homeDirectory = "/home/${username}";
+  qitoy.util.user.email = "itmkan@icloud.com";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -17,30 +18,15 @@
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
   imports = [
-    ../../home-manager/zsh
-    ../../home-manager/hypr
-    ../../home-manager/niri
-    ../../home-manager/terminal
-    ../../home-manager/fonts.nix
-    ../../home-manager/compe
-    ../../home-manager/nvim
-    (import ../../home-manager/git.nix { })
+    ../../home-manager
   ];
 
   home.packages = with pkgs; [
     # command
-    bat
-    deno
     ffmpeg
     brightnessctl
     imagemagick
     ghostscript
-    ghq
-    ripgrep
-    fd
-    jq
-    tree
-    trash-cli
     vhs
 
     ## rust
@@ -52,14 +38,6 @@
     vivaldi
   ];
 
-  home.file = {
-    ".latexmkrc".source = ../../latexmkrc;
-  };
-
-  xdg.configFile = {
-    "efm-langserver".source = ../../config/efm-langserver;
-  };
-
   home.sessionVariables = { };
 
   home.pointerCursor = {
@@ -70,11 +48,6 @@
     size = 22;
   };
   gtk.enable = true;
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
 
   programs.opam.enable = true;
 

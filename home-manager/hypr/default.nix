@@ -1,10 +1,12 @@
 { pkgs, ... }:
+let
+  isLinux = pkgs.stdenv.hostPlatform.isLinux;
+in
 {
-
   home.packages = [ pkgs.font-awesome ];
 
   wayland.windowManager.hyprland = {
-    enable = true;
+    enable = isLinux;
 
     settings = {
       general = {
@@ -93,7 +95,7 @@
   };
 
   programs.swaylock = {
-    enable = true;
+    enable = isLinux;
     settings = {
       screenshots = true;
       clock = true;
@@ -103,11 +105,11 @@
   };
 
   services.mako = {
-    enable = true;
+    enable = isLinux;
   };
 
   programs.waybar = {
-    enable = true;
+    enable = isLinux;
     systemd.enable = true;
     settings = {
       mainBar = {

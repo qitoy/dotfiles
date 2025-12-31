@@ -3,7 +3,7 @@
   programs.ghostty = {
     enable = true;
     # ghostty is temporary broken in macos
-    package = if pkgs.stdenv.isLinux then pkgs.ghostty else null;
+    package = if pkgs.stdenv.hostPlatform.isLinux then pkgs.ghostty else null;
     clearDefaultKeybinds = true;
     settings = {
       font-size = 12.5;

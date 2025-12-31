@@ -1,15 +1,15 @@
 {
-  userName ? "qitoy",
-  userEmail ? "itmkan@icloud.com",
+  config,
+  ...
 }:
+let
+  inherit (config.qitoy.util) user;
+in
 {
   programs.git = {
     enable = true;
     settings = {
-      user = {
-        name = userName;
-        email = userEmail;
-      };
+      inherit user;
       aliases = {
         browse = "!deno run --allow-net --allow-run --allow-read --allow-env jsr:@lambdalisue/git-browse/cli";
       };
@@ -38,10 +38,7 @@
   programs.jujutsu = {
     enable = true;
     settings = {
-      user = {
-        name = userName;
-        email = userEmail;
-      };
+      inherit user;
       ui = {
         pager = "less -FRX --tabs 4";
       };

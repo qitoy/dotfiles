@@ -3,9 +3,8 @@
   ...
 }:
 {
-  imports = [ ../modules/niri ];
   qitoy.programs.niri = {
-    enable = true;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     xwayland = true;
     settings = {
       input = {

@@ -2,6 +2,8 @@
   pkgs,
   sources,
   inputs,
+  lib,
+  config,
   ...
 }:
 let
@@ -9,7 +11,7 @@ let
   selfpkgs = inputs.self.packages.${pkgs.stdenv.hostPlatform.system};
 in
 {
-  home.packages = [
+  home.packages = lib.optionals (!config.qitoy.util.isWork) [
     selfpkgs.cargo-compete
     qitoypkgs.cargo-equip
     pkgs.cargo-udeps
