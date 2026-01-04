@@ -34,7 +34,7 @@
     cargo-udeps
 
     # gui
-    xfce.thunar
+    thunar
     vivaldi
   ];
 
