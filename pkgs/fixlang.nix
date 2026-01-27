@@ -3,6 +3,7 @@
   fetchFromGitHub,
   pkg-config,
   libffi,
+  libtinfo,
   libxml2,
   git,
   openssl,
@@ -10,13 +11,13 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "fixlang";
-  version = "v1.1.0";
+  version = "v1.1.0-alpha.12";
   src = fetchFromGitHub {
     owner = "tttmmmyyyy";
     repo = pname;
     tag = version;
     leaveDotGit = true;
-    sha256 = "sha256-jTlf4UD+MrHJJ8qdAnwLhKOemtvLsBeL77iJ5ef7bNo=";
+    sha256 = "sha256-ieWv4CQbqp3gkKTCW1MH4L8Ixy1niuUWEuiaj/QeKuw=";
   };
   cargoHash = "sha256-qkNPGNjbgmhgUXN8Drr5o60Odw1xxIIIbY8z1afk1P8=";
   nativeBuildInputs = [
@@ -26,7 +27,7 @@ rustPlatform.buildRustPackage rec {
   ];
   propagatedBuildInputs = [
     libffi
-    pkgs-stable.libtinfo
+    libtinfo
     libxml2
   ];
   buildInputs = [ openssl ];
