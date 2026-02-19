@@ -29,6 +29,7 @@ call ddt#custom#patch_global(#{
 \})
 
 tnoremap <Esc> <C-\><C-n>
+tnoremap <C-v><Esc> <Esc>
 tnoremap <expr> <Tab> pum#visible() ?
 \ '<Cmd>call pum#map#select_relative(+1, "loop")<CR>' : '<Tab>'
 tnoremap <expr> <S-Tab> pum#visible() ?
