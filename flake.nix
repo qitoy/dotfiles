@@ -1,6 +1,43 @@
 {
   description = "dotfiles";
 
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = import inputs.systems;
+
+      imports = [
+        inputs.treefmt-nix.flakeModule
+      ];
+
+      flake = {
+        nixosConfigurations = {
+          asahi = import ./systems/asahi { inherit inputs; };
+          nixos = import ./systems/nixos { inherit inputs; };
+        };
+        darwinConfigurations = {
+          darwin = import ./systems/darwin { inherit inputs; };
+          work = import ./systems/work { inherit inputs; };
+        };
+      };
+
+      perSystem =
+        { inputs', ... }:
+        {
+          packages = inputs'.qitoy-pkgs.packages;
+
+          treefmt = {
+            projectRootFile = "flake.nix";
+            programs = {
+              deno.enable = true;
+              nixfmt.enable = true;
+              taplo.enable = true;
+              stylua.enable = true;
+            };
+          };
+        };
+    };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-24.11";
@@ -46,41 +83,4 @@
 
     qitoy-pkgs.url = "./qitoy-pkgs";
   };
-
-  outputs =
-    inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = import inputs.systems;
-
-      imports = [
-        inputs.treefmt-nix.flakeModule
-      ];
-
-      flake = {
-        nixosConfigurations = {
-          asahi = import ./systems/asahi { inherit inputs; };
-          nixos = import ./systems/nixos { inherit inputs; };
-        };
-        darwinConfigurations = {
-          darwin = import ./systems/darwin { inherit inputs; };
-          work = import ./systems/work { inherit inputs; };
-        };
-      };
-
-      perSystem =
-        { inputs', ... }:
-        {
-          packages = inputs'.qitoy-pkgs.packages;
-
-          treefmt = {
-            projectRootFile = "flake.nix";
-            programs = {
-              deno.enable = true;
-              nixfmt.enable = true;
-              taplo.enable = true;
-              stylua.enable = true;
-            };
-          };
-        };
-    };
 }
