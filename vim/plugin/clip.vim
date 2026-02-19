@@ -1,6 +1,6 @@
-command! Clip drop vimrc://clip
+command! Clip drop `='vimrc://clip-' .. tabpagenr()`
 
-autocmd vimrc BufNewFile vimrc://clip call s:clip_init()
+autocmd vimrc BufNewFile vimrc://clip* call s:clip_init()
 
 function s:clip_init() abort
   setlocal buftype=nofile
