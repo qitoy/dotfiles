@@ -5,8 +5,8 @@
     deno
     fd
     ghq
-    github-copilot-cli
     jq
+    opencode
     ripgrep
     trash-cli
     tree

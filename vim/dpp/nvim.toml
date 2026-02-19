@@ -122,8 +122,14 @@ require"keycastr".config.set {
 '''
 
 [[plugins]]
-repo = 'lambdalisue/nvim-aibo'
-on_cmd = ['Aibo', 'AiboSend']
+repo = 'sudo-tee/opencode.nvim'
+on_cmd = 'Opencode'
+on_lua = 'opencode'
+depends = 'plenary.nvim'
 lua_source = '''
-require"aibo".setup()
+require"opencode".setup{}
+'''
+
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
 '''
