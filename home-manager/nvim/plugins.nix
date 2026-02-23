@@ -16,7 +16,34 @@
         ts
         tree-sitter-satysfi
       ]
-      ++ ts.withAllGrammars.dependencies;
+      ++ (ts.withPlugins (
+        p: with p; [
+          c
+          cpp
+          diff
+          git_config
+          git_rebase
+          gitattributes
+          gitcommit
+          gitignore
+          java
+          javascript
+          json
+          json5
+          lua
+          markdown
+          nix
+          objc
+          python
+          rust
+          toml
+          typescript
+          vim
+          vimdoc
+          yaml
+          zsh
+        ]
+      )).dependencies;
     };
 
   skk-dict = pkgs.skkDictionaries.l;
