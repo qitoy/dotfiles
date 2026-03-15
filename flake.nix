@@ -44,6 +44,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    qitoy-pkgs.url = "./qitoy-pkgs";
   };
 
   outputs =
@@ -67,16 +68,9 @@
       };
 
       perSystem =
-        { pkgs, system, ... }:
+        { inputs', ... }:
         {
-          packages =
-            let
-              pkgs-stable = import inputs.nixpkgs-stable { inherit system; };
-            in
-            pkgs.lib.filesystem.packagesFromDirectoryRecursive {
-              callPackage = pkgs.lib.callPackageWith (pkgs // { inherit pkgs-stable; });
-              directory = ./pkgs;
-            };
+          packages = inputs'.qitoy-pkgs.packages;
 
           treefmt = {
             projectRootFile = "flake.nix";
