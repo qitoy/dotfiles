@@ -24,7 +24,6 @@
       clang-tools
       copilot-language-server
       efm-langserver
-      github-copilot-cli
       nixd
       nixfmt-rfc-style
       nodejs

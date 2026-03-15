@@ -5,6 +5,7 @@
     deno
     fd
     ghq
+    github-copilot-cli
     jq
     ripgrep
     trash-cli
