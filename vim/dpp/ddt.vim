@@ -11,7 +11,7 @@ function s:ddt_start(name, ...) abort
   \})
 endfunction
 command! -nargs=* Ddt
-\ call s:ddt_start('default', <f-args>)
+\ call s:ddt_start('default-' .. tabpagenr(), <f-args>)
 command! -nargs=* DdtNew
 \ call s:ddt_start('default-' .. win_getid(), <f-args>)
 " }}}
