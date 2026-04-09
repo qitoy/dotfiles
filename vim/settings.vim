@@ -13,7 +13,10 @@ set scrolloff=10
 
 " 折りたたみ
 set foldenable
-set foldmethod=marker
+"set foldmethod=marker
+set foldexpr=v:lua.vim.treesitter.foldexpr()
+set foldlevel=99
+set foldmethod=expr
 
 " tab
 set tabstop=2
