@@ -31,6 +31,10 @@
       bindkey "^U" backward-kill-line
 
       . ${./.}/fzf.zsh
+
+      if [ -e ~/.zshrc_local ]; then
+        . ~/.zshrc_local
+      fi
     '';
     shellAliases = {
       cdr = "fzf-cdr";
