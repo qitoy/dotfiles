@@ -1,4 +1,5 @@
 lua if vim.loader then vim.loader.enable() end
+lua vim.env.NVIM_LOG_FILE = '/tmp/nvim/log'
 
 augroup vimrc
   autocmd!
