@@ -34,5 +34,6 @@
       zathura
     ];
     defaultEditor = true;
+    sideloadInitLua = true;
   };
 }
