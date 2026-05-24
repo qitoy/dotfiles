@@ -132,4 +132,3 @@ require"opencode".setup{}
 
 [[plugins]]
 repo = 'nvim-lua/plenary.nvim'
-'''
