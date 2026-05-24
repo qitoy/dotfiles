@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -53,7 +54,13 @@
         };
         "Mod+D" = {
           _props.hotkey-overlay-title = "Run an Application";
-          spawn-sh = "${pkgs.wofi}/bin/wofi --show drun --allow-images";
+          spawn = [
+            "noctalia-shell"
+            "ipc"
+            "call"
+            "launcher"
+            "toggle"
+          ];
         };
         "Super+Alt+L" = {
           _props.hotkey-overlay-title = "Lock the Screen";
@@ -246,8 +253,7 @@
       };
     };
     spawn-at-startup = [
-      "mako"
-      "waybar"
+      "noctalia-shell"
     ];
   };
 }

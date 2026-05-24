@@ -69,6 +69,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     nixos-apple-silicon = {
@@ -82,5 +84,12 @@
     };
 
     qitoy-pkgs.url = "./qitoy-pkgs";
+  };
+
+  nixConfig = {
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
   };
 }

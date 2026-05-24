@@ -9,6 +9,7 @@
     ./git.nix
     ./hypr
     ./niri
+    ./noctalia
     ./nvim
     ./terminal
     ./zsh
