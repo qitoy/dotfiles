@@ -30,7 +30,7 @@
       python3Packages.python-lsp-server
       taplo
       texlab
-      vim-language-server # error with fixupPhase
+      vim-language-server
       zathura
     ];
     defaultEditor = true;
