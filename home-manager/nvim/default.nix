@@ -31,7 +31,7 @@
       taplo
       texlab
       vim-language-server
-      zathura
+      # zathura
     ];
     defaultEditor = true;
     sideloadInitLua = true;
