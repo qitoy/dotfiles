@@ -29,5 +29,8 @@ inputs.nix-darwin.lib.darwinSystem {
         users."${username}" = import ./home-manager.nix;
       };
     }
+
+    inputs.nix-index-database.darwinModules.nix-index
+    { programs.nix-index-database.comma.enable = true; }
   ];
 }
