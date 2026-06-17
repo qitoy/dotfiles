@@ -13,5 +13,6 @@
     ./nvim
     ./terminal
     ./zsh
+    ./ccache.nix
   ];
 }
